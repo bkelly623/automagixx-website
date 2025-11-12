@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MessageSquare, TrendingUp, Zap, Home, Briefcase, Scale, Heart, Building2, Dumbbell } from "lucide-react";
+import { MessageSquare, TrendingUp, Zap, Home as HomeIcon, Briefcase, Scale, Heart, Building2, Dumbbell } from "lucide-react";
 
 export default function Home() {
   return (
@@ -117,7 +117,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6 hover:bg-gray-50 rounded-xl transition">
-              <Home className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+              <HomeIcon className="w-16 h-16 text-blue-600 mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">Home Services</h3>
               <p className="text-gray-600">HVAC, Plumbing, Electrical</p>
             </div>
