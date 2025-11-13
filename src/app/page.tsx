@@ -336,7 +336,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-[15px] leading-relaxed mb-6 tracking-tight">
-                "Automagixx transformed our lead generation. We're now capturing 3x more qualified leads with their AI chatbot working 24/7."
+                &quot;Automagixx transformed our lead generation. We&apos;re now capturing 3x more qualified leads with their AI chatbot working 24/7.&quot;
               </p>
               <p className="font-semibold text-gray-900 text-[15px] tracking-tight">Sarah Johnson</p>
               <p className="text-gray-600 text-[13px] tracking-tight">CEO, HomeFlow HVAC</p>
@@ -351,7 +351,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-[15px] leading-relaxed mb-6 tracking-tight">
-                "The automation they built cut our administrative work by 60%. We're now focused on growth instead of paperwork."
+                &quot;The automation they built cut our administrative work by 60%. We&apos;re now focused on growth instead of paperwork.&quot;
               </p>
               <p className="font-semibold text-gray-900 text-[15px] tracking-tight">Michael Chen</p>
               <p className="text-gray-600 text-[13px] tracking-tight">Partner, Chen & Associates Law</p>
@@ -366,7 +366,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-[15px] leading-relaxed mb-6 tracking-tight">
-                "Best investment we've made. The AI handles our appointments seamlessly and our no-show rate dropped to almost zero."
+                &quot;Best investment we&apos;ve made. The AI handles our appointments seamlessly and our no-show rate dropped to almost zero.&quot;
               </p>
               <p className="font-semibold text-gray-900 text-[15px] tracking-tight">Dr. Amanda Rivera</p>
               <p className="text-gray-600 text-[13px] tracking-tight">Owner, Vitality Med Spa</p>
