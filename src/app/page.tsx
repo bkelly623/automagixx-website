@@ -4,7 +4,7 @@ import { MessageSquare, TrendingUp, Zap, Home as HomeIcon, Briefcase, Scale, Hea
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation - Stripe Style */}
+      {/* Navigation - Fixed with LARGE logo */}
       <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-20">
@@ -12,26 +12,26 @@ export default function Home() {
               <Image
                 src="/logo.png"
                 alt="Automagixx"
-                width={200}
-                height={50}
-                className="w-auto h-10"
+                width={240}
+                height={64}
+                className="w-auto h-16"
                 priority
               />
               <div className="hidden lg:flex items-center gap-8">
-                <a href="#services" className="text-gray-700 hover:text-gray-900 transition text-sm font-medium">Services</a>
-                <a href="#industries" className="text-gray-700 hover:text-gray-900 transition text-sm font-medium">Industries</a>
-                <a href="#how-it-works" className="text-gray-700 hover:text-gray-900 transition text-sm font-medium">How It Works</a>
+                <a href="#services" className="text-gray-700 hover:text-gray-900 transition text-base font-medium">Services</a>
+                <a href="#industries" className="text-gray-700 hover:text-gray-900 transition text-base font-medium">Industries</a>
+                <a href="#how-it-works" className="text-gray-700 hover:text-gray-900 transition text-base font-medium">How It Works</a>
               </div>
             </div>
             <div className="flex items-center gap-6">
-              <a href="tel:2122570112" className="hidden md:block text-gray-700 hover:text-gray-900 transition text-sm font-medium">(212) 257-0112</a>
+              <a href="tel:2122570112" className="hidden md:block text-gray-700 hover:text-gray-900 transition text-base font-medium">(212) 257-0112</a>
               <a 
                 href="https://calendly.com/automagixx/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-all duration-200 text-sm font-medium"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 text-base font-semibold"
               >
-                Get Started
+                Free Consultation
               </a>
             </div>
           </div>
@@ -65,14 +65,16 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md group"
                 >
-                  Get Started Free
+                  Try Free for 30 Days
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a 
-                  href="#how-it-works"
+                  href="https://calendly.com/automagixx/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-white text-gray-900 px-8 py-4 rounded-xl text-base font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-300"
                 >
-                  See How It Works
+                  Book Free Consultation
                 </a>
               </div>
               
@@ -112,17 +114,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services - Bento Grid Style */}
-      <section id="services" className="py-32 px-6 bg-gray-50">
+      {/* Services - Premium Headers */}
+      <section id="services" className="py-32 px-6 bg-gray-50 relative overflow-hidden">
+        {/* Gradient Accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+        
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">What We Do</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">AI automation that transforms how you do business</p>
+            <div className="inline-block mb-6">
+              <span className="text-blue-600 font-semibold text-sm tracking-wide uppercase">What We Do</span>
+            </div>
+            <h2 className="text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                AI Automation That Transforms
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Power your business with intelligent automation solutions</p>
           </div>
 
           {/* Bento Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Large Featured Card - spans 2 columns */}
+            {/* Large Featured Card */}
             <div className="lg:col-span-2 bg-gradient-to-br from-blue-600 to-blue-700 p-10 rounded-2xl text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
               <div className="relative z-10">
@@ -185,12 +197,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries - Horizontal Scrolling Cards */}
-      <section id="industries" className="py-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
-            <p className="text-xl text-gray-600">Specialized AI solutions proven across multiple sectors</p>
+      {/* Industries - Premium Headers */}
+      <section id="industries" className="py-32 px-6 bg-white relative overflow-hidden">
+        {/* Gradient Background Accent */}
+        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-blue-50 to-transparent rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-block mb-6">
+              <span className="text-blue-600 font-semibold text-sm tracking-wide uppercase">Industries We Serve</span>
+            </div>
+            <h2 className="text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent">
+                Specialized Solutions for Every Sector
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Proven AI automation across multiple industries</p>
           </div>
 
           {/* Horizontal Scrolling Container */}
@@ -290,13 +312,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="py-32 px-6 bg-gray-50">
+      {/* How It Works - Premium Headers */}
+      <section id="how-it-works" className="py-32 px-6 bg-gray-50 relative overflow-hidden">
+        {/* Gradient Line Accent */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+        
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">How It Works</h2>
-            <p className="text-xl text-gray-600">Get started in three simple steps</p>
+            <div className="inline-block mb-6">
+              <span className="text-blue-600 font-semibold text-sm tracking-wide uppercase">How It Works</span>
+            </div>
+            <h2 className="text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                Three Simple Steps to Success
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">From consultation to implementation in days, not months</p>
           </div>
+          
           <div className="grid md:grid-cols-3 gap-12 relative">
             {/* Connecting Line */}
             <div className="hidden md:block absolute top-16 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300"></div>
