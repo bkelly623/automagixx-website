@@ -195,7 +195,7 @@ export default function Home() {
 
           {/* Horizontal Scrolling Container */}
           <div className="relative">
-            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {/* Industry Card 1 */}
               <div className="flex-none w-80 snap-start">
                 <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100 hover:shadow-lg transition-all duration-300 h-full">
@@ -414,16 +414,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-      <style jsx global>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   );
 }
