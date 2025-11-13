@@ -12,9 +12,9 @@ export default function Home() {
               <Image
                 src="/logo.png"
                 alt="Automagixx"
-                width={280}
-                height={80}
-                className="w-auto h-20"
+                width={320}
+                height={96}
+                className="w-auto h-24"
                 priority
               />
               <div className="hidden lg:flex items-center gap-10">
@@ -112,15 +112,15 @@ export default function Home() {
       </section>
 
       {/* Services - Stripe Style Layout */}
-      <section id="services" className="py-32 px-6 bg-gray-50">
+      <section id="services" className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-20">
-            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Products</p>
+          <div className="max-w-3xl mb-16">
+            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">What We Do</p>
             <h2 className="text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Unified platform
+              AI Automation That Transforms
             </h2>
             <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
-              AI automation that transforms how you do business. Five core services to power your growth.
+              AI automation that transforms how you do business.
             </p>
           </div>
 
@@ -177,12 +177,12 @@ export default function Home() {
       </section>
 
       {/* Industries - Stripe Style */}
-      <section id="industries" className="py-32 px-6 bg-white">
+      <section id="industries" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-20">
-            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Industries</p>
+          <div className="max-w-3xl mb-16">
+            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Industries We Serve</p>
             <h2 className="text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Built for your business
+              Specialized Solutions for Every Sector
             </h2>
             <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
               Specialized AI solutions proven across multiple sectors.
@@ -242,12 +242,12 @@ export default function Home() {
       </section>
 
       {/* How It Works - Stripe Style */}
-      <section id="how-it-works" className="py-32 px-6 bg-gray-50">
+      <section id="how-it-works" className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-20">
-            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Get started</p>
+          <div className="max-w-3xl mb-16">
+            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">How It Works</p>
             <h2 className="text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Three simple steps
+              Get started in three simple steps
             </h2>
             <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
               From consultation to implementation in days, not months.
@@ -293,7 +293,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 px-6 bg-blue-600">
+      <section className="py-24 px-6 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-[48px] font-semibold mb-6 tracking-tight">Ready to get started?</h2>
           <p className="text-[19px] mb-12 opacity-95 tracking-tight">
