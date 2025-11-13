@@ -1,58 +1,60 @@
 import Image from "next/image";
-import { MessageSquare, TrendingUp, Zap, Home as HomeIcon, Briefcase, Scale, Heart, Building2, Dumbbell, Video, FileText, Calendar, Bot } from "lucide-react";
+import { MessageSquare, TrendingUp, Zap, Home as HomeIcon, Briefcase, Scale, Heart, Building2, Dumbbell, Video, FileText, Calendar, Bot, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-24">
-            <div className="flex items-center">
+      {/* Navigation - Stripe Style */}
+      <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center gap-12">
               <Image
                 src="/logo.png"
                 alt="Automagixx"
-                width={280}
-                height={70}
-                className="h-16 w-auto"
+                width={200}
+                height={50}
+                className="w-auto h-10"
                 priority
               />
+              <div className="hidden lg:flex items-center gap-8">
+                <a href="#services" className="text-gray-700 hover:text-gray-900 transition text-sm font-medium">Services</a>
+                <a href="#industries" className="text-gray-700 hover:text-gray-900 transition text-sm font-medium">Industries</a>
+                <a href="#how-it-works" className="text-gray-700 hover:text-gray-900 transition text-sm font-medium">How It Works</a>
+              </div>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-blue-600 transition font-medium text-base">Services</a>
-              <a href="#industries" className="text-gray-700 hover:text-blue-600 transition font-medium text-base">Industries</a>
-              <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 transition font-medium text-base">How It Works</a>
-              <a href="tel:2122570112" className="text-gray-700 hover:text-blue-600 transition font-medium text-base">(212) 257-0112</a>
+            <div className="flex items-center gap-6">
+              <a href="tel:2122570112" className="hidden md:block text-gray-700 hover:text-gray-900 transition text-sm font-medium">(212) 257-0112</a>
               <a 
                 href="https://calendly.com/automagixx/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300 font-semibold text-base"
+                className="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-all duration-200 text-sm font-medium"
               >
-                Get Started Free
+                Get Started
               </a>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - Stripe/Linear Inspired */}
-      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24 px-6 overflow-hidden bg-white">
         {/* Subtle Gradient Orbs */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-500/10 to-blue-600/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#0A1628]/8 to-blue-400/8 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Side - Text Content */}
+            {/* Left - Text */}
             <div className="space-y-8">
-              <h1 className="text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-7xl font-bold text-gray-900 leading-[1.1]">
                 Automate Your Business.
                 <br />
                 <span className="text-blue-600">Multiply Your Results.</span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
+              <p className="text-2xl text-gray-600 leading-relaxed">
                 AI that works while you sleep.
               </p>
               
@@ -61,14 +63,14 @@ export default function Home() {
                   href="https://calendly.com/automagixx/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md group"
                 >
                   Get Started Free
-                  <span className="ml-2">→</span>
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a 
                   href="#how-it-works"
-                  className="inline-flex items-center justify-center bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-all duration-300 border border-gray-200"
+                  className="inline-flex items-center justify-center bg-white text-gray-900 px-8 py-4 rounded-xl text-base font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-300"
                 >
                   See How It Works
                 </a>
@@ -87,20 +89,14 @@ export default function Home() {
                   </svg>
                   Cancel Anytime
                 </span>
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  Setup in Days
-                </span>
               </div>
             </div>
 
-            {/* Right Side - Dashboard Image */}
+            {/* Right - Dashboard Image */}
             <div className="relative lg:block hidden">
               <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-3xl blur-2xl"></div>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-2xl blur-2xl"></div>
+                <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200">
                   <Image
                     src="/images/dashboard-preview.png"
                     alt="Automagixx Dashboard"
@@ -116,185 +112,214 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section - 5 Services */}
-      <section id="services" className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      {/* Services - Bento Grid Style */}
+      <section id="services" className="py-32 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">What We Do</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-4">What We Do</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">AI automation that transforms how you do business</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Bot className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">AI Chatbots & Lead Generation</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Intelligent chatbots that handle customer service, qualify leads, and book appointments 24/7. Never miss another opportunity to grow your business.
-              </p>
-              <div className="pt-6 border-t border-gray-100">
-                <span className="text-sm font-semibold text-blue-600">24/7 Availability • Lead Qualification • Smart Routing</span>
+
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Large Featured Card - spans 2 columns */}
+            <div className="lg:col-span-2 bg-gradient-to-br from-blue-600 to-blue-700 p-10 rounded-2xl text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+              <div className="relative z-10">
+                <Bot className="w-12 h-12 mb-6" />
+                <h3 className="text-3xl font-bold mb-4">AI Chatbots & Lead Generation</h3>
+                <p className="text-blue-100 text-lg leading-relaxed mb-6">
+                  Intelligent chatbots that handle customer service, qualify leads, and book appointments 24/7. Never miss another opportunity.
+                </p>
+                <div className="inline-flex items-center text-white font-semibold group-hover:gap-3 gap-2 transition-all">
+                  Learn more
+                  <ArrowRight className="w-5 h-5" />
+                </div>
               </div>
             </div>
 
             {/* Service 2 */}
-            <div className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Video className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Video className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Commercial & Content Creation</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Professional marketing videos, social media content, and commercials that look like you hired a Hollywood team—delivered fast at a fraction of the cost.
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Commercial & Content Creation</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Professional marketing videos and commercials delivered fast at a fraction of the cost.
               </p>
-              <div className="pt-6 border-t border-gray-100">
-                <span className="text-sm font-semibold text-purple-600">Video Production • Social Media • Brand Content</span>
-              </div>
             </div>
 
             {/* Service 3 */}
-            <div className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Zap className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Business Process Automation</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Eliminate repetitive tasks and run your operations on autopilot. From workflows to follow-ups, we automate what slows you down.
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Business Process Automation</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Eliminate repetitive tasks and run operations on autopilot.
               </p>
-              <div className="pt-6 border-t border-gray-100">
-                <span className="text-sm font-semibold text-green-600">Workflow Automation • Integration • Efficiency</span>
-              </div>
             </div>
 
             {/* Service 4 */}
-            <div className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Calendar className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Calendar className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Smart Appointment Scheduling</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Fill your calendar automatically with qualified prospects. AI-powered scheduling that eliminates no-shows and maximizes your time.
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Smart Appointment Scheduling</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Fill your calendar automatically with qualified prospects.
               </p>
-              <div className="pt-6 border-t border-gray-100">
-                <span className="text-sm font-semibold text-orange-600">Auto-Booking • Reminders • Calendar Sync</span>
-              </div>
             </div>
 
             {/* Service 5 */}
-            <div className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <FileText className="w-8 h-8 text-white" />
+            <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-pink-300 hover:shadow-lg transition-all duration-300 group">
+              <div className="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <FileText className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">AI Content Marketing</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Scale your content without hiring writers. Get SEO-optimized blog posts, social copy, and marketing materials that drive traffic and convert.
+              <h3 className="text-xl font-bold mb-3 text-gray-900">AI Content Marketing</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Scale your content without hiring writers. SEO-optimized and conversion-focused.
               </p>
-              <div className="pt-6 border-t border-gray-100">
-                <span className="text-sm font-semibold text-pink-600">SEO Content • Copywriting • Social Posts</span>
-              </div>
-            </div>
-
-            {/* CTA Card */}
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-3xl shadow-xl flex flex-col justify-center items-center text-center text-white">
-              <h3 className="text-2xl font-bold mb-4">Custom Solutions</h3>
-              <p className="mb-6 text-blue-100">Need something specific? We build custom AI solutions tailored to your unique business needs.</p>
-              <a 
-                href="https://calendly.com/automagixx/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-all duration-300"
-              >
-                Let&apos;s Talk
-              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Industries Section */}
-      <section id="industries" className="py-32 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Industries - Horizontal Scrolling Cards */}
+      <section id="industries" className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">Industries We Serve</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
             <p className="text-xl text-gray-600">Specialized AI solutions proven across multiple sectors</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group text-center p-10 hover:bg-gradient-to-br hover:from-blue-50 hover:to-white rounded-3xl transition-all duration-300 border border-transparent hover:border-blue-100">
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <HomeIcon className="w-12 h-12 text-blue-600" />
+
+          {/* Horizontal Scrolling Container */}
+          <div className="relative">
+            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar">
+              {/* Industry Card 1 */}
+              <div className="flex-none w-80 snap-start">
+                <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                    <HomeIcon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">Home Services</h3>
+                  <p className="text-gray-600 mb-6">HVAC, Plumbing, Electrical, Contractors</p>
+                  <div className="inline-flex items-center text-blue-600 font-semibold text-sm gap-2">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Home Services</h3>
-              <p className="text-gray-600">HVAC, Plumbing, Electrical, Contractors</p>
-            </div>
-            <div className="group text-center p-10 hover:bg-gradient-to-br hover:from-pink-50 hover:to-white rounded-3xl transition-all duration-300 border border-transparent hover:border-pink-100">
-              <div className="w-24 h-24 bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Heart className="w-12 h-12 text-pink-600" />
+
+              {/* Industry Card 2 */}
+              <div className="flex-none w-80 snap-start">
+                <div className="bg-gradient-to-br from-pink-50 to-white p-8 rounded-2xl border border-pink-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-6">
+                    <Heart className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">Wellness & Longevity</h3>
+                  <p className="text-gray-600 mb-6">Med Spas, Clinics, Alternative Therapy</p>
+                  <div className="inline-flex items-center text-pink-600 font-semibold text-sm gap-2">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Wellness & Longevity</h3>
-              <p className="text-gray-600">Med Spas, Clinics, Alternative Therapy</p>
-            </div>
-            <div className="group text-center p-10 hover:bg-gradient-to-br hover:from-purple-50 hover:to-white rounded-3xl transition-all duration-300 border border-transparent hover:border-purple-100">
-              <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Scale className="w-12 h-12 text-purple-600" />
+
+              {/* Industry Card 3 */}
+              <div className="flex-none w-80 snap-start">
+                <div className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                    <Scale className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">Legal Services</h3>
+                  <p className="text-gray-600 mb-6">Law Firms, Attorneys, Legal Consultants</p>
+                  <div className="inline-flex items-center text-purple-600 font-semibold text-sm gap-2">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Legal Services</h3>
-              <p className="text-gray-600">Law Firms, Attorneys, Legal Consultants</p>
-            </div>
-            <div className="group text-center p-10 hover:bg-gradient-to-br hover:from-green-50 hover:to-white rounded-3xl transition-all duration-300 border border-transparent hover:border-green-100">
-              <div className="w-24 h-24 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Briefcase className="w-12 h-12 text-green-600" />
+
+              {/* Industry Card 4 */}
+              <div className="flex-none w-80 snap-start">
+                <div className="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl border border-green-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                    <Briefcase className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">Professional Services</h3>
+                  <p className="text-gray-600 mb-6">Accountants, Consultants, Agencies</p>
+                  <div className="inline-flex items-center text-green-600 font-semibold text-sm gap-2">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Professional Services</h3>
-              <p className="text-gray-600">Accountants, Consultants, Agencies</p>
-            </div>
-            <div className="group text-center p-10 hover:bg-gradient-to-br hover:from-orange-50 hover:to-white rounded-3xl transition-all duration-300 border border-transparent hover:border-orange-100">
-              <div className="w-24 h-24 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Building2 className="w-12 h-12 text-orange-600" />
+
+              {/* Industry Card 5 */}
+              <div className="flex-none w-80 snap-start">
+                <div className="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
+                    <Building2 className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">Hospitality</h3>
+                  <p className="text-gray-600 mb-6">Hotels, Restaurants, B&Bs, Event Venues</p>
+                  <div className="inline-flex items-center text-orange-600 font-semibold text-sm gap-2">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Hospitality</h3>
-              <p className="text-gray-600">Hotels, Restaurants, B&Bs, Event Venues</p>
-            </div>
-            <div className="group text-center p-10 hover:bg-gradient-to-br hover:from-red-50 hover:to-white rounded-3xl transition-all duration-300 border border-transparent hover:border-red-100">
-              <div className="w-24 h-24 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Dumbbell className="w-12 h-12 text-red-600" />
+
+              {/* Industry Card 6 */}
+              <div className="flex-none w-80 snap-start">
+                <div className="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl border border-red-100 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6">
+                    <Dumbbell className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">Fitness & Recovery</h3>
+                  <p className="text-gray-600 mb-6">Gyms, Wellness Centers, Spas</p>
+                  <div className="inline-flex items-center text-red-600 font-semibold text-sm gap-2">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Fitness & Recovery</h3>
-              <p className="text-gray-600">Gyms, Wellness Centers, Spas</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section id="how-it-works" className="py-32 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">How It Works</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-4">How It Works</h2>
             <p className="text-xl text-gray-600">Get started in three simple steps</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-16 relative">
+          <div className="grid md:grid-cols-3 gap-12 relative">
             {/* Connecting Line */}
             <div className="hidden md:block absolute top-16 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300"></div>
             
             <div className="text-center relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-8 shadow-2xl relative z-10">1</div>
+              <div className="w-32 h-32 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-4xl font-bold mx-auto mb-8 shadow-lg relative z-10">1</div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Schedule Consultation</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
-                Book a free call. We&apos;ll discuss your business needs and show you exactly how AI can transform your operations and drive growth.
+                Book a free call. We&apos;ll discuss your needs and show you how AI can transform your business.
               </p>
             </div>
             <div className="text-center relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-8 shadow-2xl relative z-10">2</div>
+              <div className="w-32 h-32 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-4xl font-bold mx-auto mb-8 shadow-lg relative z-10">2</div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">We Build Your AI</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
-                Custom AI assistant trained on your business. Live and working in days, not weeks. We handle everything—you just watch it perform.
+                Custom AI assistant trained on your business. Live and working in days, not weeks.
               </p>
             </div>
             <div className="text-center relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-8 shadow-2xl relative z-10">3</div>
+              <div className="w-32 h-32 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-4xl font-bold mx-auto mb-8 shadow-lg relative z-10">3</div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">See Results</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
-                Start your free 30-day trial. Track every lead captured, appointment booked, and dollar saved with detailed weekly reports.
+                Track every lead captured and dollar saved with detailed weekly reports.
               </p>
             </div>
           </div>
@@ -303,19 +328,19 @@ export default function Home() {
               href="https://calendly.com/automagixx/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white px-12 py-5 rounded-full text-xl font-bold hover:bg-blue-700 hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center bg-blue-600 text-white px-12 py-5 rounded-xl text-xl font-semibold hover:bg-blue-700 hover:shadow-lg transition-all duration-200 group"
             >
               Start Your Free 30-Day Trial
+              <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 relative overflow-hidden">
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+      <section className="py-32 px-6 bg-blue-600 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px'}}></div>
         </div>
         
         <div className="max-w-4xl mx-auto text-center text-white relative z-10">
@@ -328,85 +353,77 @@ export default function Home() {
               href="https://calendly.com/automagixx/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-blue-600 px-12 py-5 rounded-full text-xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-2xl transform hover:scale-105"
+              className="bg-white text-blue-600 px-12 py-5 rounded-xl text-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
             >
               Schedule Free Consultation
             </a>
             <a 
               href="tel:2122570112"
-              className="bg-blue-900 text-white px-12 py-5 rounded-full text-xl font-bold hover:bg-blue-950 transition-all duration-300 shadow-xl border-2 border-white/20"
+              className="bg-blue-700 text-white px-12 py-5 rounded-xl text-xl font-semibold hover:bg-blue-800 transition-all duration-200 border-2 border-white/30"
             >
               Call (212) 257-0112
             </a>
-          </div>
-          <div className="mt-12 flex items-center justify-center gap-12 text-blue-100 text-base">
-            <span className="flex items-center gap-2">
-              <span className="text-2xl">⚡</span> Setup in Days, Not Weeks
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="text-2xl">💰</span> Risk-Free Trial
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="text-2xl">🎯</span> Proven Results
-            </span>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-gray-900 text-white py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <Image
                 src="/logo-dark.png"
                 alt="Automagixx"
-                width={200}
-                height={50}
-                className="h-12 w-auto mb-6"
+                width={160}
+                height={40}
+                className="h-10 w-auto mb-6"
               />
               <p className="text-gray-400 leading-relaxed">
-                AI automation that transforms businesses. Built for scale, designed for success.
+                AI automation that transforms businesses.
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-6">Services</h4>
-              <ul className="space-y-3 text-gray-400">
+              <h4 className="font-semibold text-base mb-6">Services</h4>
+              <ul className="space-y-3 text-gray-400 text-sm">
                 <li><a href="#services" className="hover:text-white transition">AI Chatbots & Lead Gen</a></li>
                 <li><a href="#services" className="hover:text-white transition">Commercial Production</a></li>
                 <li><a href="#services" className="hover:text-white transition">Process Automation</a></li>
                 <li><a href="#services" className="hover:text-white transition">Smart Scheduling</a></li>
-                <li><a href="#services" className="hover:text-white transition">Content Marketing</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-6">Industries</h4>
-              <ul className="space-y-3 text-gray-400">
+              <h4 className="font-semibold text-base mb-6">Industries</h4>
+              <ul className="space-y-3 text-gray-400 text-sm">
                 <li><a href="#industries" className="hover:text-white transition">Home Services</a></li>
-                <li><a href="#industries" className="hover:text-white transition">Healthcare & Wellness</a></li>
-                <li><a href="#industries" className="hover:text-white transition">Legal Services</a></li>
-                <li><a href="#industries" className="hover:text-white transition">Professional Services</a></li>
+                <li><a href="#industries" className="hover:text-white transition">Healthcare</a></li>
+                <li><a href="#industries" className="hover:text-white transition">Legal</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-6">Contact</h4>
-              <ul className="space-y-3 text-gray-400">
+              <h4 className="font-semibold text-base mb-6">Contact</h4>
+              <ul className="space-y-3 text-gray-400 text-sm">
                 <li>Manhattan, New York</li>
-                <li><a href="tel:2122570112" className="hover:text-white transition font-semibold text-base">(212) 257-0112</a></li>
+                <li><a href="tel:2122570112" className="hover:text-white transition">(212) 257-0112</a></li>
                 <li><a href="mailto:contact@automagixx.com" className="hover:text-white transition">contact@automagixx.com</a></li>
-                <li className="text-sm mt-4 text-gray-500">Monday-Friday, 9AM-6PM ET</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">&copy; 2025 Automagixx. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white transition text-sm">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition text-sm">Terms of Service</a>
-            </div>
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 Automagixx. All rights reserved.</p>
           </div>
         </div>
       </footer>
+
+      <style jsx global>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }
