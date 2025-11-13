@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MessageSquare, TrendingUp, Zap, Home as HomeIcon, Briefcase, Scale, Heart, Building2, Dumbbell, Video, FileText, Calendar, Bot, ArrowRight } from "lucide-react";
+import { Zap, Home as HomeIcon, Briefcase, Scale, Heart, Building2, Dumbbell, Video, FileText, Calendar, Bot, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -259,7 +259,7 @@ export default function Home() {
               <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-[20px] font-semibold mb-6">1</div>
               <h3 className="text-[22px] font-semibold mb-4 text-gray-900 tracking-tight">Schedule consultation</h3>
               <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Book a free call. We'll discuss your needs and show you how AI can transform your business.
+                Book a free call. We&apos;ll discuss your needs and show you how AI can transform your business.
               </p>
             </div>
             <div>
