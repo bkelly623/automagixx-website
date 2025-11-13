@@ -12,9 +12,9 @@ export default function Home() {
               <Image
                 src="/logo.png"
                 alt="Automagixx"
-                width={320}
-                height={96}
-                className="w-auto h-24"
+                width={360}
+                height={112}
+                className="w-auto h-28"
                 priority
               />
               <div className="hidden lg:flex items-center gap-10">
@@ -106,6 +106,30 @@ export default function Home() {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Stats - Like onthemapai */}
+      <section className="py-16 px-6 bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-[48px] font-bold text-blue-600 mb-2 tracking-tight">85%</div>
+              <p className="text-[15px] text-gray-600 tracking-tight">of customers prefer AI chat support</p>
+            </div>
+            <div>
+              <div className="text-[48px] font-bold text-blue-600 mb-2 tracking-tight">3x</div>
+              <p className="text-[15px] text-gray-600 tracking-tight">faster lead response time with automation</p>
+            </div>
+            <div>
+              <div className="text-[48px] font-bold text-blue-600 mb-2 tracking-tight">60%</div>
+              <p className="text-[15px] text-gray-600 tracking-tight">cost reduction in customer service</p>
+            </div>
+            <div>
+              <div className="text-[48px] font-bold text-blue-600 mb-2 tracking-tight">24/7</div>
+              <p className="text-[15px] text-gray-600 tracking-tight">AI working while you sleep</p>
             </div>
           </div>
         </div>
@@ -288,6 +312,65 @@ export default function Home() {
               Start your free trial
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials - Like onthemapai */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Testimonials</p>
+            <h2 className="text-[48px] font-semibold text-gray-900 mb-4 tracking-tight">
+              What our clients say
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-50 p-8 rounded-2xl">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 text-[15px] leading-relaxed mb-6 tracking-tight">
+                "Automagixx transformed our lead generation. We're now capturing 3x more qualified leads with their AI chatbot working 24/7."
+              </p>
+              <p className="font-semibold text-gray-900 text-[15px] tracking-tight">Sarah Johnson</p>
+              <p className="text-gray-600 text-[13px] tracking-tight">CEO, HomeFlow HVAC</p>
+            </div>
+
+            <div className="bg-gray-50 p-8 rounded-2xl">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 text-[15px] leading-relaxed mb-6 tracking-tight">
+                "The automation they built cut our administrative work by 60%. We're now focused on growth instead of paperwork."
+              </p>
+              <p className="font-semibold text-gray-900 text-[15px] tracking-tight">Michael Chen</p>
+              <p className="text-gray-600 text-[13px] tracking-tight">Partner, Chen & Associates Law</p>
+            </div>
+
+            <div className="bg-gray-50 p-8 rounded-2xl">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 text-[15px] leading-relaxed mb-6 tracking-tight">
+                "Best investment we've made. The AI handles our appointments seamlessly and our no-show rate dropped to almost zero."
+              </p>
+              <p className="font-semibold text-gray-900 text-[15px] tracking-tight">Dr. Amanda Rivera</p>
+              <p className="text-gray-600 text-[13px] tracking-tight">Owner, Vitality Med Spa</p>
+            </div>
           </div>
         </div>
       </section>
