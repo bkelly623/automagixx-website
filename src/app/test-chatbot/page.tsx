@@ -78,7 +78,7 @@ function TestChatbotContent() {
     chatWindow.id = 'automagixx-win';
     
     const iframe = document.createElement('iframe');
-    iframe.src = `http://34.41.94.74:3001/widget/${botId}`;
+    iframe.src = `https://automagixx-chatbot-server.vercel.app/widget/${botId}`;
     chatWindow.appendChild(iframe);
     
     // Append elements
