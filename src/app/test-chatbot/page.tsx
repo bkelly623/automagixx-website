@@ -8,89 +8,17 @@ function TestChatbotContent() {
   const botId = searchParams.get('id') || 'bot_1763168641649_u788ur7zg';
 
   useEffect(() => {
-    // Create chatbot container
-    const container = document.createElement('div');
-    container.id = 'automagixx-chat';
-    
-    // Add styles
-    const style = document.createElement('style');
-    style.textContent = `
-      #automagixx-btn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: #0066FF;
-        color: white;
-        border: none;
-        font-size: 28px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        z-index: 9999;
-        transition: transform 0.2s;
-      }
-      #automagixx-btn:hover {
-        transform: scale(1.1);
-      }
-      #automagixx-win {
-        display: none;
-        position: fixed;
-        bottom: 100px;
-        right: 20px;
-        width: 380px;
-        height: 600px;
-        background: white;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-        z-index: 9999;
-        flex-direction: column;
-      }
-      #automagixx-win iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        border-radius: 16px;
-      }
-    `;
-    
-    // Create button
-    const button = document.createElement('button');
-    button.id = 'automagixx-btn';
-    button.textContent = '💬';
-    button.onclick = () => {
-      const win = document.getElementById('automagixx-win');
-      const btn = document.getElementById('automagixx-btn');
-      if (win && btn) {
-        if (win.style.display === 'none' || !win.style.display) {
-          win.style.display = 'flex';
-          btn.style.display = 'none';
-        } else {
-          win.style.display = 'none';
-          btn.style.display = 'block';
-        }
-      }
-    };
-    
-    // Create chat window
-    const chatWindow = document.createElement('div');
-    chatWindow.id = 'automagixx-win';
-    
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://automagixx-chatbot-server.vercel.app/widget/${botId}`;
-    chatWindow.appendChild(iframe);
-    
-    // Append elements
-    container.appendChild(button);
-    container.appendChild(chatWindow);
-    document.head.appendChild(style);
-    document.body.appendChild(container);
+    // Load the embed script
+    const script = document.createElement('script');
+    script.src = `https://automagixx-chatbot-server.vercel.app/embed.js?id=${botId}`;
+    script.async = true;
+    document.body.appendChild(script);
     
     // Cleanup
     return () => {
-      container.remove();
-      style.remove();
+      script.remove();
+      const container = document.getElementById('automagixx-chat-container');
+      if (container) container.remove();
     };
   }, [botId]);
 
