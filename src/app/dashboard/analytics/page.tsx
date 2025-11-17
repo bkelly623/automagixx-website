@@ -10,13 +10,38 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+interface TopQuestion {
+  question: string;
+  count: number;
+}
+
+interface Message {
+  id: string;
+  role: string;
+  content: string;
+  created_at: string;
+}
+
+interface ChartDataPoint {
+  date: string;
+  conversations: number;
+}
+
+interface AnalyticsData {
+  totalConversations: number;
+  totalMessages: number;
+  avgMessagesPerConv: number;
+  topQuestions: TopQuestion[];
+  recentMessages: Message[];
+  chartData: ChartDataPoint[];
+}
+
 export default function Analytics() {
   const router = useRouter();
   const [businessName, setBusinessName] = useState('');
-  const [chatbotId, setChatbotId] = useState('');
   const [loading, setLoading] = useState(true);
   const [timeRange, setTimeRange] = useState(7);
-  const [analytics, setAnalytics] = useState<any>(null);
+  const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
 
   useEffect(() => {
     // Check if logged in
@@ -28,10 +53,9 @@ export default function Analytics() {
       return;
     }
 
-    setChatbotId(storedChatbotId);
     setBusinessName(storedBusinessName || '');
     loadAnalytics(storedChatbotId, timeRange);
-  }, [timeRange]);
+  }, [timeRange, router]);
 
   const loadAnalytics = async (id: string, days: number) => {
     setLoading(true);
@@ -63,7 +87,7 @@ export default function Analytics() {
         questionCounts[question] = (questionCounts[question] || 0) + 1;
       });
 
-      const topQuestions = Object.entries(questionCounts)
+      const topQuestions: TopQuestion[] = Object.entries(questionCounts)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 10)
         .map(([question, count]) => ({ question, count }));
@@ -75,7 +99,7 @@ export default function Analytics() {
         conversationsByDay[date] = (conversationsByDay[date] || 0) + 1;
       });
 
-      const chartData = Object.entries(conversationsByDay)
+      const chartData: ChartDataPoint[] = Object.entries(conversationsByDay)
         .map(([date, count]) => ({ date, conversations: count }))
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
@@ -84,7 +108,7 @@ export default function Analytics() {
         totalMessages: messages?.length || 0,
         avgMessagesPerConv: conversations?.length ? (messages?.length || 0) / conversations.length : 0,
         topQuestions,
-        recentMessages: messages?.slice(0, 20) || [],
+        recentMessages: (messages?.slice(0, 20) || []) as Message[],
         chartData
       });
     } catch (error) {
@@ -106,6 +130,14 @@ export default function Analytics() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading analytics...</p>
         </div>
+      </div>
+    );
+  }
+
+  if (!analytics) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-gray-600">No analytics data available</p>
       </div>
     );
   }
@@ -205,7 +237,7 @@ export default function Analytics() {
         <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Questions</h2>
           <div className="space-y-3">
-            {analytics.topQuestions.map((item: any, index: number) => (
+            {analytics.topQuestions.map((item: TopQuestion, index: number) => (
               <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 mr-2">{index + 1}.</span>
@@ -221,7 +253,7 @@ export default function Analytics() {
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Messages</h2>
           <div className="space-y-3">
-            {analytics.recentMessages.map((msg: any) => (
+            {analytics.recentMessages.map((msg: Message) => (
               <div key={msg.id} className="flex gap-3 p-3 bg-gray-50 rounded-lg">
                 <div className="flex-shrink-0">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${

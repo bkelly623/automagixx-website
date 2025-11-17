@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
@@ -23,14 +24,14 @@ export default function DashboardLogin() {
 
     try {
       // Check credentials against chatbots table
-      const { data, error } = await supabase
+      const { data, error: dbError } = await supabase
         .from('chatbots')
         .select('*')
         .eq('client_email', email)
         .eq('dashboard_password', password)
         .single();
 
-      if (error || !data) {
+      if (dbError || !data) {
         setError('Invalid email or password');
         setLoading(false);
         return;
@@ -42,7 +43,7 @@ export default function DashboardLogin() {
       
       // Redirect to analytics
       router.push('/dashboard/analytics');
-    } catch (err) {
+    } catch {
       setError('Login failed. Please try again.');
       setLoading(false);
     }
@@ -101,9 +102,9 @@ export default function DashboardLogin() {
         </form>
 
         <div className="mt-6 text-center">
-          <a href="/" className="text-sm text-gray-600 hover:text-blue-600">
+          <Link href="/" className="text-sm text-gray-600 hover:text-blue-600">
             ← Back to Automagixx
-          </a>
+          </Link>
         </div>
       </div>
     </div>
