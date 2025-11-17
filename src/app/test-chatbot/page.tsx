@@ -59,6 +59,11 @@ function TestChatbotContent() {
               <li>What time is check-in?</li>
               <li>What amenities do you offer?</li>
               <li>Is parking available?</li>
+              <li>Do you allow pets?</li>
+              <li>What is your cancellation policy?</li>
+              <li>Do you offer free Wi-Fi?</li>
+              <li>Are there any nearby attractions?</li>
+              <li>Can I make a special request?</li>
             </ul>
           </div>
         </div>
