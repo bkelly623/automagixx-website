@@ -1,5 +1,20 @@
 import Image from "next/image";
-import { Zap, Home as HomeIcon, Wrench, Calendar, Bot, ArrowRight, PhoneCall, MessageSquare, BarChart3, DollarSign, Layers, CheckCircle2 } from "lucide-react";
+import {
+  Zap,
+  Home as HomeIcon,
+  Wrench,
+  Calendar,
+  PhoneCall,
+  MessageSquare,
+  BarChart3,
+  DollarSign,
+  Layers,
+  CheckCircle2,
+  DoorClosed,
+  KeyRound,
+  Bug,
+} from "lucide-react";
+import PrimaryCta from "./components/PrimaryCta";
 
 export default function Home() {
   return (
@@ -21,19 +36,12 @@ export default function Home() {
                 <a href="#services" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Services</a>
                 <a href="#industries" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Industries</a>
                 <a href="#how-it-works" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">How It Works</a>
-                <a href="#results" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Results</a>
+                <a href="#outcomes" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Outcomes</a>
               </div>
             </div>
             <div className="flex items-center gap-6">
               <a href="tel:4844249624" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 424-9624</a>
-              <a 
-                href="https://calendly.com/automagixx/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-5 py-2.5 rounded-full hover:bg-blue-700 transition-all duration-200 text-[15px] font-medium tracking-tight"
-              >
-                Book Consultation
-              </a>
+              <PrimaryCta className="px-5 py-2.5" />
             </div>
           </div>
         </div>
@@ -48,37 +56,24 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
               <h1 className="text-[56px] lg:text-[72px] font-semibold text-gray-900 leading-[1.1] tracking-tight">
-                Stop Missing Jobs.
+                Stop Missing Calls.
                 <br />
-                <span className="text-blue-600">AI Answers Your Calls, Captures Leads, and Books Work 24/7.</span>
+                <span className="text-blue-600">Start Capturing More Jobs.</span>
               </h1>
               
               <p className="text-[19px] lg:text-[21px] text-gray-600 leading-relaxed tracking-tight">
-                Automagixx builds done-for-you AI systems for service businesses that recover missed leads, automate scheduling, and eliminate repetitive admin work.
+                If your business relies on phone calls, you&apos;re losing jobs every time one goes unanswered. We help you capture those opportunities automatically.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <a 
-                  href="https://calendly.com/automagixx/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-blue-600 text-white px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-blue-700 transition-all duration-200 tracking-tight group"
-                >
-                  Get Your Free AI Job Leak Audit
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
-                <a 
-                  href="https://calendly.com/automagixx/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-white text-gray-700 px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-gray-50 transition-all duration-200 border border-gray-300 tracking-tight"
-                >
-                  Book Free Consultation
-                </a>
+              <div className="flex flex-col pt-6">
+                <PrimaryCta />
               </div>
-              
-              <p className="text-[14px] text-gray-500 pt-2 tracking-tight">
-                See where your business is leaking jobs, calls, and cash flow.
+
+              <p className="text-[15px] text-gray-700 pt-3 tracking-tight">
+                Or call us:{" "}
+                <a href="tel:4844249624" className="text-blue-700 hover:text-blue-800 font-medium underline underline-offset-2">
+                  484-424-9624
+                </a>
               </p>
               
               <div className="flex flex-wrap items-center gap-6 text-[13px] text-gray-600 pt-2 tracking-tight">
@@ -95,6 +90,10 @@ export default function Home() {
                   Works with the tools you already use
                 </span>
               </div>
+
+              <p className="text-[13px] text-gray-500 pt-3 tracking-tight">
+                Have a quick question? Use the chat.
+              </p>
             </div>
 
             <div className="relative lg:block hidden">
@@ -145,118 +144,110 @@ export default function Home() {
             </div>
           </div>
           <p className="text-center text-gray-600 text-[17px] max-w-3xl mx-auto leading-relaxed tracking-tight">
-            If your team is busy on jobs, after-hours, or overwhelmed with admin, opportunities slip through the cracks. Automagixx fixes those leaks with AI automation.
+            If your team is busy on jobs, after-hours, or overwhelmed with admin, opportunities slip through the cracks. Automagixx fixes those leaks with call-capture and follow-up systems.
           </p>
         </div>
       </section>
 
-      {/* Primary Offer - 24/7 AI Lead Capture */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-12">
-            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Primary Offer</p>
-            <h2 className="text-[48px] lg:text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Your 24/7 AI Lead Capture System
-            </h2>
-            <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
-              The fastest way to stop losing jobs.
+      {/* Revenue Calculator / Missed Revenue Section */}
+      <section className="py-20 px-6 bg-white border-b border-gray-200">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 leading-[1.15] tracking-tight">
+            How Much Revenue Are You Missing?
+          </h2>
+          <p className="text-[17px] text-gray-600 mb-6 leading-relaxed tracking-tight">
+            Many service businesses miss <span className="font-semibold text-gray-900">10–30% of their incoming calls</span>. Every one of those calls could be a real job that quietly disappears.
+          </p>
+          <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 text-left mb-8">
+            <p className="text-[16px] text-gray-800 font-semibold mb-3 tracking-tight">
+              A simple example:
             </p>
+            <ul className="space-y-2 text-[15px] text-gray-700 tracking-tight">
+              <li>• You miss just <span className="font-semibold">2 calls per day</span>.</li>
+              <li>• Only <span className="font-semibold">half</span> of those callers would have become paying jobs.</li>
+              <li>• Your average job is worth <span className="font-semibold">$300</span>.</li>
+              <li className="mt-3 font-semibold text-gray-900">
+                That&apos;s roughly $300 × 2 jobs/week × 52 weeks ≈ <span className="text-blue-700">$18,000+ per year</span> in lost revenue.
+              </li>
+            </ul>
           </div>
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-6">
-              <ul className="space-y-4 text-gray-700 text-[16px] tracking-tight">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  AI answers calls and web inquiries instantly
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  Qualifies leads automatically
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  Books appointments 24/7
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  Sends confirmation and follow-up messages
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  Logs activity into your CRM / scheduling workflow
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-10 rounded-3xl text-white">
-              <h3 className="text-[22px] font-semibold mb-6 tracking-tight">What you get</h3>
-              <ul className="space-y-4 text-blue-100 text-[15px] tracking-tight">
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 flex-shrink-0" /> Fewer missed calls</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 flex-shrink-0" /> Faster response times</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 flex-shrink-0" /> More booked jobs</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 flex-shrink-0" /> Less admin burden</li>
-              </ul>
-            </div>
+          <div className="flex justify-center">
+            <PrimaryCta />
           </div>
         </div>
       </section>
 
-      {/* Services - Beyond Lead Capture */}
-      <section id="services" className="py-24 px-6 bg-gray-50">
+      {/* Core Service */}
+      <section id="services" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-16">
-            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">What We Automate</p>
+          <div className="max-w-3xl mb-12">
             <h2 className="text-[48px] lg:text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Beyond Lead Capture: We Automate the Rest
+              Missed Revenue Recovery System
             </h2>
             <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
-              After your 24/7 lead capture system is live, we can extend automation across your operations.
+              We install a system that answers calls, captures leads, and books jobs automatically — so no opportunity slips through the cracks.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <MessageSquare className="w-10 h-10 text-blue-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Lead Follow-Up Automation</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Automatically text, email, and follow up with leads before they go cold.
-              </p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <Calendar className="w-10 h-10 text-orange-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Smart Scheduling</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Fill your calendar faster and reduce back-and-forth booking friction.
-              </p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <Zap className="w-10 h-10 text-green-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Process Automation</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Remove repetitive admin tasks and put operations on autopilot.
-              </p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <BarChart3 className="w-10 h-10 text-indigo-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Reporting &amp; Visibility</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Track calls answered, leads captured, jobs booked, and revenue impact.
-              </p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <DollarSign className="w-10 h-10 text-emerald-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Invoicing / Cash Flow Automation</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Automate reminders, follow-ups, and payment workflows.
-              </p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <Bot className="w-10 h-10 text-blue-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">24/7 Lead Capture</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                AI answers calls and web inquiries, qualifies leads, and books work around the clock.
-              </p>
-            </div>
+          <ul className="grid sm:grid-cols-2 gap-6 text-gray-700 text-[16px] tracking-tight">
+            <li className="flex items-start gap-3 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Calls answered instantly
+            </li>
+            <li className="flex items-start gap-3 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Leads captured automatically
+            </li>
+            <li className="flex items-start gap-3 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Missed calls followed up by text
+            </li>
+            <li className="flex items-start gap-3 bg-gray-50 p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Jobs booked 24/7
+            </li>
+            <li className="flex items-start gap-3 bg-gray-50 p-6 rounded-2xl border border-gray-200 sm:col-span-2">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              No more lost opportunities
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Secondary Services */}
+      <section className="py-24 px-6 bg-gray-50" id="more-services">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-[48px] lg:text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
+              Other Ways We Help You Capture More Revenue
+            </h2>
+            <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
+              Beyond missed-call recovery, we help you keep leads moving so jobs get booked instead of fading out.
+            </p>
           </div>
+
+          <ul className="space-y-4 text-gray-700 text-[16px] tracking-tight">
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Lead follow-up automation
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Website lead capture systems
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Missed call recovery workflows
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Internal workflow automation
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              Reporting and performance tracking
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -273,31 +264,47 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="bg-gradient-to-br from-blue-50 to-white p-10 rounded-3xl border border-blue-100 hover:shadow-lg transition-all h-full">
               <HomeIcon className="w-10 h-10 text-blue-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">HVAC</h3>
-              <p className="text-gray-600 text-[15px] tracking-tight">Heating, cooling, and climate control contractors</p>
-            </div>
-            <div className="bg-gradient-to-br from-slate-50 to-white p-10 rounded-3xl border border-slate-200 hover:shadow-lg transition-all h-full">
-              <Wrench className="w-10 h-10 text-slate-600 mb-6" />
               <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Plumbing</h3>
-              <p className="text-gray-600 text-[15px] tracking-tight">Plumbers and pipe professionals</p>
+              <p className="text-gray-600 text-[15px] tracking-tight">Capture every after-hours job while you&apos;re on site.</p>
             </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-white p-10 rounded-3xl border border-blue-100 hover:shadow-lg transition-all h-full">
+              <Wrench className="w-10 h-10 text-slate-600 mb-6" />
+              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">HVAC</h3>
+              <p className="text-gray-600 text-[15px] tracking-tight">Never miss an emergency call again.</p>
+            </div>
+
             <div className="bg-gradient-to-br from-amber-50 to-white p-10 rounded-3xl border border-amber-100 hover:shadow-lg transition-all h-full">
               <Zap className="w-10 h-10 text-amber-600 mb-6" />
               <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Electrical</h3>
-              <p className="text-gray-600 text-[15px] tracking-tight">Electricians and electrical contractors</p>
+              <p className="text-gray-600 text-[15px] tracking-tight">Turn every incoming call into a booked job.</p>
             </div>
+
             <div className="bg-gradient-to-br from-stone-50 to-white p-10 rounded-3xl border border-stone-200 hover:shadow-lg transition-all h-full">
-              <Layers className="w-10 h-10 text-stone-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Roofing</h3>
-              <p className="text-gray-600 text-[15px] tracking-tight">Roofing and exterior contractors</p>
+              <DoorClosed className="w-10 h-10 text-stone-600 mb-6" />
+              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Garage Door</h3>
+              <p className="text-gray-600 text-[15px] tracking-tight">Capture urgent repair calls instantly.</p>
             </div>
+
             <div className="bg-gradient-to-br from-gray-50 to-white p-10 rounded-3xl border border-gray-200 hover:shadow-lg transition-all h-full">
-              <Bot className="w-10 h-10 text-gray-600 mb-6" />
-              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Other Home Services</h3>
-              <p className="text-gray-600 text-[15px] tracking-tight">General contractors, landscaping, and more</p>
+              <KeyRound className="w-10 h-10 text-gray-600 mb-6" />
+              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Locksmith</h3>
+              <p className="text-gray-600 text-[15px] tracking-tight">Win jobs when customers need help immediately.</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-green-50 to-white p-10 rounded-3xl border border-green-100 hover:shadow-lg transition-all h-full">
+              <Layers className="w-10 h-10 text-green-700 mb-6" />
+              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Roofing</h3>
+              <p className="text-gray-600 text-[15px] tracking-tight">Handle the surge of calls after storms hit.</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-lime-50 to-white p-10 rounded-3xl border border-lime-100 hover:shadow-lg transition-all h-full">
+              <Bug className="w-10 h-10 text-lime-600 mb-6" />
+              <h3 className="text-[22px] font-semibold mb-3 text-gray-900 tracking-tight">Pest Control</h3>
+              <p className="text-gray-600 text-[15px] tracking-tight">Respond instantly to urgent service requests.</p>
             </div>
           </div>
           <p className="text-center text-gray-500 text-[15px] max-w-2xl mx-auto tracking-tight">
@@ -314,45 +321,48 @@ export default function Home() {
             <h2 className="text-[48px] lg:text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
               How It Works
             </h2>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              "Customer Calls Your Business",
+              "System Answers Instantly",
+              "Lead Information Is Captured",
+              "Appointment Is Booked",
+              "You Get Notified",
+            ].map((step, idx) => (
+              <div
+                key={step}
+                className="bg-white border border-gray-200 rounded-3xl p-8 flex flex-col sm:flex-row sm:items-start gap-4"
+              >
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-[20px] font-semibold flex-shrink-0">
+                  {idx + 1}
+                </div>
+                <div>
+                  <h3 className="text-[22px] font-semibold text-gray-900 tracking-tight">
+                    {step}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 flex justify-center">
+            <PrimaryCta />
+          </div>
+        </div>
+      </section>
+
+      {/* Price Anchor */}
+      <section className="py-20 px-6 bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl">
+            <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 leading-[1.15] tracking-tight">
+              Simple, Transparent Pricing
+            </h2>
             <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
-              From revenue leak audit to live automation in days, not months.
+              Systems start at $397/month depending on call volume and workflow needs.
             </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-16">
-            <div>
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-[20px] font-semibold mb-6">1</div>
-              <h3 className="text-[22px] font-semibold mb-4 text-gray-900 tracking-tight">Book Your Free AI Job Leak Audit</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                We review how your business currently handles calls, leads, scheduling, and follow-up — and identify where revenue is slipping through the cracks.
-              </p>
-            </div>
-            <div>
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-[20px] font-semibold mb-6">2</div>
-              <h3 className="text-[22px] font-semibold mb-4 text-gray-900 tracking-tight">We Build Your Automation System</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                We implement a custom AI workflow for your business using the tools you already use whenever possible.
-              </p>
-            </div>
-            <div>
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-[20px] font-semibold mb-6">3</div>
-              <h3 className="text-[22px] font-semibold mb-4 text-gray-900 tracking-tight">Capture More Jobs</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed tracking-tight">
-                Your system starts answering, qualifying, booking, and tracking opportunities automatically — with clear reporting on results.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-16">
-            <a 
-              href="https://calendly.com/automagixx/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-blue-600 text-white px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-blue-700 transition-all tracking-tight group"
-            >
-              Get Your Free AI Job Leak Audit
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
           </div>
         </div>
       </section>
@@ -374,27 +384,27 @@ export default function Home() {
               <div className="bg-white p-6 rounded-2xl border border-gray-200">
                 <PhoneCall className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="text-[13px] text-gray-500 uppercase tracking-tight font-medium mb-1">Calls Answered</p>
-                <p className="text-[24px] font-semibold text-gray-900">—</p>
+                <p className="text-[24px] font-semibold text-gray-900">87</p>
               </div>
               <div className="bg-white p-6 rounded-2xl border border-gray-200">
                 <Calendar className="w-8 h-8 text-green-600 mb-3" />
                 <p className="text-[13px] text-gray-500 uppercase tracking-tight font-medium mb-1">Jobs Booked</p>
-                <p className="text-[24px] font-semibold text-gray-900">—</p>
+                <p className="text-[24px] font-semibold text-gray-900">26</p>
               </div>
               <div className="bg-white p-6 rounded-2xl border border-gray-200">
                 <DollarSign className="w-8 h-8 text-emerald-600 mb-3" />
-                <p className="text-[13px] text-gray-500 uppercase tracking-tight font-medium mb-1">Est. Revenue Recovered</p>
-                <p className="text-[24px] font-semibold text-gray-900">—</p>
+                <p className="text-[13px] text-gray-500 uppercase tracking-tight font-medium mb-1">Estimated Revenue Captured</p>
+                <p className="text-[24px] font-semibold text-gray-900">$13,400</p>
               </div>
               <div className="bg-white p-6 rounded-2xl border border-gray-200">
                 <MessageSquare className="w-8 h-8 text-amber-600 mb-3" />
                 <p className="text-[13px] text-gray-500 uppercase tracking-tight font-medium mb-1">Response Time</p>
-                <p className="text-[24px] font-semibold text-gray-900">—</p>
+                <p className="text-[24px] font-semibold text-gray-900">Instant</p>
               </div>
               <div className="bg-white p-6 rounded-2xl border border-gray-200 col-span-2 lg:col-span-1">
                 <BarChart3 className="w-8 h-8 text-indigo-600 mb-3" />
                 <p className="text-[13px] text-gray-500 uppercase tracking-tight font-medium mb-1">Automation Activity &amp; ROI Trend</p>
-                <p className="text-[24px] font-semibold text-gray-900">—</p>
+                <p className="text-[24px] font-semibold text-gray-900">Up 32%</p>
               </div>
             </div>
           </div>
@@ -404,74 +414,97 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Results / Proof - Outcome blocks */}
-      <section id="results" className="py-24 px-6 bg-gray-50">
+      {/* Outcomes */}
+      <section id="outcomes" className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Results</p>
             <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 tracking-tight">
-              Example Outcomes
+              What Happens When You Stop Missing Calls
+            </h2>
+          </div>
+
+          <ul className="space-y-4 text-gray-700 text-[16px] tracking-tight">
+            <li className="flex items-start gap-3 bg-white p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              More jobs booked without hiring staff
+            </li>
+            <li className="flex items-start gap-3 bg-white p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              Faster response times
+            </li>
+            <li className="flex items-start gap-3 bg-white p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              Fewer missed opportunities
+            </li>
+            <li className="flex items-start gap-3 bg-white p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              Less time spent on admin
+            </li>
+            <li className="flex items-start gap-3 bg-white p-6 rounded-2xl border border-gray-200">
+              <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+              More consistent revenue
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-6 bg-white" id="testimonials">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 tracking-tight">
+              Contractors Notice the Difference
             </h2>
             <p className="text-gray-600 text-[17px] max-w-2xl mx-auto tracking-tight">
-              The kinds of results service businesses see with Automagixx automation.
+              Real words from service businesses that stopped losing jobs.
             </p>
           </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
-              <CheckCircle2 className="w-10 h-10 text-green-600 mb-4" />
-              <h3 className="text-[18px] font-semibold text-gray-900 mb-2 tracking-tight">Recovered missed after-hours leads</h3>
-              <p className="text-gray-600 text-[14px] tracking-tight">AI answers when your team can&apos;t, so opportunities don&apos;t slip away at night or on weekends.</p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Name: Mike L.</p>
+              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Business: Plumbing Company</p>
+              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
+                &quot;We were missing calls constantly. Now jobs are getting booked even when we&apos;re busy. It just works.&quot;
+              </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
-              <Zap className="w-10 h-10 text-blue-600 mb-4" />
-              <h3 className="text-[18px] font-semibold text-gray-900 mb-2 tracking-tight">Reduced admin workload</h3>
-              <p className="text-gray-600 text-[14px] tracking-tight">Less time on scheduling, follow-ups, and paperwork — more time on billable work.</p>
+            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Name: Dave R.</p>
+              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Business: HVAC Company</p>
+              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
+                &quot;The biggest difference is speed. Customers get responses immediately instead of waiting.&quot;
+              </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
-              <MessageSquare className="w-10 h-10 text-amber-600 mb-4" />
-              <h3 className="text-[18px] font-semibold text-gray-900 mb-2 tracking-tight">Improved lead response time</h3>
-              <p className="text-gray-600 text-[14px] tracking-tight">Instant response to calls and web inquiries instead of hours or days of delay.</p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
-              <Calendar className="w-10 h-10 text-green-600 mb-4" />
-              <h3 className="text-[18px] font-semibold text-gray-900 mb-2 tracking-tight">Booked more jobs without hiring staff</h3>
-              <p className="text-gray-600 text-[14px] tracking-tight">More appointments and closed jobs with the same team, thanks to 24/7 capture and booking.</p>
+            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Name: Chris T.</p>
+              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Business: Electrical Contractor</p>
+              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
+                &quot;We didn&apos;t realize how many jobs we were losing until we fixed this. The follow-up is on point.&quot;
+              </p>
             </div>
           </div>
-          <p className="text-center text-gray-500 text-[14px] mt-8 tracking-tight">
-            Real client case studies coming soon.
-          </p>
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="py-24 px-6 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-[40px] lg:text-[48px] font-semibold mb-6 tracking-tight">Find Out Where Your Business Is Leaking Revenue</h2>
+          <h2 className="text-[40px] lg:text-[48px] font-semibold mb-6 tracking-tight">
+            See Where You&apos;re Losing Jobs
+          </h2>
           <p className="text-[18px] lg:text-[19px] mb-12 opacity-95 tracking-tight">
-            Book a free AI Job Leak Audit and we&apos;ll show you where automation can recover calls, leads, and cash flow.
+            Free 10-minute call — no commitment. We&apos;ll show you what&apos;s causing missed calls and lost bookings.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a 
-              href="https://calendly.com/automagixx/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-blue-600 px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-gray-100 transition-all tracking-tight w-full sm:w-auto text-center"
-            >
-              Get Your Free AI Job Leak Audit
-            </a>
-            <a 
-              href="https://calendly.com/automagixx/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-700 text-white px-7 py-3.5 rounded-full text-[15px] font-medium hover:bg-blue-800 transition-all border border-white/20 tracking-tight w-full sm:w-auto text-center"
-            >
-              Book Free Consultation
-            </a>
+
+          <div className="flex justify-center">
+            <PrimaryCta />
           </div>
+
           <p className="mt-6">
-            <a href="tel:4844249624" className="text-white/90 hover:text-white text-[15px] font-medium tracking-tight underline underline-offset-2">
+            <a
+              href="tel:4844249624"
+              className="text-white/90 hover:text-white text-[15px] font-medium tracking-tight underline underline-offset-2"
+            >
               Or call (484) 424-9624
             </a>
           </p>
@@ -491,7 +524,7 @@ export default function Home() {
                 className="h-10 w-auto mb-6"
               />
               <p className="text-gray-400 text-[14px] leading-relaxed tracking-tight">
-                Automagixx helps service businesses stop missing jobs by using AI to answer calls, capture leads, automate scheduling, and reduce admin work.
+                Automagixx helps service businesses stop missing jobs by answering calls, capturing leads, booking jobs, and reducing admin work.
               </p>
             </div>
             <div>

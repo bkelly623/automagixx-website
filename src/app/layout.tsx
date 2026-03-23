@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "./components/ChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Automagixx | AI Lead Capture & Automation for Service Businesses",
-  description: "We find and fix revenue leaks in service businesses. 24/7 AI answers calls, captures leads, and books work. Done-for-you automation for HVAC, plumbing, electrical, and home service contractors.",
+  title: "Automagixx | Missed Call Recovery & Job Booking",
+  description: "We help service businesses stop missing calls, capture leads, and book more jobs—so revenue doesn’t slip through the cracks.",
 };
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
