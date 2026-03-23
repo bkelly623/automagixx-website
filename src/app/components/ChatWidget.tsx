@@ -148,7 +148,7 @@ export default function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about missed calls, scheduling, or booking…"
-                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-[13px] outline-none focus:ring-2 focus:ring-blue-600"
+                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <button
                   type="submit"
@@ -169,7 +169,7 @@ export default function ChatWidget() {
 
       {!open && showTip ? (
         <div className="fixed bottom-[4.9rem] right-4 sm:right-5 z-[9998] bg-white text-gray-800 border border-gray-200 rounded-xl shadow-lg px-3 py-2 text-[12px] font-medium">
-          Quick question? Chat now.
+          Quick question? Tap the chat bubble.
         </div>
       ) : null}
 
@@ -181,11 +181,14 @@ export default function ChatWidget() {
             setShowTip(false);
             window.sessionStorage.setItem("chat_tip_seen", "1");
           }}
-          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-[9998] inline-flex items-center gap-2 bg-cyan-600 text-white rounded-full px-4 py-3 shadow-2xl ring-4 ring-white/80 hover:bg-cyan-700 transition-all text-[14px] font-semibold"
-          aria-label="Open chat now"
+          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-[9998] h-14 w-14 bg-indigo-600 text-white rounded-full shadow-2xl ring-4 ring-white/80 hover:bg-indigo-700 transition-all flex items-center justify-center"
+          aria-label="Open chat"
         >
-          <MessageCircle className="w-4 h-4" />
-          Chat now
+          <MessageCircle className="w-6 h-6" />
+          <span
+            aria-hidden="true"
+            className="absolute -bottom-1 right-3 h-3 w-3 rotate-45 rounded-[2px] bg-indigo-600"
+          />
         </button>
       ) : null}
     </div>
