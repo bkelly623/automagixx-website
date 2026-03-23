@@ -548,7 +548,7 @@ export default function Home() {
               <ul className="space-y-3 text-gray-400 text-[14px] tracking-tight">
                 <li>Philadelphia Area, PA</li>
                 <li><a href="tel:4844249624" className="hover:text-white transition">(484) 424-9624</a></li>
-                <li><a href="mailto:contact@automagixx.com" className="hover:text-white transition">contact@automagixx.com</a></li>
+                <li><a href="mailto:brendan@automagixx.com" className="hover:text-white transition">brendan@automagixx.com</a></li>
               </ul>
             </div>
           </div>

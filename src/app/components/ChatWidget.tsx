@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { MessageCircle } from "lucide-react";
 import PrimaryCta from "./PrimaryCta";
 
 type ChatRole = "user" | "assistant";
@@ -12,6 +13,7 @@ type ChatMessage = {
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
+  const [showTip, setShowTip] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -29,6 +31,20 @@ export default function ChatWidget() {
     if (!open) return;
     bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, open]);
+
+  useEffect(() => {
+    if (open) return;
+    const hasSeenTip = window.sessionStorage.getItem("chat_tip_seen");
+    if (hasSeenTip) return;
+
+    setShowTip(true);
+    const timer = window.setTimeout(() => {
+      setShowTip(false);
+      window.sessionStorage.setItem("chat_tip_seen", "1");
+    }, 7000);
+
+    return () => window.clearTimeout(timer);
+  }, [open]);
 
   const canSend = useMemo(() => input.trim().length > 0 && !isLoading, [input, isLoading]);
 
@@ -151,14 +167,27 @@ export default function ChatWidget() {
         </div>
       ) : null}
 
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-[9998] bg-blue-600 text-white rounded-full px-4 py-3 shadow-2xl hover:bg-blue-700 transition-all text-[14px] font-medium"
-        aria-label="Open chat"
-      >
-        Chat
-      </button>
+      {!open && showTip ? (
+        <div className="fixed bottom-[4.9rem] right-4 sm:right-5 z-[9998] bg-white text-gray-800 border border-gray-200 rounded-xl shadow-lg px-3 py-2 text-[12px] font-medium">
+          Quick question? Chat now.
+        </div>
+      ) : null}
+
+      {!open ? (
+        <button
+          type="button"
+          onClick={() => {
+            setOpen(true);
+            setShowTip(false);
+            window.sessionStorage.setItem("chat_tip_seen", "1");
+          }}
+          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-[9998] inline-flex items-center gap-2 bg-cyan-600 text-white rounded-full px-4 py-3 shadow-2xl ring-4 ring-white/80 hover:bg-cyan-700 transition-all text-[14px] font-semibold"
+          aria-label="Open chat now"
+        >
+          <MessageCircle className="w-4 h-4" />
+          Chat now
+        </button>
+      ) : null}
     </div>
   );
 }
