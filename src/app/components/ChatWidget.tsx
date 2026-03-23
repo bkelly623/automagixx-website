@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MessageCircle } from "lucide-react";
 import PrimaryCta from "./PrimaryCta";
 
 type ChatRole = "user" | "assistant";
@@ -169,7 +168,7 @@ export default function ChatWidget() {
 
       {!open && showTip ? (
         <div className="fixed bottom-[4.9rem] right-4 sm:right-5 z-[9998] bg-white text-gray-800 border border-gray-200 rounded-xl shadow-lg px-3 py-2 text-[12px] font-medium">
-          Quick question? Tap the chat bubble.
+          Quick question? Tap Chat.
         </div>
       ) : null}
 
@@ -181,13 +180,14 @@ export default function ChatWidget() {
             setShowTip(false);
             window.sessionStorage.setItem("chat_tip_seen", "1");
           }}
-          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-[9998] h-14 w-14 bg-indigo-600 text-white rounded-full shadow-2xl ring-4 ring-white/80 hover:bg-indigo-700 transition-all flex items-center justify-center"
+          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-[9998] min-w-[88px] h-12 bg-indigo-600 text-white rounded-2xl shadow-2xl ring-4 ring-white/80 hover:bg-indigo-700 transition-all flex items-center justify-center px-4"
           aria-label="Open chat"
         >
-          <MessageCircle className="w-6 h-6" />
+          <span className="text-[14px] font-semibold tracking-tight">Chat</span>
           <span
             aria-hidden="true"
-            className="absolute -bottom-1 right-3 h-3 w-3 rotate-45 rounded-[2px] bg-indigo-600"
+            className="absolute -bottom-[6px] right-5 h-[9px] w-[14px] bg-indigo-600"
+            style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
           />
         </button>
       ) : null}

@@ -11,6 +11,15 @@ const BOOKING_URL = "https://calendly.com/automagixx/30min";
 const CTA_LABEL = "See Where You're Losing Jobs";
 const CTA_SUBTEXT = "Free 10-minute call — no commitment";
 
+function getOpenAiApiKey() {
+  return (
+    process.env.OPENAI_API_KEY ||
+    process.env.OPENAI_KEY ||
+    process.env.EXPO_PUBLIC_OPENAI_API_KEY ||
+    process.env.NEXT_PUBLIC_OPENAI_API_KEY
+  );
+}
+
 function buildSystemPrompt() {
   return [
     "You are the Automagixx customer service and lead-generation assistant.",
@@ -42,7 +51,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ reply: "What can I help you with today?" });
     }
 
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = getOpenAiApiKey();
     if (!apiKey) {
       return NextResponse.json({
         reply:
@@ -74,6 +83,13 @@ export async function POST(req: Request) {
         message?: { content?: string };
       }>;
     };
+
+    if (!openaiRes.ok) {
+      return NextResponse.json({
+        reply:
+          "I’m sorry — I couldn’t generate a response right now. Please book a free 10-minute call — no commitment — and we’ll help you capture more jobs.",
+      });
+    }
 
     const data = (await openaiRes.json()) as OpenAIResponse;
     const reply = data?.choices?.[0]?.message?.content?.trim();
