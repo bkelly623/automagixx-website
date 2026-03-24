@@ -23,7 +23,7 @@ export default function Home() {
       {/* Navigation with MASSIVE Logo and Inter Font */}
       <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-end md:justify-between gap-4 min-h-24 py-2 md:py-0">
+          <div className="flex items-center justify-center md:justify-between gap-4 min-h-24 py-2 md:py-0">
             <div className="hidden md:flex items-center gap-12 min-w-0">
               <Image
                 src="/logo.png"
@@ -40,7 +40,7 @@ export default function Home() {
                 <a href="#outcomes" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Outcomes</a>
               </div>
             </div>
-            <div className="flex items-center gap-3 sm:gap-6 shrink-0">
+            <div className="flex w-full items-center justify-center gap-3 sm:gap-6 md:w-auto md:justify-end shrink-0">
               <a href="tel:4844249624" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 424-9624</a>
               <PrimaryCta className="px-1 sm:px-5 py-0" showGuarantee={false} />
             </div>
@@ -383,16 +383,12 @@ export default function Home() {
             We&apos;ll show you exactly where you&apos;re losing jobs and revenue — and whether this
             system makes sense for your business.
           </p>
-          <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
-            <div className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[640px]">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
-                className="absolute inset-0 w-full h-full border-0"
-                style={{ overflow: "hidden" }}
-                scrolling="no"
-                title="Schedule a free 10-minute call with Automagixx"
-              />
-            </div>
+          <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
+              className="block w-full min-h-[720px] sm:min-h-[820px] lg:min-h-[900px] border-0"
+              title="Schedule a free 10-minute call with Automagixx"
+            />
           </div>
           <p className="text-[14px] text-gray-600 text-center mt-6 tracking-tight max-w-xl mx-auto leading-relaxed">
             After booking, you&apos;ll be redirected to a quick 60-second form so I can prepare for
