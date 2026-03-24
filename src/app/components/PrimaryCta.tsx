@@ -5,7 +5,7 @@ type PrimaryCtaProps = {
 export const BOOKING_URL = "https://calendly.com/automagixx/30min";
 export const CTA_LABEL = "See Where You're Losing Jobs";
 export const CTA_SUBTEXT = "Free 10-minute call — we’ll show you exactly where you're losing money";
-export const CTA_MICRO = "Backed by our 30-day performance guarantee";
+export const CTA_MICRO = "Includes a 30-day performance guarantee.";
 
 export default function PrimaryCta({ className = "" }: PrimaryCtaProps) {
   return (

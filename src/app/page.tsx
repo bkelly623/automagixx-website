@@ -358,11 +358,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
             <p className="text-[19px] text-gray-700 leading-relaxed tracking-tight">
-              Plans start at $397/month — most clients break even with just 1–2 extra jobs.
+              Plans start at $397/month — most clients recover far more in missed revenue than the system costs.
             </p>
             <p className="text-[16px] text-gray-600 leading-relaxed tracking-tight mt-3">
               <a href="/guarantee" className="underline underline-offset-2 hover:text-gray-800">
-                30-day performance guarantee included.
+                Includes a 30-day performance guarantee.
               </a>
             </p>
           </div>
