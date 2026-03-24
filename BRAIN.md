@@ -69,8 +69,16 @@ If context is lost, read this file first.
 
 ### Single CTA System (Landing Conversion CTA)
 - Button text: `See Where You're Losing Jobs`
-- Subtext: `Free 10-minute call — no commitment`
-- Link everywhere for conversion CTA buttons: `https://calendly.com/automagixx/30min`
+- Subtext (under button): `Free 10-minute call — we'll show you exactly where you're losing money`
+- Micro line (link to guarantee page): `Includes a 30-day performance guarantee.`
+- **Primary conversion path:** in-page **GoHighLevel** booking widget (LeadConnector), not an off-site scheduler.
+- **All homepage `PrimaryCta` buttons** scroll to the booking section anchor: **`#book-call`** (same document; no `target="_blank"`).
+- Embed details:
+  - Section id: `book-call` (placed after the pricing/price-anchor block, before the Client Dashboard section).
+  - Headline: `Book Your Free 10-Minute Call`
+  - Iframe: `api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8`
+  - Helper script: `link.msgsndr.com/js/form_embed.js` (loaded via `next/script`, `afterInteractive`).
+- **Final CTA band** (`bg-blue-600`): `PrimaryCta` uses `variant="onBlue"` (white button, light text) so the CTA remains readable on blue.
 
 ### Messaging Guardrails
 - Avoid customer-facing jargon like:
@@ -94,21 +102,22 @@ Primary page is `src/app/page.tsx`.
 - Core service section uses:
   - title: `Missed Revenue Recovery System`
   - required bullet list (calls answered, lead capture, missed-call text-back, booking, no lost opportunities)
-- How It Works is a 5-step flow:
-  1. Customer Calls Your Business
-  2. System Answers Instantly
-  3. Lead Information Is Captured
-  4. Appointment Is Booked
-  5. You Get Notified
-- Price anchor section:
-  - `Simple, Transparent Pricing`
-  - `Systems start at $397/month depending on call volume and workflow needs.`
+- How It Works is a 5-step flow (sentence case as on page):
+  1. Customer calls your business
+  2. We answer instantly — even after hours
+  3. We capture their information and qualify the job
+  4. We book the job or follow up automatically
+  5. You get the job you would have missed
+- **Price anchor** (no separate “pricing card” title): copy emphasizes value vs. cost, plus guarantee link:
+  - `Plans start at $397/month — most clients recover far more in missed revenue than the system costs.`
+  - Linked line: `Includes a 30-day performance guarantee.` → `/guarantee`
+- **Book a call** (`#book-call`): embedded GHL calendar, subheadline and post-booking note about the 60-second prep form.
 - Outcomes section:
   - `What Happens When You Stop Missing Calls`
   - bullet outcomes (no fake percentages in that section)
 - Industry cards updated to exact contractor-focused industries/copy.
 - Secondary services section added with the 5 specified items.
-- Client dashboard section retained with realistic sample metrics:
+- Client dashboard section headline: `See Exactly How Much Revenue You're Recovering`; sample metrics:
   - Calls Answered: 87
   - Jobs Booked: 26
   - Estimated Revenue Captured: $13,400
@@ -119,8 +128,9 @@ Primary page is `src/app/page.tsx`.
 
 ### CTA Component Standardization
 - Reusable component: `src/app/components/PrimaryCta.tsx`
-- Encodes canonical CTA label, subtext, and booking URL.
-- Homepage conversion CTAs are standardized through this component.
+- Encodes canonical CTA label, subtext, guarantee micro-link, and **`BOOKING_ANCHOR` (`#book-call`)**.
+- `BOOKING_URL` is kept as an alias of `BOOKING_ANCHOR` for backward compatibility with any imports.
+- Homepage conversion CTAs are standardized through this component (including `ChatWidget`).
 
 ---
 
@@ -135,6 +145,7 @@ Primary page is `src/app/page.tsx`.
 - Uses OpenAI chat completions endpoint.
 - Prompt is contractor/profit-recovery oriented.
 - Explicitly blocks technical/AI-jargon messaging in assistant tone.
+- System prompt includes a **booking link** derived from `NEXT_PUBLIC_SITE_URL` or `VERCEL_URL` when set, appended with `/#book-call`; otherwise `/#book-call` — aligned with on-page booking (not Calendly).
 
 ### Env Key Resolution (Current Fallbacks)
 `route.ts` checks:
@@ -174,13 +185,20 @@ If no key is present, route returns:
 
 ## 7) Recent Implementation Timeline (Ground Truth)
 
-Recent commits:
+Recent commits (newest first):
+- `160301a` Update pricing copy and 30-day performance guarantee wording (price anchor + `PrimaryCta` micro line).
+- `0c3261c` Refine conversion copy and add guarantee/intake support (broader homepage/CTA/guarantee/intake work).
 - `30ddc8a` Fix chat API key fallback and normalize widget bubble launcher
 - `577012e` Refine chat bubble launcher styling and text contrast
 - `5077bbd` Polish chat launcher visibility and update contact email
 - `7a556fa` Refocus site around contractor lead recovery funnel
 - `f2e6fa5` Upgrade Next.js to 15.5.9 for security fixes
 - `ef94fca` Refocus Automagixx site on service-business revenue recovery
+
+**Since the last BRAIN update (after `30ddc8a`):**
+- Replaced off-site **Calendly** booking with an on-page **GoHighLevel** booking section (`id="book-call"`), headline/subhead/supporting copy, responsive iframe + `form_embed.js`.
+- Pointed **all homepage `PrimaryCta` instances** to `#book-call`; added **`onBlue`** styling for the final blue CTA block.
+- Updated **`src/app/api/chat/route.ts`** booking URL logic to site origin + `/#book-call` when env allows.
 
 ---
 
@@ -224,5 +242,5 @@ Important files:
 
 If priorities get noisy, use this:
 
-**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging and a single conversion path.**
+**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging and a single conversion path — book on-site via `#book-call` (GHL embed).**
 

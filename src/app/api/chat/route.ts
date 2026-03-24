@@ -7,7 +7,11 @@ type ChatMessage = {
   content: string;
 };
 
-const BOOKING_URL = "https://calendly.com/automagixx/30min";
+const SITE_ORIGIN =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
+const BOOKING_URL =
+  SITE_ORIGIN ? `${SITE_ORIGIN}/#book-call` : "/#book-call";
 const CTA_LABEL = "See Where You're Losing Jobs";
 const CTA_SUBTEXT = "Free 10-minute call — no commitment";
 

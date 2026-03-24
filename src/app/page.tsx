@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Script from "next/script";
 import {
   Zap,
   Home as HomeIcon,
@@ -369,6 +370,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Book call — GoHighLevel calendar */}
+      <section
+        id="book-call"
+        className="scroll-mt-28 py-20 px-6 bg-gray-50 border-y border-gray-200"
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 tracking-tight text-center leading-[1.15]">
+            Book Your Free 10-Minute Call
+          </h2>
+          <p className="text-[17px] text-gray-600 text-center max-w-2xl mx-auto mb-10 leading-relaxed tracking-tight">
+            We&apos;ll show you exactly where you&apos;re losing jobs and revenue — and whether this
+            system makes sense for your business.
+          </p>
+          <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
+            <div className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[640px]">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
+                className="absolute inset-0 w-full h-full border-0"
+                style={{ overflow: "hidden" }}
+                scrolling="no"
+                title="Schedule a free 10-minute call with Automagixx"
+              />
+            </div>
+          </div>
+          <p className="text-[14px] text-gray-600 text-center mt-6 tracking-tight max-w-xl mx-auto leading-relaxed">
+            After booking, you&apos;ll be redirected to a quick 60-second form so I can prepare for
+            the call.
+          </p>
+        </div>
+        <Script
+          src="https://link.msgsndr.com/js/form_embed.js"
+          strategy="afterInteractive"
+        />
+      </section>
+
       {/* Client Dashboard / Visibility */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -499,7 +535,7 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center">
-            <PrimaryCta />
+            <PrimaryCta variant="onBlue" />
           </div>
 
           <p className="mt-6">
