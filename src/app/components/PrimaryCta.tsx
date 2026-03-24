@@ -2,6 +2,8 @@ type PrimaryCtaProps = {
   className?: string;
   /** White button + light text for use on blue backgrounds (e.g. final CTA band). */
   variant?: "default" | "onBlue";
+  /** When false, hides the guarantee link under the free-call line (e.g. compact nav). */
+  showGuarantee?: boolean;
 };
 
 export const BOOKING_ANCHOR = "#book-call";
@@ -15,10 +17,11 @@ export const BOOKING_URL = BOOKING_ANCHOR;
 export default function PrimaryCta({
   className = "",
   variant = "default",
+  showGuarantee = true,
 }: PrimaryCtaProps) {
   const isOnBlue = variant === "onBlue";
   return (
-    <div className={`inline-flex flex-col items-center text-center ${className}`}>
+    <div className={`inline-flex flex-col items-center justify-center text-center ${className}`}>
       <a
         href={BOOKING_ANCHOR}
         className={
@@ -36,16 +39,18 @@ export default function PrimaryCta({
       >
         {CTA_SUBTEXT}
       </p>
-      <a
-        href="/guarantee"
-        className={`text-[10px] tracking-tight mt-0.5 underline underline-offset-2 ${
-          isOnBlue
-            ? "text-white/85 hover:text-white"
-            : "text-gray-500 hover:text-gray-700"
-        }`}
-      >
-        {CTA_MICRO}
-      </a>
+      {showGuarantee ? (
+        <a
+          href="/guarantee"
+          className={`text-[10px] tracking-tight mt-0.5 underline underline-offset-2 ${
+            isOnBlue
+              ? "text-white/85 hover:text-white"
+              : "text-gray-500 hover:text-gray-700"
+          }`}
+        >
+          {CTA_MICRO}
+        </a>
+      ) : null}
     </div>
   );
 }

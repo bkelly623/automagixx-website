@@ -22,9 +22,9 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans">
       {/* Navigation with MASSIVE Logo and Inter Font */}
       <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-24">
-            <div className="flex items-center gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-end md:justify-between gap-4 min-h-24 py-2 md:py-0">
+            <div className="hidden md:flex items-center gap-12 min-w-0">
               <Image
                 src="/logo.png"
                 alt="Automagixx"
@@ -40,9 +40,9 @@ export default function Home() {
                 <a href="#outcomes" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Outcomes</a>
               </div>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 sm:gap-6 shrink-0">
               <a href="tel:4844249624" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 424-9624</a>
-              <PrimaryCta className="px-5 py-1" />
+              <PrimaryCta className="px-1 sm:px-5 py-0" showGuarantee={false} />
             </div>
           </div>
         </div>
