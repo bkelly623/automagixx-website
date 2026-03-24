@@ -41,7 +41,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-6">
               <a href="tel:4844249624" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 424-9624</a>
-              <PrimaryCta className="px-5 py-2.5" />
+              <PrimaryCta className="px-5 py-1" />
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Home() {
               <p className="text-[15px] text-gray-700 pt-3 tracking-tight">
                 Or call us:{" "}
                 <a href="tel:4844249624" className="text-blue-700 hover:text-blue-800 font-medium underline underline-offset-2">
-                  484-424-9624
+                  (484) 424-9624
                 </a>
               </p>
               
@@ -325,11 +325,11 @@ export default function Home() {
 
           <div className="space-y-6">
             {[
-              "Customer Calls Your Business",
-              "System Answers Instantly",
-              "Lead Information Is Captured",
-              "Appointment Is Booked",
-              "You Get Notified",
+              "Customer calls your business",
+              "We answer instantly — even after hours",
+              "We capture their information and qualify the job",
+              "We book the job or follow up automatically",
+              "You get the job you would have missed",
             ].map((step, idx) => (
               <div
                 key={step}
@@ -357,11 +357,13 @@ export default function Home() {
       <section className="py-20 px-6 bg-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
-            <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 leading-[1.15] tracking-tight">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
-              Systems start at $397/month depending on call volume and workflow needs.
+            <p className="text-[19px] text-gray-700 leading-relaxed tracking-tight">
+              Plans start at $397/month — most clients break even with just 1–2 extra jobs.
+            </p>
+            <p className="text-[16px] text-gray-600 leading-relaxed tracking-tight mt-3">
+              <a href="/guarantee" className="underline underline-offset-2 hover:text-gray-800">
+                30-day performance guarantee included.
+              </a>
             </p>
           </div>
         </div>
@@ -373,7 +375,7 @@ export default function Home() {
           <div className="max-w-3xl mb-12">
             <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Client Dashboard</p>
             <h2 className="text-[48px] lg:text-[56px] font-semibold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              See Exactly What Automagixx Is Doing for Your Business
+              See Exactly How Much Revenue You&apos;re Recovering
             </h2>
             <p className="text-[19px] text-gray-600 leading-relaxed tracking-tight">
               Every client gets access to a branded dashboard showing the real impact of their automation.
@@ -462,24 +464,24 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Name: Mike L.</p>
-              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Business: Plumbing Company</p>
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Mike L.</p>
+              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Plumbing Company</p>
               <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
-                &quot;We were missing calls constantly. Now jobs are getting booked even when we&apos;re busy. It just works.&quot;
+                We were missing calls constantly. Now jobs are getting booked even when we&apos;re busy. It just works. We&apos;ve already picked up extra jobs this month.
               </p>
             </div>
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Name: Dave R.</p>
-              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Business: HVAC Company</p>
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Dave R.</p>
+              <p className="text-gray-700 text-[14px] tracking-tight mb-4">HVAC Company</p>
               <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
-                &quot;The biggest difference is speed. Customers get responses immediately instead of waiting.&quot;
+                The biggest difference is speed. Customers get responses immediately instead of waiting.
               </p>
             </div>
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Name: Chris T.</p>
-              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Business: Electrical Contractor</p>
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Chris T.</p>
+              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Electrical Contractor</p>
               <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
-                &quot;We didn&apos;t realize how many jobs we were losing until we fixed this. The follow-up is on point.&quot;
+                We didn&apos;t realize how many jobs we were losing until we fixed this. The follow-up is on point.
               </p>
             </div>
           </div>
@@ -524,7 +526,7 @@ export default function Home() {
                 className="h-10 w-auto mb-6"
               />
               <p className="text-gray-400 text-[14px] leading-relaxed tracking-tight">
-                Automagixx helps service businesses stop missing jobs by answering calls, capturing leads, booking jobs, and reducing admin work.
+                Automagixx helps service businesses recover lost revenue from missed calls.
               </p>
             </div>
             <div>
@@ -549,6 +551,7 @@ export default function Home() {
                 <li>Philadelphia Area, PA</li>
                 <li><a href="tel:4844249624" className="hover:text-white transition">(484) 424-9624</a></li>
                 <li><a href="mailto:brendan@automagixx.com" className="hover:text-white transition">brendan@automagixx.com</a></li>
+                <li><a href="/guarantee" className="hover:text-white transition">Performance Guarantee</a></li>
               </ul>
             </div>
           </div>
