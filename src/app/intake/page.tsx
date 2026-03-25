@@ -2,18 +2,14 @@
 
 import { FormEvent, useState } from "react";
 
-const OTHER_HELP_OPTIONS = [
-  "Getting more leads",
-  "Faster follow-up",
-  "Booking more jobs",
-  "Website improvements",
-  "Not sure / open to ideas",
-];
+const inputClass =
+  "w-full border border-gray-300 rounded-xl px-4 py-3 text-[16px] sm:text-[15px] text-gray-900 placeholder:text-gray-700 sm:placeholder:text-gray-500";
+
+const selectClass =
+  "w-full border border-gray-300 rounded-xl px-4 py-3 text-[16px] sm:text-[15px] bg-white text-gray-900 invalid:text-gray-800";
 
 export default function IntakePage() {
   const [businessType, setBusinessType] = useState("");
-  const [averageJobValue, setAverageJobValue] = useState("");
-  const [otherHelp, setOtherHelp] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -27,30 +23,19 @@ export default function IntakePage() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: fd.get("name"),
-        phone: fd.get("phone"),
-        email: fd.get("email"),
         businessName: fd.get("businessName"),
         businessType: fd.get("businessType"),
         businessTypeOther: fd.get("businessTypeOther"),
-        averageJobValue: fd.get("averageJobValue"),
-        averageJobValueOther: fd.get("averageJobValueOther"),
-        whoAnswersCalls: fd.get("whoAnswersCalls"),
-        missCalls: fd.get("missCalls"),
         callsPerDay: fd.get("callsPerDay"),
-        otherHelp: otherHelp.join(", "),
+        missCallOutcome: fd.get("missCallOutcome"),
+        averageJobValue: fd.get("averageJobValue"),
+        fixTimeline: fd.get("fixTimeline"),
         notes: fd.get("notes"),
       }),
     });
 
     setLoading(false);
     setSubmitted(true);
-  }
-
-  function toggleHelpItem(item: string) {
-    setOtherHelp((prev) =>
-      prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]
-    );
   }
 
   return (
@@ -60,7 +45,7 @@ export default function IntakePage() {
           Quick Questions Before Your Call
         </h1>
         <p className="text-[18px] text-gray-600 tracking-tight mb-10">
-          Takes 60 seconds. Helps me show you exactly where you&apos;re losing jobs.
+          Takes 60 seconds. Helps me see where you&apos;re likely losing jobs.
         </p>
 
         {submitted ? (
@@ -69,120 +54,108 @@ export default function IntakePage() {
           </div>
         ) : (
           <form onSubmit={onSubmit} className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <input name="name" required placeholder="Name" className="border border-gray-300 rounded-xl px-4 py-3 text-[15px]" />
-              <input name="phone" required placeholder="Phone" className="border border-gray-300 rounded-xl px-4 py-3 text-[15px]" />
-              <input type="email" name="email" required placeholder="Email" className="border border-gray-300 rounded-xl px-4 py-3 text-[15px]" />
-              <input name="businessName" required placeholder="Business Name" className="border border-gray-300 rounded-xl px-4 py-3 text-[15px]" />
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-[14px] font-medium text-gray-700 mb-2">Business Type</label>
-                <select
-                  name="businessType"
-                  required
-                  value={businessType}
-                  onChange={(e) => setBusinessType(e.target.value)}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-[15px] bg-white"
-                >
-                  <option value="">Select...</option>
-                  <option>Plumbing</option>
-                  <option>HVAC</option>
-                  <option>Electrical</option>
-                  <option>Roofing</option>
-                  <option>Garage Door</option>
-                  <option>Locksmith</option>
-                  <option>Pest Control</option>
-                  <option>Other</option>
-                </select>
-                {businessType === "Other" ? (
-                  <input
-                    name="businessTypeOther"
-                    placeholder="Other business type"
-                    className="w-full mt-3 border border-gray-300 rounded-xl px-4 py-3 text-[15px]"
-                  />
-                ) : null}
-              </div>
-
-              <div>
-                <label className="block text-[14px] font-medium text-gray-700 mb-2">Average Job Value</label>
-                <select
-                  name="averageJobValue"
-                  required
-                  value={averageJobValue}
-                  onChange={(e) => setAverageJobValue(e.target.value)}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-[15px] bg-white"
-                >
-                  <option value="">Select...</option>
-                  <option>$100–$300</option>
-                  <option>$300–$700</option>
-                  <option>$700–$1500</option>
-                  <option>$1500+</option>
-                  <option>Other</option>
-                </select>
-                {averageJobValue === "Other" ? (
-                  <input
-                    name="averageJobValueOther"
-                    placeholder="Other average job value"
-                    className="w-full mt-3 border border-gray-300 rounded-xl px-4 py-3 text-[15px]"
-                  />
-                ) : null}
-              </div>
-
-              <div>
-                <label className="block text-[14px] font-medium text-gray-700 mb-2">Who answers calls</label>
-                <select name="whoAnswersCalls" required className="w-full border border-gray-300 rounded-xl px-4 py-3 text-[15px] bg-white">
-                  <option value="">Select...</option>
-                  <option>Me</option>
-                  <option>Staff</option>
-                  <option>Receptionist</option>
-                  <option>No consistent system</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-[14px] font-medium text-gray-700 mb-2">Miss calls</label>
-                <select name="missCalls" required className="w-full border border-gray-300 rounded-xl px-4 py-3 text-[15px] bg-white">
-                  <option value="">Select...</option>
-                  <option>Yes often</option>
-                  <option>Sometimes</option>
-                  <option>Rarely</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-[14px] font-medium text-gray-700 mb-2">Calls per day</label>
-                <select name="callsPerDay" required className="w-full border border-gray-300 rounded-xl px-4 py-3 text-[15px] bg-white">
-                  <option value="">Select...</option>
-                  <option>1–5</option>
-                  <option>5–10</option>
-                  <option>10–20</option>
-                  <option>20+</option>
-                  <option>Not sure</option>
-                </select>
-              </div>
+            <div>
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">Business Name</label>
+              <input
+                name="businessName"
+                required
+                placeholder="e.g. Smith Plumbing"
+                className={inputClass}
+              />
             </div>
 
             <div>
-              <label className="block text-[14px] font-medium text-gray-700 mb-3">Other help</label>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {OTHER_HELP_OPTIONS.map((opt) => (
-                  <label key={opt} className="flex items-center gap-2 text-[14px] text-gray-700">
-                    <input
-                      type="checkbox"
-                      checked={otherHelp.includes(opt)}
-                      onChange={() => toggleHelpItem(opt)}
-                    />
-                    {opt}
-                  </label>
-                ))}
-              </div>
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">
+                What kind of business do you run?
+              </label>
+              <select
+                name="businessType"
+                required
+                value={businessType}
+                onChange={(e) => setBusinessType(e.target.value)}
+                className={selectClass}
+              >
+                <option value="">Select…</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="HVAC">HVAC</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Roofing">Roofing</option>
+                <option value="Garage Door">Garage Door</option>
+                <option value="Locksmith">Locksmith</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Other">Other</option>
+              </select>
+              {businessType === "Other" ? (
+                <input
+                  name="businessTypeOther"
+                  required
+                  placeholder="Describe your trade"
+                  className={`${inputClass} mt-3`}
+                />
+              ) : null}
             </div>
 
             <div>
-              <label className="block text-[14px] font-medium text-gray-700 mb-2">Anything I should know before we talk? (optional)</label>
-              <textarea name="notes" rows={4} className="w-full border border-gray-300 rounded-xl px-4 py-3 text-[15px]" />
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">
+                How many calls do you get per day?
+              </label>
+              <select name="callsPerDay" required className={selectClass}>
+                <option value="">Select…</option>
+                <option value="0–10">0–10</option>
+                <option value="10–30">10–30</option>
+                <option value="30+">30+</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">
+                What happens when you miss a call?
+              </label>
+              <select name="missCallOutcome" required className={selectClass}>
+                <option value="">Select…</option>
+                <option value="Goes to voicemail">Goes to voicemail</option>
+                <option value="We call back later">We call back later</option>
+                <option value="We usually lose the job">We usually lose the job</option>
+                <option value="Not sure">Not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">
+                What&apos;s your average job value?
+              </label>
+              <select name="averageJobValue" required className={selectClass}>
+                <option value="">Select…</option>
+                <option value="Under $200">Under $200</option>
+                <option value="$200–$500">$200–$500</option>
+                <option value="$500–$1,000">$500–$1,000</option>
+                <option value="$1,000+">$1,000+</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">
+                How soon are you looking to fix this?
+              </label>
+              <select name="fixTimeline" required className={selectClass}>
+                <option value="">Select…</option>
+                <option value="ASAP">ASAP</option>
+                <option value="This month">This month</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-[14px] font-medium text-gray-700 mb-2">
+                Anything I should know before we talk?{" "}
+                <span className="text-gray-500 font-normal">(optional)</span>
+              </label>
+              <textarea
+                name="notes"
+                rows={4}
+                placeholder="Optional — e.g. service area, seasonality, current tools"
+                className={inputClass}
+              />
             </div>
 
             <button
@@ -198,4 +171,3 @@ export default function IntakePage() {
     </main>
   );
 }
-

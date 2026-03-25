@@ -5,18 +5,13 @@ export async function POST(req: Request) {
     const body = (await req.json()) as Record<string, string>;
 
     const payload = new URLSearchParams();
-    payload.set("name", body.name ?? "");
-    payload.set("phone", body.phone ?? "");
-    payload.set("email", body.email ?? "");
     payload.set("businessName", body.businessName ?? "");
     payload.set("businessType", body.businessType ?? "");
     payload.set("businessTypeOther", body.businessTypeOther ?? "");
-    payload.set("averageJobValue", body.averageJobValue ?? "");
-    payload.set("averageJobValueOther", body.averageJobValueOther ?? "");
-    payload.set("whoAnswersCalls", body.whoAnswersCalls ?? "");
-    payload.set("missCalls", body.missCalls ?? "");
     payload.set("callsPerDay", body.callsPerDay ?? "");
-    payload.set("otherHelp", body.otherHelp ?? "");
+    payload.set("missCallOutcome", body.missCallOutcome ?? "");
+    payload.set("averageJobValue", body.averageJobValue ?? "");
+    payload.set("fixTimeline", body.fixTimeline ?? "");
     payload.set("notes", body.notes ?? "");
     payload.set("_subject", "Automagixx Intake Form Submission");
 
@@ -38,4 +33,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false }, { status: 500 });
   }
 }
-
