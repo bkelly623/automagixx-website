@@ -78,7 +78,10 @@ If context is lost, read this file first.
   - Headline: `Book Your Free 10-Minute Call`
   - Iframe: `api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8`
   - Helper script: `link.msgsndr.com/js/form_embed.js` (loaded via `next/script`, `afterInteractive`).
+  - **Layout:** block iframe with **responsive `min-h`** (`720px` → `900px` by breakpoint), not absolute positioning — avoids clipping the calendar; no `scrolling="no"`.
 - **Final CTA band** (`bg-blue-600`): `PrimaryCta` uses `variant="onBlue"` (white button, light text) so the CTA remains readable on blue.
+- **Header nav (mobile):** logo + link cluster **`hidden md:flex`**; CTA row **`justify-center md:justify-between`** with **`w-full … md:w-auto`** on the CTA group so button + subtext are **centered** when the logo is hidden. **`min-h-24`** + **`py-2 md:py-0`** for vertical balance.
+- **Header `PrimaryCta`:** **`showGuarantee={false}`** — guarantee micro-line stays on in-page CTAs and chat; omitted in the fixed nav to save space.
 
 ### Messaging Guardrails
 - Avoid customer-facing jargon like:
@@ -128,9 +131,18 @@ Primary page is `src/app/page.tsx`.
 
 ### CTA Component Standardization
 - Reusable component: `src/app/components/PrimaryCta.tsx`
-- Encodes canonical CTA label, subtext, guarantee micro-link, and **`BOOKING_ANCHOR` (`#book-call`)**.
+- Encodes canonical CTA label, subtext, optional guarantee micro-link, and **`BOOKING_ANCHOR` (`#book-call`)**.
+- Props: **`variant`** (`default` | `onBlue`), **`showGuarantee`** (default `true`; `false` in nav).
 - `BOOKING_URL` is kept as an alias of `BOOKING_ANCHOR` for backward compatibility with any imports.
 - Homepage conversion CTAs are standardized through this component (including `ChatWidget`).
+
+### Intake (`/intake`) — Post-booking prep
+- **Purpose:** business context + missed-revenue signals for the call — **not** duplicate contact capture (name / email / phone removed; those come from booking).
+- **Route:** `src/app/intake/page.tsx` (client form) → **`POST /api/intake`** → **FormSubmit** (`formsubmit.co/ajax`) → **`brendan@automagixx.com`**, subject `Automagixx Intake Form Submission`.
+- **Header:** title `Quick Questions Before Your Call`; subtext `Takes 60 seconds. Helps me see where you're likely losing jobs.`
+- **Fields:** business name; business type (dropdown + **Other** text); calls per day (`0–10`, `10–30`, `30+`); what happens when a call is missed; average job value bands; how soon they want to fix it; optional notes textarea.
+- **Success copy:** `Got it. Looking forward to speaking with you.`
+- **Mobile UX:** shared input classes use **darker placeholders on small screens** (`placeholder:text-gray-700 sm:placeholder:text-gray-500`), **`text-[16px]` on mobile inputs** (readability / iOS), selects use **`invalid:text-gray-800`** for empty required state.
 
 ---
 
@@ -186,6 +198,10 @@ If no key is present, route returns:
 ## 7) Recent Implementation Timeline (Ground Truth)
 
 Recent commits (newest first):
+- `23c8b03` Streamline intake form fields and improve mobile placeholder contrast (`/intake` + `api/intake`).
+- `23929b9` Center nav CTA on mobile; fix GHL booking iframe height and clipping.
+- `3f2b521` Nav: hide logo on mobile, optional guarantee line in nav, CTA alignment tweaks.
+- `6ba1f22` Add GoHighLevel `#book-call` section, anchor CTAs, update BRAIN.
 - `160301a` Update pricing copy and 30-day performance guarantee wording (price anchor + `PrimaryCta` micro line).
 - `0c3261c` Refine conversion copy and add guarantee/intake support (broader homepage/CTA/guarantee/intake work).
 - `30ddc8a` Fix chat API key fallback and normalize widget bubble launcher
@@ -195,10 +211,11 @@ Recent commits (newest first):
 - `f2e6fa5` Upgrade Next.js to 15.5.9 for security fixes
 - `ef94fca` Refocus Automagixx site on service-business revenue recovery
 
-**Since the last BRAIN update (after `30ddc8a`):**
-- Replaced off-site **Calendly** booking with an on-page **GoHighLevel** booking section (`id="book-call"`), headline/subhead/supporting copy, responsive iframe + `form_embed.js`.
-- Pointed **all homepage `PrimaryCta` instances** to `#book-call`; added **`onBlue`** styling for the final blue CTA block.
-- Updated **`src/app/api/chat/route.ts`** booking URL logic to site origin + `/#book-call` when env allows.
+**Cumulative since prior BRAIN-era baseline (`30ddc8a` / Calendly era):**
+- **Booking:** On-page **GoHighLevel** embed at `#book-call`; homepage CTAs → `#book-call`; **`onBlue`** final band; chat API booking URL → site + `/#book-call` when env allows.
+- **Nav:** Mobile: no logo; centered CTA + subtext; no guarantee line in bar; desktop unchanged pattern with logo + links.
+- **GHL iframe:** Tall **min-height** block iframe (no absolute fill) so the calendar is not cut off.
+- **Intake:** Short post-booking form (no duplicate contact fields); new question set; email payload fields aligned; mobile-friendly placeholders.
 
 ---
 
@@ -235,6 +252,8 @@ Important files:
 - `src/app/components/PrimaryCta.tsx` (single CTA source)
 - `src/app/components/ChatWidget.tsx` (chat launcher + UI)
 - `src/app/api/chat/route.ts` (server-side OpenAI call)
+- `src/app/intake/page.tsx` (post-booking intake form)
+- `src/app/api/intake/route.ts` (intake → FormSubmit email)
 
 ---
 
@@ -242,5 +261,5 @@ Important files:
 
 If priorities get noisy, use this:
 
-**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging and a single conversion path — book on-site via `#book-call` (GHL embed).**
+**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — book on-site via `#book-call` (GHL), then `/intake` for fast call prep (no duplicate contact fields).**
 

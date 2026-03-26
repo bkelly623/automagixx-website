@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 
 const inputClass =
   "w-full border border-gray-300 rounded-xl px-4 py-3 text-[16px] sm:text-[15px] text-gray-900 placeholder:text-gray-700 sm:placeholder:text-gray-500";
@@ -49,8 +50,23 @@ export default function IntakePage() {
         </p>
 
         {submitted ? (
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-6 text-green-800 text-[17px] tracking-tight">
-            Got it. Looking forward to speaking with you.
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-[30px] sm:text-[34px] font-semibold text-gray-900 tracking-tight leading-[1.1] mb-4">
+              You&apos;re all set.
+            </h2>
+            <p className="text-[17px] text-gray-700 tracking-tight leading-relaxed mb-3">
+              I&apos;ll review this before our call so we can get straight to what matters.
+            </p>
+            <p className="text-[16px] text-gray-600 tracking-tight leading-relaxed mb-6">
+              If you want a quick breakdown of what we&apos;ll cover before we talk, use the button
+              below.
+            </p>
+            <Link
+              href="/onboarding"
+              className="inline-flex items-center justify-center bg-blue-600 text-white px-7 py-3.5 rounded-full hover:bg-blue-700 transition-all text-[15px] font-medium"
+            >
+              See what we&apos;ll go over →
+            </Link>
           </div>
         ) : (
           <form onSubmit={onSubmit} className="space-y-6">

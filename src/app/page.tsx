@@ -394,6 +394,19 @@ export default function Home() {
             After booking, you&apos;ll be redirected to a quick 60-second form so I can prepare for
             the call.
           </p>
+          <p className="text-[12px] text-gray-500 text-center mt-4 tracking-tight max-w-3xl mx-auto leading-relaxed">
+            By submitting this form, you agree to receive SMS messages from Automagixx related to
+            your inquiry, including appointment reminders and service updates. Message frequency
+            varies. Message &amp; data rates may apply. Reply STOP to opt out or HELP for help. See{" "}
+            <a href="/privacy-policy" className="underline underline-offset-2 hover:text-gray-700">
+              our Privacy Policy
+            </a>{" "}
+            and{" "}
+            <a href="/terms" className="underline underline-offset-2 hover:text-gray-700">
+              Terms of Service
+            </a>
+            .
+          </p>
         </div>
         <Script
           src="https://link.msgsndr.com/js/form_embed.js"
@@ -584,6 +597,8 @@ export default function Home() {
                 <li><a href="tel:4844249624" className="hover:text-white transition">(484) 424-9624</a></li>
                 <li><a href="mailto:brendan@automagixx.com" className="hover:text-white transition">brendan@automagixx.com</a></li>
                 <li><a href="/guarantee" className="hover:text-white transition">Performance Guarantee</a></li>
+                <li><a href="/privacy-policy" className="hover:text-white transition">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-white transition">Terms of Service</a></li>
               </ul>
             </div>
           </div>
