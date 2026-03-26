@@ -399,7 +399,7 @@ export default function Home() {
             your inquiry, including appointment reminders and service updates. Message frequency
             varies. Message &amp; data rates may apply. Reply STOP to opt out or HELP for help. See{" "}
             <a href="/privacy-policy" className="underline underline-offset-2 hover:text-gray-700">
-              our Privacy Policy
+              Privacy Policy
             </a>{" "}
             and{" "}
             <a href="/terms" className="underline underline-offset-2 hover:text-gray-700">

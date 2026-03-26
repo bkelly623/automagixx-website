@@ -115,6 +115,7 @@ Primary page is `src/app/page.tsx`.
   - `Plans start at $397/month — most clients recover far more in missed revenue than the system costs.`
   - Linked line: `Includes a 30-day performance guarantee.` → `/guarantee`
 - **Book a call** (`#book-call`): embedded GHL calendar, subheadline and post-booking note about the 60-second prep form.
+- **Booking compliance disclosure** (under GHL embed): exact SMS consent language with links to `/privacy-policy` and `/terms`.
 - Outcomes section:
   - `What Happens When You Stop Missing Calls`
   - bullet outcomes (no fake percentages in that section)
@@ -142,7 +143,36 @@ Primary page is `src/app/page.tsx`.
 - **Header:** title `Quick Questions Before Your Call`; subtext `Takes 60 seconds. Helps me see where you're likely losing jobs.`
 - **Fields:** business name; business type (dropdown + **Other** text); calls per day (`0–10`, `10–30`, `30+`); what happens when a call is missed; average job value bands; how soon they want to fix it; optional notes textarea.
 - **Success copy:** `Got it. Looking forward to speaking with you.`
+- **Success state (current):**
+  - Headline: `You're all set.`
+  - Body: `I'll review this before our call so we can get straight to what matters.`
+  - Secondary line invites optional pre-call briefing via button.
+  - Button: `See what we'll go over →` → `/onboarding` (no auto-redirect).
 - **Mobile UX:** shared input classes use **darker placeholders on small screens** (`placeholder:text-gray-700 sm:placeholder:text-gray-500`), **`text-[16px]` on mobile inputs** (readability / iOS), selects use **`invalid:text-gray-800`** for empty required state.
+
+### Onboarding Briefing Page (`/onboarding`)
+- Purpose: optional pre-call briefing page (not a sales page; no extra forms).
+- Content sections:
+  - `Before the Call` eyebrow
+  - `What We'll Show You On The Call` headline + intro
+  - `On the call, we'll break down:` bullet list
+  - `What to expect` section (explicitly not high-pressure)
+  - `Before we talk` prep bullet list
+  - Closing line: `I'll call you directly at the scheduled time.`
+- Routing rules:
+  - Linked from `/intake` success state button.
+  - Not added to top navigation.
+  - Not promoted as a major homepage CTA.
+
+### Legal Pages / Compliance
+- New routes:
+  - `/privacy-policy` (`src/app/privacy-policy/page.tsx`)
+  - `/terms` (`src/app/terms/page.tsx`)
+- Homepage booking section includes SMS compliance disclosure text beneath the calendar.
+- Disclosure links:
+  - `Privacy Policy` → `/privacy-policy`
+  - `Terms of Service` → `/terms`
+- Footer includes links to `/privacy-policy` and `/terms`.
 
 ---
 
@@ -198,6 +228,7 @@ If no key is present, route returns:
 ## 7) Recent Implementation Timeline (Ground Truth)
 
 Recent commits (newest first):
+- `33074d3` Add onboarding flow and legal compliance pages.
 - `23c8b03` Streamline intake form fields and improve mobile placeholder contrast (`/intake` + `api/intake`).
 - `23929b9` Center nav CTA on mobile; fix GHL booking iframe height and clipping.
 - `3f2b521` Nav: hide logo on mobile, optional guarantee line in nav, CTA alignment tweaks.
@@ -216,6 +247,8 @@ Recent commits (newest first):
 - **Nav:** Mobile: no logo; centered CTA + subtext; no guarantee line in bar; desktop unchanged pattern with logo + links.
 - **GHL iframe:** Tall **min-height** block iframe (no absolute fill) so the calendar is not cut off.
 - **Intake:** Short post-booking form (no duplicate contact fields); new question set; email payload fields aligned; mobile-friendly placeholders.
+- **Post-booking flow:** `/intake` success state now offers optional `/onboarding` briefing (no redirect).
+- **Compliance/legal:** Booking-section SMS disclosure added; `/privacy-policy` + `/terms` pages live and linked from disclosure + footer.
 
 ---
 
@@ -254,6 +287,9 @@ Important files:
 - `src/app/api/chat/route.ts` (server-side OpenAI call)
 - `src/app/intake/page.tsx` (post-booking intake form)
 - `src/app/api/intake/route.ts` (intake → FormSubmit email)
+- `src/app/onboarding/page.tsx` (optional pre-call briefing)
+- `src/app/privacy-policy/page.tsx` (privacy policy)
+- `src/app/terms/page.tsx` (terms of service)
 
 ---
 
@@ -261,5 +297,5 @@ Important files:
 
 If priorities get noisy, use this:
 
-**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — book on-site via `#book-call` (GHL), then `/intake` for fast call prep (no duplicate contact fields).**
+**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — book on-site via `#book-call` (GHL), complete `/intake` for fast prep, and optionally review `/onboarding`; compliance is reinforced with booking SMS disclosure plus `/privacy-policy` and `/terms`.**
 
