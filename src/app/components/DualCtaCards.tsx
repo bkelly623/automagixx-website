@@ -36,8 +36,6 @@ export default function DualCtaCards({
 
   const demoSubCls = onBlue ? "text-[11px] text-white/80 tracking-tight mt-1" : "text-[11px] text-gray-500 tracking-tight mt-1";
 
-  const phoneDemoCls = onBlue ? "text-[14px] font-semibold text-white hover:text-white/90 underline underline-offset-2 mt-3" : "text-[14px] font-semibold text-blue-700 hover:text-blue-800 underline underline-offset-2 mt-3";
-
   return (
     <div
       className={`grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full max-w-3xl mx-auto ${className}`}
@@ -61,9 +59,6 @@ export default function DualCtaCards({
           {DEMO_LABEL}
         </a>
         <p className={demoSubCls}>{DEMO_SUBTEXT}</p>
-        <a href={DEMO_PHONE_HREF} className={phoneDemoCls}>
-          484-992-9411
-        </a>
       </div>
     </div>
   );

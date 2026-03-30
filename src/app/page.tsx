@@ -18,6 +18,7 @@ import {
 import NavCtaPair from "./components/NavCtaPair";
 import DualCtaCards from "./components/DualCtaCards";
 import HeroCallCard from "./components/HeroCallCard";
+import { DEMO_LABEL, DEMO_SUBTEXT, DEMO_PHONE_HREF, PRIMARY_PHONE_HREF } from "./components/cta";
 
 export default function Home() {
   return (
@@ -27,14 +28,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-center md:justify-between gap-4 min-h-24 py-2 md:py-0">
             <div className="hidden md:flex items-center gap-12 min-w-0">
-              <Image
-                src="/logo-robot.png"
-                alt="Automagixx"
-                width={160}
-                height={160}
-                className="w-auto h-20 sm:h-24"
-                priority
-              />
+              <span className="inline-flex rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-gray-200/90">
+                <Image
+                  src="/logo-robot.png"
+                  alt="Automagixx"
+                  width={160}
+                  height={160}
+                  className="w-auto h-20 sm:h-24 block"
+                  priority
+                />
+              </span>
               <div className="hidden lg:flex items-center gap-10">
                 <a href="#services" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Services</a>
                 <a href="#industries" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Industries</a>
@@ -55,24 +58,24 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#0A1628]/8 to-blue-400/8 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <div className="space-y-8 text-center lg:text-left">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-6 text-left">
               <h1 className="text-[56px] lg:text-[72px] font-semibold text-gray-900 leading-[1.1] tracking-tight">
                 Stop Missing Calls.
                 <br />
                 <span className="text-blue-600">Start Capturing More Jobs.</span>
               </h1>
 
-              <p className="text-[19px] lg:text-[21px] text-gray-600 leading-relaxed tracking-tight max-w-xl mx-auto lg:mx-0">
+              <p className="text-[19px] lg:text-[21px] text-gray-600 leading-relaxed tracking-tight max-w-xl">
                 If your business relies on phone calls, you&apos;re losing jobs every time one goes unanswered. We help you capture those opportunities automatically.
               </p>
 
-              <div className="flex flex-col pt-2 max-w-md mx-auto lg:mx-0">
+              <div className="flex flex-col pt-1 max-w-md">
                 <HeroCallCard />
               </div>
             </div>
 
-            <div className="relative mt-4 lg:mt-0 w-full max-w-md mx-auto lg:max-w-none lg:ml-auto">
+            <div className="relative mt-2 lg:mt-0 w-full max-w-md mx-auto lg:max-w-none lg:ml-auto lg:pl-4">
               <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-blue-600/8 rounded-2xl blur-2xl" />
                 <div className="relative rounded-2xl border border-gray-200 bg-white shadow-2xl p-8 sm:p-10 flex flex-col items-center text-center">
@@ -80,24 +83,19 @@ export default function Home() {
                     Live demo
                   </p>
                   <h3 className="text-[24px] sm:text-[28px] font-semibold text-gray-900 tracking-tight leading-tight w-full">
-                    Try It Live (30 seconds)
+                    Hear it on your phone
                   </h3>
-                  <p className="text-[16px] text-gray-600 mt-3 tracking-tight leading-relaxed w-full">
-                    Call and hear exactly how it works
+                  <p className="text-[15px] text-gray-600 mt-3 tracking-tight leading-relaxed w-full">
+                    One quick call—no pitch, just the flow.
                   </p>
                   <a
-                    href="tel:4849929411"
+                    href={DEMO_PHONE_HREF}
                     className="mt-6 inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all text-[15px] font-medium tracking-tight w-full sm:w-auto"
                   >
-                    Try the Demo
+                    {DEMO_LABEL}
                   </a>
-                  <p className="mt-5 text-[15px] text-gray-700 tracking-tight w-full text-center">
-                    <a
-                      href="tel:4849929411"
-                      className="text-blue-700 hover:text-blue-800 font-semibold underline underline-offset-2"
-                    >
-                      484-992-9411
-                    </a>
+                  <p className="mt-3 text-[13px] sm:text-[14px] text-gray-500 tracking-tight leading-snug w-full text-center">
+                    {DEMO_SUBTEXT}
                   </p>
                 </div>
               </div>
@@ -109,10 +107,17 @@ export default function Home() {
       {/* Funnel — missed revenue (second section) */}
       <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-[34px] sm:text-[42px] lg:text-[48px] font-semibold text-gray-900 leading-[1.15] tracking-tight">
-            Every missed call is a job your competitor just booked
+          <p className="text-blue-600 font-semibold text-[13px] sm:text-[14px] tracking-tight uppercase mb-4">
+            Where revenue leaks
+          </p>
+          <h2 className="text-[32px] sm:text-[40px] lg:text-[44px] font-semibold text-gray-900 leading-[1.12] tracking-tight text-balance">
+            Every missed call is a job your{" "}
+            <span className="text-blue-700 underline decoration-blue-200/90 decoration-4 underline-offset-[5px]">
+              competitor
+            </span>{" "}
+            just booked
           </h2>
-          <p className="text-[17px] text-gray-600 mt-5 leading-relaxed tracking-tight">
+          <p className="text-[17px] text-gray-600 mt-6 leading-relaxed tracking-tight max-w-2xl mx-auto">
             Many service businesses miss{" "}
             <span className="font-semibold text-gray-900">10–30% of their incoming calls</span>. Every one
             of those calls could be a real job that quietly disappears.
@@ -170,9 +175,6 @@ export default function Home() {
           <p className="text-center text-gray-600 text-[17px] max-w-3xl mx-auto leading-relaxed tracking-tight">
             If your team is busy on jobs, after-hours, or overwhelmed with admin, opportunities slip through the cracks. Automagixx fixes those leaks with call-capture and follow-up systems.
           </p>
-          <div className="mt-14 max-w-4xl mx-auto px-2">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -210,9 +212,6 @@ export default function Home() {
               No more lost opportunities
             </li>
           </ul>
-          <div className="mt-14 max-w-4xl mx-auto">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -250,9 +249,6 @@ export default function Home() {
               Reporting and performance tracking
             </li>
           </ul>
-          <div className="mt-14 max-w-4xl mx-auto">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -315,9 +311,6 @@ export default function Home() {
           <p className="text-center text-gray-500 text-[15px] max-w-2xl mx-auto tracking-tight">
             We can adapt the system to other service businesses, but we specialize in home-service revenue recovery.
           </p>
-          <div className="mt-14 max-w-4xl mx-auto px-2">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -370,20 +363,18 @@ export default function Home() {
           <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 tracking-tight text-center leading-[1.15]">
             Optional: schedule a time online
           </h2>
-          <p className="text-[17px] text-gray-600 text-center max-w-2xl mx-auto mb-4 leading-relaxed tracking-tight">
+          <p className="text-[17px] text-gray-600 text-center max-w-2xl mx-auto mb-10 leading-relaxed tracking-tight">
             The fastest path is a direct call:{" "}
-            <a href="tel:4846737612" className="text-blue-700 underline underline-offset-2 font-medium hover:text-blue-800">
+            <a href={PRIMARY_PHONE_HREF} className="text-blue-700 underline underline-offset-2 font-medium hover:text-blue-800">
               (484) 673-7612
             </a>
-            . Want to hear it first? Try the demo:{" "}
-            <a href="tel:4849929411" className="text-blue-700 underline underline-offset-2 font-medium hover:text-blue-800">
-              484-992-9411
+            . Want to hear it first?{" "}
+            <a href={DEMO_PHONE_HREF} className="text-blue-700 underline underline-offset-2 font-medium hover:text-blue-800">
+              {DEMO_LABEL}
             </a>
-            . If you prefer to pick a slot, use the calendar below.
+            {" — "}
+            {DEMO_SUBTEXT}. If you prefer to pick a slot, use the calendar below.
           </p>
-          <div className="max-w-4xl mx-auto mb-10 px-2">
-            <DualCtaCards />
-          </div>
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
@@ -458,9 +449,6 @@ export default function Home() {
           <p className="text-gray-600 text-[17px] max-w-3xl tracking-tight leading-relaxed">
             Automagixx clients don&apos;t just get automation — they get ongoing visibility into performance, revenue recovery, and system activity.
           </p>
-          <div className="mt-14 max-w-4xl mx-auto px-2">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -495,9 +483,6 @@ export default function Home() {
               More consistent revenue
             </li>
           </ul>
-          <div className="mt-14 max-w-4xl mx-auto px-2">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -545,9 +530,6 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-16 max-w-4xl mx-auto px-2">
-            <DualCtaCards />
-          </div>
         </div>
       </section>
 
@@ -565,7 +547,7 @@ export default function Home() {
             Talk to us directly
           </h2>
           <p className="text-[18px] lg:text-[19px] mb-10 text-white/95 tracking-tight max-w-2xl mx-auto leading-relaxed">
-            Call now — or try the 30-second demo line and hear how it works before you commit to anything.
+            Call now — or use {DEMO_LABEL} and hear how it works in about 30 seconds before you commit to anything.
           </p>
 
           <DualCtaCards variant="onBlue" />
@@ -577,13 +559,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <Image
-                src="/logo-robot.png"
-                alt="Automagixx"
-                width={120}
-                height={120}
-                className="h-16 w-auto mb-6 brightness-0 invert opacity-95"
-              />
+              <span className="inline-flex rounded-2xl bg-white p-2 mb-6 ring-1 ring-gray-700/60 shadow-md">
+                <Image
+                  src="/logo-robot.png"
+                  alt="Automagixx"
+                  width={120}
+                  height={120}
+                  className="h-14 w-auto block"
+                />
+              </span>
               <p className="text-gray-400 text-[14px] leading-relaxed tracking-tight">
                 Automagixx helps service businesses recover lost revenue from missed calls.
               </p>

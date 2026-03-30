@@ -4,7 +4,7 @@ export default function HeroCallCard() {
   return (
     <div className="relative max-w-md mx-auto lg:mx-0">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/12 to-blue-600/8 rounded-2xl blur-xl" />
-      <div className="relative rounded-2xl border border-gray-200 bg-white shadow-xl p-6 sm:p-8 text-center flex flex-col items-center">
+      <div className="relative rounded-2xl border border-gray-200 bg-white shadow-xl p-6 sm:p-8 text-left flex flex-col items-stretch">
         <p className="text-blue-600 font-semibold text-[13px] sm:text-[14px] tracking-tight mb-3">
           Ready when you are
         </p>

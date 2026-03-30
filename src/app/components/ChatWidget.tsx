@@ -19,7 +19,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi — Automagixx helps contractors stop losing jobs to missed calls and slow follow-up. The fastest next step is a direct call to (484) 673-7612 (no forms). If you want to hear how it sounds first, try our 30-second demo line at 484-992-9411. What kind of work do you do, and what usually happens when you miss a call?",
+        "Hi — Automagixx helps contractors stop losing jobs to missed calls and slow follow-up. The fastest next step is a direct call to (484) 673-7612 (no forms). If you want to hear how it sounds first, use Test the Demo at 484-992-9411 — about 30 seconds. What kind of work do you do, and what usually happens when you miss a call?",
     },
   ]);
 
@@ -67,7 +67,7 @@ export default function ChatWidget() {
       const data = (await res.json()) as { reply?: string };
       const reply =
         data.reply ??
-        "Sorry — I couldn’t respond right now. Call (484) 673-7612 and we’ll help you pinpoint what’s leaking jobs. For a quick listen, dial 484-992-9411.";
+        "Sorry — I couldn’t respond right now. Call (484) 673-7612 and we’ll help you pinpoint what’s leaking jobs. For a quick listen, use Test the Demo at 484-992-9411.";
 
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
@@ -76,7 +76,7 @@ export default function ChatWidget() {
         {
           role: "assistant",
           content:
-            "Sorry — something went wrong. Call (484) 673-7612 — we’ll help you see where jobs are getting lost. Try 484-992-9411 if you want the quick demo first.",
+            "Sorry — something went wrong. Call (484) 673-7612 — we’ll help you see where jobs are getting lost. Use Test the Demo at 484-992-9411 if you want the quick listen first.",
         },
       ]);
     } finally {
