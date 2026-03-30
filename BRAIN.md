@@ -60,7 +60,8 @@ If context is lost, read this file first.
   - pest control
 
 ### Current Geographic Trust Signals
-- Local phone: `484-424-9624`
+- Local phone: `484-673-7612`
+- Live demo line: `484-992-9411` (30-second “try it live” number)
 - Positioning: Philadelphia area / regional trust
 
 ---
@@ -68,20 +69,21 @@ If context is lost, read this file first.
 ## 3) Website Conversion Rules (Canonical)
 
 ### Single CTA System (Landing Conversion CTA)
-- Button text: `See Where You're Losing Jobs`
-- Subtext (under button): `Free 10-minute call — we'll show you exactly where you're losing money`
+- **Primary conversion:** direct phone — **`Call Us Now`** → `tel:4846737612`
+- Subtext (first line under button): `Speak directly — no forms, no waiting`
 - Micro line (link to guarantee page): `Includes a 30-day performance guarantee.`
-- **Primary conversion path:** in-page **GoHighLevel** booking widget (LeadConnector), not an off-site scheduler.
-- **All homepage `PrimaryCta` buttons** scroll to the booking section anchor: **`#book-call`** (same document; no `target="_blank"`).
+- **Secondary conversion (under every CTA stack):** `Try the Demo (30 seconds)` → `tel:4849929411`
+- **Optional scheduling:** in-page **GoHighLevel** calendar remains at **`#book-call`** for visitors who prefer to pick a time (not the primary CTA).
 - Embed details:
   - Section id: `book-call` (placed after the pricing/price-anchor block, before the Client Dashboard section).
-  - Headline: `Book Your Free 10-Minute Call`
+  - Headline (current): `Optional: schedule a time online` with intro copy that **prefers call + demo** before calendar.
   - Iframe: `api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8`
   - Helper script: `link.msgsndr.com/js/form_embed.js` (loaded via `next/script`, `afterInteractive`).
   - **Layout:** block iframe with **responsive `min-h`** (`720px` → `900px` by breakpoint), not absolute positioning — avoids clipping the calendar; no `scrolling="no"`.
-- **Final CTA band** (`bg-blue-600`): `PrimaryCta` uses `variant="onBlue"` (white button, light text) so the CTA remains readable on blue.
+- **Hero right column:** “Try It Live (30 seconds)” card — demo button + clickable `484-992-9411` (no forms).
+- **Final CTA band** (`bg-blue-600`): headline/body favor **direct call**; `PrimaryCta` uses `variant="onBlue"` (white button, light text) so the CTA remains readable on blue.
 - **Header nav (mobile):** logo + link cluster **`hidden md:flex`**; CTA row **`justify-center md:justify-between`** with **`w-full … md:w-auto`** on the CTA group so button + subtext are **centered** when the logo is hidden. **`min-h-24`** + **`py-2 md:py-0`** for vertical balance.
-- **Header `PrimaryCta`:** **`showGuarantee={false}`** — guarantee micro-line stays on in-page CTAs and chat; omitted in the fixed nav to save space.
+- **Header `PrimaryCta`:** **`showGuarantee={false}`** — guarantee micro-line stays on in-page CTAs and chat; omitted in the fixed nav to save space. Demo link still shows under the button in the nav.
 
 ### Messaging Guardrails
 - Avoid customer-facing jargon like:
@@ -101,7 +103,8 @@ Primary page is `src/app/page.tsx`.
 - Hero has been rewritten to:
   - `Stop Missing Calls. Start Capturing More Jobs.`
   - contractor-friendly subheadline
-  - visible phone line: `Or call us: 484-424-9624`
+  - visible phone line: `Or call us: (484) 673-7612`
+  - right column: live demo card (`Try It Live (30 seconds)` / `Try the Demo` / `484-992-9411`)
 - Core service section uses:
   - title: `Missed Revenue Recovery System`
   - required bullet list (calls answered, lead capture, missed-call text-back, booking, no lost opportunities)
@@ -114,8 +117,9 @@ Primary page is `src/app/page.tsx`.
 - **Price anchor** (no separate “pricing card” title): copy emphasizes value vs. cost, plus guarantee link:
   - `Plans start at $397/month — most clients recover far more in missed revenue than the system costs.`
   - Linked line: `Includes a 30-day performance guarantee.` → `/guarantee`
-- **Book a call** (`#book-call`): embedded GHL calendar, subheadline and post-booking note about the 60-second prep form.
-- **Booking compliance disclosure** (under GHL embed): exact SMS consent language with links to `/privacy-policy` and `/terms`.
+- **Book a call** (`#book-call`): embedded GHL calendar framed as **optional** scheduling; copy stresses **call first**, demo second, calendar if preferred; post-scheduling note about optional prep link (not “must use form” as primary path).
+- **Booking compliance disclosure** (under GHL embed): exact SMS consent language with links to `/privacy-policy` (Privacy Policy) and `/terms` (Terms of Service):
+  - `By submitting this form, you agree to receive SMS messages from Automagixx related to your inquiry, including appointment reminders and service updates. Message frequency varies. Message & data rates may apply. Reply STOP to opt out or HELP for help. See Privacy Policy and Terms of Service.`
 - Outcomes section:
   - `What Happens When You Stop Missing Calls`
   - bullet outcomes (no fake percentages in that section)
@@ -132,7 +136,8 @@ Primary page is `src/app/page.tsx`.
 
 ### CTA Component Standardization
 - Reusable component: `src/app/components/PrimaryCta.tsx`
-- Encodes canonical CTA label, subtext, optional guarantee micro-link, and **`BOOKING_ANCHOR` (`#book-call`)**.
+- Encodes: **`PRIMARY_PHONE_HREF`** (`tel:4846737612`), **`DEMO_PHONE_HREF`** (`tel:4849929411`), CTA label/subtext/micro, optional guarantee link, and demo link under the stack.
+- **`BOOKING_ANCHOR` (`#book-call`)** remains exported for optional scheduling / deep links only (not the primary button target).
 - Props: **`variant`** (`default` | `onBlue`), **`showGuarantee`** (default `true`; `false` in nav).
 - `BOOKING_URL` is kept as an alias of `BOOKING_ANCHOR` for backward compatibility with any imports.
 - Homepage conversion CTAs are standardized through this component (including `ChatWidget`).
@@ -173,6 +178,8 @@ Primary page is `src/app/page.tsx`.
   - `Privacy Policy` → `/privacy-policy`
   - `Terms of Service` → `/terms`
 - Footer includes links to `/privacy-policy` and `/terms`.
+- `Privacy Policy` page includes: Information We Collect, How We Use Information (appointments/services/SMS+email communications), SMS Communications (consent language), `No Sharing Clause (CRITICAL)`, Data Security, User Rights, Cookies & Tracking, and Contact (`brendan@automagixx.com`).
+- `Terms of Service` page includes: Services, SMS Program, Opt-Out (STOP) and Help (HELP), Support contact, No Guarantees, Carrier Disclaimer, Age Restriction (18+), and Privacy (governed by Privacy Policy).
 
 ---
 
@@ -185,9 +192,9 @@ Primary page is `src/app/page.tsx`.
 
 ### Bot Behavior
 - Uses OpenAI chat completions endpoint.
-- Prompt is contractor/profit-recovery oriented.
+- Prompt is contractor/profit-recovery oriented and **call-first**.
 - Explicitly blocks technical/AI-jargon messaging in assistant tone.
-- System prompt includes a **booking link** derived from `NEXT_PUBLIC_SITE_URL` or `VERCEL_URL` when set, appended with `/#book-call`; otherwise `/#book-call` — aligned with on-page booking (not Calendly).
+- Priority order in system prompt: **(1)** main phone `(484) 673-7612`, **(2)** demo line `484-992-9411`, **(3)** optional online scheduling section `/#book-call` only if the visitor insists.
 
 ### Env Key Resolution (Current Fallbacks)
 `route.ts` checks:
@@ -228,6 +235,8 @@ If no key is present, route returns:
 ## 7) Recent Implementation Timeline (Ground Truth)
 
 Recent commits (newest first):
+- `d351000` Prioritize phone and demo CTAs over embedded booking.
+- `85ff1a5` Expand privacy/terms copy and update booking SMS disclosure text.
 - `33074d3` Add onboarding flow and legal compliance pages.
 - `23c8b03` Streamline intake form fields and improve mobile placeholder contrast (`/intake` + `api/intake`).
 - `23929b9` Center nav CTA on mobile; fix GHL booking iframe height and clipping.
@@ -243,12 +252,12 @@ Recent commits (newest first):
 - `ef94fca` Refocus Automagixx site on service-business revenue recovery
 
 **Cumulative since prior BRAIN-era baseline (`30ddc8a` / Calendly era):**
-- **Booking:** On-page **GoHighLevel** embed at `#book-call`; homepage CTAs → `#book-call`; **`onBlue`** final band; chat API booking URL → site + `/#book-call` when env allows.
+- **Conversion:** Primary CTAs → **`tel:4846737612`** (`Call Us Now`); secondary demo → **`tel:4849929411`**; optional **GoHighLevel** calendar remains at `#book-call`.
 - **Nav:** Mobile: no logo; centered CTA + subtext; no guarantee line in bar; desktop unchanged pattern with logo + links.
 - **GHL iframe:** Tall **min-height** block iframe (no absolute fill) so the calendar is not cut off.
 - **Intake:** Short post-booking form (no duplicate contact fields); new question set; email payload fields aligned; mobile-friendly placeholders.
 - **Post-booking flow:** `/intake` success state now offers optional `/onboarding` briefing (no redirect).
-- **Compliance/legal:** Booking-section SMS disclosure added; `/privacy-policy` + `/terms` pages live and linked from disclosure + footer.
+- **Compliance/legal:** Booking-section SMS disclosure updated with full consent/disclosure language; `/privacy-policy` + `/terms` pages live and linked from disclosure + footer (including critical no-sharing clause and SMS opt-out/help clauses).
 
 ---
 
@@ -297,5 +306,5 @@ Important files:
 
 If priorities get noisy, use this:
 
-**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — book on-site via `#book-call` (GHL), complete `/intake` for fast prep, and optionally review `/onboarding`; compliance is reinforced with booking SMS disclosure plus `/privacy-policy` and `/terms`.**
+**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — call `(484) 673-7612` first (or try the `484-992-9411` demo), use optional `#book-call` scheduling only if preferred; `/intake` + `/onboarding` support booked conversations; compliance reinforced with booking SMS disclosure plus `/privacy-policy` and `/terms`.**
 
