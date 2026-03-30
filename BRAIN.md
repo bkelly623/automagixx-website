@@ -61,7 +61,7 @@ If context is lost, read this file first.
 
 ### Current Geographic Trust Signals
 - Local phone: `484-673-7612`
-- Live demo line: `484-992-9411` (30-second “try it live” number)
+- Live demo line: `484-992-9411` (**Test the Demo** — ~30 seconds)
 - Positioning: Philadelphia area / regional trust
 
 ---
@@ -69,21 +69,23 @@ If context is lost, read this file first.
 ## 3) Website Conversion Rules (Canonical)
 
 ### Single CTA System (Landing Conversion CTA)
-- **Primary conversion:** direct phone — **`Call Us Now`** → `tel:4846737612`
-- Subtext (first line under button): `Speak directly — no forms, no waiting`
-- Micro line (link to guarantee page): `Includes a 30-day performance guarantee.`
-- **Secondary conversion (under every CTA stack):** `Try the Demo (30 seconds)` → `tel:4849929411`
-- **Optional scheduling:** in-page **GoHighLevel** calendar remains at **`#book-call`** for visitors who prefer to pick a time (not the primary CTA).
+Canonical strings and `tel:` hrefs live in **`src/app/components/cta.ts`**.
+
+- **Primary conversion:** **`Call Us Now`** → `tel:4846737612`
+- **Micro line (guarantee):** `Includes a 30-day performance guarantee.` → `/guarantee` (under the primary button on **`HeroCallCard`**, **`DualCtaCards`**, and **`NavCtaPair`**).
+- **Secondary conversion:** **`Test the Demo`** → `tel:4849929411`
+- **Demo subtext** (under the demo button only): `Hear how it works in about 30 seconds`. **No** extra standalone `484-992-9411` link row under demo cards — the demo **button** is the tap target.
+- **`DualCtaCards` on the homepage:** rendered **only** after the **funnel / missed-revenue block**, after **How It Works**, and in the **final gradient CTA** — not after every section.
+- **Optional scheduling:** in-page **GoHighLevel** calendar at **`#book-call`** (still not the primary CTA).
 - Embed details:
-  - Section id: `book-call` (placed after the pricing/price-anchor block, before the Client Dashboard section).
-  - Headline (current): `Optional: schedule a time online` with intro copy that **prefers call + demo** before calendar.
+  - Section id: `book-call` (after main content flow; copy still **prefers call + demo** before calendar).
+  - Headline (current): `Optional: schedule a time online` with body that links primary line, **`Test the Demo`**, and `DEMO_SUBTEXT` before the iframe.
   - Iframe: `api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8`
   - Helper script: `link.msgsndr.com/js/form_embed.js` (loaded via `next/script`, `afterInteractive`).
   - **Layout:** block iframe with **responsive `min-h`** (`720px` → `900px` by breakpoint), not absolute positioning — avoids clipping the calendar; no `scrolling="no"`.
-- **Hero right column:** “Try It Live (30 seconds)” card — demo button + clickable `484-992-9411` (no forms).
-- **Final CTA band** (`bg-blue-600`): headline/body favor **direct call**; `PrimaryCta` uses `variant="onBlue"` (white button, light text) so the CTA remains readable on blue.
-- **Header nav (mobile):** logo + link cluster **`hidden md:flex`**; CTA row **`justify-center md:justify-between`** with **`w-full … md:w-auto`** on the CTA group so button + subtext are **centered** when the logo is hidden. **`min-h-24`** + **`py-2 md:py-0`** for vertical balance.
-- **Header `PrimaryCta`:** **`showGuarantee={false}`** — guarantee micro-line stays on in-page CTAs and chat; omitted in the fixed nav to save space. Demo link still shows under the button in the nav.
+- **Hero:** two-column grid, **`items-center`** on large screens; **left column** is **left-aligned** — headline, subhead, then **`HeroCallCard`** (primary + guarantee link). **Right column:** “Live demo” card — supporting headline/body, then **`Test the Demo`**, then **`DEMO_SUBTEXT`** (no duplicate phone row).
+- **Final CTA band:** gradient blue; **`DualCtaCards variant="onBlue"`** (white / outline treatments for readability).
+- **Header nav:** logo + links **`hidden md:flex`**; robot asset in a **white rounded plate + ring** (same idea in **footer** on dark background) to reduce PNG transparency “checkerboard.” CTA cluster uses **`NavCtaPair`** with **`compact`** on small widths; **`flex-row flex-nowrap`** so **Call** + **Test the Demo** stay **side-by-side** on mobile. **`min-h-24`** + **`py-2 md:py-0`** for vertical balance.
 
 ### Messaging Guardrails
 - Avoid customer-facing jargon like:
@@ -100,11 +102,11 @@ If context is lost, read this file first.
 Primary page is `src/app/page.tsx`.
 
 ### Implemented Sections/Content
-- Hero has been rewritten to:
-  - `Stop Missing Calls. Start Capturing More Jobs.`
-  - contractor-friendly subheadline
-  - visible phone line: `Or call us: (484) 673-7612`
-  - right column: live demo card (`Try It Live (30 seconds)` / `Try the Demo` / `484-992-9411`)
+- Hero:
+  - Headline: `Stop Missing Calls.` / `Start Capturing More Jobs.`
+  - Contractor-friendly subhead; primary path is **`HeroCallCard`** (**`Call Us Now`** + guarantee link) — no separate “or call us” line in the hero stack.
+  - Right column: **Live demo** card — e.g. `Hear it on your phone` + short supporting line, then **`Test the Demo`** (`tel:4849929411`), then **`DEMO_SUBTEXT`** (no extra phone link under the card).
+- **Second section (funnel):** missed-revenue framing — eyebrow `Where revenue leaks`, headline about **competitor** booking missed jobs (styled emphasis), stat copy (`10–30%`), **simple example** revenue math card, then **`DualCtaCards`**.
 - Core service section uses:
   - title: `Missed Revenue Recovery System`
   - required bullet list (calls answered, lead capture, missed-call text-back, booking, no lost opportunities)
@@ -114,9 +116,7 @@ Primary page is `src/app/page.tsx`.
   3. We capture their information and qualify the job
   4. We book the job or follow up automatically
   5. You get the job you would have missed
-- **Price anchor** (no separate “pricing card” title): copy emphasizes value vs. cost, plus guarantee link:
-  - `Plans start at $397/month — most clients recover far more in missed revenue than the system costs.`
-  - Linked line: `Includes a 30-day performance guarantee.` → `/guarantee`
+- **Pricing / guarantee:** homepage no longer carries a dedicated **$397/month** price-anchor block; the **30-day performance guarantee** remains **`CTA_MICRO`** on CTAs and is linked from **footer** (`/guarantee`).
 - **Book a call** (`#book-call`): embedded GHL calendar framed as **optional** scheduling; copy stresses **call first**, demo second, calendar if preferred; post-scheduling note about optional prep link (not “must use form” as primary path).
 - **Booking compliance disclosure** (under GHL embed): exact SMS consent language with links to `/privacy-policy` (Privacy Policy) and `/terms` (Terms of Service):
   - `By submitting this form, you agree to receive SMS messages from Automagixx related to your inquiry, including appointment reminders and service updates. Message frequency varies. Message & data rates may apply. Reply STOP to opt out or HELP for help. See Privacy Policy and Terms of Service.`
@@ -134,13 +134,11 @@ Primary page is `src/app/page.tsx`.
 - Footer contact email updated to:
   - `brendan@automagixx.com`
 
-### CTA Component Standardization
-- Reusable component: `src/app/components/PrimaryCta.tsx`
-- Encodes: **`PRIMARY_PHONE_HREF`** (`tel:4846737612`), **`DEMO_PHONE_HREF`** (`tel:4849929411`), CTA label/subtext/micro, optional guarantee link, and demo link under the stack.
-- **`BOOKING_ANCHOR` (`#book-call`)** remains exported for optional scheduling / deep links only (not the primary button target).
-- Props: **`variant`** (`default` | `onBlue`), **`showGuarantee`** (default `true`; `false` in nav).
-- `BOOKING_URL` is kept as an alias of `BOOKING_ANCHOR` for backward compatibility with any imports.
-- Homepage conversion CTAs are standardized through this component (including `ChatWidget`).
+### CTA implementation (no `PrimaryCta.tsx`)
+- **`src/app/components/cta.ts`:** single source for **`PRIMARY_PHONE_HREF`**, **`DEMO_PHONE_HREF`**, **`CTA_LABEL`**, **`DEMO_LABEL`**, **`CTA_MICRO`**, **`DEMO_SUBTEXT`**, **`BOOKING_ANCHOR` / `BOOKING_URL`**.
+- **`NavCtaPair`:** paired CTAs (call + demo + micro/subtext) for **fixed nav** and **`ChatWidget`** drawer (**`compact`** on small widths).
+- **`HeroCallCard`:** primary call card for **hero left column** (primary + guarantee link).
+- **`DualCtaCards`:** two-card grid (**Talk to us** / **Try it live**); **`variant="onBlue"`** for the final section.
 
 ### Intake (`/intake`) — Post-booking prep
 - **Purpose:** business context + missed-revenue signals for the call — **not** duplicate contact capture (name / email / phone removed; those come from booking).
@@ -235,6 +233,9 @@ If no key is present, route returns:
 ## 7) Recent Implementation Timeline (Ground Truth)
 
 Recent commits (newest first):
+- `88c912e` Homepage CTAs: hero balance, **Test the Demo** copy, fewer **`DualCtaCards`** placements, **`NavCtaPair`** mobile row layout, logo plate, funnel headline polish.
+- `6d97a42` Refine hero layout, **`DualCtaCards`**, robot logo, funnel section order.
+- `ec8f047` Update BRAIN for phone-first CTAs and demo line.
 - `d351000` Prioritize phone and demo CTAs over embedded booking.
 - `85ff1a5` Expand privacy/terms copy and update booking SMS disclosure text.
 - `33074d3` Add onboarding flow and legal compliance pages.
@@ -242,7 +243,7 @@ Recent commits (newest first):
 - `23929b9` Center nav CTA on mobile; fix GHL booking iframe height and clipping.
 - `3f2b521` Nav: hide logo on mobile, optional guarantee line in nav, CTA alignment tweaks.
 - `6ba1f22` Add GoHighLevel `#book-call` section, anchor CTAs, update BRAIN.
-- `160301a` Update pricing copy and 30-day performance guarantee wording (price anchor + `PrimaryCta` micro line).
+- `160301a` Update pricing copy and 30-day performance guarantee wording (historical price anchor + CTA micro line).
 - `0c3261c` Refine conversion copy and add guarantee/intake support (broader homepage/CTA/guarantee/intake work).
 - `30ddc8a` Fix chat API key fallback and normalize widget bubble launcher
 - `577012e` Refine chat bubble launcher styling and text contrast
@@ -252,8 +253,8 @@ Recent commits (newest first):
 - `ef94fca` Refocus Automagixx site on service-business revenue recovery
 
 **Cumulative since prior BRAIN-era baseline (`30ddc8a` / Calendly era):**
-- **Conversion:** Primary CTAs → **`tel:4846737612`** (`Call Us Now`); secondary demo → **`tel:4849929411`**; optional **GoHighLevel** calendar remains at `#book-call`.
-- **Nav:** Mobile: no logo; centered CTA + subtext; no guarantee line in bar; desktop unchanged pattern with logo + links.
+- **Conversion:** Primary → **`tel:4846737612`** (`Call Us Now`); secondary → **`Test the Demo`** / **`tel:4849929411`**; optional **GoHighLevel** calendar at `#book-call`.
+- **Nav:** Mobile: no logo cluster; **`NavCtaPair`** centered; **guarantee micro-line** under primary + **demo** stack (**side-by-side** with **`Test the Demo`**). Desktop: logo plate + links + CTAs.
 - **GHL iframe:** Tall **min-height** block iframe (no absolute fill) so the calendar is not cut off.
 - **Intake:** Short post-booking form (no duplicate contact fields); new question set; email payload fields aligned; mobile-friendly placeholders.
 - **Post-booking flow:** `/intake` success state now offers optional `/onboarding` briefing (no redirect).
@@ -265,6 +266,7 @@ Recent commits (newest first):
 
 These are not blockers, but should be evaluated deliberately:
 
+0. **`npm run build` / prerender:** `/dashboard/analytics` currently requires **`supabaseUrl`** (and related Supabase env). Local/production builds fail static generation for that route until env is configured or the page is made dynamic/guarded.
 1. **Revenue calculator block** in `src/app/page.tsx`
 - Still contains "simple example" style numbers (`10–30%`, `$18,000+`).
 - If strict no-example/no-implied-stat framing is desired globally, rewrite or remove.
@@ -291,7 +293,8 @@ From repo root:
 Important files:
 - `src/app/page.tsx` (homepage)
 - `src/app/layout.tsx` (global wrapper + chat widget mount)
-- `src/app/components/PrimaryCta.tsx` (single CTA source)
+- `src/app/components/cta.ts` (CTA labels + phone hrefs)
+- `src/app/components/NavCtaPair.tsx` / `DualCtaCards.tsx` / `HeroCallCard.tsx`
 - `src/app/components/ChatWidget.tsx` (chat launcher + UI)
 - `src/app/api/chat/route.ts` (server-side OpenAI call)
 - `src/app/intake/page.tsx` (post-booking intake form)
@@ -306,5 +309,5 @@ Important files:
 
 If priorities get noisy, use this:
 
-**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — call `(484) 673-7612` first (or try the `484-992-9411` demo), use optional `#book-call` scheduling only if preferred; `/intake` + `/onboarding` support booked conversations; compliance reinforced with booking SMS disclosure plus `/privacy-policy` and `/terms`.**
+**Automagixx helps service businesses stop missing jobs by capturing calls, leads, and bookings faster, with clear ROI-oriented messaging — call `(484) 673-7612` first (or **Test the Demo** at `484-992-9411`), use optional `#book-call` scheduling only if preferred; `/intake` + `/onboarding` support booked conversations; compliance reinforced with booking SMS disclosure plus `/privacy-policy` and `/terms`.**
 
