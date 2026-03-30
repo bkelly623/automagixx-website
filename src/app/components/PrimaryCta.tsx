@@ -6,12 +6,18 @@ type PrimaryCtaProps = {
   showGuarantee?: boolean;
 };
 
+/** Optional calendar section anchor (not the primary CTA). */
 export const BOOKING_ANCHOR = "#book-call";
-export const CTA_LABEL = "See Where You're Losing Jobs";
-export const CTA_SUBTEXT = "Free 10-minute call — we'll show you exactly where you're losing money";
+
+export const PRIMARY_PHONE_HREF = "tel:4846737612";
+export const DEMO_PHONE_HREF = "tel:4849929411";
+export const DEMO_LINK_LABEL = "Try the Demo (30 seconds)";
+
+export const CTA_LABEL = "Call Us Now";
+export const CTA_SUBTEXT = "Speak directly — no forms, no waiting";
 export const CTA_MICRO = "Includes a 30-day performance guarantee.";
 
-/** @deprecated Use BOOKING_ANCHOR — CTAs scroll to the on-page booking section. */
+/** @deprecated Primary conversion is phone; this is only for optional scheduling deep links. */
 export const BOOKING_URL = BOOKING_ANCHOR;
 
 export default function PrimaryCta({
@@ -23,7 +29,7 @@ export default function PrimaryCta({
   return (
     <div className={`inline-flex flex-col items-center justify-center text-center ${className}`}>
       <a
-        href={BOOKING_ANCHOR}
+        href={PRIMARY_PHONE_HREF}
         className={
           isOnBlue
             ? "inline-flex items-center justify-center bg-white text-blue-600 px-7 py-3.5 rounded-full hover:bg-gray-100 transition-all duration-200 tracking-tight w-full sm:w-auto"
@@ -51,6 +57,14 @@ export default function PrimaryCta({
           {CTA_MICRO}
         </a>
       ) : null}
+      <a
+        href={DEMO_PHONE_HREF}
+        className={`text-[11px] tracking-tight mt-1.5 underline underline-offset-2 font-medium ${
+          isOnBlue ? "text-white/80 hover:text-white" : "text-gray-500 hover:text-gray-800"
+        }`}
+      >
+        {DEMO_LINK_LABEL}
+      </a>
     </div>
   );
 }

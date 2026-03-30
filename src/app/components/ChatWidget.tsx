@@ -19,7 +19,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi — I can help service businesses stop missing calls and capture more jobs. What kind of business are you in, and what happens when calls come in after hours?",
+        "Hi — Automagixx helps contractors stop losing jobs to missed calls and slow follow-up. The fastest next step is a direct call to (484) 673-7612 (no forms). If you want to hear how it sounds first, try our 30-second demo line at 484-992-9411. What kind of work do you do, and what usually happens when you miss a call?",
     },
   ]);
 
@@ -67,7 +67,7 @@ export default function ChatWidget() {
       const data = (await res.json()) as { reply?: string };
       const reply =
         data.reply ??
-        "Sorry — I couldn’t respond right now. If you want, book a free 10-minute call and we’ll help you identify what’s leaking jobs.";
+        "Sorry — I couldn’t respond right now. Call (484) 673-7612 and we’ll help you pinpoint what’s leaking jobs. For a quick listen, dial 484-992-9411.";
 
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
@@ -76,7 +76,7 @@ export default function ChatWidget() {
         {
           role: "assistant",
           content:
-            "Sorry — something went wrong. Book a free 10-minute call — no commitment — and we’ll show you where your business is losing jobs.",
+            "Sorry — something went wrong. Call (484) 673-7612 — we’ll help you see where jobs are getting lost. Try 484-992-9411 if you want the quick demo first.",
         },
       ]);
     } finally {
@@ -146,7 +146,7 @@ export default function ChatWidget() {
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about missed calls, scheduling, or booking…"
+                  placeholder="Ask about missed calls, follow-up, or calling us…"
                   className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <button

@@ -41,7 +41,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex w-full items-center justify-center gap-3 sm:gap-6 md:w-auto md:justify-end shrink-0">
-              <a href="tel:4844249624" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 424-9624</a>
+              <a href="tel:4846737612" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 673-7612</a>
               <PrimaryCta className="px-1 sm:px-5 py-0" showGuarantee={false} />
             </div>
           </div>
@@ -72,8 +72,8 @@ export default function Home() {
 
               <p className="text-[15px] text-gray-700 pt-3 tracking-tight">
                 Or call us:{" "}
-                <a href="tel:4844249624" className="text-blue-700 hover:text-blue-800 font-medium underline underline-offset-2">
-                  (484) 424-9624
+                <a href="tel:4846737612" className="text-blue-700 hover:text-blue-800 font-medium underline underline-offset-2">
+                  (484) 673-7612
                 </a>
               </p>
               
@@ -97,18 +97,31 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="relative lg:block hidden">
+            <div className="relative mt-12 lg:mt-0">
               <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-2xl blur-2xl"></div>
-                <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200">
-                  <Image
-                    src="/images/dashboard-preview.png"
-                    alt="Automagixx Dashboard"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto"
-                    priority
-                  />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-blue-600/8 rounded-2xl blur-2xl" />
+                <div className="relative rounded-2xl border border-gray-200 bg-white shadow-2xl p-8 sm:p-10">
+                  <p className="text-blue-600 font-medium text-[14px] tracking-tight mb-2">Live demo</p>
+                  <h3 className="text-[24px] sm:text-[28px] font-semibold text-gray-900 tracking-tight leading-tight">
+                    Try It Live (30 seconds)
+                  </h3>
+                  <p className="text-[16px] text-gray-600 mt-3 tracking-tight leading-relaxed">
+                    Call and hear exactly how it works
+                  </p>
+                  <a
+                    href="tel:4849929411"
+                    className="mt-6 inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all text-[15px] font-medium tracking-tight w-full sm:w-auto"
+                  >
+                    Try the Demo
+                  </a>
+                  <p className="mt-5 text-[15px] text-gray-700 tracking-tight">
+                    <a
+                      href="tel:4849929411"
+                      className="text-blue-700 hover:text-blue-800 font-semibold underline underline-offset-2"
+                    >
+                      484-992-9411
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -377,11 +390,18 @@ export default function Home() {
       >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 tracking-tight text-center leading-[1.15]">
-            Book Your Free 10-Minute Call
+            Optional: schedule a time online
           </h2>
-          <p className="text-[17px] text-gray-600 text-center max-w-2xl mx-auto mb-10 leading-relaxed tracking-tight">
-            We&apos;ll show you exactly where you&apos;re losing jobs and revenue — and whether this
-            system makes sense for your business.
+          <p className="text-[17px] text-gray-600 text-center max-w-2xl mx-auto mb-4 leading-relaxed tracking-tight">
+            The fastest path is a direct call:{" "}
+            <a href="tel:4846737612" className="text-blue-700 underline underline-offset-2 font-medium hover:text-blue-800">
+              (484) 673-7612
+            </a>
+            . Want to hear it first? Try the demo:{" "}
+            <a href="tel:4849929411" className="text-blue-700 underline underline-offset-2 font-medium hover:text-blue-800">
+              484-992-9411
+            </a>
+            . If you prefer to pick a slot, use the calendar below.
           </p>
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <iframe
@@ -391,8 +411,7 @@ export default function Home() {
             />
           </div>
           <p className="text-[14px] text-gray-600 text-center mt-6 tracking-tight max-w-xl mx-auto leading-relaxed">
-            After booking, you&apos;ll be redirected to a quick 60-second form so I can prepare for
-            the call.
+            After scheduling, you may see a short prep link so we can make the conversation useful.
           </p>
           <p className="text-[12px] text-gray-500 text-center mt-4 tracking-tight max-w-3xl mx-auto leading-relaxed">
             By submitting this form, you agree to receive SMS messages from Automagixx related to
@@ -537,10 +556,10 @@ export default function Home() {
       <section className="py-24 px-6 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-[40px] lg:text-[48px] font-semibold mb-6 tracking-tight">
-            See Where You&apos;re Losing Jobs
+            Talk to us directly
           </h2>
           <p className="text-[18px] lg:text-[19px] mb-12 opacity-95 tracking-tight">
-            Free 10-minute call — no commitment. We&apos;ll show you what&apos;s causing missed calls and lost bookings.
+            Call now to speak with us — no forms. Or try the 30-second demo line first.
           </p>
 
           <div className="flex justify-center">
@@ -549,10 +568,10 @@ export default function Home() {
 
           <p className="mt-6">
             <a
-              href="tel:4844249624"
+              href="tel:4846737612"
               className="text-white/90 hover:text-white text-[15px] font-medium tracking-tight underline underline-offset-2"
             >
-              Or call (484) 424-9624
+              Or call (484) 673-7612
             </a>
           </p>
         </div>
@@ -594,7 +613,7 @@ export default function Home() {
               <h4 className="font-semibold text-[15px] mb-6 tracking-tight">Contact</h4>
               <ul className="space-y-3 text-gray-400 text-[14px] tracking-tight">
                 <li>Philadelphia Area, PA</li>
-                <li><a href="tel:4844249624" className="hover:text-white transition">(484) 424-9624</a></li>
+                <li><a href="tel:4846737612" className="hover:text-white transition">(484) 673-7612</a></li>
                 <li><a href="mailto:brendan@automagixx.com" className="hover:text-white transition">brendan@automagixx.com</a></li>
                 <li><a href="/guarantee" className="hover:text-white transition">Performance Guarantee</a></li>
                 <li><a href="/privacy-policy" className="hover:text-white transition">Privacy Policy</a></li>
