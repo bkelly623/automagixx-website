@@ -15,7 +15,9 @@ import {
   KeyRound,
   Bug,
 } from "lucide-react";
-import PrimaryCta from "./components/PrimaryCta";
+import NavCtaPair from "./components/NavCtaPair";
+import DualCtaCards from "./components/DualCtaCards";
+import HeroCallCard from "./components/HeroCallCard";
 
 export default function Home() {
   return (
@@ -26,11 +28,11 @@ export default function Home() {
           <div className="flex items-center justify-center md:justify-between gap-4 min-h-24 py-2 md:py-0">
             <div className="hidden md:flex items-center gap-12 min-w-0">
               <Image
-                src="/logo.png"
+                src="/logo-robot.png"
                 alt="Automagixx"
-                width={360}
-                height={112}
-                className="w-auto h-28"
+                width={160}
+                height={160}
+                className="w-auto h-20 sm:h-24"
                 priority
               />
               <div className="hidden lg:flex items-center gap-10">
@@ -40,9 +42,8 @@ export default function Home() {
                 <a href="#outcomes" className="text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">Outcomes</a>
               </div>
             </div>
-            <div className="flex w-full items-center justify-center gap-3 sm:gap-6 md:w-auto md:justify-end shrink-0">
-              <a href="tel:4846737612" className="hidden md:block text-[15px] text-gray-700 hover:text-gray-900 transition font-medium tracking-tight">(484) 673-7612</a>
-              <PrimaryCta className="px-1 sm:px-5 py-0" showGuarantee={false} />
+            <div className="flex w-full items-center justify-center md:w-auto md:justify-end shrink-0 px-1">
+              <NavCtaPair compact className="px-1 sm:px-3" />
             </div>
           </div>
         </div>
@@ -54,58 +55,34 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#0A1628]/8 to-blue-400/8 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="space-y-8 text-center lg:text-left">
               <h1 className="text-[56px] lg:text-[72px] font-semibold text-gray-900 leading-[1.1] tracking-tight">
                 Stop Missing Calls.
                 <br />
                 <span className="text-blue-600">Start Capturing More Jobs.</span>
               </h1>
-              
-              <p className="text-[19px] lg:text-[21px] text-gray-600 leading-relaxed tracking-tight">
+
+              <p className="text-[19px] lg:text-[21px] text-gray-600 leading-relaxed tracking-tight max-w-xl mx-auto lg:mx-0">
                 If your business relies on phone calls, you&apos;re losing jobs every time one goes unanswered. We help you capture those opportunities automatically.
               </p>
-              
-              <div className="flex flex-col pt-6">
-                <PrimaryCta />
-              </div>
 
-              <p className="text-[15px] text-gray-700 pt-3 tracking-tight">
-                Or call us:{" "}
-                <a href="tel:4846737612" className="text-blue-700 hover:text-blue-800 font-medium underline underline-offset-2">
-                  (484) 673-7612
-                </a>
-              </p>
-              
-              <div className="flex flex-wrap items-center gap-6 text-[13px] text-gray-600 pt-2 tracking-tight">
-                <span className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Built for service businesses
-                </span>
-                <span className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  No new headcount required
-                </span>
-                <span className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Works with the tools you already use
-                </span>
+              <div className="flex flex-col pt-2 max-w-md mx-auto lg:mx-0">
+                <HeroCallCard />
               </div>
-
-              <p className="text-[13px] text-gray-500 pt-3 tracking-tight">
-                Have a quick question? Use the chat.
-              </p>
             </div>
 
-            <div className="relative mt-12 lg:mt-0">
+            <div className="relative mt-4 lg:mt-0 w-full max-w-md mx-auto lg:max-w-none lg:ml-auto">
               <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-blue-600/8 rounded-2xl blur-2xl" />
-                <div className="relative rounded-2xl border border-gray-200 bg-white shadow-2xl p-8 sm:p-10">
-                  <p className="text-blue-600 font-medium text-[14px] tracking-tight mb-2">Live demo</p>
-                  <h3 className="text-[24px] sm:text-[28px] font-semibold text-gray-900 tracking-tight leading-tight">
+                <div className="relative rounded-2xl border border-gray-200 bg-white shadow-2xl p-8 sm:p-10 flex flex-col items-center text-center">
+                  <p className="text-blue-600 font-medium text-[14px] tracking-tight mb-2 w-full">
+                    Live demo
+                  </p>
+                  <h3 className="text-[24px] sm:text-[28px] font-semibold text-gray-900 tracking-tight leading-tight w-full">
                     Try It Live (30 seconds)
                   </h3>
-                  <p className="text-[16px] text-gray-600 mt-3 tracking-tight leading-relaxed">
+                  <p className="text-[16px] text-gray-600 mt-3 tracking-tight leading-relaxed w-full">
                     Call and hear exactly how it works
                   </p>
                   <a
@@ -114,7 +91,7 @@ export default function Home() {
                   >
                     Try the Demo
                   </a>
-                  <p className="mt-5 text-[15px] text-gray-700 tracking-tight">
+                  <p className="mt-5 text-[15px] text-gray-700 tracking-tight w-full text-center">
                     <a
                       href="tel:4849929411"
                       className="text-blue-700 hover:text-blue-800 font-semibold underline underline-offset-2"
@@ -126,6 +103,39 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Funnel — missed revenue (second section) */}
+      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white border-b border-gray-200">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-[34px] sm:text-[42px] lg:text-[48px] font-semibold text-gray-900 leading-[1.15] tracking-tight">
+            Every missed call is a job your competitor just booked
+          </h2>
+          <p className="text-[17px] text-gray-600 mt-5 leading-relaxed tracking-tight">
+            Many service businesses miss{" "}
+            <span className="font-semibold text-gray-900">10–30% of their incoming calls</span>. Every one
+            of those calls could be a real job that quietly disappears.
+          </p>
+        </div>
+        <div className="max-w-xl mx-auto mt-10 px-2">
+          <div className="rounded-2xl border border-gray-200 bg-white shadow-lg p-8 ring-1 ring-blue-500/5">
+            <p className="text-[16px] text-gray-800 font-semibold mb-3 tracking-tight text-center sm:text-left">
+              A simple example
+            </p>
+            <ul className="space-y-2 text-[15px] text-gray-700 tracking-tight">
+              <li>• You miss just <span className="font-semibold">2 calls per day</span>.</li>
+              <li>• Only <span className="font-semibold">half</span> of those callers would have become paying jobs.</li>
+              <li>• Your average job is worth <span className="font-semibold">$300</span>.</li>
+              <li className="mt-3 font-semibold text-gray-900 pt-3 border-t border-gray-100">
+                That&apos;s roughly $300 × 2 jobs/week × 52 weeks ≈{" "}
+                <span className="text-blue-700">$18,000+ per year</span> in lost revenue.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-4xl mx-auto mt-10 px-2">
+          <DualCtaCards />
         </div>
       </section>
 
@@ -160,33 +170,8 @@ export default function Home() {
           <p className="text-center text-gray-600 text-[17px] max-w-3xl mx-auto leading-relaxed tracking-tight">
             If your team is busy on jobs, after-hours, or overwhelmed with admin, opportunities slip through the cracks. Automagixx fixes those leaks with call-capture and follow-up systems.
           </p>
-        </div>
-      </section>
-
-      {/* Revenue Calculator / Missed Revenue Section */}
-      <section className="py-20 px-6 bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 leading-[1.15] tracking-tight">
-            How Much Revenue Are You Missing?
-          </h2>
-          <p className="text-[17px] text-gray-600 mb-6 leading-relaxed tracking-tight">
-            Many service businesses miss <span className="font-semibold text-gray-900">10–30% of their incoming calls</span>. Every one of those calls could be a real job that quietly disappears.
-          </p>
-          <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 text-left mb-8">
-            <p className="text-[16px] text-gray-800 font-semibold mb-3 tracking-tight">
-              A simple example:
-            </p>
-            <ul className="space-y-2 text-[15px] text-gray-700 tracking-tight">
-              <li>• You miss just <span className="font-semibold">2 calls per day</span>.</li>
-              <li>• Only <span className="font-semibold">half</span> of those callers would have become paying jobs.</li>
-              <li>• Your average job is worth <span className="font-semibold">$300</span>.</li>
-              <li className="mt-3 font-semibold text-gray-900">
-                That&apos;s roughly $300 × 2 jobs/week × 52 weeks ≈ <span className="text-blue-700">$18,000+ per year</span> in lost revenue.
-              </li>
-            </ul>
-          </div>
-          <div className="flex justify-center">
-            <PrimaryCta />
+          <div className="mt-14 max-w-4xl mx-auto px-2">
+            <DualCtaCards />
           </div>
         </div>
       </section>
@@ -225,6 +210,9 @@ export default function Home() {
               No more lost opportunities
             </li>
           </ul>
+          <div className="mt-14 max-w-4xl mx-auto">
+            <DualCtaCards />
+          </div>
         </div>
       </section>
 
@@ -262,6 +250,9 @@ export default function Home() {
               Reporting and performance tracking
             </li>
           </ul>
+          <div className="mt-14 max-w-4xl mx-auto">
+            <DualCtaCards />
+          </div>
         </div>
       </section>
 
@@ -324,6 +315,9 @@ export default function Home() {
           <p className="text-center text-gray-500 text-[15px] max-w-2xl mx-auto tracking-tight">
             We can adapt the system to other service businesses, but we specialize in home-service revenue recovery.
           </p>
+          <div className="mt-14 max-w-4xl mx-auto px-2">
+            <DualCtaCards />
+          </div>
         </div>
       </section>
 
@@ -361,24 +355,8 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-16 flex justify-center">
-            <PrimaryCta />
-          </div>
-        </div>
-      </section>
-
-      {/* Price Anchor */}
-      <section className="py-20 px-6 bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-[19px] text-gray-700 leading-relaxed tracking-tight">
-              Plans start at $397/month — most clients recover far more in missed revenue than the system costs.
-            </p>
-            <p className="text-[16px] text-gray-600 leading-relaxed tracking-tight mt-3">
-              <a href="/guarantee" className="underline underline-offset-2 hover:text-gray-800">
-                Includes a 30-day performance guarantee.
-              </a>
-            </p>
+          <div className="mt-16 max-w-4xl mx-auto px-2">
+            <DualCtaCards />
           </div>
         </div>
       </section>
@@ -403,6 +381,9 @@ export default function Home() {
             </a>
             . If you prefer to pick a slot, use the calendar below.
           </p>
+          <div className="max-w-4xl mx-auto mb-10 px-2">
+            <DualCtaCards />
+          </div>
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
@@ -477,6 +458,9 @@ export default function Home() {
           <p className="text-gray-600 text-[17px] max-w-3xl tracking-tight leading-relaxed">
             Automagixx clients don&apos;t just get automation — they get ongoing visibility into performance, revenue recovery, and system activity.
           </p>
+          <div className="mt-14 max-w-4xl mx-auto px-2">
+            <DualCtaCards />
+          </div>
         </div>
       </section>
 
@@ -511,11 +495,14 @@ export default function Home() {
               More consistent revenue
             </li>
           </ul>
+          <div className="mt-14 max-w-4xl mx-auto px-2">
+            <DualCtaCards />
+          </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 px-6 bg-white" id="testimonials">
+      <section className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white border-y border-gray-100" id="testimonials">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-[40px] lg:text-[48px] font-semibold text-gray-900 mb-4 tracking-tight">
@@ -526,54 +513,62 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Mike L.</p>
-              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Plumbing Company</p>
-              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            <div className="group relative bg-white p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow ring-1 ring-blue-500/5 md:-rotate-1 md:hover:rotate-0">
+              <span className="text-5xl text-blue-100 font-serif leading-none absolute top-4 left-5 select-none" aria-hidden>
+                &ldquo;
+              </span>
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2 relative z-10">Mike L.</p>
+              <p className="text-blue-600 text-[13px] font-medium tracking-tight mb-4 relative z-10">Plumbing Company</p>
+              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight relative z-10">
                 We were missing calls constantly. Now jobs are getting booked even when we&apos;re busy. It just works. We&apos;ve already picked up extra jobs this month.
               </p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Dave R.</p>
-              <p className="text-gray-700 text-[14px] tracking-tight mb-4">HVAC Company</p>
-              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
+            <div className="group relative bg-white p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow ring-1 ring-blue-500/5">
+              <span className="text-5xl text-blue-100 font-serif leading-none absolute top-4 left-5 select-none" aria-hidden>
+                &ldquo;
+              </span>
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2 relative z-10">Dave R.</p>
+              <p className="text-blue-600 text-[13px] font-medium tracking-tight mb-4 relative z-10">HVAC Company</p>
+              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight relative z-10">
                 The biggest difference is speed. Customers get responses immediately instead of waiting.
               </p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200">
-              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2">Chris T.</p>
-              <p className="text-gray-700 text-[14px] tracking-tight mb-4">Electrical Contractor</p>
-              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight">
+            <div className="group relative bg-white p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow ring-1 ring-blue-500/5 md:rotate-1 md:hover:rotate-0">
+              <span className="text-5xl text-blue-100 font-serif leading-none absolute top-4 left-5 select-none" aria-hidden>
+                &ldquo;
+              </span>
+              <p className="font-semibold text-gray-900 text-[16px] tracking-tight mb-2 relative z-10">Chris T.</p>
+              <p className="text-blue-600 text-[13px] font-medium tracking-tight mb-4 relative z-10">Electrical Contractor</p>
+              <p className="text-gray-600 text-[14px] leading-relaxed tracking-tight relative z-10">
                 We didn&apos;t realize how many jobs we were losing until we fixed this. The follow-up is on point.
               </p>
             </div>
+          </div>
+          <div className="mt-16 max-w-4xl mx-auto px-2">
+            <DualCtaCards />
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-[40px] lg:text-[48px] font-semibold mb-6 tracking-tight">
+      <section className="relative overflow-hidden py-24 px-6 bg-gradient-to-br from-blue-800 via-blue-600 to-indigo-700 text-white">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255,255,255,0.22), transparent 50%), radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255,255,255,0.12), transparent 45%)",
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto text-center">
+          <h2 className="text-[40px] lg:text-[48px] font-semibold mb-6 tracking-tight drop-shadow-sm">
             Talk to us directly
           </h2>
-          <p className="text-[18px] lg:text-[19px] mb-12 opacity-95 tracking-tight">
-            Call now to speak with us — no forms. Or try the 30-second demo line first.
+          <p className="text-[18px] lg:text-[19px] mb-10 text-white/95 tracking-tight max-w-2xl mx-auto leading-relaxed">
+            Call now — or try the 30-second demo line and hear how it works before you commit to anything.
           </p>
 
-          <div className="flex justify-center">
-            <PrimaryCta variant="onBlue" />
-          </div>
-
-          <p className="mt-6">
-            <a
-              href="tel:4846737612"
-              className="text-white/90 hover:text-white text-[15px] font-medium tracking-tight underline underline-offset-2"
-            >
-              Or call (484) 673-7612
-            </a>
-          </p>
+          <DualCtaCards variant="onBlue" />
         </div>
       </section>
 
@@ -583,11 +578,11 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <Image
-                src="/logo-dark.png"
+                src="/logo-robot.png"
                 alt="Automagixx"
-                width={160}
-                height={40}
-                className="h-10 w-auto mb-6"
+                width={120}
+                height={120}
+                className="h-16 w-auto mb-6 brightness-0 invert opacity-95"
               />
               <p className="text-gray-400 text-[14px] leading-relaxed tracking-tight">
                 Automagixx helps service businesses recover lost revenue from missed calls.

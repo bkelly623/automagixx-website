@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import PrimaryCta from "./PrimaryCta";
+import NavCtaPair from "./NavCtaPair";
 
 type ChatRole = "user" | "assistant";
 
@@ -132,7 +132,7 @@ export default function ChatWidget() {
 
             <div className="px-4 py-3 border-t border-gray-200">
               <div className="mb-3">
-                <PrimaryCta className="rounded-xl px-4 py-3 text-[14px]" />
+                <NavCtaPair compact className="w-full" />
               </div>
 
               <form
