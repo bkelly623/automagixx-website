@@ -11,9 +11,18 @@ type NavCtaPairProps = {
   className?: string;
   /** Tighter layout for chat drawer / small widths. */
   compact?: boolean;
+  /** Show the secondary demo CTA stack. */
+  showDemo?: boolean;
+  /** Show guarantee micro-copy under primary CTA. */
+  showGuarantee?: boolean;
 };
 
-export default function NavCtaPair({ className = "", compact = false }: NavCtaPairProps) {
+export default function NavCtaPair({
+  className = "",
+  compact = false,
+  showDemo = true,
+  showGuarantee = true,
+}: NavCtaPairProps) {
   const gap = compact ? "gap-2" : "gap-3";
   const btnPrimary = compact
     ? "px-3 py-2 text-[11px] sm:px-4 sm:py-2.5 sm:text-[13px]"
@@ -33,24 +42,28 @@ export default function NavCtaPair({ className = "", compact = false }: NavCtaPa
         >
           {CTA_LABEL}
         </a>
-        <a
-          href="/guarantee"
-          className="text-[9px] sm:text-[10px] text-gray-500 hover:text-gray-700 tracking-tight mt-1 underline underline-offset-2 max-w-[200px] leading-tight"
-        >
-          {CTA_MICRO}
-        </a>
+        {showGuarantee ? (
+          <a
+            href="/guarantee"
+            className="text-[9px] sm:text-[10px] text-gray-500 hover:text-gray-700 tracking-tight mt-1 underline underline-offset-2 max-w-[200px] leading-tight"
+          >
+            {CTA_MICRO}
+          </a>
+        ) : null}
       </div>
-      <div className="flex flex-col items-center sm:items-start text-center sm:text-left min-w-0 shrink">
-        <a
-          href={DEMO_PHONE_HREF}
-          className={`inline-flex items-center justify-center rounded-full border-2 border-blue-200 text-blue-700 bg-white hover:bg-blue-50 transition-all duration-200 tracking-tight font-semibold whitespace-nowrap ${btnDemo}`}
-        >
-          {DEMO_LABEL}
-        </a>
-        <p className="text-[9px] sm:text-[10px] text-gray-500 tracking-tight mt-1 max-w-[9.5rem] sm:max-w-[11rem] leading-tight">
-          {DEMO_SUBTEXT}
-        </p>
-      </div>
+      {showDemo ? (
+        <div className="flex flex-col items-center sm:items-start text-center sm:text-left min-w-0 shrink">
+          <a
+            href={DEMO_PHONE_HREF}
+            className={`inline-flex items-center justify-center rounded-full border-2 border-blue-200 text-blue-700 bg-white hover:bg-blue-50 transition-all duration-200 tracking-tight font-semibold whitespace-nowrap ${btnDemo}`}
+          >
+            {DEMO_LABEL}
+          </a>
+          <p className="text-[9px] sm:text-[10px] text-gray-500 tracking-tight mt-1 max-w-[9.5rem] sm:max-w-[11rem] leading-tight">
+            {DEMO_SUBTEXT}
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }

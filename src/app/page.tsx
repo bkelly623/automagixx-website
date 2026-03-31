@@ -46,7 +46,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex w-full items-center justify-center md:w-auto md:justify-end shrink-0 px-1">
-              <NavCtaPair compact className="px-1 sm:px-3" />
+              <NavCtaPair compact showDemo={false} showGuarantee={false} className="px-1 sm:px-3" />
             </div>
           </div>
         </div>
