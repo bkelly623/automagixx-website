@@ -1,0 +1,16 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Automagixx robot logo">
+  <rect width="320" height="320" fill="transparent"/>
+  <g transform="translate(24 20)">
+    <path d="M66 40C66 20.1178 82.1177 4 102 4H170C189.882 4 206 20.1178 206 40V62H66V40Z" fill="#F7C948" stroke="#1B2A52" stroke-width="8"/>
+    <circle cx="136" cy="34" r="16" fill="white" stroke="#1B2A52" stroke-width="6"/>
+    <path d="M136 25V43M127 34H145" stroke="#1B2A52" stroke-width="5" stroke-linecap="round"/>
+    <rect x="40" y="56" width="192" height="168" rx="52" fill="white" stroke="#1B2A52" stroke-width="10"/>
+    <rect x="74" y="94" width="124" height="54" rx="27" fill="#1B2A52"/>
+    <path d="M108 121C111 112 118 106 126 106C134 106 141 112 144 121" stroke="#75D9FF" stroke-width="8" stroke-linecap="round"/>
+    <path d="M152 121C155 112 162 106 170 106C178 106 185 112 188 121" stroke="#75D9FF" stroke-width="8" stroke-linecap="round"/>
+    <path d="M123 164C132 171 140 174 148 174C156 174 164 171 173 164" stroke="#1B2A52" stroke-width="7" stroke-linecap="round"/>
+    <rect x="104" y="194" width="64" height="24" rx="8" fill="#75D9FF" stroke="#1B2A52" stroke-width="6"/>
+    <path d="M24 142C24 126 37 113 53 113H59V171H53C37 171 24 158 24 142Z" fill="#EAF0FF" stroke="#1B2A52" stroke-width="8"/>
+    <path d="M248 142C248 126 235 113 219 113H213V171H219C235 171 248 158 248 142Z" fill="#EAF0FF" stroke="#1B2A52" stroke-width="8"/>
+  </g>
+</svg>

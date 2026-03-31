@@ -30,7 +30,7 @@ export default function Home() {
             <div className="hidden md:flex items-center gap-12 min-w-0">
               <span className="inline-flex rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-gray-200/90">
                 <Image
-                  src="/logo-robot.png"
+                  src="/logo-robot.svg"
                   alt="Automagixx"
                   width={160}
                   height={160}
@@ -86,7 +86,7 @@ export default function Home() {
                     Hear it on your phone
                   </h3>
                   <p className="text-[15px] text-gray-600 mt-3 tracking-tight leading-relaxed w-full">
-                    One quick call—no pitch, just the flow.
+                    One quick call - no pitch, just the flow.
                   </p>
                   <a
                     href={DEMO_PHONE_HREF}
@@ -561,7 +561,7 @@ export default function Home() {
             <div>
               <span className="inline-flex rounded-2xl bg-white p-2 mb-6 ring-1 ring-gray-700/60 shadow-md">
                 <Image
-                  src="/logo-robot.png"
+                  src="/logo-robot.svg"
                   alt="Automagixx"
                   width={120}
                   height={120}
