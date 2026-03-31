@@ -393,7 +393,7 @@ export default function Home() {
               Privacy Policy
             </a>{" "}
             and{" "}
-            <a href="/terms" className="underline underline-offset-2 hover:text-gray-700">
+            <a href="/terms-of-service" className="underline underline-offset-2 hover:text-gray-700">
               Terms of Service
             </a>
             .
@@ -596,7 +596,7 @@ export default function Home() {
                 <li><a href="mailto:brendan@automagixx.com" className="hover:text-white transition">brendan@automagixx.com</a></li>
                 <li><a href="/guarantee" className="hover:text-white transition">Performance Guarantee</a></li>
                 <li><a href="/privacy-policy" className="hover:text-white transition">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-white transition">Terms of Service</a></li>
+                <li><a href="/terms-of-service" className="hover:text-white transition">Terms of Service</a></li>
               </ul>
             </div>
           </div>
