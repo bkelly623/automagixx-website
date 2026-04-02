@@ -46,7 +46,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex w-full items-center justify-center md:w-auto md:justify-end shrink-0 px-1">
-              <NavCtaPair compact showDemo={false} showGuarantee={false} className="px-1 sm:px-3" />
+              <NavCtaPair compact showDemo={false} className="px-1 sm:px-3" />
             </div>
           </div>
         </div>
@@ -378,7 +378,10 @@ export default function Home() {
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
-              className="block w-full min-h-[720px] sm:min-h-[820px] lg:min-h-[900px] border-0"
+              id="deaNfs7Dq6XtD6FzYMR8_1775089987086"
+              className="block w-full min-h-[720px] sm:min-h-[820px] lg:min-h-[900px] border-0 overflow-hidden"
+              style={{ width: "100%", border: "none", overflow: "hidden" }}
+              scrolling="no"
               title="Schedule a free 10-minute call with Automagixx"
             />
           </div>
