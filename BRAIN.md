@@ -39,7 +39,7 @@ Especially: **trades / home services**, **salons & beauty**, **med spa / wellnes
 ### Voice & copy guardrails
 
 - **Do:** sharp, concise, exciting-but-professional, useful, confidence-building.
-- **Avoid:** generic AI-agency sludge (“cutting-edge solutions,” “leverage technology,” “streamline operations”), boring template filler, and **mixing phone numbers** (see §4).
+- **Avoid:** generic AI-agency sludge (“cutting-edge solutions,” “leverage technology,” “streamline operations”), boring template filler, and **mixing phone numbers** (see §3).
 
 ---
 
