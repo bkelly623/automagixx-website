@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import Script from "next/script";
 import {
   Sparkles,
@@ -20,36 +22,50 @@ import {
   PRIMARY_PHONE_HREF,
 } from "./components/cta";
 
-const sectionEyebrow = "text-[12px] font-semibold uppercase tracking-[0.2em] text-blue-600/90 mb-4";
+const sectionEyebrow =
+  "text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.22em] text-blue-600 mb-4";
 const cardBase =
-  "rounded-3xl border border-gray-200/80 bg-white p-8 shadow-sm shadow-gray-200/40 hover:shadow-md hover:border-gray-300/80 transition-all duration-300";
+  "rounded-3xl border border-gray-200/70 bg-white p-8 shadow-[0_1px_3px_rgba(15,23,42,0.06)] hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] hover:border-gray-200 transition-all duration-300";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased">
-      <nav className="fixed top-0 w-full z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-md">
+    <div
+      id="top"
+      className="min-h-screen bg-[#fafbfc] text-gray-900 font-sans antialiased"
+    >
+      <nav className="fixed top-0 w-full z-50 border-b border-gray-200/70 bg-white/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-center justify-between gap-6 min-h-[4.5rem]">
-            <a href="#" className="flex items-center gap-2 shrink-0 group">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white text-[13px] font-bold shadow-sm group-hover:shadow-md transition-shadow">
-                A
+          <div className="flex items-center justify-between gap-4 min-h-[4.75rem] sm:min-h-[5rem]">
+            <Link href="/#top" className="flex items-center gap-3 shrink-0 group">
+              <span className="inline-flex rounded-2xl bg-white p-1 shadow-sm ring-1 ring-gray-200/90 group-hover:shadow-md group-hover:ring-gray-300/90 transition-all">
+                <Image
+                  src="/logo-robot.png"
+                  alt="Automagixx"
+                  width={160}
+                  height={160}
+                  className="h-9 w-auto sm:h-11 block"
+                  priority
+                />
               </span>
-              <span className="text-[17px] font-semibold tracking-tight bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              <span className="text-[17px] sm:text-[18px] font-semibold tracking-tight text-gray-900">
                 Automagixx
               </span>
-            </a>
-            <div className="hidden md:flex items-center gap-8 text-[14px] font-medium text-gray-600">
+            </Link>
+            <div className="hidden lg:flex items-center gap-7 text-[14px] font-medium text-gray-600">
+              <a href="#problem" className="hover:text-gray-900 transition-colors">
+                Why
+              </a>
               <a href="#system" className="hover:text-gray-900 transition-colors">
                 System
               </a>
               <a href="#how-it-works" className="hover:text-gray-900 transition-colors">
-                How it works
+                Flow
               </a>
               <a href="#magic" className="hover:text-gray-900 transition-colors">
-                The magic
+                Magic
               </a>
               <a href="#outcomes" className="hover:text-gray-900 transition-colors">
-                Outcomes
+                Results
               </a>
               <a href="#demo" className="hover:text-gray-900 transition-colors">
                 Demo
@@ -66,47 +82,47 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-24 sm:pt-40 sm:pb-32 px-5 sm:px-8 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.12),transparent)]" />
-        <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-indigo-50/80 to-transparent rounded-full blur-3xl" />
+      <section className="relative pt-32 pb-28 sm:pt-40 sm:pb-36 px-5 sm:px-8 overflow-hidden bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(59,130,246,0.11),transparent_55%)]" />
+        <div className="pointer-events-none absolute bottom-0 right-0 w-[min(100%,520px)] h-[520px] bg-gradient-to-tl from-indigo-50/90 via-white/0 to-transparent rounded-full blur-3xl opacity-90" />
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <div className="space-y-8">
-              <h1 className="text-[2.5rem] sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight leading-[1.08] text-gray-900">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-16 xl:gap-20 items-center">
+            <div className="space-y-8 lg:space-y-10">
+              <h1 className="text-[2.45rem] sm:text-5xl lg:text-[3.35rem] xl:text-[3.5rem] font-semibold tracking-[-0.02em] leading-[1.06] text-gray-950">
                 AI That Captures Every Opportunity —{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   Like Magic.
                 </span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-xl">
+              <p className="text-lg sm:text-[1.15rem] text-gray-600 leading-[1.65] max-w-[28rem]">
                 Calls, texts, and messages handled instantly. So every inquiry turns into a real
                 booking — automatically.
               </p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
                 <a
                   href={PRIMARY_PHONE_HREF}
-                  className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-8 py-4 text-[15px] font-semibold tracking-tight shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-8 py-3.5 sm:py-4 text-[15px] font-semibold tracking-tight shadow-[0_4px_14px_rgba(37,99,235,0.35)] hover:bg-blue-700 hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] transition-all active:scale-[0.98]"
                 >
                   {HERO_PRIMARY_CTA_LABEL}
                 </a>
                 <a
                   href={DEMO_PHONE_HREF}
-                  className="inline-flex items-center justify-center rounded-full border-2 border-gray-200 bg-white px-8 py-4 text-[15px] font-semibold text-gray-900 tracking-tight hover:border-blue-200 hover:bg-blue-50/50 transition-all"
+                  className="inline-flex items-center justify-center rounded-full border border-gray-200/90 bg-white/80 backdrop-blur-sm px-8 py-3.5 sm:py-4 text-[15px] font-semibold text-gray-900 tracking-tight hover:border-blue-200 hover:bg-white hover:shadow-md transition-all active:scale-[0.98]"
                 >
                   {DEMO_CTA_LABEL}
                 </a>
               </div>
-              <p className="text-[14px] text-gray-500">
+              <p className="text-[13px] sm:text-[14px] text-gray-500">
                 <span className="font-medium text-gray-700">{PRIMARY_PHONE_DISPLAY}</span>
                 <span className="mx-2">·</span>
                 <span>Demo: {DEMO_PHONE_DISPLAY}</span>
               </p>
             </div>
 
-            <div className="relative lg:pl-4">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-[2rem] blur-2xl" />
-              <div className="relative rounded-[1.75rem] border border-gray-200/80 bg-white shadow-xl shadow-gray-200/50 p-8 sm:p-10">
+            <div className="relative lg:pl-2">
+              <div className="absolute -inset-6 bg-gradient-to-br from-blue-500/[0.07] to-indigo-500/[0.12] rounded-[2rem] blur-2xl" />
+              <div className="relative rounded-[1.75rem] border border-gray-200/70 bg-white/95 backdrop-blur-sm shadow-[0_20px_50px_-20px_rgba(15,23,42,0.18)] p-8 sm:p-10">
                 <p className="text-blue-600 font-semibold text-[13px] tracking-wide uppercase mb-2">
                   Hear It Live
                 </p>
@@ -129,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* Problem */}
-      <section id="problem" className="py-24 px-5 sm:px-8 bg-gray-50/70 border-y border-gray-100">
+      <section id="problem" className="py-28 px-5 sm:px-8 bg-gray-50/80 border-y border-gray-100/80">
         <div className="max-w-3xl mx-auto text-center">
           <p className={sectionEyebrow}>The gap</p>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-gray-900 leading-tight">
@@ -146,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* System */}
-      <section id="system" className="py-24 px-5 sm:px-8">
+      <section id="system" className="py-28 px-5 sm:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-16">
             <p className={sectionEyebrow}>What you get</p>
@@ -196,7 +212,10 @@ export default function Home() {
       </section>
 
       {/* How it works */}
-      <section id="how-it-works" className="py-24 px-5 sm:px-8 bg-gradient-to-b from-gray-50/50 to-white border-t border-gray-100">
+      <section
+        id="how-it-works"
+        className="py-28 px-5 sm:px-8 bg-gradient-to-b from-gray-50/60 via-white to-white border-t border-gray-100/80"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-14">
             <p className={sectionEyebrow}>Simple flow</p>
@@ -236,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* Magic */}
-      <section id="magic" className="py-24 px-5 sm:px-8 relative overflow-hidden">
+      <section id="magic" className="py-28 px-5 sm:px-8 relative overflow-hidden bg-white">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.08),transparent_50%)]" />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/60 bg-indigo-50/50 px-4 py-2 mb-8">
@@ -262,7 +281,7 @@ export default function Home() {
       </section>
 
       {/* Outcomes */}
-      <section id="outcomes" className="py-24 px-5 sm:px-8 bg-gray-50/70 border-y border-gray-100">
+      <section id="outcomes" className="py-28 px-5 sm:px-8 bg-gray-50/80 border-y border-gray-100/80">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-12">
             <p className={sectionEyebrow}>What changes</p>
@@ -290,8 +309,8 @@ export default function Home() {
       </section>
 
       {/* Demo */}
-      <section id="demo" className="py-24 px-5 sm:px-8">
-        <div className="max-w-4xl mx-auto text-center rounded-[2rem] border border-gray-200/80 bg-gradient-to-br from-white to-blue-50/40 p-10 sm:p-16 shadow-lg shadow-blue-100/30">
+      <section id="demo" className="py-28 px-5 sm:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center rounded-[2rem] border border-gray-200/70 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/20 p-10 sm:p-16 shadow-[0_20px_60px_-24px_rgba(37,99,235,0.2)]">
           <Sparkles className="w-10 h-10 text-blue-600 mx-auto mb-6" strokeWidth={1.5} />
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">
             Try It Yourself
@@ -309,14 +328,18 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-5 sm:px-8 bg-gray-900 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+      <section
+        id="contact"
+        className="py-28 px-5 sm:px-8 bg-gradient-to-b from-gray-900 to-gray-950 text-white relative overflow-hidden"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(59,130,246,0.12),transparent)]" />
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
             Want This Set Up For Your Business?
           </h2>
           <a
             href={PRIMARY_PHONE_HREF}
-            className="mt-10 inline-flex items-center justify-center rounded-full bg-white text-gray-900 px-10 py-4 text-[16px] font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            className="mt-10 inline-flex items-center justify-center rounded-full bg-white text-gray-900 px-10 py-4 text-[16px] font-semibold hover:bg-gray-100 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.25)]"
           >
             {HERO_PRIMARY_CTA_LABEL} → {PRIMARY_PHONE_DISPLAY}
           </a>
@@ -326,7 +349,7 @@ export default function Home() {
       {/* Calendar */}
       <section
         id="book-call"
-        className="scroll-mt-28 py-24 px-5 sm:px-8 bg-gray-50 border-y border-gray-200"
+        className="scroll-mt-28 py-28 px-5 sm:px-8 bg-[#f8f9fb] border-y border-gray-200/80"
       >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 text-center tracking-tight mb-3">
@@ -367,7 +390,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden py-24 px-5 sm:px-8 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+      <section className="relative overflow-hidden py-28 px-5 sm:px-8 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-30"
           style={{
@@ -387,13 +410,24 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-gray-400 py-16 px-5 sm:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
-          <div className="text-center sm:text-left">
-            <p className="text-white font-semibold tracking-tight">Automagixx</p>
-            <p className="text-[14px] mt-2 max-w-xs leading-relaxed">
-              A system that captures and converts every opportunity — automatically.
-            </p>
+      <footer className="bg-gray-950 text-gray-400 py-16 px-5 sm:px-8 border-t border-gray-800/80">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-10">
+          <div className="text-center sm:text-left flex flex-col sm:flex-row sm:items-center gap-5">
+            <span className="inline-flex rounded-2xl bg-white p-2 ring-1 ring-gray-700/50 shadow-md mx-auto sm:mx-0">
+              <Image
+                src="/logo-robot.png"
+                alt="Automagixx"
+                width={120}
+                height={120}
+                className="h-12 w-auto sm:h-14 block"
+              />
+            </span>
+            <div>
+              <p className="text-white font-semibold tracking-tight text-[17px]">Automagixx</p>
+              <p className="text-[14px] mt-2 max-w-[280px] leading-relaxed text-gray-400">
+                A system that captures and converts every opportunity — automatically.
+              </p>
+            </div>
           </div>
           <div className="flex flex-col sm:items-end gap-2 text-[14px]">
             <a href={PRIMARY_PHONE_HREF} className="hover:text-white transition-colors">
