@@ -10,12 +10,12 @@ export default function GuaranteePage() {
           <p>We stand behind our system.</p>
 
           <p>
-            If it&apos;s installed properly and running, it should capture more leads and book more jobs.
+            If it&apos;s installed properly and running, it should capture more leads and book more appointments.
             That&apos;s the entire point.
           </p>
 
           <p>
-            If it doesn&apos;t produce measurable improvements in lead capture or job booking, you don&apos;t pay.
+            If it doesn&apos;t produce measurable improvements in lead capture or bookings, you don&apos;t pay.
           </p>
 
           <p className="font-medium text-gray-900 mt-10">This guarantee applies when:</p>

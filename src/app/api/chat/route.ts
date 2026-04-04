@@ -1,25 +1,11 @@
 import { NextResponse } from "next/server";
 
-type ChatRole = "user" | "assistant";
+const PRIMARY_DISPLAY = "(917) 572-7734";
+const PRIMARY_TEL = "tel:+19175727734";
+const DEMO_DISPLAY = "(484) 673-7612";
+const DEMO_TEL = "tel:+14846737612";
 
-type ChatMessage = {
-  role: ChatRole;
-  content: string;
-};
-
-const SITE_ORIGIN =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
-
-const OPTIONAL_SCHEDULE_URL =
-  SITE_ORIGIN ? `${SITE_ORIGIN}/#book-call` : "/#book-call";
-
-const PRIMARY_PHONE_DISPLAY = "(484) 673-7612";
-const PRIMARY_TEL = "tel:4846737612";
-const DEMO_PHONE_DISPLAY = "484-992-9411";
-const DEMO_TEL = "tel:4849929411";
-
-function getOpenAiApiKey() {
+function resolveOpenAIKey(): string | undefined {
   return (
     process.env.OPENAI_API_KEY ||
     process.env.OPENAI_KEY ||
@@ -28,94 +14,72 @@ function getOpenAiApiKey() {
   );
 }
 
-function buildSystemPrompt() {
-  return [
-    "You are the Automagixx customer service and lead-generation assistant.",
-    "Automagixx helps service businesses stop missing calls, capture more leads, and book more jobs — profit recovery for contractors (plumbing, HVAC, electrical, and similar).",
-    "",
-    "PRIORITY ORDER (always follow this when suggesting next steps):",
-    "1) PRIMARY: Invite the visitor to call the main line now — no forms.",
-    `   Main number: ${PRIMARY_PHONE_DISPLAY} (use link format ${PRIMARY_TEL} only if the UI supports links; otherwise spell the number).`,
-    "2) SECONDARY: If they want a quick taste of how it works, invite them to call the 30-second live demo line:",
-    `   Demo number: ${DEMO_PHONE_DISPLAY} (${DEMO_TEL})`,
-    "3) OPTIONAL / LAST RESORT: Only if they explicitly ask to schedule online or pick a calendar time, mention they can optionally use the scheduling section on the website:",
-    `   Scheduling section: ${OPTIONAL_SCHEDULE_URL}`,
-    "   Make clear phone is faster and preferred.",
-    "",
-    "Tone and style:",
-    "- Sound like a contractor-friendly operations/revenue person — not a software demo.",
-    "- Do NOT mention AI, LLMs, chatbots, 'automation platforms', or technical jargon.",
-    "- Keep replies concise: about 3–6 short sentences unless they ask for detail.",
-    "",
-    "What to accomplish:",
-    "- Help them see how missed calls, slow follow-up, and weak intake quietly lose jobs.",
-    "- Ask 1–2 quick questions when useful (trade, rough call volume, what happens after hours).",
-    "- Then guide them to call the main line, or the demo line if they want to hear it first.",
-    "",
-    "Never present calendar booking as the default. Never suggest forms before a phone call unless they insist on scheduling online.",
-  ].join("\n");
-}
-
 export async function POST(req: Request) {
+  const key = resolveOpenAIKey();
+  if (!key) {
+    return NextResponse.json({
+      reply: `Chat isn’t configured right now. Call or text ${PRIMARY_DISPLAY} (${PRIMARY_TEL}) — or try the live demo at ${DEMO_DISPLAY} (${DEMO_TEL}).`,
+    });
+  }
+
+  let body: unknown;
   try {
-    const body = (await req.json()) as { messages?: ChatMessage[] };
-    const messages = Array.isArray(body.messages) ? body.messages : [];
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ reply: "Invalid request." }, { status: 400 });
+  }
 
-    const lastUserMessage = [...messages].reverse().find((m) => m.role === "user");
-    const userText = lastUserMessage?.content?.trim() ?? "";
+  const messages = (body as { messages?: { role: string; content: string }[] }).messages;
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return NextResponse.json({ reply: "No message provided." }, { status: 400 });
+  }
 
-    if (!userText) {
-      return NextResponse.json({ reply: "What can I help you with today?" });
-    }
+  const system = `You are Automagixx’s website assistant. Tone: confident, simple, premium — never corporate-buzzwordy.
 
-    const apiKey = getOpenAiApiKey();
-    if (!apiKey) {
-      return NextResponse.json({
-        reply: `The fastest way to get answers is to call us at ${PRIMARY_PHONE_DISPLAY} — no forms. If you want to hear how it works first, try the 30-second demo at ${DEMO_PHONE_DISPLAY}.`,
-      });
-    }
+Positioning: Automagixx installs a system that captures and converts inbound opportunities (calls, texts, messages) automatically. Theme: “it works like magic.” Do NOT say “AI agency” or “cutting-edge technology.”
 
-    const recent = messages.slice(-10);
+Phone numbers (never mix these up):
+- Primary business (call/text): ${PRIMARY_DISPLAY} → ${PRIMARY_TEL}
+- Live demo ONLY: ${DEMO_DISPLAY} → ${DEMO_TEL}
 
-    const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+Prefer directing visitors to call/text primary first; offer the demo number when they want to hear the system.
+
+Never mention any other phone numbers.`;
+
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${key}`,
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        temperature: 0.4,
-        messages: [
-          { role: "system", content: buildSystemPrompt() },
-          ...recent.map((m) => ({ role: m.role, content: m.content })),
-        ],
+        messages: [{ role: "system", content: system }, ...messages],
+        temperature: 0.6,
+        max_tokens: 400,
       }),
     });
 
-    type OpenAIResponse = {
-      choices?: Array<{
-        message?: { content?: string };
-      }>;
-    };
-
-    if (!openaiRes.ok) {
+    if (!res.ok) {
+      const err = await res.text();
+      console.error("OpenAI error", res.status, err);
       return NextResponse.json({
-        reply: `I couldn’t respond just now — call ${PRIMARY_PHONE_DISPLAY} and we’ll walk through where jobs may be slipping away. For a quick listen, dial ${DEMO_PHONE_DISPLAY}.`,
+        reply: `Something went wrong. Call or text ${PRIMARY_DISPLAY} — or try the demo at ${DEMO_DISPLAY}.`,
       });
     }
 
-    const data = (await openaiRes.json()) as OpenAIResponse;
-    const reply = data?.choices?.[0]?.message?.content?.trim();
-
+    const data = (await res.json()) as {
+      choices?: { message?: { content?: string } }[];
+    };
+    const reply = data.choices?.[0]?.message?.content?.trim();
     return NextResponse.json({
-      reply:
-        reply ??
-        `Give us a call at ${PRIMARY_PHONE_DISPLAY} — that’s the fastest way to see if we can help. Want to hear it first? Call ${DEMO_PHONE_DISPLAY} for the 30-second demo.`,
+      reply: reply || `Call or text ${PRIMARY_DISPLAY} — or try the demo at ${DEMO_DISPLAY}.`,
     });
-  } catch {
+  } catch (e) {
+    console.error(e);
     return NextResponse.json({
-      reply: `Something went wrong on our end. Call ${PRIMARY_PHONE_DISPLAY} and we’ll help from there — or try ${DEMO_PHONE_DISPLAY} for the quick demo.`,
+      reply: `I couldn’t respond just now. Call or text ${PRIMARY_DISPLAY} — demo line ${DEMO_DISPLAY}.`,
     });
   }
 }

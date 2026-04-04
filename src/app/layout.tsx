@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Automagixx | Missed Call Recovery & Job Booking",
-  description: "We help service businesses stop missing calls, capture leads, and book more jobs—so revenue doesn’t slip through the cracks.",
+  title: "Automagixx | Capture Every Opportunity",
+  description:
+    "A system that captures and converts inbound calls, texts, and messages — so every inquiry can become a booking, automatically.",
 };
 
 export default function RootLayout({

@@ -1,7 +1,11 @@
-'use client';
+"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import NavCtaPair from "./NavCtaPair";
+import {
+  DEMO_PHONE_DISPLAY,
+  PRIMARY_PHONE_DISPLAY,
+} from "./cta";
 
 type ChatRole = "user" | "assistant";
 
@@ -18,8 +22,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content:
-        "Hi — Automagixx helps contractors stop losing jobs to missed calls and slow follow-up. The fastest next step is a direct call to (484) 673-7612 (no forms). If you want to hear how it sounds first, use Test the Demo at 484-992-9411 — about 30 seconds. What kind of work do you do, and what usually happens when you miss a call?",
+      content: `Hi — Automagixx captures and converts inbound opportunities automatically. Fastest path: call or text ${PRIMARY_PHONE_DISPLAY}. Want to hear the system? Try the live demo at ${DEMO_PHONE_DISPLAY}. What kind of inbound volume are you handling right now?`,
     },
   ]);
 
@@ -67,7 +70,7 @@ export default function ChatWidget() {
       const data = (await res.json()) as { reply?: string };
       const reply =
         data.reply ??
-        "Sorry — I couldn’t respond right now. Call (484) 673-7612 and we’ll help you pinpoint what’s leaking jobs. For a quick listen, use Test the Demo at 484-992-9411.";
+        `Sorry — I couldn’t respond right now. Call or text ${PRIMARY_PHONE_DISPLAY}. For the live demo, call ${DEMO_PHONE_DISPLAY}.`;
 
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
@@ -75,8 +78,7 @@ export default function ChatWidget() {
         ...prev,
         {
           role: "assistant",
-          content:
-            "Sorry — something went wrong. Call (484) 673-7612 — we’ll help you see where jobs are getting lost. Use Test the Demo at 484-992-9411 if you want the quick listen first.",
+          content: `Something went wrong. Call or text ${PRIMARY_PHONE_DISPLAY} — or try the demo at ${DEMO_PHONE_DISPLAY}.`,
         },
       ]);
     } finally {
@@ -88,51 +90,44 @@ export default function ChatWidget() {
     <div aria-live="polite">
       {open ? (
         <div className="fixed bottom-6 right-6 z-[9999] w-[360px] max-w-[calc(100vw-24px)]">
-          <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
-              <div>
-                <div className="text-[14px] font-semibold text-gray-900">Quick question?</div>
-                <div className="text-[12px] text-gray-500">Use the chat to capture more jobs.</div>
-              </div>
+          <div
+            ref={panelRef}
+            className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[min(520px,calc(100vh-120px))]"
+          >
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50">
+              <p className="text-[14px] font-semibold text-gray-900 tracking-tight">Automagixx</p>
               <button
-                onClick={() => setOpen(false)}
-                className="text-gray-500 hover:text-gray-800 px-2 py-1 rounded"
-                aria-label="Close chat"
                 type="button"
+                onClick={() => setOpen(false)}
+                className="text-gray-500 hover:text-gray-800 text-[13px] font-medium px-2 py-1 rounded-lg hover:bg-gray-100"
               >
-                ✕
+                Close
               </button>
             </div>
 
-            <div
-              ref={panelRef}
-              className="px-4 py-3 max-h-[420px] overflow-auto bg-gray-50"
-            >
-              <div className="space-y-3">
-                {messages.map((m, idx) => (
+            <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
+              {messages.map((m, i) => (
+                <div
+                  key={`${i}-${m.role}`}
+                  className={m.role === "user" ? "flex justify-end" : "flex justify-start"}
+                >
                   <div
-                    key={`${m.role}-${idx}`}
-                    className={m.role === "user" ? "flex justify-end" : "flex justify-start"}
+                    className={
+                      m.role === "user"
+                        ? "bg-blue-600 text-white px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
+                        : "bg-white border border-gray-200 text-gray-900 px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
+                    }
                   >
-                    <div
-                      className={
-                        m.role === "user"
-                          ? "bg-blue-600 text-white px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
-                          : "bg-white border border-gray-200 text-gray-900 px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
-                      }
-                    >
-                      {m.content}
-                    </div>
+                    {m.content}
                   </div>
-                ))}
-
-                <div ref={bottomRef} />
-              </div>
+                </div>
+              ))}
+              <div ref={bottomRef} />
             </div>
 
             <div className="px-4 py-3 border-t border-gray-200">
               <div className="mb-3">
-                <NavCtaPair compact className="w-full" />
+                <NavCtaPair compact showDemo showGuarantee={false} primaryLabel="hero" className="w-full" />
               </div>
 
               <form
@@ -146,7 +141,7 @@ export default function ChatWidget() {
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about missed calls, follow-up, or calling us…"
+                  placeholder="Ask a quick question…"
                   className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <button
@@ -157,41 +152,25 @@ export default function ChatWidget() {
                   Send
                 </button>
               </form>
-
-              {isLoading ? (
-                <div className="text-[12px] text-gray-500 mt-2">Thinking…</div>
-              ) : null}
             </div>
           </div>
         </div>
       ) : null}
 
-      {!open && showTip ? (
-        <div className="fixed bottom-[4.9rem] right-4 sm:right-5 z-[9998] bg-white text-gray-800 border border-gray-200 rounded-xl shadow-lg px-3 py-2 text-[12px] font-medium">
-          Quick question? Tap Chat.
+      {showTip && !open ? (
+        <div className="fixed bottom-[5.5rem] right-6 z-[9998] max-w-[220px] rounded-xl bg-gray-900 text-white text-[12px] px-3 py-2 shadow-lg">
+          Questions? Tap to chat — or call us directly.
         </div>
       ) : null}
 
-      {!open ? (
-        <button
-          type="button"
-          onClick={() => {
-            setOpen(true);
-            setShowTip(false);
-            window.sessionStorage.setItem("chat_tip_seen", "1");
-          }}
-          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-[9998] min-w-[88px] h-12 bg-indigo-600 text-white rounded-2xl shadow-2xl ring-4 ring-white/80 hover:bg-indigo-700 transition-all flex items-center justify-center px-4"
-          aria-label="Open chat"
-        >
-          <span className="text-[14px] font-semibold tracking-tight">Chat</span>
-          <span
-            aria-hidden="true"
-            className="absolute -bottom-[6px] right-5 h-[9px] w-[14px] bg-indigo-600"
-            style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
-          />
-        </button>
-      ) : null}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="fixed bottom-6 right-6 z-[9999] h-14 w-14 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 hover:scale-105 transition-all flex items-center justify-center text-[22px] font-light"
+        aria-label={open ? "Close chat" : "Open chat"}
+      >
+        {open ? "×" : "💬"}
+      </button>
     </div>
   );
 }
-

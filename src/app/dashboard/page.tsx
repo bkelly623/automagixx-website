@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+function getSupabase(): SupabaseClient | null {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key);
+}
 
 export default function DashboardLogin() {
   const [email, setEmail] = useState('');
@@ -23,6 +25,12 @@ export default function DashboardLogin() {
     setLoading(true);
 
     try {
+      const supabase = getSupabase();
+      if (!supabase) {
+        setError('Dashboard is not configured.');
+        setLoading(false);
+        return;
+      }
       // Check credentials against chatbots table
       const { data, error: dbError } = await supabase
         .from('chatbots')

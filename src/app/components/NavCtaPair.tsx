@@ -1,27 +1,28 @@
 import {
-  CTA_LABEL,
+  CTA_LABEL_NAV,
   CTA_MICRO,
-  DEMO_LABEL,
+  DEMO_CTA_LABEL,
   DEMO_PHONE_HREF,
   DEMO_SUBTEXT,
+  HERO_PRIMARY_CTA_LABEL,
   PRIMARY_PHONE_HREF,
 } from "./cta";
 
 type NavCtaPairProps = {
   className?: string;
-  /** Tighter layout for chat drawer / small widths. */
   compact?: boolean;
-  /** Show the secondary demo CTA stack. */
   showDemo?: boolean;
-  /** Show guarantee micro-copy under primary CTA. */
   showGuarantee?: boolean;
+  /** Use nav label (Call Us Now) instead of hero label on primary button. */
+  primaryLabel?: "nav" | "hero";
 };
 
 export default function NavCtaPair({
   className = "",
   compact = false,
-  showDemo = true,
-  showGuarantee = true,
+  showDemo = false,
+  showGuarantee = false,
+  primaryLabel = "nav",
 }: NavCtaPairProps) {
   const gap = compact ? "gap-2" : "gap-3";
   const btnPrimary = compact
@@ -30,6 +31,8 @@ export default function NavCtaPair({
   const btnDemo = compact
     ? "px-2.5 py-2 text-[11px] sm:px-3 sm:py-2 sm:text-[12px]"
     : "px-4 py-2.5 text-[13px] sm:text-[14px]";
+
+  const primaryText = primaryLabel === "nav" ? CTA_LABEL_NAV : HERO_PRIMARY_CTA_LABEL;
 
   return (
     <div
@@ -40,7 +43,7 @@ export default function NavCtaPair({
           href={PRIMARY_PHONE_HREF}
           className={`inline-flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-200 tracking-tight font-medium whitespace-nowrap ${btnPrimary}`}
         >
-          {CTA_LABEL}
+          {primaryText}
         </a>
         {showGuarantee ? (
           <a
@@ -57,7 +60,7 @@ export default function NavCtaPair({
             href={DEMO_PHONE_HREF}
             className={`inline-flex items-center justify-center rounded-full border-2 border-blue-200 text-blue-700 bg-white hover:bg-blue-50 transition-all duration-200 tracking-tight font-semibold whitespace-nowrap ${btnDemo}`}
           >
-            {DEMO_LABEL}
+            {DEMO_CTA_LABEL}
           </a>
           <p className="text-[9px] sm:text-[10px] text-gray-500 tracking-tight mt-1 max-w-[9.5rem] sm:max-w-[11rem] leading-tight">
             {DEMO_SUBTEXT}
