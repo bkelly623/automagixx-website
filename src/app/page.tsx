@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
+import type { LucideIcon } from "lucide-react";
 import {
   Sparkles,
-  Phone,
   MessageSquare,
-  RefreshCw,
+  Share2,
+  Workflow,
+  RotateCcw,
   Star,
   CheckCircle2,
   Wand2,
+  Headphones,
 } from "lucide-react";
 import NavCtaPair from "./components/NavCtaPair";
 import DualCtaCards from "./components/DualCtaCards";
@@ -22,347 +25,563 @@ import {
   PRIMARY_PHONE_HREF,
 } from "./components/cta";
 
-const sectionEyebrow =
-  "text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.22em] text-blue-600 mb-4";
-const cardBase =
-  "rounded-3xl border border-gray-200/70 bg-white p-8 shadow-[0_1px_3px_rgba(15,23,42,0.06)] hover:shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] hover:border-gray-200 transition-all duration-300";
+const shell = "max-w-[1200px] mx-auto px-5 sm:px-8";
+const eyebrow =
+  "text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-blue-600";
+const eyebrowCenter = `${eyebrow} mb-4`;
+const cardPremium =
+  "group relative flex h-full flex-col rounded-2xl border border-slate-200/90 bg-white p-7 sm:p-8 shadow-[0_2px_8px_rgba(15,23,42,0.04)] transition-all duration-300 hover:border-blue-200/80 hover:shadow-[0_20px_50px_-24px_rgba(37,99,235,0.14)]";
+
+const painPoints = [
+  {
+    title: "Missed calls",
+    body: "Unanswered rings turn into missed revenue — especially after hours.",
+  },
+  {
+    title: "Slow replies",
+    body: "Interested leads cool off when they wait hours for a text back.",
+  },
+  {
+    title: "No follow-up",
+    body: "Old leads and quotes go cold without a consistent nurture path.",
+  },
+  {
+    title: "Trust erosion",
+    body: "Customers remember silence. Reputation takes a hit when they feel ignored.",
+  },
+];
+
+const services: {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  grad: string;
+  iconClass: string;
+}[] = [
+  {
+    title: "AI Receptionist",
+    description:
+      "Answer calls instantly, capture lead details, and book appointments automatically.",
+    icon: Headphones,
+    grad: "from-blue-500/12 to-indigo-500/8",
+    iconClass: "text-blue-600",
+  },
+  {
+    title: "Smart Message Response",
+    description:
+      "Respond faster to texts, website inquiries, and customer messages without living on your phone.",
+    icon: MessageSquare,
+    grad: "from-indigo-500/12 to-violet-500/8",
+    iconClass: "text-indigo-600",
+  },
+  {
+    title: "Social / DM Response",
+    description:
+      "Keep up with inbound Instagram, Facebook, and social messages before they go cold.",
+    icon: Share2,
+    grad: "from-violet-500/12 to-purple-500/8",
+    iconClass: "text-violet-600",
+  },
+  {
+    title: "Lead Follow-Up Automation",
+    description:
+      "Automatically remind, nurture, and move leads forward instead of letting them disappear.",
+    icon: Workflow,
+    grad: "from-sky-500/12 to-blue-500/8",
+    iconClass: "text-sky-600",
+  },
+  {
+    title: "Old Lead Reactivation",
+    description: "Re-engage past leads and missed opportunities that could still turn into revenue.",
+    icon: RotateCcw,
+    grad: "from-amber-500/14 to-orange-500/8",
+    iconClass: "text-amber-700",
+  },
+  {
+    title: "Reviews & Reputation",
+    description:
+      "Generate stronger Google reviews and build more trust without chasing customers manually.",
+    icon: Star,
+    grad: "from-amber-400/14 to-yellow-500/8",
+    iconClass: "text-amber-600",
+  },
+];
+
+const howSteps = [
+  {
+    step: "01",
+    title: "A customer reaches out",
+    body: "Calls, texts, DMs, and inquiries come in throughout the day.",
+  },
+  {
+    step: "02",
+    title: "Automagixx responds fast",
+    body: "AI handles the first response, captures information, and keeps the conversation moving.",
+  },
+  {
+    step: "03",
+    title: "The lead gets guided forward",
+    body: "Appointments get booked, follow-up gets triggered, and opportunities stay alive.",
+  },
+  {
+    step: "04",
+    title: "You stay focused on the business",
+    body: "Less chasing. Less admin. More captured revenue.",
+  },
+];
+
+const outcomes = [
+  "More appointments booked without adding staff",
+  "Faster replies across the channels you actually use",
+  "Fewer opportunities slipping through the cracks",
+  "Less time spent on repetitive admin",
+  "Better follow-up without manual effort",
+  "Stronger customer trust and online reputation",
+];
+
+const industries = [
+  "Plumbing",
+  "HVAC / Electrical / Home Services",
+  "Roofing / Garage Door / Field Services",
+  "Hair Salons",
+  "Nail / Lash / Beauty Studios",
+  "Med Spas / Aesthetics",
+  "Dental / Chiropractic / Wellness",
+  "Other Local Service Businesses",
+];
+
+const navLinkClass =
+  "text-[14px] font-medium text-slate-600 hover:text-slate-900 transition-colors whitespace-nowrap";
 
 export default function Home() {
   return (
     <div
       id="top"
-      className="min-h-screen bg-[#fafbfc] text-gray-900 font-sans antialiased"
+      className="min-h-screen bg-[#f6f7fa] text-slate-900 font-sans antialiased selection:bg-blue-500/15 selection:text-slate-900"
     >
-      <nav className="fixed top-0 w-full z-50 border-b border-gray-200/70 bg-white/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-center justify-between gap-4 min-h-[4.75rem] sm:min-h-[5rem]">
-            <Link href="/#top" className="flex items-center gap-3 shrink-0 group">
-              <span className="inline-flex rounded-2xl bg-white p-1 shadow-sm ring-1 ring-gray-200/90 group-hover:shadow-md group-hover:ring-gray-300/90 transition-all">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/80 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
+        <div className={shell}>
+          <div className="flex items-center justify-between gap-4 min-h-[4.5rem] sm:min-h-[5rem] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6">
+            <Link href="/#top" className="flex items-center gap-3 shrink-0 group lg:justify-self-start">
+              <span className="inline-flex rounded-2xl bg-white p-1.5 shadow-[0_2px_12px_rgba(15,23,42,0.08)] ring-1 ring-slate-200/90 group-hover:ring-slate-300 transition-all">
                 <Image
                   src="/logo-robot.png"
                   alt="Automagixx"
                   width={160}
                   height={160}
-                  className="h-9 w-auto sm:h-11 block"
+                  className="h-9 w-auto sm:h-10 block"
                   priority
                 />
               </span>
-              <span className="text-[17px] sm:text-[18px] font-semibold tracking-tight text-gray-900">
+              <span className="hidden sm:inline text-[17px] font-semibold tracking-tight text-slate-900">
                 Automagixx
               </span>
             </Link>
-            <div className="hidden lg:flex items-center gap-7 text-[14px] font-medium text-gray-600">
-              <a href="#problem" className="hover:text-gray-900 transition-colors">
-                Why
+
+            <nav
+              className="hidden lg:flex lg:justify-self-center items-center justify-center gap-6 xl:gap-7 flex-wrap"
+              aria-label="Primary"
+            >
+              <a href="#services" className={navLinkClass}>
+                Services
               </a>
-              <a href="#system" className="hover:text-gray-900 transition-colors">
-                System
+              <a href="#how-it-works" className={navLinkClass}>
+                How It Works
               </a>
-              <a href="#how-it-works" className="hover:text-gray-900 transition-colors">
-                Flow
+              <a href="#magic" className={navLinkClass}>
+                The Magic
               </a>
-              <a href="#magic" className="hover:text-gray-900 transition-colors">
-                Magic
+              <a href="#outcomes" className={navLinkClass}>
+                Outcomes
               </a>
-              <a href="#outcomes" className="hover:text-gray-900 transition-colors">
-                Results
+              <a href="#industries" className={navLinkClass}>
+                Industries
               </a>
-              <a href="#demo" className="hover:text-gray-900 transition-colors">
+              <a href="#demo" className={navLinkClass}>
                 Demo
               </a>
-              <a href="#contact" className="hover:text-gray-900 transition-colors">
+              <a href="#contact" className={navLinkClass}>
                 Contact
               </a>
-            </div>
-            <div className="shrink-0">
+            </nav>
+
+            <div className="shrink-0 lg:justify-self-end">
               <NavCtaPair compact showDemo={false} showGuarantee={false} primaryLabel="nav" />
             </div>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-28 sm:pt-40 sm:pb-36 px-5 sm:px-8 overflow-hidden bg-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(59,130,246,0.11),transparent_55%)]" />
-        <div className="pointer-events-none absolute bottom-0 right-0 w-[min(100%,520px)] h-[520px] bg-gradient-to-tl from-indigo-50/90 via-white/0 to-transparent rounded-full blur-3xl opacity-90" />
+      <section className="relative pt-[5.5rem] sm:pt-28 pb-20 sm:pb-28 px-5 sm:px-8 overflow-hidden bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-20%,rgba(59,130,246,0.12),transparent_55%)]" />
+        <div className="pointer-events-none absolute top-1/2 right-0 w-[min(100%,560px)] h-[560px] -translate-y-1/2 bg-gradient-to-bl from-indigo-400/[0.11] via-violet-400/[0.06] to-transparent rounded-full blur-3xl" />
 
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-16 xl:gap-20 items-center">
-            <div className="space-y-8 lg:space-y-10">
-              <h1 className="text-[2.45rem] sm:text-5xl lg:text-[3.35rem] xl:text-[3.5rem] font-semibold tracking-[-0.02em] leading-[1.06] text-gray-950">
+        <div className={`${shell} relative z-10`}>
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+            <div className="space-y-8 lg:space-y-9 max-w-xl lg:max-w-none">
+              <h1 className="text-[2.35rem] sm:text-5xl lg:text-[3.25rem] xl:text-[3.45rem] font-semibold tracking-[-0.03em] leading-[1.05] text-slate-950">
                 AI That Captures Every Opportunity —{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
                   Like Magic.
                 </span>
               </h1>
-              <p className="text-lg sm:text-[1.15rem] text-gray-600 leading-[1.65] max-w-[28rem]">
-                Calls, texts, and messages handled instantly. So every inquiry turns into a real
-                booking — automatically.
+              <p className="text-lg sm:text-[1.125rem] text-slate-600 leading-[1.65] font-medium">
+                Calls, texts, and messages handled faster.
+                <br className="hidden sm:block" /> Leads followed up automatically.
+                <br className="hidden sm:block" /> More opportunities captured — without adding more
+                chaos.
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
                 <a
                   href={PRIMARY_PHONE_HREF}
-                  className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-8 py-3.5 sm:py-4 text-[15px] font-semibold tracking-tight shadow-[0_4px_14px_rgba(37,99,235,0.35)] hover:bg-blue-700 hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-8 py-4 text-[15px] font-semibold tracking-tight shadow-[0_4px_20px_rgba(37,99,235,0.38)] hover:bg-blue-700 hover:shadow-[0_8px_28px_rgba(37,99,235,0.42)] transition-all active:scale-[0.98]"
                 >
                   {HERO_PRIMARY_CTA_LABEL}
                 </a>
                 <a
                   href={DEMO_PHONE_HREF}
-                  className="inline-flex items-center justify-center rounded-full border border-gray-200/90 bg-white/80 backdrop-blur-sm px-8 py-3.5 sm:py-4 text-[15px] font-semibold text-gray-900 tracking-tight hover:border-blue-200 hover:bg-white hover:shadow-md transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-[15px] font-semibold text-slate-900 tracking-tight shadow-sm hover:border-blue-200 hover:shadow-md transition-all active:scale-[0.98]"
                 >
                   {DEMO_CTA_LABEL}
                 </a>
               </div>
-              <p className="text-[13px] sm:text-[14px] text-gray-500">
-                <span className="font-medium text-gray-700">{PRIMARY_PHONE_DISPLAY}</span>
-                <span className="mx-2">·</span>
-                <span>Demo: {DEMO_PHONE_DISPLAY}</span>
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-[14px] text-slate-500">
+                <span>
+                  <span className="font-semibold text-slate-700">Call/Text:</span>{" "}
+                  {PRIMARY_PHONE_DISPLAY}
+                </span>
+                <span className="hidden sm:inline text-slate-300">|</span>
+                <span>
+                  <span className="font-semibold text-slate-700">Demo:</span> {DEMO_PHONE_DISPLAY}
+                </span>
+              </div>
             </div>
 
-            <div className="relative lg:pl-2">
-              <div className="absolute -inset-6 bg-gradient-to-br from-blue-500/[0.07] to-indigo-500/[0.12] rounded-[2rem] blur-2xl" />
-              <div className="relative rounded-[1.75rem] border border-gray-200/70 bg-white/95 backdrop-blur-sm shadow-[0_20px_50px_-20px_rgba(15,23,42,0.18)] p-8 sm:p-10">
-                <p className="text-blue-600 font-semibold text-[13px] tracking-wide uppercase mb-2">
-                  Hear It Live
-                </p>
-                <p className="text-gray-600 text-[17px] leading-relaxed">
-                  Call and experience it yourself — no pitch, just the system working.
+            <div className="relative lg:pl-4">
+              <div className="absolute -inset-1 rounded-[1.35rem] bg-gradient-to-br from-blue-500/20 via-indigo-500/15 to-violet-500/20 blur-xl opacity-80" />
+              <div className="relative overflow-hidden rounded-[1.25rem] border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/40 shadow-[0_24px_60px_-20px_rgba(15,23,42,0.2)] p-8 sm:p-10">
+                <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-400/10 blur-2xl" />
+                <div className="pointer-events-none absolute bottom-4 right-6 flex gap-1 opacity-40">
+                  <Sparkles className="h-4 w-4 text-indigo-500" strokeWidth={1.5} />
+                </div>
+                <p className={`${eyebrow} mb-3`}>Live voice AI demo</p>
+                <h2 className="text-2xl sm:text-[1.65rem] font-semibold tracking-tight text-slate-900">
+                  Hear It Work
+                </h2>
+                <p className="mt-4 text-slate-600 leading-relaxed text-[15px] sm:text-base">
+                  Call the live demo and hear how Automagixx handles a real conversation — clearly,
+                  quickly, and like magic.
                 </p>
                 <a
                   href={DEMO_PHONE_HREF}
-                  className="mt-8 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-blue-600 text-white px-8 py-3.5 text-[15px] font-semibold hover:bg-blue-700 transition-colors"
+                  className="mt-8 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-slate-900 text-white px-8 py-3.5 text-[15px] font-semibold hover:bg-slate-800 transition-all shadow-lg"
                 >
                   {DEMO_CARD_BUTTON_LABEL}
                 </a>
-                <p className="mt-6 text-center text-[18px] font-semibold text-gray-900 tracking-tight">
+                <p className="mt-6 text-center sm:text-left text-lg font-semibold text-slate-900 tracking-tight tabular-nums">
                   {DEMO_PHONE_DISPLAY}
                 </p>
+                <div
+                  className="mt-6 flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white/60 px-3 py-2 text-[12px] font-medium text-slate-500"
+                  aria-hidden
+                >
+                  <span className="flex gap-0.5">
+                    {[0, 1, 2, 3].map((i) => (
+                      <span
+                        key={i}
+                        className="block h-1 w-1 rounded-full bg-emerald-500/85"
+                      />
+                    ))}
+                  </span>
+                  <span className="uppercase tracking-wider text-slate-400">Signal active</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problem */}
-      <section id="problem" className="py-28 px-5 sm:px-8 bg-gray-50/80 border-y border-gray-100/80">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className={sectionEyebrow}>The gap</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-gray-900 leading-tight">
-            Most Businesses Are Losing Opportunities Every Day
-          </h2>
-          <p className="mt-8 text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Missed calls. Slow replies. No follow-up.
-            <br />
-            <span className="text-gray-900 font-medium">
-              It&apos;s not a traffic problem — it&apos;s a capture problem.
-            </span>
-          </p>
-        </div>
-      </section>
-
-      {/* System */}
-      <section id="system" className="py-28 px-5 sm:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-16">
-            <p className={sectionEyebrow}>What you get</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-gray-900 leading-tight">
-              We Don&apos;t Add Tools. We Install a System.
+      {/* Problem / opportunity gap */}
+      <section
+        id="problem"
+        className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-slate-50/90 border-y border-slate-200/60"
+      >
+        <div className={shell}>
+          <div className="max-w-[52rem] mx-auto text-center mb-14 sm:mb-16">
+            <p className={eyebrowCenter}>The opportunity gap</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-slate-900 leading-[1.12]">
+              Most Businesses Are Losing Opportunities Every Day
             </h2>
+            <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-[40rem] mx-auto">
+              Missed calls. Slow replies. Forgotten follow-up.
+              <br />
+              <span className="font-semibold text-slate-800">
+                Most businesses do not have a lead problem — they have a response and capture
+                problem.
+              </span>
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
-            <div className={cardBase}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 mb-6">
-                <Phone className="w-6 h-6" strokeWidth={1.75} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {painPoints.map((p) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-slate-200/90 bg-white p-6 text-left shadow-[0_2px_8px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_32px_-12px_rgba(37,99,235,0.12)] transition-shadow"
+              >
+                <p className="text-[15px] font-semibold text-slate-900">{p.title}</p>
+                <p className="mt-2 text-[14px] text-slate-600 leading-relaxed">{p.body}</p>
               </div>
-              <h3 className="text-xl font-semibold tracking-tight mb-3">Never Miss a Call</h3>
-              <p className="text-gray-600 leading-relaxed">
-                AI answers instantly and books appointments automatically.
-              </p>
-            </div>
-            <div className={cardBase}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 mb-6">
-                <MessageSquare className="w-6 h-6" strokeWidth={1.75} />
-              </div>
-              <h3 className="text-xl font-semibold tracking-tight mb-3">Respond Instantly Everywhere</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Texts, DMs, and website messages handled in seconds.
-              </p>
-            </div>
-            <div className={cardBase}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-50 text-violet-600 mb-6">
-                <RefreshCw className="w-6 h-6" strokeWidth={1.75} />
-              </div>
-              <h3 className="text-xl font-semibold tracking-tight mb-3">Follow Up Automatically</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Leads are tracked, reminded, and reactivated without effort.
-              </p>
-            </div>
-            <div className={cardBase}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 mb-6">
-                <Star className="w-6 h-6" strokeWidth={1.75} />
-              </div>
-              <h3 className="text-xl font-semibold tracking-tight mb-3">Build Trust on Autopilot</h3>
-              <p className="text-gray-600 leading-relaxed">
-                More reviews. Better visibility. Stronger reputation.
-              </p>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-white">
+        <div className={shell}>
+          <div className="max-w-[48rem] mx-auto text-center mb-14 sm:mb-16">
+            <p className={eyebrowCenter}>What we help you automate</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-slate-900 leading-[1.12]">
+              AI Systems Built To Capture More Business
+            </h2>
+            <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+              Start with AI call handling — then automate the replies, follow-up, reputation, and
+              lead flow that keep revenue moving.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+            {services.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.title} className={cardPremium}>
+                  <div
+                    className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${s.grad} ${s.iconClass}`}
+                  >
+                    <Icon className="h-6 w-6" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="text-lg font-semibold tracking-tight text-slate-900">{s.title}</h3>
+                  <p className="mt-3 text-[15px] text-slate-600 leading-relaxed flex-1">
+                    {s.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-12 text-center text-[14px] text-slate-500 max-w-[40rem] mx-auto leading-relaxed">
+            Additional automations and marketing workflows can be layered in based on your business
+            needs.
+          </p>
         </div>
       </section>
 
       {/* How it works */}
       <section
         id="how-it-works"
-        className="py-28 px-5 sm:px-8 bg-gradient-to-b from-gray-50/60 via-white to-white border-t border-gray-100/80"
+        className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-gradient-to-b from-slate-50/80 via-white to-white border-t border-slate-100"
       >
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-14">
-            <p className={sectionEyebrow}>Simple flow</p>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">
-              How It Works
+        <div className={shell}>
+          <div className="max-w-[40rem] mb-14 sm:mb-16">
+            <p className={`${eyebrow} mb-4`}>How it works</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold tracking-tight text-slate-900 leading-tight">
+              Simple On The Surface. Powerful Behind It.
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                step: "01",
-                title: "Inbound hits",
-                body: "A call, text, or message comes in — day or night.",
-              },
-              {
-                step: "02",
-                title: "Instant capture",
-                body: "The system responds, qualifies, and books when it should.",
-              },
-              {
-                step: "03",
-                title: "You stay focused",
-                body: "Appointments land on your calendar without the back-and-forth.",
-              },
-            ].map((item) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {howSteps.map((item) => (
               <div
                 key={item.step}
-                className="rounded-3xl border border-gray-200/80 bg-white p-8 shadow-sm hover:shadow-md transition-shadow"
+                className="relative rounded-2xl border border-slate-200/90 bg-white p-7 shadow-[0_2px_8px_rgba(15,23,42,0.04)] hover:border-blue-200/70 hover:shadow-md transition-all"
               >
-                <span className="text-[13px] font-bold text-blue-600 tracking-widest">{item.step}</span>
-                <h3 className="text-lg font-semibold mt-4 mb-2 tracking-tight">{item.title}</h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">{item.body}</p>
+                <span className="text-[12px] font-bold text-blue-600 tracking-[0.2em]">
+                  {item.step}
+                </span>
+                <h3 className="text-[17px] font-semibold mt-4 mb-2 tracking-tight text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 text-[15px] leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Magic */}
-      <section id="magic" className="py-28 px-5 sm:px-8 relative overflow-hidden bg-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.08),transparent_50%)]" />
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/60 bg-indigo-50/50 px-4 py-2 mb-8">
-            <Wand2 className="w-4 h-4 text-indigo-600" />
-            <span className="text-[13px] font-semibold text-indigo-800 tracking-tight">The feeling</span>
+      {/* The Magic */}
+      <section id="magic" className="scroll-mt-28 relative py-20 sm:py-28 px-5 sm:px-8 overflow-hidden bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(99,102,241,0.09),transparent_65%)]" />
+        <div className="pointer-events-none absolute top-1/4 left-1/4 h-40 w-40 rounded-full bg-blue-400/[0.06] blur-3xl" />
+        <div className={`${shell} relative z-10`}>
+          <div className="max-w-[40rem] mx-auto text-center">
+            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/70 bg-indigo-50/60 px-4 py-2 mb-8">
+              <Wand2 className="w-4 h-4 text-indigo-600" strokeWidth={1.75} />
+              <span className="text-[12px] font-semibold text-indigo-800 tracking-wide uppercase">
+                The magic
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-slate-900 leading-[1.12]">
+              This Is What AI Should Feel Like
+            </h2>
+            <div className="mt-8 space-y-5 text-lg sm:text-xl text-slate-600 leading-relaxed">
+              <p>No confusing dashboards.</p>
+              <p>No constant babysitting.</p>
+              <p>No extra headcount just to keep up.</p>
+              <p className="text-slate-700 font-medium pt-2">
+                Just a system that works quietly in the background — capturing opportunities, replying
+                faster, and keeping business moving.
+              </p>
+              <p className="text-xl sm:text-2xl font-semibold text-slate-900 pt-4">
+                Reliable. Fast. Effortless.
+              </p>
+              <p className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent pt-1">
+                Like magic.
+              </p>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-gray-900 leading-tight">
-            This Is What AI Should Feel Like
-          </h2>
-          <p className="mt-8 text-lg sm:text-xl text-gray-600 leading-relaxed space-y-4">
-            <span className="block">
-              No complexity. No dashboards to manage. Just results happening automatically in the
-              background.
-            </span>
-            <span className="block text-gray-900 font-medium">
-              It works quietly. Consistently. Reliably.
-            </span>
-            <span className="block text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent pt-2">
-              Like magic.
-            </span>
-          </p>
         </div>
       </section>
 
       {/* Outcomes */}
-      <section id="outcomes" className="py-28 px-5 sm:px-8 bg-gray-50/80 border-y border-gray-100/80">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-12">
-            <p className={sectionEyebrow}>What changes</p>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">
+      <section
+        id="outcomes"
+        className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-slate-50/90 border-y border-slate-200/60"
+      >
+        <div className={shell}>
+          <div className="max-w-[40rem] mb-12 sm:mb-14">
+            <p className={`${eyebrow} mb-4`}>What changes</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
               What You Notice First
             </h2>
           </div>
-          <ul className="grid sm:grid-cols-2 gap-4 max-w-4xl">
-            {[
-              "More appointments booked without adding headcount",
-              "Faster replies on every channel you actually use",
-              "Fewer opportunities slipping through the cracks",
-              "Less time on admin — more time on the work that pays",
-            ].map((line) => (
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1100px]">
+            {outcomes.map((line) => (
               <li
                 key={line}
-                className="flex items-start gap-3 rounded-2xl border border-gray-200/80 bg-white px-5 py-4 shadow-sm"
+                className="flex min-h-[5.5rem] items-start gap-4 rounded-2xl border border-slate-200/90 bg-white px-6 py-5 shadow-[0_2px_8px_rgba(15,23,42,0.04)]"
               >
-                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                <span className="text-[15px] text-gray-700 leading-snug">{line}</span>
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600">
+                  <CheckCircle2 className="h-5 w-5" strokeWidth={2} />
+                </span>
+                <span className="text-[15px] font-medium text-slate-800 leading-snug pt-0.5">
+                  {line}
+                </span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Demo */}
-      <section id="demo" className="py-28 px-5 sm:px-8 bg-white">
-        <div className="max-w-4xl mx-auto text-center rounded-[2rem] border border-gray-200/70 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/20 p-10 sm:p-16 shadow-[0_20px_60px_-24px_rgba(37,99,235,0.2)]">
-          <Sparkles className="w-10 h-10 text-blue-600 mx-auto mb-6" strokeWidth={1.5} />
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">
-            Try It Yourself
-          </h2>
-          <p className="mt-6 text-lg text-gray-600 max-w-xl mx-auto leading-relaxed">
-            Call the system. See how it handles a real conversation.
-          </p>
-          <a
-            href={DEMO_PHONE_HREF}
-            className="mt-10 inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-10 py-4 text-[16px] font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg"
-          >
-            Try the Demo → {DEMO_PHONE_DISPLAY}
-          </a>
+      {/* Industries */}
+      <section id="industries" className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-white">
+        <div className={shell}>
+          <div className="max-w-[48rem] mx-auto text-center mb-12 sm:mb-14">
+            <p className={eyebrowCenter}>Industries we serve</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 leading-tight">
+              Built For Local Businesses That Need To Respond Fast
+            </h2>
+            <p className="mt-5 text-lg text-slate-600 leading-relaxed">
+              Automagixx is especially useful where missed calls, slow replies, and weak follow-up
+              turn into lost revenue.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-[1000px] mx-auto">
+            {industries.map((name) => (
+              <div
+                key={name}
+                className="flex items-center justify-center rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-4 text-center text-[13px] sm:text-[14px] font-semibold text-slate-800 leading-snug shadow-sm hover:border-blue-200 hover:bg-white hover:shadow-md transition-all min-h-[4.25rem]"
+              >
+                {name}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Contact */}
+      {/* Demo */}
+      <section id="demo" className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-slate-50/50">
+        <div className={shell}>
+          <div className="max-w-[44rem] mx-auto text-center relative rounded-[1.35rem] border border-slate-200/90 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/30 p-10 sm:p-14 shadow-[0_24px_60px_-28px_rgba(37,99,235,0.22)] overflow-hidden">
+            <div className="pointer-events-none absolute top-0 right-0 w-40 h-40 bg-violet-400/10 rounded-full blur-3xl" />
+            <Sparkles
+              className="w-9 h-9 text-blue-600 mx-auto mb-5 relative"
+              strokeWidth={1.5}
+            />
+            <p className={`${eyebrow} mb-3`}>Try it live</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 relative">
+              Hear The Voice AI In Action
+            </h2>
+            <p className="mt-5 text-lg text-slate-600 max-w-xl mx-auto leading-relaxed relative">
+              Call the live demo and hear how Automagixx answers, responds, and guides a real
+              conversation.
+            </p>
+            <a
+              href={DEMO_PHONE_HREF}
+              className="mt-10 relative inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-10 py-4 text-[16px] font-semibold hover:bg-blue-700 transition-all shadow-[0_8px_24px_rgba(37,99,235,0.35)]"
+            >
+              Try the Demo → {DEMO_PHONE_DISPLAY}
+            </a>
+            <p className="mt-4 text-[15px] font-semibold text-slate-700 tabular-nums">
+              {DEMO_PHONE_DISPLAY}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Strong CTA */}
       <section
         id="contact"
-        className="py-28 px-5 sm:px-8 bg-gradient-to-b from-gray-900 to-gray-950 text-white relative overflow-hidden"
+        className="scroll-mt-28 relative py-20 sm:py-28 px-5 sm:px-8 overflow-hidden bg-gradient-to-b from-[#0f172a] via-[#0c1930] to-[#0a1628] text-white"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(59,130,246,0.12),transparent)]" />
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(59,130,246,0.2),transparent_50%)]" />
+        <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(100%,800px)] h-48 bg-indigo-500/10 blur-3xl rounded-full" />
+        <div className={`${shell} relative z-10 text-center`}>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold tracking-tight text-white">
             Want This Set Up For Your Business?
           </h2>
-          <a
-            href={PRIMARY_PHONE_HREF}
-            className="mt-10 inline-flex items-center justify-center rounded-full bg-white text-gray-900 px-10 py-4 text-[16px] font-semibold hover:bg-gray-100 transition-colors shadow-[0_8px_30px_rgba(0,0,0,0.25)]"
-          >
-            {HERO_PRIMARY_CTA_LABEL} → {PRIMARY_PHONE_DISPLAY}
-          </a>
+          <p className="mt-5 text-lg text-white/85 max-w-xl mx-auto leading-relaxed">
+            If you want AI to help capture calls, respond faster, and follow up automatically,
+            let&apos;s talk.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-2xl mx-auto">
+            <a
+              href={PRIMARY_PHONE_HREF}
+              className="inline-flex items-center justify-center rounded-full bg-white text-slate-900 px-10 py-4 text-[16px] font-semibold hover:bg-gray-100 transition-all shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
+            >
+              Call or Text Us → {PRIMARY_PHONE_DISPLAY}
+            </a>
+            <a
+              href={DEMO_PHONE_HREF}
+              className="inline-flex items-center justify-center rounded-full border-2 border-white/80 text-white px-10 py-4 text-[16px] font-semibold hover:bg-white/10 transition-all"
+            >
+              Try the Demo → {DEMO_PHONE_DISPLAY}
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Calendar */}
       <section
         id="book-call"
-        className="scroll-mt-28 py-28 px-5 sm:px-8 bg-[#f8f9fb] border-y border-gray-200/80"
+        className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-[#f1f3f7] border-y border-slate-200/70"
       >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 text-center tracking-tight mb-3">
-            Prefer to pick a time?
+        <div className={`${shell} max-w-[880px]`}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 text-center tracking-tight">
+            Prefer To Pick A Time?
           </h2>
-          <p className="text-center text-gray-600 text-[15px] max-w-lg mx-auto mb-10 leading-relaxed">
-            Optional scheduling — call or text{" "}
-            <a href={PRIMARY_PHONE_HREF} className="text-blue-700 font-medium underline underline-offset-2">
+          <p className="text-center text-slate-600 text-[15px] sm:text-base max-w-lg mx-auto mt-4 leading-relaxed">
+            Scheduling is optional.
+            <br />
+            For the fastest path, call or text{" "}
+            <a
+              href={PRIMARY_PHONE_HREF}
+              className="text-blue-700 font-semibold underline underline-offset-2 hover:text-blue-800"
+            >
               {PRIMARY_PHONE_DISPLAY}
             </a>{" "}
-            first for the fastest path.
+            first.
+            <br />
+            If you&apos;d rather book a time, use the calendar below.
           </p>
-          <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+          <div className="mt-10 rounded-2xl border border-slate-200/90 bg-white shadow-[0_12px_40px_-24px_rgba(15,23,42,0.12)] overflow-hidden">
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8"
               id="deaNfs7Dq6XtD6FzYMR8_1775089987086"
@@ -372,15 +591,15 @@ export default function Home() {
               title="Schedule time with Automagixx"
             />
           </div>
-          <p className="text-[12px] text-gray-500 text-center mt-6 tracking-tight max-w-3xl mx-auto leading-relaxed">
+          <p className="text-[12px] text-slate-500 text-center mt-6 tracking-tight max-w-2xl mx-auto leading-relaxed">
             By submitting this form, you agree to receive SMS messages from Automagixx related to
             your inquiry, including appointment reminders and service updates. Message frequency
             varies. Message &amp; data rates may apply. Reply STOP to opt out or HELP for help. See{" "}
-            <a href="/privacy-policy" className="underline underline-offset-2 hover:text-gray-700">
+            <a href="/privacy-policy" className="underline underline-offset-2 hover:text-slate-700">
               Privacy Policy
             </a>{" "}
             and{" "}
-            <a href="/terms-of-service" className="underline underline-offset-2 hover:text-gray-700">
+            <a href="/terms-of-service" className="underline underline-offset-2 hover:text-slate-700">
               Terms of Service
             </a>
             .
@@ -390,30 +609,32 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden py-28 px-5 sm:px-8 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white">
+      <section className="relative overflow-hidden py-20 sm:py-28 px-5 sm:px-8 bg-gradient-to-br from-slate-950 via-[#0c1840] to-indigo-950 text-white">
         <div
-          className="pointer-events-none absolute inset-0 opacity-30"
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
           style={{
             backgroundImage:
-              "radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255,255,255,0.15), transparent 50%)",
+              "radial-gradient(ellipse 85% 55% at 20% 0%, rgba(255,255,255,0.12), transparent 50%)",
           }}
         />
-        <div className="relative max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
-            Ready to capture every opportunity?
-          </h2>
-          <p className="text-lg text-white/90 mb-12 max-w-xl mx-auto leading-relaxed">
-            One call. One demo. Then the system does the heavy lifting.
-          </p>
+        <div className={`${shell} relative z-10`}>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+              Ready To Capture More Opportunities?
+            </h2>
+            <p className="mt-4 text-lg text-white/88 leading-relaxed">
+              One call. One demo. Then Automagixx starts doing the heavy lifting.
+            </p>
+          </div>
           <DualCtaCards variant="onBlue" />
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-gray-400 py-16 px-5 sm:px-8 border-t border-gray-800/80">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-10">
-          <div className="text-center sm:text-left flex flex-col sm:flex-row sm:items-center gap-5">
-            <span className="inline-flex rounded-2xl bg-white p-2 ring-1 ring-gray-700/50 shadow-md mx-auto sm:mx-0">
+      <footer className="bg-[#070b14] text-slate-400 py-16 sm:py-20 px-5 sm:px-8 border-t border-slate-800/80">
+        <div className={`${shell} flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12`}>
+          <div className="flex flex-col sm:flex-row sm:items-start gap-6 max-w-md mx-auto lg:mx-0 text-center sm:text-left">
+            <span className="inline-flex rounded-2xl bg-white p-2 ring-1 ring-slate-700/60 shadow-lg mx-auto sm:mx-0 shrink-0">
               <Image
                 src="/logo-robot.png"
                 alt="Automagixx"
@@ -423,23 +644,33 @@ export default function Home() {
               />
             </span>
             <div>
-              <p className="text-white font-semibold tracking-tight text-[17px]">Automagixx</p>
-              <p className="text-[14px] mt-2 max-w-[280px] leading-relaxed text-gray-400">
-                A system that captures and converts every opportunity — automatically.
+              <p className="text-white font-semibold tracking-tight text-lg">Automagixx</p>
+              <p className="text-[15px] mt-3 leading-relaxed text-slate-400">
+                AI systems for local businesses that want to respond faster, capture more
+                opportunities, and grow with less friction.
               </p>
             </div>
           </div>
-          <div className="flex flex-col sm:items-end gap-2 text-[14px]">
-            <a href={PRIMARY_PHONE_HREF} className="hover:text-white transition-colors">
+          <div className="flex flex-col gap-3 text-[15px] text-center lg:text-right">
+            <a
+              href={PRIMARY_PHONE_HREF}
+              className="text-slate-200 font-medium hover:text-white transition-colors"
+            >
               {PRIMARY_PHONE_DISPLAY}
             </a>
-            <a href={DEMO_PHONE_HREF} className="hover:text-white transition-colors">
+            <a
+              href={DEMO_PHONE_HREF}
+              className="text-slate-300 hover:text-white transition-colors"
+            >
               Demo: {DEMO_PHONE_DISPLAY}
             </a>
-            <a href="mailto:brendan@automagixx.com" className="hover:text-white transition-colors">
+            <a
+              href="mailto:brendan@automagixx.com"
+              className="text-slate-300 hover:text-white transition-colors"
+            >
               brendan@automagixx.com
             </a>
-            <div className="flex flex-wrap gap-4 justify-center sm:justify-end mt-2">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-end mt-4 text-[14px]">
               <a href="/privacy-policy" className="hover:text-white transition-colors">
                 Privacy
               </a>

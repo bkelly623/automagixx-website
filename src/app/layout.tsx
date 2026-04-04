@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Automagixx | Capture Every Opportunity",
+  title: "Automagixx | AI Systems That Capture More Business",
   description:
-    "A system that captures and converts inbound calls, texts, and messages — so every inquiry can become a booking, automatically.",
+    "Practical AI for local businesses: capture calls, respond faster, follow up automatically, and build trust — starting with voice AI, then the full follow-through stack.",
 };
 
 export default function RootLayout({
