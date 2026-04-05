@@ -29,8 +29,26 @@ const shell = "max-w-[1200px] mx-auto px-5 sm:px-8";
 const eyebrow =
   "text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-blue-600";
 const eyebrowCenter = `${eyebrow} mb-4`;
+
+/** Homepage card system — soft shadow, consistent radius, calm hover lift */
+const cardSurface =
+  "rounded-2xl border border-slate-200/90 bg-white shadow-[0_2px_12px_rgba(15,23,42,0.045)] transition-all duration-300 ease-out";
+const cardSurfaceHover =
+  "hover:border-slate-300/90 hover:shadow-[0_22px_48px_-22px_rgba(15,23,42,0.1)]";
+const cardSurfaceAccentHover =
+  "hover:border-blue-200/75 hover:shadow-[0_24px_56px_-26px_rgba(37,99,235,0.13)]";
+
 const cardPremium =
-  "group relative flex h-full flex-col rounded-2xl border border-slate-200/90 bg-white p-7 sm:p-8 shadow-[0_2px_8px_rgba(15,23,42,0.04)] transition-all duration-300 hover:border-blue-200/80 hover:shadow-[0_20px_50px_-24px_rgba(37,99,235,0.14)]";
+  `group relative flex h-full flex-col ${cardSurface} ${cardSurfaceHover} ${cardSurfaceAccentHover} p-7 sm:p-8`;
+
+const cardFlagshipService =
+  "group relative flex h-full flex-col rounded-2xl border border-blue-200/65 bg-white p-7 sm:p-8 shadow-[0_10px_32px_-14px_rgba(37,99,235,0.2)] ring-1 ring-blue-500/12 transition-all duration-300 ease-out hover:border-blue-300/80 hover:shadow-[0_28px_64px_-28px_rgba(37,99,235,0.22)] hover:ring-blue-500/22";
+
+const painCardClass = `${cardSurface} ${cardSurfaceHover} ${cardSurfaceAccentHover} p-6 sm:p-7 text-left`;
+
+const howCardClass = `${cardSurface} ${cardSurfaceHover} ${cardSurfaceAccentHover} relative p-7`;
+
+const outcomeCardClass = `${cardSurface} ${cardSurfaceHover} flex flex-col gap-4 p-6 sm:p-7 sm:flex-row sm:items-start`;
 
 const painPoints = [
   {
@@ -61,15 +79,15 @@ const services: {
   {
     title: "AI Receptionist",
     description:
-      "Answer calls instantly, capture lead details, and book appointments automatically.",
+      "Answers instantly, captures details, and books appointments — without missing a ring.",
     icon: Headphones,
-    grad: "from-blue-500/12 to-indigo-500/8",
+    grad: "from-blue-500/18 to-indigo-500/10",
     iconClass: "text-blue-600",
   },
   {
     title: "Smart Message Response",
     description:
-      "Respond faster to texts, website inquiries, and customer messages without living on your phone.",
+      "Faster responses across text, web inquiries, and messages — without living on your phone.",
     icon: MessageSquare,
     grad: "from-indigo-500/12 to-violet-500/8",
     iconClass: "text-indigo-600",
@@ -77,7 +95,7 @@ const services: {
   {
     title: "Social / DM Response",
     description:
-      "Keep up with inbound Instagram, Facebook, and social messages before they go cold.",
+      "Catch Instagram, Facebook, and DMs before inbound leads go cold.",
     icon: Share2,
     grad: "from-violet-500/12 to-purple-500/8",
     iconClass: "text-violet-600",
@@ -85,14 +103,14 @@ const services: {
   {
     title: "Lead Follow-Up Automation",
     description:
-      "Automatically remind, nurture, and move leads forward instead of letting them disappear.",
+      "Remind, nurture, and move leads forward automatically — instead of letting them slip away.",
     icon: Workflow,
     grad: "from-sky-500/12 to-blue-500/8",
     iconClass: "text-sky-600",
   },
   {
     title: "Old Lead Reactivation",
-    description: "Re-engage past leads and missed opportunities that could still turn into revenue.",
+    description: "Re-engage past leads and missed opportunities that can still convert.",
     icon: RotateCcw,
     grad: "from-amber-500/14 to-orange-500/8",
     iconClass: "text-amber-700",
@@ -100,7 +118,7 @@ const services: {
   {
     title: "Reviews & Reputation",
     description:
-      "Generate stronger Google reviews and build more trust without chasing customers manually.",
+      "Stronger Google reviews and trust — without the manual follow-up chase.",
     icon: Star,
     grad: "from-amber-400/14 to-yellow-500/8",
     iconClass: "text-amber-600",
@@ -130,13 +148,13 @@ const howSteps = [
   },
 ];
 
-const outcomes = [
-  "More appointments booked without adding staff",
-  "Faster replies across the channels you actually use",
-  "Fewer opportunities slipping through the cracks",
-  "Less time spent on repetitive admin",
-  "Better follow-up without manual effort",
-  "Stronger customer trust and online reputation",
+const outcomes: { lead: string; tail: string }[] = [
+  { lead: "More appointments booked", tail: "without adding staff" },
+  { lead: "Faster replies", tail: "across the channels you actually use" },
+  { lead: "Fewer missed opportunities", tail: "stronger capture from first contact to close" },
+  { lead: "Less time on repetitive admin", tail: "more time on the work that pays" },
+  { lead: "Better follow-up", tail: "without manual effort" },
+  { lead: "Stronger trust & reputation", tail: "where new customers look first" },
 ];
 
 const industries = [
@@ -260,42 +278,29 @@ export default function Home() {
             </div>
 
             <div className="relative lg:pl-4">
-              <div className="absolute -inset-1 rounded-[1.35rem] bg-gradient-to-br from-blue-500/20 via-indigo-500/15 to-violet-500/20 blur-xl opacity-80" />
-              <div className="relative overflow-hidden rounded-[1.25rem] border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/40 shadow-[0_24px_60px_-20px_rgba(15,23,42,0.2)] p-8 sm:p-10">
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/20 via-indigo-500/15 to-violet-500/20 blur-xl opacity-80" />
+              <div className="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/90 to-blue-50/45 shadow-[0_22px_56px_-22px_rgba(15,23,42,0.22)] p-7 sm:p-8 text-left">
                 <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-400/10 blur-2xl" />
-                <div className="pointer-events-none absolute bottom-4 right-6 flex gap-1 opacity-40">
+                <div className="pointer-events-none absolute right-5 top-5 opacity-[0.35]">
                   <Sparkles className="h-4 w-4 text-indigo-500" strokeWidth={1.5} />
                 </div>
-                <p className={`${eyebrow} mb-3`}>Live voice AI demo</p>
-                <h2 className="text-2xl sm:text-[1.65rem] font-semibold tracking-tight text-slate-900">
+                <p className={`${eyebrow} mb-2`}>Live voice AI demo</p>
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
                   Hear It Work
                 </h2>
-                <p className="mt-4 text-slate-600 leading-relaxed text-[15px] sm:text-base">
-                  Call the live demo and hear how Automagixx handles a real conversation — clearly,
-                  quickly, and like magic.
+                <p className="mt-3 text-left text-[14px] sm:text-[15px] text-slate-600 leading-relaxed">
+                  Call the live demo and hear a real conversation — clear, fast, and on-brand.
                 </p>
-                <a
-                  href={DEMO_PHONE_HREF}
-                  className="mt-8 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-slate-900 text-white px-8 py-3.5 text-[15px] font-semibold hover:bg-slate-800 transition-all shadow-lg"
-                >
-                  {DEMO_CARD_BUTTON_LABEL}
-                </a>
-                <p className="mt-6 text-center sm:text-left text-lg font-semibold text-slate-900 tracking-tight tabular-nums">
-                  {DEMO_PHONE_DISPLAY}
-                </p>
-                <div
-                  className="mt-6 flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white/60 px-3 py-2 text-[12px] font-medium text-slate-500"
-                  aria-hidden
-                >
-                  <span className="flex gap-0.5">
-                    {[0, 1, 2, 3].map((i) => (
-                      <span
-                        key={i}
-                        className="block h-1 w-1 rounded-full bg-emerald-500/85"
-                      />
-                    ))}
-                  </span>
-                  <span className="uppercase tracking-wider text-slate-400">Signal active</span>
+                <div className="mt-6 border-t border-slate-200/75 pt-6">
+                  <a
+                    href={DEMO_PHONE_HREF}
+                    className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 text-white px-7 py-3.5 text-[15px] font-semibold tracking-tight shadow-[0_6px_20px_rgba(15,23,42,0.2)] transition-all duration-150 ease-out hover:bg-slate-800 hover:shadow-[0_10px_28px_rgba(15,23,42,0.25)] active:scale-[0.99]"
+                  >
+                    {DEMO_CARD_BUTTON_LABEL}
+                  </a>
+                  <p className="mt-3 text-left text-[13px] font-medium text-slate-500 tabular-nums tracking-tight">
+                    {DEMO_PHONE_DISPLAY}
+                  </p>
                 </div>
               </div>
             </div>
@@ -323,16 +328,63 @@ export default function Home() {
               </span>
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {painPoints.map((p) => (
-              <div
-                key={p.title}
-                className="rounded-2xl border border-slate-200/90 bg-white p-6 text-left shadow-[0_2px_8px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_32px_-12px_rgba(37,99,235,0.12)] transition-shadow"
-              >
-                <p className="text-[15px] font-semibold text-slate-900">{p.title}</p>
-                <p className="mt-2 text-[14px] text-slate-600 leading-relaxed">{p.body}</p>
+              <div key={p.title} className={painCardClass}>
+                <p className="text-[15px] font-semibold tracking-tight text-slate-900">{p.title}</p>
+                <p className="mt-2.5 text-[14px] text-slate-600 leading-relaxed">{p.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Revenue impact — calculator teaser */}
+      <section
+        aria-labelledby="revenue-impact-heading"
+        className="scroll-mt-28 py-20 sm:py-24 px-5 sm:px-8 bg-white border-y border-slate-100"
+      >
+        <div className={shell}>
+          <div className="max-w-[36rem] mx-auto text-center">
+            <p className={eyebrowCenter}>Revenue impact</p>
+            <h2
+              id="revenue-impact-heading"
+              className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.12]"
+            >
+              How Much Are Missed Calls Costing You?
+            </h2>
+            <p className="mt-5 text-lg text-slate-600 leading-relaxed">
+              Most businesses underestimate this — the numbers are usually worse than you think.
+            </p>
+
+            <div className="mt-10 sm:mt-12 rounded-2xl border border-slate-800/60 bg-slate-950 px-7 py-9 sm:px-10 sm:py-10 text-center shadow-[0_28px_64px_-20px_rgba(0,0,0,0.45)]">
+              <p
+                className="text-[clamp(1.85rem,6vw,2.35rem)] font-bold leading-none tracking-tight text-[#00ff88]"
+                style={{
+                  textShadow:
+                    "0 0 40px rgba(0, 255, 136, 0.32), 0 0 72px rgba(0, 255, 136, 0.1)",
+                }}
+              >
+                $12,450
+                <span className="text-[1.05rem] sm:text-xl font-semibold text-white/50 ml-1.5">
+                  /month
+                </span>
+              </p>
+              <p className="mt-4 text-[13px] font-medium uppercase tracking-[0.16em] text-white/40">
+                From missed calls alone
+              </p>
+              <p className="mt-6 text-[15px] text-white/70 leading-relaxed max-w-[28ch] mx-auto">
+                This is what not answering the phone is costing businesses like yours.
+              </p>
+            </div>
+
+            <Link
+              href="/missed-call-calculator"
+              className="mt-10 inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-9 py-4 text-[15px] font-semibold tracking-tight shadow-[0_8px_28px_rgba(37,99,235,0.35)] transition-all duration-150 ease-out hover:bg-blue-700 hover:shadow-[0_12px_32px_rgba(37,99,235,0.4)] active:scale-[0.98]"
+            >
+              Calculate Your Lost Revenue
+            </Link>
+            <p className="mt-2.5 text-[13px] text-slate-500">Takes 10 seconds</p>
           </div>
         </div>
       </section>
@@ -351,17 +403,23 @@ export default function Home() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-            {services.map((s) => {
+            {services.map((s, i) => {
               const Icon = s.icon;
+              const flagship = i === 0;
+              const cardClass = flagship ? cardFlagshipService : cardPremium;
+              const iconWrap = flagship
+                ? "mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br shadow-[0_8px_24px_-8px_rgba(37,99,235,0.25)]"
+                : "mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br";
+              const iconSize = flagship ? "h-7 w-7" : "h-6 w-6";
               return (
-                <div key={s.title} className={cardPremium}>
-                  <div
-                    className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${s.grad} ${s.iconClass}`}
-                  >
-                    <Icon className="h-6 w-6" strokeWidth={1.75} />
+                <div key={s.title} className={cardClass}>
+                  <div className={`${iconWrap} ${s.grad} ${s.iconClass}`}>
+                    <Icon className={iconSize} strokeWidth={flagship ? 1.65 : 1.75} />
                   </div>
-                  <h3 className="text-lg font-semibold tracking-tight text-slate-900">{s.title}</h3>
-                  <p className="mt-3 text-[15px] text-slate-600 leading-relaxed flex-1">
+                  <h3 className="text-lg font-semibold tracking-tight text-slate-900 leading-snug">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-[14px] sm:text-[15px] text-slate-600 leading-relaxed flex-1">
                     {s.description}
                   </p>
                 </div>
@@ -389,17 +447,14 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {howSteps.map((item) => (
-              <div
-                key={item.step}
-                className="relative rounded-2xl border border-slate-200/90 bg-white p-7 shadow-[0_2px_8px_rgba(15,23,42,0.04)] hover:border-blue-200/70 hover:shadow-md transition-all"
-              >
-                <span className="text-[12px] font-bold text-blue-600 tracking-[0.2em]">
+              <div key={item.step} className={howCardClass}>
+                <span className="text-[11px] font-bold text-blue-600 tracking-[0.22em]">
                   {item.step}
                 </span>
-                <h3 className="text-[17px] font-semibold mt-4 mb-2 tracking-tight text-slate-900">
+                <h3 className="text-[17px] font-semibold mt-4 mb-2 tracking-tight text-slate-900 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 text-[15px] leading-relaxed">{item.body}</p>
+                <p className="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
@@ -407,34 +462,44 @@ export default function Home() {
       </section>
 
       {/* The Magic */}
-      <section id="magic" className="scroll-mt-28 relative py-20 sm:py-28 px-5 sm:px-8 overflow-hidden bg-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(99,102,241,0.09),transparent_65%)]" />
-        <div className="pointer-events-none absolute top-1/4 left-1/4 h-40 w-40 rounded-full bg-blue-400/[0.06] blur-3xl" />
+      <section
+        id="magic"
+        className="scroll-mt-28 relative py-24 sm:py-32 px-5 sm:px-8 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-white"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_35%,rgba(99,102,241,0.11),transparent_60%)]" />
+        <div className="pointer-events-none absolute top-[18%] left-[12%] h-48 w-48 rounded-full bg-blue-400/[0.07] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[12%] right-[10%] h-56 w-56 rounded-full bg-violet-400/[0.06] blur-3xl" />
         <div className={`${shell} relative z-10`}>
           <div className="max-w-[40rem] mx-auto text-center">
-            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/70 bg-indigo-50/60 px-4 py-2 mb-8">
+            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/60 bg-white/80 px-4 py-2 mb-10 shadow-[0_2px_16px_rgba(99,102,241,0.08)] backdrop-blur-sm">
               <Wand2 className="w-4 h-4 text-indigo-600" strokeWidth={1.75} />
-              <span className="text-[12px] font-semibold text-indigo-800 tracking-wide uppercase">
+              <span className="text-[11px] font-semibold text-indigo-800 tracking-[0.18em] uppercase">
                 The magic
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-slate-900 leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-semibold tracking-tight text-slate-900 leading-[1.1]">
               This Is What AI Should Feel Like
             </h2>
-            <div className="mt-8 space-y-5 text-lg sm:text-xl text-slate-600 leading-relaxed">
-              <p>No confusing dashboards.</p>
-              <p>No constant babysitting.</p>
-              <p>No extra headcount just to keep up.</p>
-              <p className="text-slate-700 font-medium pt-2">
+            <div className="mt-10 space-y-4 sm:space-y-5 text-lg sm:text-xl text-slate-600 leading-relaxed">
+              <p className="text-slate-600">No confusing dashboards.</p>
+              <p className="text-slate-600">No constant babysitting.</p>
+              <p className="text-slate-600">No extra headcount just to keep up.</p>
+              <p className="text-slate-700 font-medium pt-3 max-w-[36ch] mx-auto">
                 Just a system that works quietly in the background — capturing opportunities, replying
                 faster, and keeping business moving.
               </p>
-              <p className="text-xl sm:text-2xl font-semibold text-slate-900 pt-4">
+              <p className="text-xl sm:text-2xl font-semibold text-slate-900 pt-6 tracking-tight">
                 Reliable. Fast. Effortless.
               </p>
-              <p className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent pt-1">
-                Like magic.
-              </p>
+              <div className="relative pt-8 pb-2 inline-block">
+                <span
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[4.5rem] w-[min(100vw,14rem)] rounded-full bg-gradient-to-r from-blue-400/20 via-indigo-400/18 to-violet-400/20 blur-2xl"
+                  aria-hidden
+                />
+                <p className="relative text-[1.75rem] sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                  Like magic.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -452,18 +517,18 @@ export default function Home() {
               What You Notice First
             </h2>
           </div>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1100px]">
-            {outcomes.map((line) => (
-              <li
-                key={line}
-                className="flex min-h-[5.5rem] items-start gap-4 rounded-2xl border border-slate-200/90 bg-white px-6 py-5 shadow-[0_2px_8px_rgba(15,23,42,0.04)]"
-              >
-                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-[1100px]">
+            {outcomes.map((o) => (
+              <li key={o.lead} className={outcomeCardClass}>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600/[0.08] text-blue-600 ring-1 ring-blue-600/[0.1] shadow-[0_2px_8px_rgba(37,99,235,0.06)]">
                   <CheckCircle2 className="h-5 w-5" strokeWidth={2} />
                 </span>
-                <span className="text-[15px] font-medium text-slate-800 leading-snug pt-0.5">
-                  {line}
-                </span>
+                <div className="min-w-0 pt-0.5">
+                  <p className="text-[16px] font-semibold text-slate-900 leading-snug tracking-tight">
+                    {o.lead}
+                  </p>
+                  <p className="mt-2 text-[14px] text-slate-600 leading-relaxed">{o.tail}</p>
+                </div>
               </li>
             ))}
           </ul>
@@ -487,7 +552,7 @@ export default function Home() {
             {industries.map((name) => (
               <div
                 key={name}
-                className="flex items-center justify-center rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-4 text-center text-[13px] sm:text-[14px] font-semibold text-slate-800 leading-snug shadow-sm hover:border-blue-200 hover:bg-white hover:shadow-md transition-all min-h-[4.25rem]"
+                className="flex items-center justify-center rounded-2xl border border-slate-200/90 bg-slate-50/60 px-4 py-4 text-center text-[13px] sm:text-[14px] font-semibold text-slate-800 leading-snug shadow-[0_2px_10px_rgba(15,23,42,0.04)] transition-all duration-300 ease-out hover:border-blue-200/80 hover:bg-white hover:shadow-[0_16px_40px_-20px_rgba(37,99,235,0.12)] min-h-[4.25rem]"
               >
                 {name}
               </div>
@@ -499,7 +564,7 @@ export default function Home() {
       {/* Demo */}
       <section id="demo" className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-slate-50/50">
         <div className={shell}>
-          <div className="max-w-[44rem] mx-auto text-center relative rounded-[1.35rem] border border-slate-200/90 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/30 p-10 sm:p-14 shadow-[0_24px_60px_-28px_rgba(37,99,235,0.22)] overflow-hidden">
+          <div className="max-w-[44rem] mx-auto text-center relative rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/30 p-10 sm:p-14 shadow-[0_24px_60px_-28px_rgba(37,99,235,0.2)] overflow-hidden transition-shadow duration-300 hover:shadow-[0_28px_64px_-28px_rgba(37,99,235,0.24)]">
             <div className="pointer-events-none absolute top-0 right-0 w-40 h-40 bg-violet-400/10 rounded-full blur-3xl" />
             <Sparkles
               className="w-9 h-9 text-blue-600 mx-auto mb-5 relative"
