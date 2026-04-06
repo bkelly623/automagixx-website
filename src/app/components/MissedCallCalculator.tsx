@@ -60,21 +60,6 @@ function formatMoney(n: number): string {
   }).format(Math.round(n));
 }
 
-function periodLabel(period: PeriodId): string {
-  switch (period) {
-    case "daily":
-      return "day";
-    case "weekly":
-      return "week";
-    case "monthly":
-      return "month";
-    case "annually":
-      return "year";
-    default:
-      return "period";
-  }
-}
-
 function useAnimatedNumber(target: number, durationMs: number): number {
   const [value, setValue] = useState(target);
   const displayRef = useRef(target);
@@ -140,9 +125,7 @@ export default function MissedCallCalculator() {
     const step = (now: number) => {
       const t = Math.min(1, (now - t0) / duration);
       const e = easeOutCubic(t);
-      setMissedCalls(
-        Math.round(startMissed + (p.missed - startMissed) * e),
-      );
+      setMissedCalls(Math.round(startMissed + (p.missed - startMissed) * e));
       setConversion(Math.round(startConv + (p.conversion - startConv) * e));
       setAvgValue(Math.round(startAvg + (p.avg - startAvg) * e));
       if (t < 1) {
@@ -162,79 +145,55 @@ export default function MissedCallCalculator() {
     [period],
   );
 
-  const dailyLoss =
-    missedCalls * (conversion / 100) * avgValue;
+  const dailyLoss = missedCalls * (conversion / 100) * avgValue;
   const totalLost = dailyLoss * periodDays;
-  const xCount = Math.round(
-    missedCalls * (conversion / 100) * periodDays,
-  );
+  const xCount = Math.round(missedCalls * (conversion / 100) * periodDays);
 
   const animatedTotal = useAnimatedNumber(totalLost, 600);
-  const [showFixLine, setShowFixLine] = useState(false);
-
-  useEffect(() => {
-    setShowFixLine(false);
-    const id = window.setTimeout(() => setShowFixLine(true), 900);
-    return () => clearTimeout(id);
-  }, [totalLost]);
-
   const avgLinear = avgToLinear(avgValue);
 
   const pillBase =
-    "rounded-full px-3 py-2 text-[13px] font-medium transition-all duration-150 ease-in-out whitespace-nowrap shrink-0 border";
+    "rounded-full px-4 py-2.5 text-[13px] font-semibold transition-all duration-150 ease-in-out whitespace-nowrap shrink-0 border";
   const pillInactive =
-    "border-white/15 bg-white/5 text-white hover:border-white/25 hover:bg-white/10";
+    "border-white/12 bg-white/[0.04] text-white/90 hover:border-white/22 hover:bg-white/[0.08]";
   const pillActive = "border-transparent bg-[#00ff88] text-[#0a0a0a]";
+
+  const sliderLabel = "text-[11px] font-medium text-white/55";
+  const sliderValue = "text-[12px] font-semibold tabular-nums text-[#5dffaa]";
 
   return (
     <div
-      className="min-h-screen w-full font-sans text-white transition-colors duration-150 ease-in-out"
+      className="min-h-screen w-full font-sans text-white"
       style={{ backgroundColor: BG }}
     >
-      <div className="mx-auto flex min-h-screen max-w-[480px] flex-col px-4 py-8 sm:py-10">
-        <header className="mb-8 text-center">
-          <h1 className="text-balance text-[22px] font-semibold leading-tight tracking-tight text-white sm:text-[24px]">
-            How Much Revenue Are You Losing From Missed Calls?
-          </h1>
-          <p className="mt-3 text-[13px] leading-relaxed text-white/55">
-            Most businesses underestimate this. The numbers are usually worse
-            than you think.
-          </p>
-        </header>
+      <div className="mx-auto flex min-h-screen max-w-[420px] flex-col items-center px-4 py-6 sm:py-8">
+        <h1 className="mb-6 text-center text-lg font-semibold leading-snug tracking-tight text-white/90 sm:text-xl">
+          How Much Revenue Are You Losing?
+        </h1>
 
-        <div className="flex flex-1 flex-col gap-8">
-          {/* 1. Business type */}
-          <section className="space-y-3">
-            <p className="text-[13px] font-medium text-white/90">
-              What type of business are you?
-            </p>
-            <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {(Object.keys(BUSINESSES) as BusinessId[]).map((id) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => selectBusiness(id)}
-                  className={`${pillBase} ${business === id ? pillActive : pillInactive}`}
-                >
-                  {BUSINESSES[id].label}
-                </button>
-              ))}
-            </div>
-          </section>
+        <div className="flex w-full flex-col items-center gap-5">
+          {/* Business type */}
+          <div className="flex w-full flex-wrap justify-center gap-1.5">
+            {(Object.keys(BUSINESSES) as BusinessId[]).map((id) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => selectBusiness(id)}
+                className={`${pillBase} ${business === id ? pillActive : pillInactive}`}
+              >
+                {BUSINESSES[id].label}
+              </button>
+            ))}
+          </div>
 
-          {/* 2–4. Sliders */}
-          <section className="space-y-6">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between gap-2">
-                <label
-                  htmlFor="missed-calls"
-                  className="text-[13px] font-medium text-white/90"
-                >
+          {/* Sliders */}
+          <div className="w-full space-y-3.5">
+            <div className="space-y-1">
+              <div className="flex items-baseline justify-between gap-3">
+                <label htmlFor="missed-calls" className={sliderLabel}>
                   Missed Calls Per Day
                 </label>
-                <span className="text-[13px] tabular-nums text-[#00ff88]">
-                  {missedCalls}
-                </span>
+                <span className={sliderValue}>{missedCalls}</span>
               </div>
               <input
                 id="missed-calls"
@@ -243,22 +202,17 @@ export default function MissedCallCalculator() {
                 max={50}
                 value={missedCalls}
                 onChange={(e) => setMissedCalls(Number(e.target.value))}
-                className="h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[background] duration-150 ease-in-out [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
+                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-opacity duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
                 style={{ accentColor: GREEN }}
               />
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between gap-2">
-                <label
-                  htmlFor="conversion"
-                  className="text-[13px] font-medium text-white/90"
-                >
+            <div className="space-y-1">
+              <div className="flex items-baseline justify-between gap-3">
+                <label htmlFor="conversion" className={sliderLabel}>
                   Calls That Convert to Customers
                 </label>
-                <span className="text-[13px] tabular-nums text-[#00ff88]">
-                  {conversion}%
-                </span>
+                <span className={sliderValue}>{conversion}%</span>
               </div>
               <input
                 id="conversion"
@@ -267,22 +221,17 @@ export default function MissedCallCalculator() {
                 max={80}
                 value={conversion}
                 onChange={(e) => setConversion(Number(e.target.value))}
-                className="h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[background] duration-150 ease-in-out [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
+                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-opacity duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
                 style={{ accentColor: GREEN }}
               />
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between gap-2">
-                <label
-                  htmlFor="avg-value"
-                  className="text-[13px] font-medium text-white/90"
-                >
+            <div className="space-y-1">
+              <div className="flex items-baseline justify-between gap-3">
+                <label htmlFor="avg-value" className={sliderLabel}>
                   Average Job or Service Value
                 </label>
-                <span className="text-[13px] tabular-nums text-[#00ff88]">
-                  {formatMoney(avgValue)}
-                </span>
+                <span className={sliderValue}>{formatMoney(avgValue)}</span>
               </div>
               <input
                 id="avg-value"
@@ -294,74 +243,48 @@ export default function MissedCallCalculator() {
                 onChange={(e) =>
                   setAvgValue(linearToAvg(Number(e.target.value)))
                 }
-                className="h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[background] duration-150 ease-in-out [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
+                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-opacity duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
                 style={{ accentColor: GREEN }}
               />
             </div>
-          </section>
+          </div>
 
           {/* Period */}
-          <section className="space-y-3">
-            <p className="text-[13px] font-medium text-white/90">Period</p>
-            <div className="flex flex-wrap gap-2">
-              {PERIODS.map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setPeriod(p.id)}
-                  className={`${pillBase} ${period === p.id ? pillActive : pillInactive}`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-          </section>
+          <div className="flex w-full flex-wrap justify-center gap-1.5">
+            {PERIODS.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setPeriod(p.id)}
+                className={`${pillBase} ${period === p.id ? pillActive : pillInactive}`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
 
-          {/* Output */}
-          <section className="flex flex-col items-center py-4 text-center">
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">
-              Estimated Revenue Lost
+          {/* Result */}
+          <section className="w-full pt-1 text-center">
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/40">
+              You&apos;re Losing
             </p>
-            <p
-              className="mt-2 text-[40px] font-bold leading-none tracking-tight text-[#00ff88] sm:text-[48px]"
-              style={{
-                textShadow:
-                  "0 0 28px rgba(0, 255, 136, 0.35), 0 0 60px rgba(0, 255, 136, 0.12)",
-              }}
-            >
+            <p className="missed-calc-result-pulse mt-1 text-[2.75rem] font-bold leading-[1.05] tracking-tight text-[#00ff88] sm:text-[4rem]">
               {formatMoney(animatedTotal)}
             </p>
-            <p className="mt-5 max-w-[32ch] text-[14px] leading-relaxed text-white/80">
-              That&apos;s {xCount} missed customers per {periodLabel(period)}
+            <p className="mt-2 max-w-[30ch] text-[14px] font-medium leading-snug text-white/75 mx-auto">
+              That&apos;s {xCount} customers you never even spoke to
             </p>
             <p
-              className="mt-2 max-w-[34ch] text-[14px] leading-relaxed"
+              className="mt-1.5 max-w-[32ch] text-[13px] font-medium leading-snug mx-auto"
               style={{ color: BLUE }}
             >
-              Approximately {xCount} jobs going to your competitors every{" "}
-              {periodLabel(period)}
-            </p>
-
-            <p className="mt-8 max-w-[34ch] text-[14px] leading-relaxed text-white/70">
-              This is what your phone not getting answered is costing you.
-            </p>
-            <p
-              className={`mt-3 max-w-[34ch] text-[14px] leading-relaxed text-white/60 transition-opacity duration-500 ease-out ${
-                showFixLine ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              This is exactly what we fix automatically.
+              That&apos;s {xCount} jobs your competitors are taking from you
             </p>
           </section>
 
-          <footer className="mt-auto border-t border-white/10 pt-8 text-center">
-            <p className="text-[13px] font-semibold tracking-tight text-[#00ff88]">
-              Automagixx
-            </p>
-            <p className="mt-1 text-[12px] leading-relaxed text-white/45">
-              Turn your missed calls into money — like magic.
-            </p>
-          </footer>
+          <p className="mt-auto pt-10 text-center text-[11px] font-medium tracking-tight text-white/60">
+            Automagixx
+          </p>
         </div>
       </div>
     </div>

@@ -33,3 +33,18 @@ body {
   background-color: rgba(37, 99, 235, 0.18);
   color: #0f172a;
 }
+
+/* Missed-call calculator: very slow, subtle glow pulse on result */
+@keyframes missed-calc-glow-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 25px rgba(0, 255, 136, 0.35), 0 0 48px rgba(0, 255, 136, 0.08);
+  }
+  50% {
+    text-shadow: 0 0 32px rgba(0, 255, 136, 0.48), 0 0 64px rgba(0, 255, 136, 0.14);
+  }
+}
+
+.missed-calc-result-pulse {
+  animation: missed-calc-glow-pulse 5.5s ease-in-out infinite;
+}
