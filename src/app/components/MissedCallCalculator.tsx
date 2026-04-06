@@ -4,7 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const BG = "#0a0a0a";
 const GREEN = "#00ff88";
-const ACCENT_SECONDARY = "#34d399";
+/** Competitor line — spec accent for contrast on dark UI */
+const ACCENT_BLUE = "#3b82f6";
 
 const MIN_AVG = 50;
 const MAX_AVG = 10000;
@@ -30,12 +31,12 @@ const BUSINESSES: Record<
   BusinessId,
   { label: string; missed: number; conversion: number; avg: number }
 > = {
-  roofing: { label: "Roofing", missed: 8, conversion: 25, avg: 8000 },
-  hvac: { label: "HVAC", missed: 6, conversion: 30, avg: 1200 },
-  plumbing: { label: "Plumbing", missed: 7, conversion: 35, avg: 850 },
-  salon: { label: "Salon", missed: 5, conversion: 40, avg: 150 },
-  dental: { label: "Dental", missed: 4, conversion: 45, avg: 400 },
-  other: { label: "Other", missed: 5, conversion: 30, avg: 500 },
+  roofing: { label: "Roofing", missed: 10, conversion: 35, avg: 9000 },
+  hvac: { label: "HVAC", missed: 12, conversion: 40, avg: 1800 },
+  plumbing: { label: "Plumbing", missed: 10, conversion: 45, avg: 700 },
+  salon: { label: "Salon", missed: 12, conversion: 55, avg: 150 },
+  dental: { label: "Dental", missed: 8, conversion: 55, avg: 700 },
+  other: { label: "Other", missed: 8, conversion: 40, avg: 800 },
 };
 
 function avgToLinear(avg: number): number {
@@ -153,26 +154,26 @@ export default function MissedCallCalculator() {
   const avgLinear = avgToLinear(avgValue);
 
   const pillBase =
-    "rounded-full px-4 py-2.5 text-[13px] font-semibold transition-all duration-150 ease-in-out whitespace-nowrap shrink-0 border";
+    "rounded-full px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap shrink-0 border transition-all duration-200 ease-out active:scale-[0.98]";
   const pillInactive =
-    "border-white/12 bg-white/[0.04] text-white/90 hover:border-white/22 hover:bg-white/[0.08]";
-  const pillActive = "border-transparent bg-[#00ff88] text-[#0a0a0a]";
+    "border-white/14 bg-[#111]/90 text-white/95 hover:border-white/24 hover:bg-[#161616]";
+  const pillActive = "border-transparent bg-[#00ff88] text-[#0a0a0a] shadow-[0_0_20px_rgba(0,255,136,0.25)]";
 
-  const sliderLabel = "text-[11px] font-medium text-white/55";
-  const sliderValue = "text-[12px] font-semibold tabular-nums text-[#5dffaa]";
+  const sliderLabel = "text-[10px] font-semibold uppercase tracking-[0.12em] text-white/48";
+  const sliderValue =
+    "text-[13px] font-bold tabular-nums tracking-tight text-[#8cffb3]";
 
   return (
     <div
-      className="min-h-screen w-full font-sans text-white"
+      className="min-h-screen w-full font-sans text-white antialiased"
       style={{ backgroundColor: BG }}
     >
-      <div className="mx-auto flex min-h-screen max-w-[420px] flex-col items-center px-4 py-6 sm:py-8">
-        <h1 className="mb-6 text-center text-lg font-semibold leading-snug tracking-tight text-white/90 sm:text-xl">
+      <div className="mx-auto flex min-h-screen max-w-[420px] flex-col items-center px-4 py-5 sm:py-7">
+        <h1 className="mb-6 text-center text-lg font-semibold leading-snug tracking-tight text-white/90 sm:text-[1.125rem]">
           How Much Revenue Are You Losing?
         </h1>
 
-        <div className="flex w-full flex-col items-center gap-5">
-          {/* Business type */}
+        <div className="flex w-full flex-col items-center gap-4">
           <div className="flex w-full flex-wrap justify-center gap-1.5">
             {(Object.keys(BUSINESSES) as BusinessId[]).map((id) => (
               <button
@@ -186,12 +187,11 @@ export default function MissedCallCalculator() {
             ))}
           </div>
 
-          {/* Sliders */}
-          <div className="w-full space-y-3.5">
+          <div className="w-full space-y-3">
             <div className="space-y-1">
               <div className="flex items-baseline justify-between gap-3">
                 <label htmlFor="missed-calls" className={sliderLabel}>
-                  Missed Calls Per Day
+                  Missed / day
                 </label>
                 <span className={sliderValue}>{missedCalls}</span>
               </div>
@@ -202,7 +202,7 @@ export default function MissedCallCalculator() {
                 max={50}
                 value={missedCalls}
                 onChange={(e) => setMissedCalls(Number(e.target.value))}
-                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-opacity duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
+                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
                 style={{ accentColor: GREEN }}
               />
             </div>
@@ -210,7 +210,7 @@ export default function MissedCallCalculator() {
             <div className="space-y-1">
               <div className="flex items-baseline justify-between gap-3">
                 <label htmlFor="conversion" className={sliderLabel}>
-                  Calls That Convert to Customers
+                  Close rate
                 </label>
                 <span className={sliderValue}>{conversion}%</span>
               </div>
@@ -221,7 +221,7 @@ export default function MissedCallCalculator() {
                 max={80}
                 value={conversion}
                 onChange={(e) => setConversion(Number(e.target.value))}
-                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-opacity duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
+                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
                 style={{ accentColor: GREEN }}
               />
             </div>
@@ -229,7 +229,7 @@ export default function MissedCallCalculator() {
             <div className="space-y-1">
               <div className="flex items-baseline justify-between gap-3">
                 <label htmlFor="avg-value" className={sliderLabel}>
-                  Average Job or Service Value
+                  Avg job value
                 </label>
                 <span className={sliderValue}>{formatMoney(avgValue)}</span>
               </div>
@@ -243,14 +243,13 @@ export default function MissedCallCalculator() {
                 onChange={(e) =>
                   setAvgValue(linearToAvg(Number(e.target.value)))
                 }
-                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-opacity duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
+                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
                 style={{ accentColor: GREEN }}
               />
             </div>
           </div>
 
-          {/* Period */}
-          <div className="flex w-full flex-wrap justify-center gap-1.5">
+          <div className="flex w-full flex-wrap justify-center gap-1.5 pt-0.5">
             {PERIODS.map((p) => (
               <button
                 key={p.id}
@@ -263,26 +262,30 @@ export default function MissedCallCalculator() {
             ))}
           </div>
 
-          {/* Result */}
-          <section className="w-full pt-1 text-center">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/40">
+          <section className="w-full pt-2 text-center">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/38">
               You&apos;re Losing
             </p>
-            <p className="missed-calc-result-pulse mt-1 text-[2.75rem] font-bold leading-[1.05] tracking-tight text-[#00ff88] sm:text-[4rem]">
+            <p
+              className="missed-calc-result-pulse mt-1.5 text-[3rem] font-extrabold leading-[1.02] tracking-[-0.02em] text-[#00ff88] sm:text-[4.25rem] drop-shadow-[0_0_25px_rgba(0,255,136,0.35)]"
+            >
               {formatMoney(animatedTotal)}
             </p>
-            <p className="mt-2 max-w-[30ch] text-[14px] font-medium leading-snug text-white/75 mx-auto">
+            <p className="mt-2 max-w-[28ch] text-[13px] font-semibold leading-snug text-white/80 mx-auto">
               That&apos;s {xCount} customers you never even spoke to
             </p>
             <p
-              className="mt-1.5 max-w-[32ch] text-[13px] font-medium leading-snug mx-auto"
-              style={{ color: ACCENT_SECONDARY }}
+              className="mt-1 max-w-[30ch] text-[12px] font-semibold leading-snug mx-auto"
+              style={{ color: ACCENT_BLUE }}
             >
               That&apos;s {xCount} jobs your competitors are taking from you
             </p>
           </section>
 
-          <p className="mt-auto pt-10 text-center text-[11px] font-medium tracking-tight text-white/60">
+          <p
+            className="mt-auto pt-8 text-center text-[11px] font-semibold tracking-tight"
+            style={{ color: "rgba(0, 255, 136, 0.6)" }}
+          >
             Automagixx
           </p>
         </div>
