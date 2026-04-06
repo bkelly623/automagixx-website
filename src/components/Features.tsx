@@ -6,39 +6,33 @@ import { Zap, Shield, TrendingUp, Clock, Users, BarChart3 } from "lucide-react";
 const features = [
   {
     icon: Zap,
-    title: "Fast to stand up",
-    description:
-      "Practical rollout for real businesses — not a six-month science project. We focus on capture first.",
+    title: "Lightning Fast Setup",
+    description: "Get up and running in minutes, not weeks. Our AI learns your business instantly.",
   },
   {
     icon: Shield,
-    title: "Built for trust",
-    description:
-      "Professional, on-brand experiences your customers recognize — not a gimmicky bot that erodes confidence.",
+    title: "Enterprise Security",
+    description: "Bank-level encryption and compliance. Your data is always safe with us.",
   },
   {
     icon: TrendingUp,
-    title: "Revenue-focused",
-    description:
-      "Every piece is aimed at answered calls, faster replies, and follow-up that doesn’t fall through the cracks.",
+    title: "Proven ROI",
+    description: "Average 300% increase in captured leads. Real results, measured in dollars.",
   },
   {
     icon: Clock,
-    title: "Always-on capture",
-    description:
-      "When you’re on a job, in the field, or off the clock, inbound opportunities still get handled.",
+    title: "24/7 Availability",
+    description: "Never miss a call again. AI that works while you sleep.",
   },
   {
     icon: Users,
-    title: "Human handoff",
-    description:
-      "When someone needs you, the path to a real person stays clear — AI supports, it doesn’t replace judgment.",
+    title: "Human Handoff",
+    description: "Seamless transfer to your team when needed. AI + human, perfectly balanced.",
   },
   {
     icon: BarChart3,
-    title: "Clear outcomes",
-    description:
-      "You should feel the difference in booked jobs and fewer dropped leads — not get lost in dashboards.",
+    title: "Real-Time Analytics",
+    description: "Track every call, review, and conversion. Data-driven decisions made easy.",
   },
 ];
 
@@ -53,15 +47,13 @@ export default function Features() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-primary text-sm font-semibold uppercase tracking-wider">Why Automagixx</span>
+            <span className="text-primary text-sm font-semibold uppercase tracking-wider">Why Choose Us</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4 mb-6">
-              For teams that can&apos;t afford to{" "}
-              <span className="gradient-text">miss the moment</span>
+              Built for Businesses That <span className="gradient-text">Demand Excellence</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              Most local businesses don&apos;t need more software — they need{" "}
-              <span className="text-foreground font-medium">response, capture, and follow-through</span>{" "}
-              that actually runs. That&apos;s what we build.
+            <p className="text-muted-foreground text-lg mb-8">
+              We don&apos;t just build tools—we build growth engines. Every feature is designed to help your business
+              capture more leads, build trust, and scale without limits.
             </p>
 
             <div className="grid grid-cols-2 gap-6">
@@ -72,8 +64,8 @@ export default function Features() {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="glass rounded-xl p-6"
               >
-                <div className="text-3xl font-display font-bold gradient-text">Voice first</div>
-                <div className="text-sm text-muted-foreground mt-1">Primary wedge</div>
+                <div className="text-3xl font-display font-bold gradient-text">99.9%</div>
+                <div className="text-sm text-muted-foreground mt-1">Uptime Guarantee</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -82,8 +74,8 @@ export default function Features() {
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="glass rounded-xl p-6"
               >
-                <div className="text-3xl font-display font-bold gradient-text">Full stack</div>
-                <div className="text-sm text-muted-foreground mt-1">Messages → follow-up</div>
+                <div className="text-3xl font-display font-bold gradient-text">&lt;2s</div>
+                <div className="text-sm text-muted-foreground mt-1">Response Time</div>
               </motion.div>
             </div>
           </motion.div>
@@ -99,12 +91,12 @@ export default function Features() {
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                 className="group"
               >
-                <div className="glass rounded-xl p-6 h-full hover:border-primary/30 transition-colors duration-300 border border-transparent">
+                <div className="glass rounded-xl p-6 h-full hover:border-primary/30 transition-colors duration-300">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
                     <feature.icon className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display font-semibold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </div>
               </motion.div>
             ))}

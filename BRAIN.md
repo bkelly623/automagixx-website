@@ -71,16 +71,18 @@ Trades / home services, salons & beauty, med spa / wellness, and other local bus
 
 ## 4) Homepage structure (marketing)
 
-Implemented in **`src/components/HomePage.tsx`** (client), composed of:
+**Intent:** Match the **agency-flow / Lovable** template sections and copy; **only** swap Automagixx branding, real phone/email, booking anchor, and legal URLs.
 
-1. **`Navbar`** — Logo `/logo-robot.png`, Automagixx wordmark, anchors + `/missed-call-calculator`, `#book-call`, primary **Call us now** → 917.  
-2. **`Hero`** — Headline, missed-call framing, bullets, **Call or Text** + **Try the Live Demo** (484), optional **Vimeo** overview (`VIMEO_VIDEO_ID` in `Hero.tsx` — replace if you want your own video).  
-3. **`Services`** — Four glass cards (AI receptionist, messages, follow-up, reviews).  
-4. **`Features`** — Six “why Automagixx” tiles + two highlight stats.  
-5. **`Testimonials`** — Composite-style quotes (labeled as such).  
-6. **`CTA`** — `#contact` band; phones + email; links to booking anchor.  
-7. **`BookingSection`** — `#book-call` — **GoHighLevel iframe** + SMS disclosure + **`form_embed.js`** via `next/script` (same as historical implementation).  
-8. **`Footer`** — Product / contact / legal links to real routes and `cta` phones.
+Implemented in **`src/components/HomePage.tsx`** (client):
+
+1. **`Navbar`** — `/logo-robot.png` + **Automagixx** wordmark; links **Services / Features / Reviews / Contact** (same as template); **Book a Demo** → `BOOKING_ANCHOR` (`#book-call`).  
+2. **`Hero`** — Template headline (**5-Star Google Reviews on Autopilot**), subline ending with **Automagixx**; **Test Drive Our AI** → `DEMO_PHONE_HREF` (484); **Watch Demo** opens **Vimeo** (`VIMEO_VIDEO_ID` in `Hero.tsx`); stats **500+ / 10k+ / 4.9★**; hero image + floating card as in showcase.  
+3. **`Services`** — Original four cards: **AI Receptionists**, **5-Star Review Generation**, **High-End Web Design**, **Increase Lead Flow** (template copy).  
+4. **`Features`** — **Why Choose Us** column + **99.9%** / **&lt;2s** boxes + six feature tiles (template copy).  
+5. **`Testimonials`** — **Loved by 500+ Businesses**, trust bar; quotes reference **Automagixx** where the template said Agency Flow.  
+6. **`CTA`** — **Ready to Transform Your Business?**; **Book a Free Demo** → `#book-call`; **Schedule a Call** → primary **917**; contact line **917** + **brendan@automagixx.com**.  
+7. **`BookingSection`** — GHL iframe + `form_embed.js` + SMS disclosure (Automagixx-specific).  
+8. **`Footer`** — Five-column layout like template; **Automagixx** + logo; **Legal** → `/privacy-policy`, `/terms-of-service`; **Resources** includes calculator, guarantee, `#book-call`.
 
 ---
 

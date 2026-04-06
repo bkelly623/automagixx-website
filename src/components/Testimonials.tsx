@@ -5,28 +5,28 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Home services owner",
-    role: "HVAC / plumbing (Northeast)",
+    name: "Sarah Mitchell",
+    role: "Owner, Mitchell Dental",
     content:
-      "We were bleeding calls after hours. Now every ring gets answered and booked — it paid for itself in the first month.",
+      "Automagixx's AI receptionist has been a game-changer. We went from missing 30% of calls to capturing every single lead. Our reviews jumped from 3.8 to 4.9 stars in just 3 months.",
     rating: 5,
-    image: "HS",
+    image: "SM",
   },
   {
-    name: "Salon director",
-    role: "Beauty / appointments",
+    name: "David Chen",
+    role: "CEO, Premier Auto Group",
     content:
-      "Clients hate waiting for a text back. Responses are instant and the tone matches our brand. Front desk stress dropped hard.",
+      "The ROI speaks for itself. We've seen a 400% increase in booked appointments and our Google ranking has skyrocketed thanks to the review system.",
     rating: 5,
-    image: "SD",
+    image: "DC",
   },
   {
-    name: "Local contractor",
-    role: "Roofing / field team",
+    name: "Jessica Williams",
+    role: "Director, Luxe Real Estate",
     content:
-      "I’m on roofs all day. Automagixx catches what I’d miss and keeps follow-up from dying — that’s money I was leaving on the table.",
+      "Not only did they build us a stunning website, but the AI handles our after-hours inquiries perfectly. It's like having a 24/7 sales team.",
     rating: 5,
-    image: "LC",
+    image: "JW",
   },
 ];
 
@@ -43,13 +43,12 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Proof</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Testimonials</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4 mb-6">
-            Built for <span className="gradient-text">real operators</span>
+            Loved by <span className="gradient-text">500+ Businesses</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Composite feedback from the kind of local businesses Automagixx is built for — trades,
-            beauty, and high-touch service.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with Automagixx.
           </p>
         </motion.div>
 
@@ -88,6 +87,23 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-muted-foreground text-sm mb-6">Trusted by leading businesses across industries</p>
+          <div className="flex flex-wrap justify-center gap-8 items-center opacity-50">
+            {["Google Partner", "Meta Certified", "HubSpot", "Salesforce", "Stripe"].map((brand) => (
+              <div key={brand} className="text-muted-foreground font-display font-semibold text-lg">
+                {brand}
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -5,12 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, X } from "lucide-react";
 import heroImage from "@/assets/hero-abstract.jpg";
-import {
-  DEMO_CTA_LABEL,
-  DEMO_PHONE_HREF,
-  HERO_PRIMARY_CTA_LABEL,
-  PRIMARY_PHONE_HREF,
-} from "@/app/components/cta";
+import { DEMO_PHONE_HREF } from "@/app/components/cta";
 
 const VIMEO_VIDEO_ID = "1156355064";
 
@@ -58,7 +53,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-              <span className="text-sm text-muted-foreground">AI for local service businesses</span>
+              <span className="text-sm text-muted-foreground">Powered by Advanced AI</span>
             </motion.div>
 
             <motion.h1
@@ -67,83 +62,62 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-tight mb-6"
             >
-              Capture Every Call —{" "}
-              <span className="gradient-text">Like Magic</span>
+              5-Star Google Reviews on <span className="gradient-text">Autopilot</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-4"
+              className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              Every missed call is a customer you never even spoke to. Automagixx answers fast,
-              books work, and keeps follow-up moving — without adding chaos to your day.
+              AI Receptionists that never sleep. High-end web design that converts. We&apos;re Automagixx.
             </motion.p>
-            <motion.ul
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 space-y-2 text-left list-none"
-            >
-              <li className="flex gap-2">
-                <span className="text-primary shrink-0">—</span>
-                <span>Missed calls → lost revenue</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-primary shrink-0">—</span>
-                <span>Slow response → lost deals</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-primary shrink-0">—</span>
-                <span>No follow-up → lost customers</span>
-              </li>
-            </motion.ul>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <motion.div
-                initial={{ y: "-40vh" }}
+                initial={{ y: "-60vh" }}
                 animate={{ y: 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 260,
-                  damping: 14,
+                  damping: 8,
                   mass: 1,
+                  velocity: 2,
                   delay: 0.3,
                 }}
               >
                 <Button
                   size="lg"
                   asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group shadow-[0_0_40px_rgba(45,212,191,0.25)] hover:shadow-[0_0_56px_rgba(45,212,191,0.35)] transition-shadow"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group shadow-[0_0_50px_rgba(255,255,255,0.5),0_0_80px_rgba(255,255,255,0.3)] hover:shadow-[0_0_70px_rgba(255,255,255,0.6),0_0_100px_rgba(255,255,255,0.4)] transition-shadow"
                 >
-                  <a href={PRIMARY_PHONE_HREF}>
-                    {HERO_PRIMARY_CTA_LABEL}
+                  <a href={DEMO_PHONE_HREF}>
+                    Test Drive Our AI
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
               </motion.div>
               <motion.div
-                initial={{ y: "-40vh" }}
+                initial={{ y: "-60vh" }}
                 animate={{ y: 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 260,
-                  damping: 14,
+                  damping: 8,
                   mass: 1,
-                  delay: 0.4,
+                  velocity: 2,
+                  delay: 0.45,
                 }}
               >
                 <Button
                   size="lg"
                   variant="outline"
-                  asChild
-                  className="rounded-full px-8 font-semibold border-border hover:bg-muted"
+                  className="rounded-full px-8 font-semibold border-border hover:bg-muted shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition-shadow"
+                  onClick={() => setShowVideo(true)}
                 >
-                  <a href={DEMO_PHONE_HREF}>
-                    <Play className="mr-2 w-4 h-4" />
-                    {DEMO_CTA_LABEL}
-                  </a>
+                  <Play className="mr-2 w-4 h-4" />
+                  Watch Demo
                 </Button>
               </motion.div>
             </div>
@@ -151,36 +125,16 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="mt-6"
-            >
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-foreground"
-                onClick={() => setShowVideo(true)}
-              >
-                <Play className="mr-2 w-4 h-4" />
-                Watch overview (video)
-              </Button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap gap-8 justify-center lg:justify-start mt-10"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap gap-8 justify-center lg:justify-start mt-12"
             >
               {[
-                { value: "24/7", label: "Call capture" },
-                { value: "Local", label: "Trades & services" },
-                { value: "Premium", label: "Quietly powerful" },
+                { value: "500+", label: "Businesses Served" },
+                { value: "10k+", label: "Calls Handled Daily" },
+                { value: "4.9★", label: "Average Review Score" },
               ].map((stat, index) => (
                 <div key={index} className="text-center lg:text-left">
-                  <div className="text-2xl sm:text-3xl font-display font-bold text-foreground">
-                    {stat.value}
-                  </div>
+                  <div className="text-2xl sm:text-3xl font-display font-bold text-foreground">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
@@ -204,7 +158,7 @@ export default function Hero() {
                     className="absolute -inset-12 rounded-3xl pointer-events-none"
                     style={{
                       background:
-                        "radial-gradient(ellipse at center, rgba(45, 212, 191, 0.35) 0%, rgba(124, 58, 237, 0.2) 45%, transparent 80%)",
+                        "radial-gradient(ellipse at center, rgba(255, 250, 230, 0.95) 0%, rgba(255, 220, 120, 0.7) 25%, rgba(255, 200, 80, 0.45) 50%, rgba(255, 180, 50, 0.2) 70%, transparent 85%)",
                       filter: "blur(40px)",
                     }}
                   />
@@ -216,8 +170,12 @@ export default function Hero() {
                 animate={!showVideo ? { y: [0, -10, 0] } : { y: 0 }}
                 transition={{ duration: 6, repeat: showVideo ? 0 : Infinity, ease: "easeInOut" }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element -- static bundled asset */}
-                <img src={heroImage.src} alt="" className="w-full h-auto rounded-2xl opacity-90" />
+                {/* eslint-disable-next-line @next/next/no-img-element -- bundled static import */}
+                <img
+                  src={typeof heroImage === "string" ? heroImage : heroImage.src}
+                  alt="AI Technology"
+                  className="w-full h-auto rounded-2xl"
+                />
 
                 <AnimatePresence>
                   {showVideo && (
@@ -231,14 +189,14 @@ export default function Hero() {
                         damping: 15,
                         mass: 1.2,
                       }}
-                      className="absolute inset-0 z-20 rounded-2xl overflow-hidden bg-background"
+                      className="absolute inset-0 z-20 rounded-2xl overflow-hidden"
                     >
                       <iframe
                         src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?autoplay=1&loop=0&muted=0`}
-                        className="w-full h-full min-h-[320px] rounded-2xl"
+                        className="w-full h-full min-h-[280px] rounded-2xl"
                         allow="autoplay; fullscreen; picture-in-picture"
                         allowFullScreen
-                        title="Automagixx overview"
+                        title="Demo Video"
                       />
                       <button
                         type="button"
@@ -260,11 +218,11 @@ export default function Hero() {
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                        <span className="text-primary-foreground font-bold text-xs">AI</span>
+                        <span className="text-primary-foreground font-bold">AI</span>
                       </div>
                       <div>
-                        <div className="text-sm font-semibold text-foreground">Automagixx active</div>
-                        <div className="text-xs text-muted-foreground">Voice + message capture</div>
+                        <div className="text-sm font-semibold text-foreground">AI Receptionist Active</div>
+                        <div className="text-xs text-muted-foreground">Handling 47 calls right now</div>
                       </div>
                       <div className="ml-auto">
                         <span className="w-3 h-3 rounded-full bg-primary inline-block animate-pulse" />
@@ -288,7 +246,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}

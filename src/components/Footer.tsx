@@ -3,30 +3,36 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  DEMO_PHONE_DISPLAY,
-  DEMO_PHONE_HREF,
-  PRIMARY_PHONE_DISPLAY,
-  PRIMARY_PHONE_HREF,
-} from "@/app/components/cta";
 
-const footerColumns = [
+const footerColumns: {
+  title: string;
+  links: { label: string; href: string }[];
+}[] = [
   {
-    title: "Product",
+    title: "Services",
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Why Automagixx", href: "#features" },
-      { label: "Reviews", href: "#testimonials" },
-      { label: "Lost revenue calculator", href: "/missed-call-calculator" },
+      { label: "AI Receptionists", href: "#services" },
+      { label: "Review Generation", href: "#services" },
+      { label: "Web Design", href: "#services" },
+      { label: "Automation", href: "#services" },
     ],
   },
   {
-    title: "Contact",
+    title: "Company",
     links: [
-      { label: PRIMARY_PHONE_DISPLAY, href: PRIMARY_PHONE_HREF },
-      { label: `Demo ${DEMO_PHONE_DISPLAY}`, href: DEMO_PHONE_HREF },
-      { label: "brendan@automagixx.com", href: "mailto:brendan@automagixx.com" },
-      { label: "Book a time", href: "#book-call" },
+      { label: "About Us", href: "#contact" },
+      { label: "Case Studies", href: "#testimonials" },
+      { label: "Careers", href: "#contact" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Lost revenue calculator", href: "/missed-call-calculator" },
+      { label: "Guarantee", href: "/guarantee" },
+      { label: "Support", href: "mailto:brendan@automagixx.com" },
+      { label: "Book a call", href: "#book-call" },
     ],
   },
   {
@@ -34,7 +40,7 @@ const footerColumns = [
     links: [
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms-of-service" },
-      { label: "Guarantee", href: "/guarantee" },
+      { label: "Cookie Policy", href: "/privacy-policy" },
     ],
   },
 ];
@@ -43,8 +49,8 @@ export default function Footer() {
   return (
     <footer className="py-16 border-t border-border">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+          <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,14 +58,13 @@ export default function Footer() {
               transition={{ duration: 0.5 }}
             >
               <Link href="/" className="flex items-center gap-2 mb-4">
-                <span className="inline-flex rounded-xl bg-card p-1 ring-1 ring-border">
-                  <Image src="/logo-robot.png" alt="" width={36} height={36} className="h-9 w-auto" />
+                <span className="inline-flex rounded-lg overflow-hidden ring-1 ring-white/10">
+                  <Image src="/logo-robot.png" alt="" width={40} height={40} className="h-10 w-auto bg-card" />
                 </span>
                 <span className="font-display font-bold text-xl text-foreground">Automagixx</span>
               </Link>
-              <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-                AI systems for local businesses: capture calls, respond faster, follow up, and build
-                trust — starting with voice, then the full stack.
+              <p className="text-muted-foreground text-sm max-w-xs">
+                AI-powered solutions for modern businesses. Capture more leads, earn more reviews, grow faster.
               </p>
             </motion.div>
           </div>
@@ -93,10 +98,21 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4"
         >
           <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} Automagixx. All rights reserved.</p>
+          <div className="flex gap-6">
+            {["Twitter", "LinkedIn", "Instagram"].map((social) => (
+              <span
+                key={social}
+                className="text-muted-foreground text-sm cursor-default opacity-60"
+                aria-hidden
+              >
+                {social}
+              </span>
+            ))}
+          </div>
         </motion.div>
       </div>
     </footer>

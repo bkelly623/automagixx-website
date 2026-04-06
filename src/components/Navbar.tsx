@@ -6,14 +6,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BOOKING_ANCHOR, PRIMARY_PHONE_HREF } from "@/app/components/cta";
+import { BOOKING_ANCHOR } from "@/app/components/cta";
 
 const navLinks = [
   { name: "Services", href: "#services" },
-  { name: "Why us", href: "#features" },
+  { name: "Features", href: "#features" },
   { name: "Reviews", href: "#testimonials" },
-  { name: "Lost revenue", href: "/missed-call-calculator" },
-  { name: "Book", href: BOOKING_ANCHOR },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -28,15 +27,11 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 shrink-0"
-            onClick={() => setIsOpen(false)}
-          >
-            <span className="inline-flex rounded-xl bg-card/80 p-1 ring-1 ring-border">
-              <Image src="/logo-robot.png" alt="Automagixx" width={40} height={40} className="h-9 w-auto" />
+          <Link href="/" className="flex items-center gap-2 group" onClick={() => setIsOpen(false)}>
+            <span className="inline-flex rounded-lg overflow-hidden ring-1 ring-white/10">
+              <Image src="/logo-robot.png" alt="" width={36} height={36} className="h-9 w-auto bg-card" />
             </span>
-            <span className="font-display font-bold text-xl text-foreground drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+            <span className="font-display font-bold text-xl sm:text-2xl text-foreground drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] transition-transform group-hover:scale-[1.02]">
               Automagixx
             </span>
           </Link>
@@ -46,24 +41,22 @@ export default function Navbar() {
               className="absolute inset-0 -inset-x-12 -inset-y-4 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.06) 40%, transparent 75%)",
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0.1) 60%, transparent 80%)",
                 filter: "blur(20px)",
               }}
             />
             {navLinks.map((link, index) => (
-              <motion.div
+              <motion.a
                 key={link.name}
+                href={link.href}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index, duration: 0.4 }}
+                whileHover={{ y: -2 }}
               >
-                <Link
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative z-10"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+                {link.name}
+              </motion.a>
             ))}
           </div>
 
@@ -77,7 +70,7 @@ export default function Navbar() {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-medium"
             >
-              <a href={PRIMARY_PHONE_HREF}>Call us now</a>
+              <a href={BOOKING_ANCHOR}>Book a Demo</a>
             </Button>
           </motion.div>
 
@@ -85,7 +78,6 @@ export default function Navbar() {
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-foreground p-2"
-            aria-expanded={isOpen}
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -103,20 +95,20 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.name}
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 ))}
                 <Button
                   asChild
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-medium w-fit"
                 >
-                  <a href={PRIMARY_PHONE_HREF}>Call us now</a>
+                  <a href={BOOKING_ANCHOR}>Book a Demo</a>
                 </Button>
               </div>
             </motion.div>

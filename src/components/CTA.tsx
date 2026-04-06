@@ -3,16 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Mail } from "lucide-react";
-import Link from "next/link";
-import {
-  BOOKING_ANCHOR,
-  DEMO_CTA_LABEL,
-  DEMO_PHONE_DISPLAY,
-  DEMO_PHONE_HREF,
-  HERO_PRIMARY_CTA_LABEL,
-  PRIMARY_PHONE_DISPLAY,
-  PRIMARY_PHONE_HREF,
-} from "@/app/components/cta";
+import { BOOKING_ANCHOR, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 
 export default function CTA() {
   return (
@@ -62,20 +53,17 @@ export default function CTA() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6"
               >
-                Want to <span className="gradient-text">stop losing customers</span>?
+                Ready to <span className="gradient-text">Transform</span> Your Business?
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+                className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10"
               >
-                One call. One demo. You&apos;ll immediately see the difference. Prefer a calendar?{" "}
-                <Link href={BOOKING_ANCHOR} className="text-primary font-semibold hover:underline underline-offset-2">
-                  Book a time
-                </Link>
-                .
+                Join 500+ businesses already using Automagixx to capture more leads, earn more reviews, and grow
+                faster. Let&apos;s talk about your goals.
               </motion.p>
 
               <motion.div
@@ -90,8 +78,8 @@ export default function CTA() {
                   asChild
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group"
                 >
-                  <a href={PRIMARY_PHONE_HREF}>
-                    {HERO_PRIMARY_CTA_LABEL}
+                  <a href={BOOKING_ANCHOR}>
+                    Book a Free Demo
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
@@ -101,9 +89,9 @@ export default function CTA() {
                   asChild
                   className="rounded-full px-8 font-semibold border-foreground/20 hover:bg-foreground/5"
                 >
-                  <a href={DEMO_PHONE_HREF}>
+                  <a href={PRIMARY_PHONE_HREF}>
                     <Phone className="mr-2 w-4 h-4" />
-                    {DEMO_CTA_LABEL}
+                    Schedule a Call
                   </a>
                 </Button>
               </motion.div>
@@ -121,13 +109,6 @@ export default function CTA() {
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   {PRIMARY_PHONE_DISPLAY}
-                </a>
-                <a
-                  href={DEMO_PHONE_HREF}
-                  className="flex items-center gap-2 hover:text-primary transition-colors tabular-nums"
-                >
-                  <Phone className="w-4 h-4 shrink-0" />
-                  Demo {DEMO_PHONE_DISPLAY}
                 </a>
                 <a
                   href="mailto:brendan@automagixx.com"

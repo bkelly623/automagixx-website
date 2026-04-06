@@ -1,39 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, MessageSquare, Workflow, Star, ArrowUpRight } from "lucide-react";
+import { Bot, Star, Monitor, TrendingUp, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
     icon: Bot,
-    title: "AI Receptionist",
+    title: "AI Receptionists",
     description:
-      "Answers instantly, captures details, and books appointments — so missed rings stop turning into missed revenue.",
-    features: ["24/7 availability", "Natural conversations", "Booking & capture", "On-brand voice"],
+      "24/7 AI-powered receptionists that answer calls, book appointments, and never miss a lead. Your business, always on.",
+    features: ["24/7 Availability", "Natural Conversations", "Appointment Booking", "Lead Capture"],
     gradient: "from-primary to-cyan-400",
   },
   {
-    icon: MessageSquare,
-    title: "Smart message response",
+    icon: Star,
+    title: "5-Star Review Generation",
     description:
-      "Faster replies across text, web inquiries, and DMs — without living on your phone all day.",
-    features: ["Text & web", "Social / DMs", "Speed where it matters", "Consistent tone"],
+      "Automatically collect and boost your Google reviews. Turn happy customers into your best marketing asset.",
+    features: ["Automated Follow-ups", "Review Monitoring", "Response Templates", "Analytics Dashboard"],
     gradient: "from-secondary to-pink-500",
   },
   {
-    icon: Workflow,
-    title: "Follow-up & lead flow",
+    icon: Monitor,
+    title: "High-End Web Design",
     description:
-      "Automated nurture and reminders so quotes and inquiries don’t go cold after the first touch.",
-    features: ["Follow-up sequences", "Reactivation", "Pipeline hygiene", "Less manual chasing"],
+      "Premium websites that convert visitors into customers. Stunning designs backed by conversion science.",
+    features: ["Custom Design", "Mobile Optimized", "SEO Ready", "Fast Loading"],
     gradient: "from-primary to-secondary",
   },
   {
-    icon: Star,
-    title: "Reviews & reputation",
+    icon: TrendingUp,
+    title: "Increase Lead Flow",
     description:
-      "Stronger Google presence and trust — with less awkward manual follow-up.",
-    features: ["Review prompts", "Trust signals", "Reputation rhythm", "Local visibility"],
+      "Supercharge your pipeline with AI-driven lead generation. More appointments, more consultations, more revenue.",
+    features: ["Book More Appts", "Schedule Consultations", "Lead Nurturing", "Pipeline Automation"],
     gradient: "from-cyan-400 to-primary",
   },
 ];
@@ -51,13 +51,13 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">What we automate</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Our Services</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4 mb-6">
-            Built to <span className="gradient-text">capture more business</span>
+            Everything Your Business <span className="gradient-text">Needs to Grow</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Lead with voice AI, then layer the replies, follow-up, and reputation systems that keep
-            revenue moving.
+            We combine cutting-edge AI technology with premium design to deliver solutions that actually move the
+            needle for your business.
           </p>
         </motion.div>
 
@@ -72,7 +72,7 @@ export default function Services() {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group relative"
             >
-              <div className="glass rounded-2xl p-8 h-full relative overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:shadow-[0_0_60px_rgba(45,212,191,0.12)] transition-shadow duration-500">
+              <div className="glass rounded-2xl p-8 h-full relative overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.15)] transition-shadow duration-500">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div
@@ -85,7 +85,7 @@ export default function Services() {
                   {service.title}
                   <ArrowUpRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 </h3>
-                <p className="text-muted-foreground mb-6 text-sm leading-relaxed">{service.description}</p>
+                <p className="text-muted-foreground mb-6">{service.description}</p>
 
                 <ul className="space-y-2">
                   {service.features.map((feature, i) => (
