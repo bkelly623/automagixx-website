@@ -27,7 +27,7 @@ import {
 
 const shell = "max-w-[1200px] mx-auto px-5 sm:px-8";
 const eyebrow =
-  "text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-blue-600";
+  "text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-emerald-600";
 const eyebrowCenter = `${eyebrow} mb-4`;
 
 /** Homepage card system — soft shadow, consistent radius, calm hover lift */
@@ -36,13 +36,13 @@ const cardSurface =
 const cardSurfaceHover =
   "hover:border-slate-300/90 hover:shadow-[0_22px_48px_-22px_rgba(15,23,42,0.1)]";
 const cardSurfaceAccentHover =
-  "hover:border-blue-200/75 hover:shadow-[0_24px_56px_-26px_rgba(37,99,235,0.13)]";
+  "hover:border-emerald-200/75 hover:shadow-[0_24px_56px_-26px_rgba(5,150,105,0.13)]";
 
 const cardPremium =
   `group relative flex h-full flex-col ${cardSurface} ${cardSurfaceHover} ${cardSurfaceAccentHover} p-7 sm:p-8`;
 
 const cardFlagshipService =
-  "group relative flex h-full flex-col rounded-2xl border border-blue-200/65 bg-white p-7 sm:p-8 shadow-[0_10px_32px_-14px_rgba(37,99,235,0.2)] ring-1 ring-blue-500/12 transition-all duration-300 ease-out hover:border-blue-300/80 hover:shadow-[0_28px_64px_-28px_rgba(37,99,235,0.22)] hover:ring-blue-500/22";
+  "group relative flex h-full flex-col rounded-2xl border border-emerald-200/65 bg-white p-7 sm:p-8 shadow-[0_10px_32px_-14px_rgba(5,150,105,0.2)] ring-1 ring-emerald-500/12 transition-all duration-300 ease-out hover:border-emerald-300/80 hover:shadow-[0_28px_64px_-28px_rgba(5,150,105,0.22)] hover:ring-emerald-500/22";
 
 const painCardClass = `${cardSurface} ${cardSurfaceHover} ${cardSurfaceAccentHover} p-6 sm:p-7 text-left`;
 
@@ -81,32 +81,32 @@ const services: {
     description:
       "Answers instantly, captures details, and books appointments — without missing a ring.",
     icon: Headphones,
-    grad: "from-blue-500/18 to-indigo-500/10",
-    iconClass: "text-blue-600",
+    grad: "from-emerald-500/18 to-teal-500/10",
+    iconClass: "text-emerald-600",
   },
   {
     title: "Smart Message Response",
     description:
       "Faster responses across text, web inquiries, and messages — without living on your phone.",
     icon: MessageSquare,
-    grad: "from-indigo-500/12 to-violet-500/8",
-    iconClass: "text-indigo-600",
+    grad: "from-teal-500/12 to-green-500/8",
+    iconClass: "text-teal-600",
   },
   {
     title: "Social / DM Response",
     description:
       "Catch Instagram, Facebook, and DMs before inbound leads go cold.",
     icon: Share2,
-    grad: "from-violet-500/12 to-purple-500/8",
-    iconClass: "text-violet-600",
+    grad: "from-green-500/12 to-teal-500/8",
+    iconClass: "text-green-600",
   },
   {
     title: "Lead Follow-Up Automation",
     description:
       "Remind, nurture, and move leads forward automatically — instead of letting them slip away.",
     icon: Workflow,
-    grad: "from-sky-500/12 to-blue-500/8",
-    iconClass: "text-sky-600",
+    grad: "from-cyan-500/12 to-emerald-500/8",
+    iconClass: "text-cyan-600",
   },
   {
     title: "Old Lead Reactivation",
@@ -175,7 +175,7 @@ export default function Home() {
   return (
     <div
       id="top"
-      className="min-h-screen bg-[#f6f7fa] text-slate-900 font-sans antialiased selection:bg-blue-500/15 selection:text-slate-900"
+      className="min-h-screen bg-[#f6f7fa] text-slate-900 font-sans antialiased selection:bg-emerald-500/15 selection:text-slate-900"
     >
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/80 shadow-[0_1px_0_rgba(15,23,42,0.04)]">
@@ -233,15 +233,15 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative pt-[5.5rem] sm:pt-28 pb-20 sm:pb-28 px-5 sm:px-8 overflow-hidden bg-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-20%,rgba(59,130,246,0.12),transparent_55%)]" />
-        <div className="pointer-events-none absolute top-1/2 right-0 w-[min(100%,560px)] h-[560px] -translate-y-1/2 bg-gradient-to-bl from-indigo-400/[0.11] via-violet-400/[0.06] to-transparent rounded-full blur-3xl" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-20%,rgba(16,185,129,0.12),transparent_55%)]" />
+        <div className="pointer-events-none absolute top-1/2 right-0 w-[min(100%,560px)] h-[560px] -translate-y-1/2 bg-gradient-to-bl from-teal-400/[0.11] via-green-400/[0.06] to-transparent rounded-full blur-3xl" />
 
         <div className={`${shell} relative z-10`}>
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
             <div className="space-y-8 lg:space-y-9 max-w-xl lg:max-w-none">
               <h1 className="text-[2.35rem] sm:text-5xl lg:text-[3.25rem] xl:text-[3.45rem] font-semibold tracking-[-0.03em] leading-[1.05] text-slate-950">
                 AI That Captures Every Opportunity —{" "}
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 bg-clip-text text-transparent">
                   Like Magic.
                 </span>
               </h1>
@@ -254,13 +254,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
                 <a
                   href={PRIMARY_PHONE_HREF}
-                  className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-8 py-4 text-[15px] font-semibold tracking-tight shadow-[0_4px_20px_rgba(37,99,235,0.38)] hover:bg-blue-700 hover:shadow-[0_8px_28px_rgba(37,99,235,0.42)] transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center rounded-full bg-emerald-600 text-white px-8 py-4 text-[15px] font-semibold tracking-tight shadow-[0_4px_20px_rgba(5,150,105,0.38)] hover:bg-emerald-700 hover:shadow-[0_8px_28px_rgba(5,150,105,0.42)] transition-all active:scale-[0.98]"
                 >
                   {HERO_PRIMARY_CTA_LABEL}
                 </a>
                 <a
                   href={DEMO_PHONE_HREF}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-[15px] font-semibold text-slate-900 tracking-tight shadow-sm hover:border-blue-200 hover:shadow-md transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-[15px] font-semibold text-slate-900 tracking-tight shadow-sm hover:border-emerald-200 hover:shadow-md transition-all active:scale-[0.98]"
                 >
                   {DEMO_CTA_LABEL}
                 </a>
@@ -278,11 +278,11 @@ export default function Home() {
             </div>
 
             <div className="relative lg:pl-4">
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/20 via-indigo-500/15 to-violet-500/20 blur-xl opacity-80" />
-              <div className="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/90 to-blue-50/45 shadow-[0_22px_56px_-22px_rgba(15,23,42,0.22)] p-7 sm:p-8 text-left">
-                <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-400/10 blur-2xl" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-emerald-500/20 via-teal-500/15 to-green-500/20 blur-xl opacity-80" />
+              <div className="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/90 to-emerald-50/45 shadow-[0_22px_56px_-22px_rgba(15,23,42,0.22)] p-7 sm:p-8 text-left">
+                <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-emerald-400/10 blur-2xl" />
                 <div className="pointer-events-none absolute right-5 top-5 opacity-[0.35]">
-                  <Sparkles className="h-4 w-4 text-indigo-500" strokeWidth={1.5} />
+                  <Sparkles className="h-4 w-4 text-teal-500" strokeWidth={1.5} />
                 </div>
                 <p className={`${eyebrow} mb-2`}>Live voice AI demo</p>
                 <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
@@ -380,7 +380,7 @@ export default function Home() {
 
             <Link
               href="/missed-call-calculator"
-              className="mt-10 inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-9 py-4 text-[15px] font-semibold tracking-tight shadow-[0_8px_28px_rgba(37,99,235,0.35)] transition-all duration-150 ease-out hover:bg-blue-700 hover:shadow-[0_12px_32px_rgba(37,99,235,0.4)] active:scale-[0.98]"
+              className="mt-10 inline-flex items-center justify-center rounded-full bg-emerald-600 text-white px-9 py-4 text-[15px] font-semibold tracking-tight shadow-[0_8px_28px_rgba(5,150,105,0.35)] transition-all duration-150 ease-out hover:bg-emerald-700 hover:shadow-[0_12px_32px_rgba(5,150,105,0.4)] active:scale-[0.98]"
             >
               Calculate Your Lost Revenue
             </Link>
@@ -408,7 +408,7 @@ export default function Home() {
               const flagship = i === 0;
               const cardClass = flagship ? cardFlagshipService : cardPremium;
               const iconWrap = flagship
-                ? "mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br shadow-[0_8px_24px_-8px_rgba(37,99,235,0.25)]"
+                ? "mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br shadow-[0_8px_24px_-8px_rgba(5,150,105,0.25)]"
                 : "mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br";
               const iconSize = flagship ? "h-7 w-7" : "h-6 w-6";
               return (
@@ -448,7 +448,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {howSteps.map((item) => (
               <div key={item.step} className={howCardClass}>
-                <span className="text-[11px] font-bold text-blue-600 tracking-[0.22em]">
+                <span className="text-[11px] font-bold text-emerald-600 tracking-[0.22em]">
                   {item.step}
                 </span>
                 <h3 className="text-[17px] font-semibold mt-4 mb-2 tracking-tight text-slate-900 leading-snug">
@@ -466,14 +466,14 @@ export default function Home() {
         id="magic"
         className="scroll-mt-28 relative py-24 sm:py-32 px-5 sm:px-8 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-white"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_35%,rgba(99,102,241,0.11),transparent_60%)]" />
-        <div className="pointer-events-none absolute top-[18%] left-[12%] h-48 w-48 rounded-full bg-blue-400/[0.07] blur-3xl" />
-        <div className="pointer-events-none absolute bottom-[12%] right-[10%] h-56 w-56 rounded-full bg-violet-400/[0.06] blur-3xl" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_35%,rgba(20,184,166,0.11),transparent_60%)]" />
+        <div className="pointer-events-none absolute top-[18%] left-[12%] h-48 w-48 rounded-full bg-emerald-400/[0.07] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[12%] right-[10%] h-56 w-56 rounded-full bg-green-400/[0.06] blur-3xl" />
         <div className={`${shell} relative z-10`}>
           <div className="max-w-[40rem] mx-auto text-center">
-            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/60 bg-white/80 px-4 py-2 mb-10 shadow-[0_2px_16px_rgba(99,102,241,0.08)] backdrop-blur-sm">
-              <Wand2 className="w-4 h-4 text-indigo-600" strokeWidth={1.75} />
-              <span className="text-[11px] font-semibold text-indigo-800 tracking-[0.18em] uppercase">
+            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-teal-200/60 bg-white/80 px-4 py-2 mb-10 shadow-[0_2px_16px_rgba(20,184,166,0.08)] backdrop-blur-sm">
+              <Wand2 className="w-4 h-4 text-teal-600" strokeWidth={1.75} />
+              <span className="text-[11px] font-semibold text-teal-800 tracking-[0.18em] uppercase">
                 The magic
               </span>
             </div>
@@ -493,10 +493,10 @@ export default function Home() {
               </p>
               <div className="relative pt-8 pb-2 inline-block">
                 <span
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[4.5rem] w-[min(100vw,14rem)] rounded-full bg-gradient-to-r from-blue-400/20 via-indigo-400/18 to-violet-400/20 blur-2xl"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[4.5rem] w-[min(100vw,14rem)] rounded-full bg-gradient-to-r from-emerald-400/20 via-teal-400/18 to-green-400/20 blur-2xl"
                   aria-hidden
                 />
-                <p className="relative text-[1.75rem] sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                <p className="relative text-[1.75rem] sm:text-4xl font-semibold tracking-tight bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 bg-clip-text text-transparent">
                   Like magic.
                 </p>
               </div>
@@ -520,7 +520,7 @@ export default function Home() {
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-[1100px]">
             {outcomes.map((o) => (
               <li key={o.lead} className={outcomeCardClass}>
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600/[0.08] text-blue-600 ring-1 ring-blue-600/[0.1] shadow-[0_2px_8px_rgba(37,99,235,0.06)]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-600/[0.08] text-emerald-600 ring-1 ring-emerald-600/[0.1] shadow-[0_2px_8px_rgba(5,150,105,0.06)]">
                   <CheckCircle2 className="h-5 w-5" strokeWidth={2} />
                 </span>
                 <div className="min-w-0 pt-0.5">
@@ -552,7 +552,7 @@ export default function Home() {
             {industries.map((name) => (
               <div
                 key={name}
-                className="flex items-center justify-center rounded-2xl border border-slate-200/90 bg-slate-50/60 px-4 py-4 text-center text-[13px] sm:text-[14px] font-semibold text-slate-800 leading-snug shadow-[0_2px_10px_rgba(15,23,42,0.04)] transition-all duration-300 ease-out hover:border-blue-200/80 hover:bg-white hover:shadow-[0_16px_40px_-20px_rgba(37,99,235,0.12)] min-h-[4.25rem]"
+                className="flex items-center justify-center rounded-2xl border border-slate-200/90 bg-slate-50/60 px-4 py-4 text-center text-[13px] sm:text-[14px] font-semibold text-slate-800 leading-snug shadow-[0_2px_10px_rgba(15,23,42,0.04)] transition-all duration-300 ease-out hover:border-emerald-200/80 hover:bg-white hover:shadow-[0_16px_40px_-20px_rgba(5,150,105,0.12)] min-h-[4.25rem]"
               >
                 {name}
               </div>
@@ -564,10 +564,10 @@ export default function Home() {
       {/* Demo */}
       <section id="demo" className="scroll-mt-28 py-20 sm:py-28 px-5 sm:px-8 bg-slate-50/50">
         <div className={shell}>
-          <div className="max-w-[44rem] mx-auto text-center relative rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/30 p-10 sm:p-14 shadow-[0_24px_60px_-28px_rgba(37,99,235,0.2)] overflow-hidden transition-shadow duration-300 hover:shadow-[0_28px_64px_-28px_rgba(37,99,235,0.24)]">
-            <div className="pointer-events-none absolute top-0 right-0 w-40 h-40 bg-violet-400/10 rounded-full blur-3xl" />
+          <div className="max-w-[44rem] mx-auto text-center relative rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-emerald-50/40 to-teal-50/30 p-10 sm:p-14 shadow-[0_24px_60px_-28px_rgba(5,150,105,0.2)] overflow-hidden transition-shadow duration-300 hover:shadow-[0_28px_64px_-28px_rgba(5,150,105,0.24)]">
+            <div className="pointer-events-none absolute top-0 right-0 w-40 h-40 bg-green-400/10 rounded-full blur-3xl" />
             <Sparkles
-              className="w-9 h-9 text-blue-600 mx-auto mb-5 relative"
+              className="w-9 h-9 text-emerald-600 mx-auto mb-5 relative"
               strokeWidth={1.5}
             />
             <p className={`${eyebrow} mb-3`}>Try it live</p>
@@ -580,7 +580,7 @@ export default function Home() {
             </p>
             <a
               href={DEMO_PHONE_HREF}
-              className="mt-10 relative inline-flex items-center justify-center rounded-full bg-blue-600 text-white px-10 py-4 text-[16px] font-semibold hover:bg-blue-700 transition-all shadow-[0_8px_24px_rgba(37,99,235,0.35)]"
+              className="mt-10 relative inline-flex items-center justify-center rounded-full bg-emerald-600 text-white px-10 py-4 text-[16px] font-semibold hover:bg-emerald-700 transition-all shadow-[0_8px_24px_rgba(5,150,105,0.35)]"
             >
               Try the Demo → {DEMO_PHONE_DISPLAY}
             </a>
@@ -594,10 +594,10 @@ export default function Home() {
       {/* Strong CTA */}
       <section
         id="contact"
-        className="scroll-mt-28 relative py-20 sm:py-28 px-5 sm:px-8 overflow-hidden bg-gradient-to-b from-[#0f172a] via-[#0c1930] to-[#0a1628] text-white"
+        className="scroll-mt-28 relative py-20 sm:py-28 px-5 sm:px-8 overflow-hidden bg-gradient-to-b from-[#0f172a] via-[#0a1f18] to-[#061a14] text-white"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(59,130,246,0.2),transparent_50%)]" />
-        <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(100%,800px)] h-48 bg-indigo-500/10 blur-3xl rounded-full" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(16,185,129,0.2),transparent_50%)]" />
+        <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[min(100%,800px)] h-48 bg-teal-500/10 blur-3xl rounded-full" />
         <div className={`${shell} relative z-10 text-center`}>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold tracking-tight text-white">
             Want This Set Up For Your Business?
@@ -638,7 +638,7 @@ export default function Home() {
             For the fastest path, call or text{" "}
             <a
               href={PRIMARY_PHONE_HREF}
-              className="text-blue-700 font-semibold underline underline-offset-2 hover:text-blue-800"
+              className="text-emerald-700 font-semibold underline underline-offset-2 hover:text-emerald-800"
             >
               {PRIMARY_PHONE_DISPLAY}
             </a>{" "}
@@ -674,7 +674,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden py-20 sm:py-28 px-5 sm:px-8 bg-gradient-to-br from-slate-950 via-[#0c1840] to-indigo-950 text-white">
+      <section className="relative overflow-hidden py-20 sm:py-28 px-5 sm:px-8 bg-gradient-to-br from-slate-950 via-[#0b221c] to-emerald-950 text-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.35]"
           style={{

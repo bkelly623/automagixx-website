@@ -44,9 +44,9 @@ function TestChatbotContent() {
           <p className="text-gray-700 mb-4">
             Click the button to open the chat widget and test the chatbot functionality.
           </p>
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
-            <p className="text-blue-700 font-semibold">Pro Tip:</p>
-            <p className="text-blue-600 text-sm">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-4">
+            <p className="text-emerald-700 font-semibold">Pro Tip:</p>
+            <p className="text-emerald-600 text-sm">
               You can use this page to demo chatbots to potential clients or test new configurations before deployment.
             </p>
           </div>

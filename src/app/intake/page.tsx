@@ -63,7 +63,7 @@ export default function IntakePage() {
             </p>
             <Link
               href="/onboarding"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-7 py-3.5 rounded-full hover:bg-blue-700 transition-all text-[15px] font-medium"
+              className="inline-flex items-center justify-center bg-emerald-600 text-white px-7 py-3.5 rounded-full hover:bg-emerald-700 transition-all text-[15px] font-medium"
             >
               See what we&apos;ll go over →
             </Link>
@@ -177,7 +177,7 @@ export default function IntakePage() {
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-7 py-3.5 rounded-full hover:bg-blue-700 transition-all text-[15px] font-medium disabled:opacity-60"
+              className="inline-flex items-center justify-center bg-emerald-600 text-white px-7 py-3.5 rounded-full hover:bg-emerald-700 transition-all text-[15px] font-medium disabled:opacity-60"
             >
               {loading ? "Submitting..." : "Submit"}
             </button>

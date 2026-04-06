@@ -2,7 +2,7 @@ export default function OnboardingPage() {
   return (
     <main className="min-h-screen bg-white px-6 py-20">
       <div className="max-w-3xl mx-auto">
-        <p className="text-blue-600 font-medium text-[15px] mb-4 tracking-tight">Before the Call</p>
+        <p className="text-emerald-600 font-medium text-[15px] mb-4 tracking-tight">Before the Call</p>
         <h1 className="text-[38px] lg:text-[48px] font-semibold text-gray-900 tracking-tight leading-[1.1] mb-6">
           What We&apos;ll Show You On The Call
         </h1>

@@ -26,8 +26,8 @@ export default function NavCtaPair({
 }: NavCtaPairProps) {
   const gap = compact ? "gap-2" : "gap-3";
   const btnPrimary = compact
-    ? "px-4 py-2.5 text-[12px] sm:px-5 sm:py-3 sm:text-[13px] font-semibold shadow-[0_2px_12px_rgba(37,99,235,0.25)] hover:shadow-[0_4px_16px_rgba(37,99,235,0.32)]"
-    : "px-6 py-3 text-[14px] sm:text-[15px] font-semibold shadow-[0_2px_12px_rgba(37,99,235,0.25)] hover:shadow-[0_4px_16px_rgba(37,99,235,0.32)]";
+    ? "px-4 py-2.5 text-[12px] sm:px-5 sm:py-3 sm:text-[13px] font-semibold shadow-[0_2px_12px_rgba(5,150,105,0.25)] hover:shadow-[0_4px_16px_rgba(5,150,105,0.32)]"
+    : "px-6 py-3 text-[14px] sm:text-[15px] font-semibold shadow-[0_2px_12px_rgba(5,150,105,0.25)] hover:shadow-[0_4px_16px_rgba(5,150,105,0.32)]";
   const btnDemo = compact
     ? "px-2.5 py-2 text-[11px] sm:px-3 sm:py-2 sm:text-[12px]"
     : "px-4 py-2.5 text-[13px] sm:text-[14px]";
@@ -41,7 +41,7 @@ export default function NavCtaPair({
       <div className="flex flex-col items-center sm:items-start text-center sm:text-left min-w-0 shrink">
         <a
           href={PRIMARY_PHONE_HREF}
-          className={`inline-flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 active:scale-[0.98] transition-all duration-200 tracking-tight whitespace-nowrap ${btnPrimary}`}
+          className={`inline-flex items-center justify-center bg-emerald-600 text-white rounded-full hover:bg-emerald-700 active:scale-[0.98] transition-all duration-200 tracking-tight whitespace-nowrap ${btnPrimary}`}
         >
           {primaryText}
         </a>
@@ -58,7 +58,7 @@ export default function NavCtaPair({
         <div className="flex flex-col items-center sm:items-start text-center sm:text-left min-w-0 shrink">
           <a
             href={DEMO_PHONE_HREF}
-            className={`inline-flex items-center justify-center rounded-full border-2 border-blue-200 text-blue-700 bg-white hover:bg-blue-50 transition-all duration-200 tracking-tight font-semibold whitespace-nowrap ${btnDemo}`}
+            className={`inline-flex items-center justify-center rounded-full border-2 border-emerald-200 text-emerald-700 bg-white hover:bg-emerald-50 transition-all duration-200 tracking-tight font-semibold whitespace-nowrap ${btnDemo}`}
           >
             {DEMO_CTA_LABEL}
           </a>

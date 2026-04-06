@@ -114,7 +114,7 @@ export default function ChatWidget() {
                   <div
                     className={
                       m.role === "user"
-                        ? "bg-blue-600 text-white px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
+                        ? "bg-emerald-600 text-white px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
                         : "bg-white border border-gray-200 text-gray-900 px-3 py-2 rounded-2xl text-[13px] leading-relaxed max-w-[85%]"
                     }
                   >
@@ -142,7 +142,7 @@ export default function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask a quick question…"
-                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-blue-600"
+                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-emerald-600"
                 />
                 <button
                   type="submit"
@@ -166,7 +166,7 @@ export default function ChatWidget() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-[9999] h-14 w-14 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 hover:scale-105 transition-all flex items-center justify-center text-[22px] font-light"
+        className="fixed bottom-6 right-6 z-[9999] h-14 w-14 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 hover:scale-105 transition-all flex items-center justify-center text-[22px] font-light"
         aria-label={open ? "Close chat" : "Open chat"}
       >
         {open ? "×" : "💬"}

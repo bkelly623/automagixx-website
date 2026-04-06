@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const BG = "#0a0a0a";
 const GREEN = "#00ff88";
-const BLUE = "#3b82f6";
+const ACCENT_SECONDARY = "#34d399";
 
 const MIN_AVG = 50;
 const MAX_AVG = 10000;
@@ -276,7 +276,7 @@ export default function MissedCallCalculator() {
             </p>
             <p
               className="mt-1.5 max-w-[32ch] text-[13px] font-medium leading-snug mx-auto"
-              style={{ color: BLUE }}
+              style={{ color: ACCENT_SECONDARY }}
             >
               That&apos;s {xCount} jobs your competitors are taking from you
             </p>

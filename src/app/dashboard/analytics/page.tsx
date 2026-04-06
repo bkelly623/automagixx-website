@@ -134,7 +134,7 @@ export default function Analytics() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading analytics...</p>
         </div>
       </div>
@@ -178,8 +178,8 @@ export default function Analytics() {
               onClick={() => setTimeRange(days)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 timeRange === days
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 border border-gray-300 hover:border-blue-600'
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-white text-gray-700 border border-gray-300 hover:border-emerald-600'
               }`}
             >
               Last {days} days
@@ -195,7 +195,7 @@ export default function Analytics() {
                 <p className="text-sm text-gray-600 mb-1">Total Conversations</p>
                 <p className="text-3xl font-bold text-gray-900">{analytics.totalConversations}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
                 <span className="text-2xl">💬</span>
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function Analytics() {
                 <p className="text-sm text-gray-600 mb-1">Avg. Messages/Conv</p>
                 <p className="text-3xl font-bold text-gray-900">{analytics.avgMessagesPerConv.toFixed(1)}</p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
                 <span className="text-2xl">📊</span>
               </div>
             </div>
@@ -250,7 +250,7 @@ export default function Analytics() {
                   <span className="text-sm font-medium text-gray-900 mr-2">{index + 1}.</span>
                   <span className="text-sm text-gray-700">{item.question}</span>
                 </div>
-                <span className="text-sm font-semibold text-blue-600">{item.count}x</span>
+                <span className="text-sm font-semibold text-emerald-600">{item.count}x</span>
               </div>
             ))}
           </div>
@@ -264,7 +264,7 @@ export default function Analytics() {
               <div key={msg.id} className="flex gap-3 p-3 bg-gray-50 rounded-lg">
                 <div className="flex-shrink-0">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${
-                    msg.role === 'user' ? 'bg-blue-100' : 'bg-green-100'
+                    msg.role === 'user' ? 'bg-emerald-100' : 'bg-green-100'
                   }`}>
                     {msg.role === 'user' ? '👤' : '🤖'}
                   </div>
