@@ -12,9 +12,10 @@ If continuity is lost, read this first. **Keep it updated when behavior, copy, o
 | **Repo** | `github.com:bkelly623/automagixx-website` |
 | **Primary branch** | `main` |
 | **Public domain** | `automagixx.com` |
-| **Framework** | Next.js **15.5.x** (App Router), React 19, Tailwind 4 |
-| **Homepage** | `src/app/page.tsx` |
-| **Global shell** | `src/app/layout.tsx` (metadata + `ChatWidget` on every page) |
+| **Framework** | Next.js **15.5.x** (App Router), **React 18.3**, **Tailwind CSS 3.4** (PostCSS), **shadcn-style UI** (`src/components/ui`), **Framer Motion** |
+| **Design source** | Homepage layout/visual language ported from **`bkelly623/remix-of-agency-flow-showcase`** (Vite + React Router original); this repo **stays Next.js** for APIs, booking embed, and Vercel. |
+| **Homepage entry** | `src/app/page.tsx` → renders `src/components/HomePage.tsx` (client shell). |
+| **Global shell** | `src/app/layout.tsx` (metadata + `Providers` + `globals.css` + `ChatWidget` on every page). |
 
 Local commands (repo root):
 
@@ -22,90 +23,64 @@ Local commands (repo root):
 - `npm run lint` — ESLint  
 - `npm run build` — production build  
 
+**Clone note:** The showcase repo clones cleanly over **SSH** (`git@github.com:bkelly623/remix-of-agency-flow-showcase.git`). HTTPS clone may fail without credentials if the repo is private.
+
 ---
 
 ## 2) Brand & positioning (current)
 
 ### What Automagixx is
 
-- **Not** “just an AI receptionist” on the website: **voice AI / AI receptionist is the primary wedge**, but the story is a **practical suite of AI-powered systems** for **small, local service businesses**.
-- **Core promise:** help businesses **capture more opportunities**, **respond faster**, **follow up automatically**, and **build trust** — with a **premium**, **high-conviction** tone.
-- **Theme:** moderate **“magic”** branding — *quietly powerful*, *effortless*, *it works like magic* — **not** cheesy, childish, or gimmicky.
+- **Voice AI / AI receptionist** is the primary wedge; the story is a **practical suite** of AI-powered systems for **small, local service businesses**.
+- **Core promise:** capture more opportunities, respond faster, follow up automatically, build trust — **premium**, high-conviction tone on a **dark, glassmorphism** marketing UI.
 
-### Audience (homepage reflects this)
+### Audience
 
-Especially: **trades / home services**, **salons & beauty**, **med spa / wellness**, and **other local service businesses** where **missed calls**, **slow replies**, and **weak follow-up** cost revenue.
+Trades / home services, salons & beauty, med spa / wellness, and other local businesses where **missed calls**, **slow replies**, and **weak follow-up** cost revenue.
 
 ### Voice & copy guardrails
 
-- **Do:** sharp, concise, exciting-but-professional, useful, confidence-building.
-- **Avoid:** generic AI-agency sludge (“cutting-edge solutions,” “leverage technology,” “streamline operations”), boring template filler, and **mixing phone numbers** (see §3).
+- **Do:** sharp, concise, professional; revenue-aware without sounding desperate on every surface.
+- **Avoid:** generic AI-agency sludge, template filler, and **mixing phone numbers** (see §3).
 
 ---
 
 ## 3) Canonical phone numbers & CTAs
 
-**All homepage and shared CTA behavior must match `src/app/components/cta.ts`.**  
-Do not hardcode alternate numbers in UI without updating this file and this brain.
+**All CTAs must match `src/app/components/cta.ts`.** Update **`api/chat/route.ts`** if numbers change.
 
-| Role | Display | `tel:` href | Usage |
-|------|---------|-------------|--------|
-| **Primary business** (call / text us, nav “Call Us Now”, main conversions) | `(917) 572-7734` | `tel:+19175727734` | Every **business** CTA |
-| **Live voice demo ONLY** | `(484) 673-7612` | `tel:+14846737612` | Every **demo** CTA |
+| Role | Display | `tel:` href |
+|------|---------|-------------|
+| **Primary business** | `(917) 572-7734` | `tel:+19175727734` |
+| **Live voice demo ONLY** | `(484) 673-7612` | `tel:+14846737612` |
 
-**Never mix:** business actions → 917; demo/hear-the-AI → 484.
+**Never mix:** business → 917; demo → 484.
 
-### Exported labels (`cta.ts`)
+### Key exports (`cta.ts`)
 
-- `CTA_LABEL_NAV` — **Call Us Now** (header)  
-- `HERO_PRIMARY_CTA_LABEL` — **Call or Text Us**  
-- `DEMO_CTA_LABEL` — **Try the Live Demo**  
-- `DEMO_CARD_BUTTON_LABEL` — **Try the Demo**  
-- `CTA_MICRO` — **Includes a 30-day performance guarantee.** → links `/guarantee` (where used)  
-- `DEMO_SUBTEXT` — **Call and hear the system — about 30 seconds.**  
-- `BOOKING_ANCHOR` / `BOOKING_URL` — **`#book-call`** (optional scheduling; not primary conversion)
+- `HERO_PRIMARY_CTA_LABEL`, `DEMO_CTA_LABEL`, `BOOKING_ANCHOR` (`#book-call`), `DEMO_CARD_BUTTON_LABEL`, `CTA_MICRO`, etc.
 
-### Shared components
+### Legacy / secondary UI
 
-| Component | Role |
-|-----------|------|
-| `NavCtaPair.tsx` | Header: primary **Call Us Now** → 917 (optional demo stack when `showDemo`) |
-| `DualCtaCards.tsx` | Paired **business** + **demo** cards; `variant="onBlue"` on final dark CTA band; shows both numbers clearly |
-| `cta.ts` | Single source for hrefs, display strings, labels |
-
-**Note:** There is **no** `HeroCallCard` in this codebase; hero CTAs are inline in `page.tsx`.
-
-### Chat API alignment
-
-`src/app/api/chat/route.ts` embeds the same two numbers in the system prompt and fallbacks. **Update both `cta.ts` and `route.ts` if numbers ever change** (or centralize further).
+| File | Role |
+|------|------|
+| `NavCtaPair.tsx` | Used inside **`ChatWidget`** (not the main marketing nav). |
+| `DualCtaCards.tsx` | Available for future use; **not** on the current long-scroll homepage. |
 
 ---
 
-## 4) Homepage structure (`src/app/page.tsx`)
+## 4) Homepage structure (marketing)
 
-Long-scroll, **sticky header**, max content width **~1200px** (`shell`), light-first UI with **dark navy CTA bands**. Section **ids** match nav anchors.
+Implemented in **`src/components/HomePage.tsx`** (client), composed of:
 
-**Order:**
-
-1. **Header** — Logo (`/logo-robot.png`) + wordmark; nav (lg+): Services, How It Works, The Magic, Outcomes, Industries, Demo, Contact; **Call Us Now** → 917.  
-2. **Hero** — Two columns: headline (*AI That Captures Every Opportunity — Like Magic.*), punchy subcopy, **Call or Text Us** + **Try the Live Demo**, lines for both numbers; right **featured live demo card** (eyebrow, “Hear It Work,” CTA → 484).  
-3. **Problem / opportunity gap** — `#problem` — centered; **THE OPPORTUNITY GAP**; four pain cards.  
-4. **Services** — `#services` — six explicit services (AI Receptionist through Reviews & Reputation) + optional layering line.  
-5. **How it works** — `#how-it-works` — four steps.  
-6. **The Magic** — `#magic` — emotional / brand section; centered.  
-7. **Outcomes** — `#outcomes` — six outcome cards (2×3).  
-8. **Industries** — `#industries` — eight compact tiles.  
-9. **Demo** — `#demo` — centered proof block; demo → 484.  
-10. **Strong CTA** — `#contact` — dark band; dual buttons (917 + 484).  
-11. **Calendar** — `#book-call` — GHL iframe + SMS disclosure + `form_embed.js` script; copy stresses **call/text 917 first**, calendar optional.  
-12. **Final CTA** — dark gradient band + `DualCtaCards variant="onBlue"`.  
-13. **Footer** — company line, 917, demo 484, `brendan@automagixx.com`, Privacy, Terms, Guarantee.
-
-### GoHighLevel booking embed (do not break)
-
-- **Iframe src:** `https://api.leadconnectorhq.com/widget/booking/deaNfs7Dq6XtD6FzYMR8`  
-- **Script:** `https://link.msgsndr.com/js/form_embed.js` (`next/script`, `afterInteractive`)  
-- **Disclosure** under iframe: SMS consent text with links to **`/privacy-policy`** and **`/terms-of-service`**.
+1. **`Navbar`** — Logo `/logo-robot.png`, Automagixx wordmark, anchors + `/missed-call-calculator`, `#book-call`, primary **Call us now** → 917.  
+2. **`Hero`** — Headline, missed-call framing, bullets, **Call or Text** + **Try the Live Demo** (484), optional **Vimeo** overview (`VIMEO_VIDEO_ID` in `Hero.tsx` — replace if you want your own video).  
+3. **`Services`** — Four glass cards (AI receptionist, messages, follow-up, reviews).  
+4. **`Features`** — Six “why Automagixx” tiles + two highlight stats.  
+5. **`Testimonials`** — Composite-style quotes (labeled as such).  
+6. **`CTA`** — `#contact` band; phones + email; links to booking anchor.  
+7. **`BookingSection`** — `#book-call` — **GoHighLevel iframe** + SMS disclosure + **`form_embed.js`** via `next/script` (same as historical implementation).  
+8. **`Footer`** — Product / contact / legal links to real routes and `cta` phones.
 
 ---
 
@@ -113,72 +88,51 @@ Long-scroll, **sticky header**, max content width **~1200px** (`shell`), light-f
 
 | Path | Purpose |
 |------|---------|
-| `/intake` | Post-booking context form → `POST /api/intake` → FormSubmit → `brendan@automagixx.com` |
-| `/onboarding` | Optional pre-call briefing; linked from intake success, not main nav |
-| `/guarantee` | 30-day performance guarantee |
-| `/privacy-policy` | Privacy policy |
-| `/terms-of-service` | Terms of service (canonical legal URL for footer + calendar disclosure) |
-| `/terms` | Redirects to `/terms-of-service` |
-| `/consent` | LeadConnector SMS consent embed |
-| `/dashboard`, `/dashboard/analytics` | Internal/dashboard (analytics may need Supabase env for build) |
-| `/test-chatbot` | Chatbot test page |
+| `/missed-call-calculator` | `MissedCallCalculator` client widget; preset map in `MissedCallCalculator.tsx`. |
+| `/intake` | Post-booking form → `POST /api/intake`. |
+| `/onboarding` | Optional pre-call briefing. |
+| `/guarantee` | 30-day performance guarantee. |
+| `/privacy-policy`, `/terms-of-service` | Legal. |
+| `/consent` | LeadConnector SMS consent embed. |
+| `/dashboard`, `/dashboard/analytics` | Internal; analytics may need Supabase env. |
+| `/api/chat`, `/api/intake` | Server routes (unchanged contract). |
 
 ---
 
 ## 6) Chat widget
 
-- **File:** `src/app/components/ChatWidget.tsx`  
-- **Mounted:** `layout.tsx` (global)  
-- **API:** `POST /api/chat` → OpenAI `gpt-4o-mini`  
-- **Env keys tried:** `OPENAI_API_KEY`, `OPENAI_KEY`, `EXPO_PUBLIC_OPENAI_API_KEY`, `NEXT_PUBLIC_OPENAI_API_KEY`  
-- Opening copy uses **`PRIMARY_PHONE_DISPLAY`** / **`DEMO_PHONE_DISPLAY`** from `cta.ts`.
+- **`src/app/components/ChatWidget.tsx`** — global; uses `PRIMARY_PHONE_DISPLAY` / `DEMO_PHONE_DISPLAY` from `cta.ts`.  
+- **`POST /api/chat`** — OpenAI; numbers echoed in prompt/fallbacks.
 
 ---
 
-## 7) Deployment (Vercel)
+## 7) Styling & components
 
-- `.env*` is gitignored; production secrets live in **Vercel project env**.  
-- **Redeploy** can pin an **old commit SHA** — verify the live deployment matches **latest `main`** when debugging “stale” UI.  
-- Confirm **correct Git repo/branch** and **domain → project** mapping.
-
----
-
-## 8) Key files (quick index)
-
-- `src/app/page.tsx` — homepage  
-- `src/app/layout.tsx` — root layout, metadata, `ChatWidget`  
-- `src/app/globals.css` — global styles (e.g. smooth scroll, selection)  
-- `src/app/components/cta.ts` — **phone + CTA constants**  
-- `src/app/components/NavCtaPair.tsx`, `DualCtaCards.tsx`  
-- `src/app/components/ChatWidget.tsx`  
-- `src/app/api/chat/route.ts`  
-- `src/app/intake/page.tsx`, `src/app/api/intake/route.ts`  
-- `src/app/onboarding/page.tsx`  
-- `public/logo-robot.png` — brand mark  
+- **Tailwind:** `tailwind.config.ts` + `postcss.config.mjs` (Tailwind 3, **not** Tailwind 4 `@import "tailwindcss"`).  
+- **Globals:** `src/app/globals.css` — design tokens, glass/gradient utilities, scrollbar, missed-calculator keyframes.  
+- **Path alias:** `@/*` → `./src/*` (`tsconfig.json`).  
+- **shadcn UI:** `src/components/ui/*` — **`chart.tsx` removed** (conflicted with Recharts 3; dashboard uses Recharts directly). **`NavLink.tsx` removed** (was React Router–only).
 
 ---
 
-## 9) Known follow-ups (non-blocking)
+## 8) Deployment (Vercel)
 
-- **`/dashboard/analytics`:** static generation may require **Supabase** env vars; local/production builds can fail that route until env is set or the page is guarded/dynamic.  
-- Whenever **copy, sections, or numbers** change on the homepage, **update this BRAIN** in the same PR.
-
----
-
-## 10) Operating principle (one line)
-
-**Automagixx sells practical AI systems for local businesses—lead with voice AI, show the full capture/follow-up/reputation stack—primary conversion **call/text `(917) 572-7734`**, live demo **`(484) 673-7612`**, optional book at `#book-call`; keep the magic theme premium, not gimmicky; legal and SMS compliance via `/privacy-policy` and `/terms-of-service`.**
+- Production secrets in Vercel env.  
+- Confirm deployment SHA vs `main` when debugging stale UI.
 
 ---
 
-## 11) Recent ground truth (git)
+## 9) Operating principle (one line)
 
-Newest first (verify with `git log`):
-
-- `ab2d5fa` — Homepage: premium long-scroll, six services, industries, strict 917/484 split.  
-- `87c34ab` — Robot logo in nav/footer, layout/CTA polish.  
-- Earlier: legal copy, GHL embed, consent page, CTA/chat alignment.
+**Automagixx sells practical AI for local businesses on a Next.js app: marketing UI from the agency-flow showcase pattern; primary conversion **call/text 917**, live demo **484**, optional book **`#book-call`**; legal/SMS via `/privacy-policy` and `/terms-of-service`.**
 
 ---
 
-*Last brain refresh: aligned with `cta.ts`, `page.tsx`, `api/chat/route.ts`, and shared CTAs.*
+## 10) Recent ground truth
+
+- **Agency-flow integration:** Ported showcase components into `src/components/*`, rebranded to Automagixx, preserved `cta.ts`, booking iframe + script, calculator, APIs, chat, legal routes.  
+- **Stack shift:** Tailwind **4 → 3**, React **19 → 18.3** for Radix/shadcn compatibility.  
+
+---
+
+*Last brain refresh: aligned with post-showcase-merge `page.tsx`, `HomePage.tsx`, `BookingSection.tsx`, `cta.ts`, `tailwind.config.ts`, `globals.css`.*

@@ -31,12 +31,12 @@ const BUSINESSES: Record<
   BusinessId,
   { label: string; missed: number; conversion: number; avg: number }
 > = {
-  roofing: { label: "Roofing", missed: 10, conversion: 35, avg: 9000 },
-  hvac: { label: "HVAC", missed: 12, conversion: 40, avg: 1800 },
-  plumbing: { label: "Plumbing", missed: 10, conversion: 45, avg: 700 },
-  salon: { label: "Salon", missed: 12, conversion: 55, avg: 150 },
-  dental: { label: "Dental", missed: 8, conversion: 55, avg: 700 },
-  other: { label: "Other", missed: 8, conversion: 40, avg: 800 },
+  roofing: { label: "Roofing", missed: 7, conversion: 30, avg: 8500 },
+  hvac: { label: "HVAC", missed: 8, conversion: 35, avg: 1400 },
+  plumbing: { label: "Plumbing", missed: 7, conversion: 40, avg: 650 },
+  salon: { label: "Salon", missed: 10, conversion: 60, avg: 120 },
+  dental: { label: "Dental", missed: 5, conversion: 50, avg: 600 },
+  other: { label: "Other", missed: 6, conversion: 35, avg: 700 },
 };
 
 function avgToLinear(avg: number): number {
