@@ -74,8 +74,9 @@ export default function Hero() {
               AI Receptionists that never sleep. High-end web design that converts. We&apos;re Automagixx.
             </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start sm:items-stretch max-w-xl mx-auto lg:mx-0 lg:max-w-none">
               <motion.div
+                className="flex w-full sm:flex-1 sm:min-w-0 lg:max-w-xl"
                 initial={{ y: "-60vh" }}
                 animate={{ y: 0 }}
                 transition={{
@@ -90,17 +91,16 @@ export default function Hero() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 sm:px-10 py-7 h-auto min-h-[3.25rem] text-base sm:text-lg font-semibold group shadow-[0_0_50px_rgba(255,255,255,0.5),0_0_80px_rgba(255,255,255,0.3)] hover:shadow-[0_0_70px_rgba(255,255,255,0.6),0_0_100px_rgba(255,255,255,0.4)] transition-shadow whitespace-normal text-center leading-snug max-w-[22rem] sm:max-w-none"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 sm:px-10 h-full min-h-[4.5rem] w-full text-base sm:text-lg font-semibold group shadow-[0_0_50px_rgba(255,255,255,0.5),0_0_80px_rgba(255,255,255,0.3)] hover:shadow-[0_0_70px_rgba(255,255,255,0.6),0_0_100px_rgba(255,255,255,0.4)] transition-shadow whitespace-normal text-center leading-snug flex items-center justify-center"
                 >
-                  <TestDriveLink className="inline-flex items-center justify-center gap-0">
-                    <span className="group-hover:translate-x-0">
-                      Test drive our AI receptionist
-                    </span>
+                  <TestDriveLink className="inline-flex h-full min-h-[4.5rem] w-full items-center justify-center gap-0 px-1 py-2">
+                    <span>Test drive our AI receptionist</span>
                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </TestDriveLink>
                 </Button>
               </motion.div>
               <motion.div
+                className="flex w-full sm:w-auto sm:shrink-0"
                 initial={{ y: "-60vh" }}
                 animate={{ y: 0 }}
                 transition={{
@@ -115,10 +115,10 @@ export default function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-8 font-semibold border-border hover:bg-muted shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition-shadow"
+                  className="rounded-full px-8 h-full min-h-[4.5rem] w-full sm:w-auto font-semibold border-border hover:bg-muted shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition-shadow flex items-center justify-center text-base sm:text-lg"
                   onClick={() => setShowVideo(true)}
                 >
-                  <Play className="mr-2 w-4 h-4" />
+                  <Play className="mr-2 w-4 h-4 shrink-0" />
                   Watch Demo
                 </Button>
               </motion.div>

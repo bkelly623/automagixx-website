@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Mail, Phone } from "lucide-react";
-import { BOOKING_ANCHOR, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 import { TestDriveLink } from "@/components/TestDriveLink";
+import { requestOpenBooking } from "@/lib/openBooking";
 
 export default function CTA() {
   return (
@@ -85,15 +86,14 @@ export default function CTA() {
                   </TestDriveLink>
                 </Button>
                 <Button
+                  type="button"
                   size="lg"
                   variant="outline"
-                  asChild
                   className="rounded-full px-8 font-semibold border-foreground/20 hover:bg-foreground/5"
+                  onClick={() => requestOpenBooking()}
                 >
-                  <a href={BOOKING_ANCHOR}>
-                    <Calendar className="mr-2 w-4 h-4" />
-                    Schedule a Call
-                  </a>
+                  <Calendar className="mr-2 w-4 h-4" />
+                  Schedule a Call
                 </Button>
               </motion.div>
 

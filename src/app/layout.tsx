@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 import ChatWidget from "./components/ChatWidget";
+import BookingModal from "@/components/BookingModal";
 
 export const metadata: Metadata = {
   title: "Automagixx | AI Systems That Capture More Business",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased min-h-screen">
         <Providers>{children}</Providers>
+        <BookingModal />
         <ChatWidget />
       </body>
     </html>

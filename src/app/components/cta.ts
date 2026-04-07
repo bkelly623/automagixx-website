@@ -1,5 +1,7 @@
-/** Optional calendar section anchor (not the primary CTA). */
+/** Legacy hash; opens the global booking modal when present. Full page: `/calendar`. */
 export const BOOKING_ANCHOR = "#book-call";
+
+export const CALENDAR_PATH = "/calendar";
 
 /** Primary business line — call/text CTA. */
 export const PRIMARY_PHONE_HREF = "tel:+19175727734";

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { requestOpenBooking } from "@/lib/openBooking";
 
 const footerColumns: {
   title: string;
@@ -32,7 +33,7 @@ const footerColumns: {
       { label: "Free audit (calculator)", href: "/#free-audit" },
       { label: "Guarantee", href: "/guarantee" },
       { label: "Support", href: "mailto:brendan@automagixx.com" },
-      { label: "Book a call", href: "#book-call" },
+      { label: "Book a call", href: "/calendar" },
     ],
   },
   {
@@ -81,12 +82,26 @@ export default function Footer() {
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.label === "Book a call" ? (
+                      <Link
+                        href={link.href}
+                        className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
+                        onClick={(e) => {
+                          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                          e.preventDefault();
+                          requestOpenBooking();
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
