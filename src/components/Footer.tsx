@@ -29,7 +29,7 @@ const footerColumns: {
   {
     title: "Resources",
     links: [
-      { label: "Lost revenue calculator", href: "/missed-call-calculator" },
+      { label: "Free audit (calculator)", href: "/#free-audit" },
       { label: "Guarantee", href: "/guarantee" },
       { label: "Support", href: "mailto:brendan@automagixx.com" },
       { label: "Book a call", href: "#book-call" },

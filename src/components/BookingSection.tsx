@@ -6,7 +6,7 @@ export default function BookingSection() {
   return (
     <section
       id="book-call"
-      className="scroll-mt-24 py-20 md:py-24 border-t border-border bg-muted/20"
+      className="scroll-mt-28 py-20 md:py-24 border-t border-border bg-muted/20"
     >
       <div className="container mx-auto px-6 max-w-[880px]">
         <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground text-center tracking-tight">

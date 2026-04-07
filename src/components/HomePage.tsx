@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import FreeAuditSection from "@/components/FreeAuditSection";
 import Services from "@/components/Services";
 import Features from "@/components/Features";
 import Testimonials from "@/components/Testimonials";
@@ -14,6 +15,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
+      <FreeAuditSection />
       <Services />
       <Features />
       <Testimonials />

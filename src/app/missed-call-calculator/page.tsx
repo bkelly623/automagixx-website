@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function MissedCallCalculatorPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] font-sans antialiased">
-      <MissedCallCalculator />
+    <main className="min-h-screen bg-background text-foreground font-sans antialiased py-12 px-4">
+      <MissedCallCalculator showHeading />
     </main>
   );
 }

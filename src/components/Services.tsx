@@ -40,7 +40,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 relative overflow-hidden scroll-mt-24">
+    <section id="services" className="py-24 relative overflow-hidden scroll-mt-28">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
 
       <div className="container mx-auto px-6 relative z-10">

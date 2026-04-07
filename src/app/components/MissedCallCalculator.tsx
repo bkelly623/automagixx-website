@@ -2,11 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const BG = "#0a0a0a";
-const GREEN = "#00ff88";
-/** Competitor line — spec accent for contrast on dark UI */
-const ACCENT_BLUE = "#3b82f6";
-
 const MIN_AVG = 50;
 const MAX_AVG = 10000;
 
@@ -91,7 +86,15 @@ function useAnimatedNumber(target: number, durationMs: number): number {
   return value;
 }
 
-export default function MissedCallCalculator() {
+const rangeClass =
+  "h-1.5 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-primary [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary";
+
+type MissedCallCalculatorProps = {
+  /** Standalone `/missed-call-calculator` page shows the classic H1. */
+  showHeading?: boolean;
+};
+
+export default function MissedCallCalculator({ showHeading = true }: MissedCallCalculatorProps) {
   const [business, setBusiness] = useState<BusinessId>("roofing");
   const [missedCalls, setMissedCalls] = useState(BUSINESSES.roofing.missed);
   const [conversion, setConversion] = useState(BUSINESSES.roofing.conversion);
@@ -156,22 +159,21 @@ export default function MissedCallCalculator() {
   const pillBase =
     "rounded-full px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap shrink-0 border transition-all duration-200 ease-out active:scale-[0.98]";
   const pillInactive =
-    "border-white/14 bg-[#111]/90 text-white/95 hover:border-white/24 hover:bg-[#161616]";
-  const pillActive = "border-transparent bg-[#00ff88] text-[#0a0a0a] shadow-[0_0_20px_rgba(0,255,136,0.25)]";
+    "border-border bg-muted/40 text-foreground hover:border-primary/35 hover:bg-muted/70";
+  const pillActive =
+    "border-transparent bg-primary text-primary-foreground shadow-[0_0_22px_hsl(174_72%_56%/0.25)]";
 
-  const sliderLabel = "text-[10px] font-semibold uppercase tracking-[0.12em] text-white/48";
-  const sliderValue =
-    "text-[13px] font-bold tabular-nums tracking-tight text-[#8cffb3]";
+  const sliderLabel = "text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground";
+  const sliderValue = "text-[13px] font-bold tabular-nums tracking-tight text-primary";
 
   return (
-    <div
-      className="min-h-screen w-full font-sans text-white antialiased"
-      style={{ backgroundColor: BG }}
-    >
-      <div className="mx-auto flex min-h-screen max-w-[420px] flex-col items-center px-4 py-5 sm:py-7">
-        <h1 className="mb-6 text-center text-lg font-semibold leading-snug tracking-tight text-white/90 sm:text-[1.125rem]">
-          How Much Revenue Are You Losing?
-        </h1>
+    <div className="w-full font-sans text-foreground antialiased">
+      <div className="mx-auto flex w-full max-w-[420px] flex-col items-center px-1 py-2 sm:px-2">
+        {showHeading ? (
+          <h1 className="mb-6 text-center font-display text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl">
+            How Much Revenue Are You Losing?
+          </h1>
+        ) : null}
 
         <div className="flex w-full flex-col items-center gap-4">
           <div className="flex w-full flex-wrap justify-center gap-1.5">
@@ -202,8 +204,7 @@ export default function MissedCallCalculator() {
                 max={50}
                 value={missedCalls}
                 onChange={(e) => setMissedCalls(Number(e.target.value))}
-                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
-                style={{ accentColor: GREEN }}
+                className={rangeClass}
               />
             </div>
 
@@ -221,8 +222,7 @@ export default function MissedCallCalculator() {
                 max={80}
                 value={conversion}
                 onChange={(e) => setConversion(Number(e.target.value))}
-                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
-                style={{ accentColor: GREEN }}
+                className={rangeClass}
               />
             </div>
 
@@ -240,11 +240,8 @@ export default function MissedCallCalculator() {
                 max={100}
                 step={0.25}
                 value={avgLinear}
-                onChange={(e) =>
-                  setAvgValue(linearToAvg(Number(e.target.value)))
-                }
-                className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#00ff88] transition-[opacity,transform] duration-150 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#00ff88] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00ff88]"
-                style={{ accentColor: GREEN }}
+                onChange={(e) => setAvgValue(linearToAvg(Number(e.target.value)))}
+                className={rangeClass}
               />
             </div>
           </div>
@@ -263,29 +260,21 @@ export default function MissedCallCalculator() {
           </div>
 
           <section className="w-full pt-2 text-center">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/38">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
               You&apos;re Losing
             </p>
-            <p
-              className="missed-calc-result-pulse mt-1.5 text-[3rem] font-extrabold leading-[1.02] tracking-[-0.02em] text-[#00ff88] sm:text-[4.25rem] drop-shadow-[0_0_25px_rgba(0,255,136,0.35)]"
-            >
+            <p className="missed-calc-result-pulse mt-1.5 text-[3rem] font-display font-extrabold leading-[1.02] tracking-[-0.02em] sm:text-[4.25rem] gradient-text drop-shadow-[0_0_28px_hsl(174_72%_56%/0.35)]">
               {formatMoney(animatedTotal)}
             </p>
-            <p className="mt-2 max-w-[28ch] text-[13px] font-semibold leading-snug text-white/80 mx-auto">
+            <p className="mt-2 max-w-[28ch] text-[13px] font-semibold leading-snug text-foreground/90 mx-auto">
               That&apos;s {xCount} customers you never even spoke to
             </p>
-            <p
-              className="mt-1 max-w-[30ch] text-[12px] font-semibold leading-snug mx-auto"
-              style={{ color: ACCENT_BLUE }}
-            >
+            <p className="mt-1 max-w-[30ch] text-[12px] font-semibold leading-snug text-secondary mx-auto">
               That&apos;s {xCount} jobs your competitors are taking from you
             </p>
           </section>
 
-          <p
-            className="mt-auto pt-8 text-center text-[11px] font-semibold tracking-tight"
-            style={{ color: "rgba(0, 255, 136, 0.6)" }}
-          >
+          <p className="mt-auto pt-6 text-center text-[11px] font-medium tracking-tight text-muted-foreground">
             Automagixx
           </p>
         </div>

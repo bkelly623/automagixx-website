@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Mail } from "lucide-react";
+import { ArrowRight, Calendar, Mail, Phone } from "lucide-react";
 import { BOOKING_ANCHOR, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
+import { TestDriveLink } from "@/components/TestDriveLink";
 
 export default function CTA() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden scroll-mt-24">
+    <section id="contact" className="py-24 relative overflow-hidden scroll-mt-28">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -78,10 +79,10 @@ export default function CTA() {
                   asChild
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group"
                 >
-                  <a href={BOOKING_ANCHOR}>
-                    Book a Free Demo
+                  <TestDriveLink className="inline-flex items-center justify-center">
+                    Test drive our AI
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </TestDriveLink>
                 </Button>
                 <Button
                   size="lg"
@@ -89,8 +90,8 @@ export default function CTA() {
                   asChild
                   className="rounded-full px-8 font-semibold border-foreground/20 hover:bg-foreground/5"
                 >
-                  <a href={PRIMARY_PHONE_HREF}>
-                    <Phone className="mr-2 w-4 h-4" />
+                  <a href={BOOKING_ANCHOR}>
+                    <Calendar className="mr-2 w-4 h-4" />
                     Schedule a Call
                   </a>
                 </Button>

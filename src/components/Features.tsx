@@ -38,7 +38,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 relative overflow-hidden scroll-mt-24">
+    <section id="features" className="py-24 relative overflow-hidden scroll-mt-28">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div

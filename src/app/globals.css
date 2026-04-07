@@ -208,13 +208,46 @@ html {
 @keyframes missed-calc-glow-pulse {
   0%,
   100% {
-    text-shadow: 0 0 25px rgba(0, 255, 136, 0.35), 0 0 48px rgba(0, 255, 136, 0.08);
+    text-shadow: 0 0 25px hsl(174 72% 56% / 0.4), 0 0 48px hsl(262 83% 58% / 0.12);
   }
   50% {
-    text-shadow: 0 0 32px rgba(0, 255, 136, 0.48), 0 0 64px rgba(0, 255, 136, 0.14);
+    text-shadow: 0 0 34px hsl(174 72% 56% / 0.55), 0 0 64px hsl(262 83% 58% / 0.18);
   }
 }
 
 .missed-calc-result-pulse {
   animation: missed-calc-glow-pulse 5.5s ease-in-out infinite;
+}
+
+/* Chat widget — aurora edge + soft star field */
+@keyframes chat-aurora {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: rotate(180deg) scale(1.05);
+  }
+}
+
+.chat-widget-aurora {
+  background: conic-gradient(
+    from 230deg at 50% 50%,
+    hsl(174 72% 45% / 0.5) 0deg,
+    hsl(262 83% 55% / 0.45) 120deg,
+    hsl(200 80% 50% / 0.4) 220deg,
+    hsl(174 72% 45% / 0.5) 360deg
+  );
+  animation: chat-aurora 10s ease-in-out infinite;
+}
+
+.chat-widget-stars {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, hsl(210 40% 98% / 0.35) 0, transparent 100%),
+    radial-gradient(1px 1px at 60% 70%, hsl(174 72% 70% / 0.25) 0, transparent 100%),
+    radial-gradient(1px 1px at 85% 20%, hsl(262 83% 70% / 0.2) 0, transparent 100%),
+    radial-gradient(1px 1px at 40% 85%, hsl(210 40% 98% / 0.2) 0, transparent 100%);
+  background-size: 100% 100%;
 }

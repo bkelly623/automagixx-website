@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, X } from "lucide-react";
 import heroImage from "@/assets/hero-abstract.jpg";
-import { DEMO_PHONE_HREF } from "@/app/components/cta";
+import { TestDriveLink } from "@/components/TestDriveLink";
 
 const VIMEO_VIDEO_ID = "1156355064";
 
@@ -13,7 +13,7 @@ export default function Hero() {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-32">
       <div className="absolute inset-0 hero-gradient" />
 
       <div className="absolute inset-0 overflow-hidden">
@@ -90,12 +90,14 @@ export default function Hero() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group shadow-[0_0_50px_rgba(255,255,255,0.5),0_0_80px_rgba(255,255,255,0.3)] hover:shadow-[0_0_70px_rgba(255,255,255,0.6),0_0_100px_rgba(255,255,255,0.4)] transition-shadow"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 sm:px-10 py-7 h-auto min-h-[3.25rem] text-base sm:text-lg font-semibold group shadow-[0_0_50px_rgba(255,255,255,0.5),0_0_80px_rgba(255,255,255,0.3)] hover:shadow-[0_0_70px_rgba(255,255,255,0.6),0_0_100px_rgba(255,255,255,0.4)] transition-shadow whitespace-normal text-center leading-snug max-w-[22rem] sm:max-w-none"
                 >
-                  <a href={DEMO_PHONE_HREF}>
-                    Test Drive Our AI
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  <TestDriveLink className="inline-flex items-center justify-center gap-0">
+                    <span className="group-hover:translate-x-0">
+                      Test drive our AI receptionist
+                    </span>
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </TestDriveLink>
                 </Button>
               </motion.div>
               <motion.div
