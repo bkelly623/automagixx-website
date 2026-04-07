@@ -7,16 +7,34 @@ const IFRAME_ID = "deaNfs7Dq6XtD6FzYMR8_1775089987086";
 type BookingEmbedProps = {
   iframeClassName?: string;
   wrapperClassName?: string;
+  /**
+   * Fill parent flex area (booking modal): iframe stretches to remaining viewport height.
+   */
+  variant?: "default" | "modal";
 };
 
-export function BookingIframe({ iframeClassName, wrapperClassName }: BookingEmbedProps) {
+export function BookingIframe({
+  iframeClassName,
+  wrapperClassName,
+  variant = "default",
+}: BookingEmbedProps) {
+  const isModal = variant === "modal";
+
   return (
-    <div className={cn("rounded-2xl border border-border bg-card overflow-hidden shadow-[0_12px_40px_-24px_rgba(0,0,0,0.4)]", wrapperClassName)}>
+    <div
+      className={cn(
+        "rounded-2xl border border-border bg-card overflow-hidden shadow-[0_12px_40px_-24px_rgba(0,0,0,0.4)]",
+        isModal && "relative h-full min-h-0 w-full flex-1",
+        wrapperClassName,
+      )}
+    >
       <iframe
         src={IFRAME_SRC}
         id={IFRAME_ID}
         className={cn(
-          "block w-full min-h-[720px] md:min-h-[820px] lg:min-h-[900px] border-0 overflow-hidden",
+          isModal
+            ? "absolute inset-0 block h-full w-full min-h-0 border-0"
+            : "block w-full min-h-[720px] md:min-h-[820px] lg:min-h-[900px] border-0 overflow-hidden",
           iframeClassName,
         )}
         style={{ width: "100%", border: "none", overflow: "hidden" }}
