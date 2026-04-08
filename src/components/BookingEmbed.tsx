@@ -37,8 +37,13 @@ export function BookingIframe({
             : "block w-full min-h-[720px] md:min-h-[820px] lg:min-h-[900px] border-0 overflow-hidden",
           iframeClassName,
         )}
-        style={{ width: "100%", border: "none", overflow: "hidden" }}
-        scrolling="no"
+        style={
+          isModal
+            ? { width: "100%", height: "100%", border: "none" }
+            : { width: "100%", border: "none", overflow: "hidden" }
+        }
+        // LeadConnector calendar + post-slot form is taller than one viewport; "no" clips content.
+        scrolling={isModal ? "yes" : "no"}
         title="Schedule time with Automagixx"
       />
     </div>
