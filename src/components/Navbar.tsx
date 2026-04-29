@@ -6,14 +6,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
-import { TestDriveLink } from "@/components/TestDriveLink";
+import { CALENDAR_PATH, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 
 const navLinks = [
-  { name: "Free audit", href: "#free-audit" },
-  { name: "Services", href: "#services" },
-  { name: "Features", href: "#features" },
-  { name: "Reviews", href: "#testimonials" },
+  { name: "First employee", href: "#first-employee" },
+  { name: "AI employees", href: "#employees" },
+  { name: "System", href: "#system" },
+  { name: "Growth lab", href: "#growth-lab" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -39,19 +38,11 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative flex-1 justify-end min-w-0">
-            <div
-              className="absolute inset-0 -inset-x-12 -inset-y-4 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 35%, transparent 75%)",
-                filter: "blur(18px)",
-              }}
-            />
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative z-10 drop-shadow-[0_0_12px_rgba(255,255,255,0.6)] whitespace-nowrap"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative z-10 whitespace-nowrap"
                 initial={{ opacity: 0, y: -12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.06 * index, duration: 0.35 }}
@@ -80,10 +71,10 @@ export default function Navbar() {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 xl:px-8 text-sm font-semibold shadow-[0_0_24px_hsl(174_72%_56%/0.25)] whitespace-nowrap"
               >
-                <TestDriveLink>
-                  Test drive our AI receptionist
+                <Link href={CALENDAR_PATH}>
+                  Find your AI employee
                   <ArrowRight className="ml-2 w-4 h-4" />
-                </TestDriveLink>
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -131,10 +122,10 @@ export default function Navbar() {
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-semibold w-fit"
                 >
-                  <TestDriveLink onClick={() => setIsOpen(false)}>
-                    Test drive our AI receptionist
+                  <Link href={CALENDAR_PATH} onClick={() => setIsOpen(false)}>
+                    Find your AI employee
                     <ArrowRight className="ml-2 w-4 h-4" />
-                  </TestDriveLink>
+                  </Link>
                 </Button>
               </div>
             </motion.div>

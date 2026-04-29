@@ -1,38 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { ArrowRight, Check, MessageCircle, WandSparkles } from "lucide-react";
 
-const testimonials = [
+const wedges = [
   {
-    name: "Sarah Mitchell",
-    role: "Owner, Mitchell Dental",
-    content:
-      "Automagixx's AI receptionist has been a game-changer. We went from missing 30% of calls to capturing every single lead. Our reviews jumped from 3.8 to 4.9 stars in just 3 months.",
-    rating: 5,
-    image: "SM",
+    title: "Find Your First AI Employee",
+    description: "The front-door offer: identify the AI employee most likely to create ROI first.",
   },
   {
-    name: "David Chen",
-    role: "CEO, Premier Auto Group",
-    content:
-      "The ROI speaks for itself. We've seen a 400% increase in booked appointments and our Google ranking has skyrocketed thanks to the review system.",
-    rating: 5,
-    image: "DC",
+    title: "Free AI Content Sample",
+    description: "A low-friction door opener: show prospects what their content rep could create.",
   },
   {
-    name: "Jessica Williams",
-    role: "Director, Luxe Real Estate",
-    content:
-      "Not only did they build us a stunning website, but the AI handles our after-hours inquiries perfectly. It's like having a 24/7 sales team.",
-    rating: 5,
-    image: "JW",
+    title: "Warm Website-to-AI Demo",
+    description: "For engaged prospects only: ask permission first, then build a lightweight demo from their website.",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden scroll-mt-28">
+    <section id="growth-lab" className="py-24 relative overflow-hidden scroll-mt-28">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -43,46 +31,34 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Testimonials</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider">The growth lab</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4 mb-6">
-            Loved by <span className="gradient-text">500+ Businesses</span>
+            Automagixx will use the same AI workforce it <span className="gradient-text">installs for clients</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with Automagixx.
+          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
+            The point is not to talk about automation. The point is to demonstrate it publicly: lead generation,
+            content, follow-up, demos, and delivery systems built with AI employees.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {wedges.map((wedge, index) => (
             <motion.div
-              key={testimonial.name}
+              key={wedge.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
+              whileHover={{ y: -5, transition: { duration: 0.25 } }}
               className="group"
             >
-              <div className="glass rounded-2xl p-8 h-full relative">
-                <Quote className="w-10 h-10 text-primary/20 absolute top-6 right-6" />
-
-                <div className="flex gap-1 mb-6">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                  ))}
+              <div className="glass rounded-2xl p-8 h-full relative overflow-hidden">
+                <WandSparkles className="w-10 h-10 text-primary/25 absolute top-6 right-6" />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6">
+                  <span className="text-primary-foreground font-bold">{index + 1}</span>
                 </div>
-
-                <p className="text-muted-foreground mb-8 leading-relaxed">&ldquo;{testimonial.content}&rdquo;</p>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <span className="text-primary-foreground font-semibold text-sm">{testimonial.image}</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                  </div>
-                </div>
+                <h3 className="font-display font-bold text-xl text-foreground mb-3">{wedge.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{wedge.description}</p>
               </div>
             </motion.div>
           ))}
@@ -92,16 +68,36 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="mt-14 rounded-3xl border border-white/10 glass-strong p-6 sm:p-8"
         >
-          <p className="text-muted-foreground text-sm mb-6">Trusted by leading businesses across industries</p>
-          <div className="flex flex-wrap justify-center gap-8 items-center opacity-50">
-            {["Google Partner", "Meta Certified", "HubSpot", "Salesforce", "Stripe"].map((brand) => (
-              <div key={brand} className="text-muted-foreground font-display font-semibold text-lg">
-                {brand}
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm text-primary mb-4">
+                <MessageCircle className="w-4 h-4" aria-hidden />
+                Warm demo rule
               </div>
-            ))}
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-foreground mb-3">
+                Build demos only after the prospect raises their hand.
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                We can engage first with: “I put together a quick AI employee demo idea for your site — can I send it
+                over?” If they say yes, then we spend the tokens/time to build the actual demo.
+              </p>
+            </div>
+            <div className="space-y-3">
+              {[
+                "Reduces wasted build cost",
+                "Creates curiosity before the demo exists",
+                "Turns the demo into a permission-based follow-up",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-background/40 p-4">
+                  <Check className="w-5 h-5 text-primary shrink-0" aria-hidden />
+                  <span className="text-muted-foreground">{item}</span>
+                  <ArrowRight className="w-4 h-4 text-primary/70 ml-auto" aria-hidden />
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

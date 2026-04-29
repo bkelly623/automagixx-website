@@ -3,37 +3,36 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { requestOpenBooking } from "@/lib/openBooking";
 
 const footerColumns: {
   title: string;
   links: { label: string; href: string }[];
 }[] = [
   {
-    title: "Services",
+    title: "AI Employees",
     links: [
-      { label: "AI Receptionists", href: "#services" },
-      { label: "Review Generation", href: "#services" },
-      { label: "Web Design", href: "#services" },
-      { label: "Automation", href: "#services" },
+      { label: "Lead Rescue Rep", href: "/#employees" },
+      { label: "Appointment Setter", href: "/#employees" },
+      { label: "Content Rep", href: "/#employees" },
+      { label: "Missed Call Recovery", href: "/#employees" },
+    ],
+  },
+  {
+    title: "System",
+    links: [
+      { label: "First Employee Finder", href: "/#first-employee" },
+      { label: "Growth Lab", href: "/#growth-lab" },
+      { label: "Live Demo", href: "/test-chatbot" },
+      { label: "Book a Call", href: "/calendar" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "#contact" },
-      { label: "Case Studies", href: "#testimonials" },
-      { label: "Careers", href: "#contact" },
-      { label: "Contact", href: "#contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Free audit (calculator)", href: "/#free-audit" },
+      { label: "Automagixx", href: "/" },
+      { label: "Contact", href: "/#contact" },
       { label: "Guarantee", href: "/guarantee" },
       { label: "Support", href: "mailto:brendan@automagixx.com" },
-      { label: "Book a call", href: "/calendar" },
     ],
   },
   {
@@ -64,8 +63,9 @@ export default function Footer() {
                 </span>
                 <span className="font-display font-bold text-xl text-foreground">Automagixx</span>
               </Link>
-              <p className="text-muted-foreground text-sm max-w-xs">
-                AI-powered solutions for modern businesses. Capture more leads, earn more reviews, grow faster.
+              <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
+                Managed AI employees for small businesses. Built around useful work, measurable ROI, and automation that
+                feels like magic without becoming a gimmick.
               </p>
             </motion.div>
           </div>
@@ -82,26 +82,12 @@ export default function Footer() {
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    {link.label === "Book a call" ? (
-                      <Link
-                        href={link.href}
-                        className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
-                        onClick={(e) => {
-                          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-                          e.preventDefault();
-                          requestOpenBooking();
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    ) : (
-                      <Link
-                        href={link.href}
-                        className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
-                      >
-                        {link.label}
-                      </Link>
-                    )}
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -118,12 +104,8 @@ export default function Footer() {
         >
           <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} Automagixx. All rights reserved.</p>
           <div className="flex gap-6">
-            {["Twitter", "LinkedIn", "Instagram"].map((social) => (
-              <span
-                key={social}
-                className="text-muted-foreground text-sm cursor-default opacity-60"
-                aria-hidden
-              >
+            {["X", "LinkedIn", "YouTube"].map((social) => (
+              <span key={social} className="text-muted-foreground text-sm cursor-default opacity-60" aria-hidden>
                 {social}
               </span>
             ))}

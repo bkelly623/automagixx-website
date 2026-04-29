@@ -1,7 +1,8 @@
-/** Legacy hash; opens the global booking modal when present. Full page: `/calendar`. */
-export const BOOKING_ANCHOR = "#book-call";
-
+/** Full-page scheduling (LeadConnector embed). */
 export const CALENDAR_PATH = "/calendar";
+
+/** @deprecated Old modal hash. Homepage `/#book-call` redirects to `CALENDAR_PATH`. */
+export const BOOKING_ANCHOR = "#book-call";
 
 /** Primary business line — call/text CTA. */
 export const PRIMARY_PHONE_HREF = "tel:+19175727734";
@@ -19,5 +20,5 @@ export const DEMO_CARD_BUTTON_LABEL = "Try the Demo";
 export const CTA_MICRO = "Includes a 30-day performance guarantee.";
 export const DEMO_SUBTEXT = "Call and hear the system — about 30 seconds.";
 
-/** @deprecated Primary conversion is phone; calendar anchor only for optional scheduling. */
-export const BOOKING_URL = BOOKING_ANCHOR;
+/** Optional scheduling route (same as calendar page). */
+export const BOOKING_URL = CALENDAR_PATH;

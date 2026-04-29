@@ -8,9 +8,10 @@ type BookingEmbedProps = {
   iframeClassName?: string;
   wrapperClassName?: string;
   /**
-   * Fill parent flex area (booking modal): iframe stretches to remaining viewport height.
+   * default: tall min-heights for standalone blocks.
+   * modal | page: fill parent flex area; iframe scrolls for long GHL steps.
    */
-  variant?: "default" | "modal";
+  variant?: "default" | "modal" | "page";
 };
 
 export function BookingIframe({
@@ -18,13 +19,13 @@ export function BookingIframe({
   wrapperClassName,
   variant = "default",
 }: BookingEmbedProps) {
-  const isModal = variant === "modal";
+  const isFill = variant === "modal" || variant === "page";
 
   return (
     <div
       className={cn(
         "rounded-2xl border border-border bg-card overflow-hidden shadow-[0_12px_40px_-24px_rgba(0,0,0,0.4)]",
-        isModal && "relative h-full min-h-0 w-full flex-1",
+        isFill && "relative h-full min-h-0 w-full flex-1",
         wrapperClassName,
       )}
     >
@@ -32,18 +33,17 @@ export function BookingIframe({
         src={IFRAME_SRC}
         id={IFRAME_ID}
         className={cn(
-          isModal
+          isFill
             ? "absolute inset-0 block h-full w-full min-h-0 border-0"
             : "block w-full min-h-[720px] md:min-h-[820px] lg:min-h-[900px] border-0 overflow-hidden",
           iframeClassName,
         )}
         style={
-          isModal
+          isFill
             ? { width: "100%", height: "100%", border: "none" }
             : { width: "100%", border: "none", overflow: "hidden" }
         }
-        // LeadConnector calendar + post-slot form is taller than one viewport; "no" clips content.
-        scrolling={isModal ? "yes" : "no"}
+        scrolling={isFill ? "yes" : "no"}
         title="Schedule time with Automagixx"
       />
     </div>
