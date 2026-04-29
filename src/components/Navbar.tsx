@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CALENDAR_PATH, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
+import { FIRST_EMPLOYEE_PATH, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 
 const navLinks = [
   { name: "First employee", href: "#first-employee" },
@@ -71,7 +71,7 @@ export default function Navbar() {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 xl:px-8 text-sm font-semibold shadow-[0_0_24px_hsl(174_72%_56%/0.25)] whitespace-nowrap"
               >
-                <Link href={CALENDAR_PATH}>
+                <Link href={FIRST_EMPLOYEE_PATH}>
                   Find your AI employee
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
@@ -122,7 +122,7 @@ export default function Navbar() {
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-semibold w-fit"
                 >
-                  <Link href={CALENDAR_PATH} onClick={() => setIsOpen(false)}>
+                  <Link href={FIRST_EMPLOYEE_PATH} onClick={() => setIsOpen(false)}>
                     Find your AI employee
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>

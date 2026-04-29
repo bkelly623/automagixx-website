@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Sparkles, WandSparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CALENDAR_PATH } from "@/app/components/cta";
+import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 
 const steps = [
   "We identify the highest-value role an AI employee could fill first.",
@@ -48,7 +48,7 @@ export default function FreeAuditSection() {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group"
             >
-              <Link href={CALENDAR_PATH}>
+              <Link href={FIRST_EMPLOYEE_PATH}>
                 Find my first AI employee
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>

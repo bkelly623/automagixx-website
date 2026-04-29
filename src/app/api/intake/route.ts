@@ -12,8 +12,14 @@ export async function POST(req: Request) {
     payload.set("missCallOutcome", body.missCallOutcome ?? "");
     payload.set("averageJobValue", body.averageJobValue ?? "");
     payload.set("fixTimeline", body.fixTimeline ?? "");
+    payload.set("website", body.website ?? "");
+    payload.set("goal", body.goal ?? "");
+    payload.set("bottleneck", body.bottleneck ?? "");
+    payload.set("currentTools", body.currentTools ?? "");
+    payload.set("contact", body.contact ?? "");
+    payload.set("source", body.source ?? "");
     payload.set("notes", body.notes ?? "");
-    payload.set("_subject", "Automagixx Intake Form Submission");
+    payload.set("_subject", body.source ? `Automagixx ${body.source}` : "Automagixx Intake Form Submission");
 
     const res = await fetch("https://formsubmit.co/ajax/brendan@automagixx.com", {
       method: "POST",

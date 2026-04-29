@@ -6,8 +6,8 @@ import { BookingIframe, BookingSmsDisclaimer } from "@/components/BookingEmbed";
 import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 
 export const metadata: Metadata = {
-  title: "Schedule a Call | Automagixx",
-  description: "Book a time with Automagixx — AI receptionists and growth systems for local businesses.",
+  title: "AI Employee Strategy Call | Automagixx",
+  description: "Book a strategy call with Automagixx about managed AI employees for your business.",
 };
 
 export default function CalendarPage() {
@@ -42,13 +42,13 @@ export default function CalendarPage() {
               Scheduling
             </p>
           </div>
-          <h1 className="font-display text-2xl font-bold tracking-tight md:text-4xl">Schedule a call</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight md:text-4xl">AI employee strategy call</h1>
           <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-muted-foreground md:text-base">
             Prefer the fastest path? Call or text{" "}
             <a href={PRIMARY_PHONE_HREF} className="font-semibold text-primary underline underline-offset-2">
               {PRIMARY_PHONE_DISPLAY}
             </a>{" "}
-            first. Otherwise, pick a time below — the full flow stays on this page.
+            first. Otherwise, pick a time below and we&apos;ll map the first AI employee most likely to create ROI.
           </p>
         </div>
 

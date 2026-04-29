@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Mail, Phone, Sparkles } from "lucide-react";
-import { CALENDAR_PATH, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
+import { FIRST_EMPLOYEE_PATH, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 import Link from "next/link";
 import { TestDriveLink } from "@/components/TestDriveLink";
 
@@ -77,7 +77,7 @@ export default function CTA() {
                   asChild
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold group"
                 >
-                  <Link href={CALENDAR_PATH} className="inline-flex items-center justify-center">
+                  <Link href={FIRST_EMPLOYEE_PATH} className="inline-flex items-center justify-center">
                     Find your first AI employee
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>

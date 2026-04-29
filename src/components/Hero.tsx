@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Bot, Sparkles, WandSparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CALENDAR_PATH } from "@/app/components/cta";
+import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 import { TestDriveLink } from "@/components/TestDriveLink";
 
 const proofPoints = [
@@ -79,7 +79,7 @@ export default function Hero() {
                 asChild
                 className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 min-h-[3.75rem] text-base font-semibold group shadow-[0_0_45px_hsl(174_72%_56%/0.28)]"
               >
-                <Link href={CALENDAR_PATH}>
+                <Link href={FIRST_EMPLOYEE_PATH}>
                   Find your first AI employee
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>

@@ -1,6 +1,9 @@
 /** Full-page scheduling (LeadConnector embed). */
 export const CALENDAR_PATH = "/calendar";
 
+/** Primary lead magnet / first conversion step. */
+export const FIRST_EMPLOYEE_PATH = "/first-ai-employee";
+
 /** @deprecated Old modal hash. Homepage `/#book-call` redirects to `CALENDAR_PATH`. */
 export const BOOKING_ANCHOR = "#book-call";
 
