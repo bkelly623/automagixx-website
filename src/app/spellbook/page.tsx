@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Bot, BrainCircuit, CheckCircle2, FlaskConical, Megaphone, ScrollText, Sparkles, WandSparkles } from "lucide-react";
 import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
+import BrandMark from "@/components/BrandMark";
 
 export const metadata: Metadata = {
   title: "The Automagixx Spellbook | AI Workforce Growth Lab",
@@ -125,9 +126,7 @@ export default function SpellbookPage() {
             <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-primary/20 via-transparent to-secondary/25 blur-2xl" />
             <div className="relative rounded-[2rem] border border-white/10 glass-strong p-6 sm:p-8 shadow-[var(--shadow-card)]">
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary">
-                  <Bot className="h-7 w-7 text-primary-foreground" aria-hidden />
-                </div>
+                <BrandMark size="md" showWordmark={false} />
                 <div>
                   <p className="text-sm text-muted-foreground">Brand character direction</p>
                   <h2 className="font-display text-2xl font-bold">The Robot Wizard</h2>

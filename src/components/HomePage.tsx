@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FreeAuditSection from "@/components/FreeAuditSection";
 import Services from "@/components/Services";
+import MagicBrandSection from "@/components/MagicBrandSection";
 import Features from "@/components/Features";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <FreeAuditSection />
+      <MagicBrandSection />
       <Services />
       <Features />
       <Testimonials />

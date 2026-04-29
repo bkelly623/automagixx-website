@@ -143,6 +143,33 @@
   .card-gradient {
     background: var(--gradient-card);
   }
+
+  .magic-grid {
+    background-image:
+      linear-gradient(hsl(210 40% 98% / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(210 40% 98% / 0.045) 1px, transparent 1px),
+      radial-gradient(circle at 20% 20%, hsl(174 72% 56% / 0.08), transparent 28%),
+      radial-gradient(circle at 80% 70%, hsl(262 83% 58% / 0.08), transparent 30%);
+    background-size: 72px 72px, 72px 72px, 100% 100%, 100% 100%;
+    mask-image: radial-gradient(ellipse at center, black 0%, black 55%, transparent 82%);
+  }
+
+  .brand-orb::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 1.5rem;
+    background: conic-gradient(
+      from 120deg,
+      transparent,
+      hsl(174 72% 56% / 0.45),
+      hsl(262 83% 58% / 0.35),
+      transparent
+    );
+    filter: blur(12px);
+    opacity: 0.75;
+    animation: brand-orbit 7s ease-in-out infinite;
+  }
 }
 
 @layer utilities {
@@ -180,6 +207,18 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes brand-orbit {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    opacity: 0.9;
   }
 }
 

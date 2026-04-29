@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import BrandMark from "@/components/BrandMark";
 
 const footerColumns: {
   title: string;
@@ -57,11 +57,8 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Link href="/" className="flex items-center gap-2 mb-4">
-                <span className="inline-flex rounded-lg overflow-hidden ring-1 ring-white/10">
-                  <Image src="/logo-robot.png" alt="" width={40} height={40} className="h-10 w-auto bg-card" />
-                </span>
-                <span className="font-display font-bold text-xl text-foreground">Automagixx</span>
+              <Link href="/" className="mb-4 inline-flex">
+                <BrandMark size="md" />
               </Link>
               <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
                 Managed AI employees for small businesses. Built around useful work, measurable ROI, and automation that

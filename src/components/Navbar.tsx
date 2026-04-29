@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BrandMark from "@/components/BrandMark";
 import { FIRST_EMPLOYEE_PATH, PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/app/components/cta";
 
 const navLinks = [
@@ -29,12 +29,7 @@ export default function Navbar() {
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2 group shrink-0" onClick={() => setIsOpen(false)}>
-            <span className="inline-flex rounded-lg overflow-hidden ring-1 ring-white/10">
-              <Image src="/logo-robot.png" alt="" width={36} height={36} className="h-9 w-auto bg-card" />
-            </span>
-            <span className="font-display font-bold text-xl sm:text-2xl text-foreground drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] transition-transform group-hover:scale-[1.02]">
-              Automagixx
-            </span>
+            <BrandMark size="sm" />
           </Link>
 
           <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative flex-1 justify-end min-w-0">

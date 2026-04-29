@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Bot, Sparkles, WandSparkles } from "lucide-react";
+import { ArrowRight, Sparkles, WandSparkles } from "lucide-react";
+import BrandMark from "@/components/BrandMark";
 import { Button } from "@/components/ui/button";
 import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 import { TestDriveLink } from "@/components/TestDriveLink";
@@ -122,9 +123,7 @@ export default function Hero() {
               <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-primary/10 blur-3xl" />
               <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-5 mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-[0_0_35px_hsl(174_72%_56%/0.25)]">
-                    <Bot className="w-6 h-6 text-primary-foreground" aria-hidden />
-                  </div>
+                  <BrandMark size="sm" showWordmark={false} />
                   <div>
                     <div className="font-display font-bold text-foreground">AI Workforce Console</div>
                     <div className="text-sm text-muted-foreground">Automagixx operating layer</div>
