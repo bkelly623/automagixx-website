@@ -102,8 +102,8 @@ export default function SpellbookPage() {
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-8">
               We are building Automagixx with the same AI employees we sell: scouts, scribes, content reps, demo builders,
-              follow-up operators, and workflow assistants. This is the public lab where the internal magic becomes
-              client-ready systems.
+              follow-up operators, and workflow assistants. The client playbook stays simple: start with one profitable
+              AI employee, prove ROI, then expand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -134,8 +134,8 @@ export default function SpellbookPage() {
               </div>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 The mascot is not just decoration. It is a distribution device: the guide who explains AI employees,
-                casts automation “spells,” shows before/after transformations, and turns technical workflows into stories
-                people remember.
+                casts automation “spells,” shows before/after transformations, and keeps the story memorable without
+                losing the business case.
               </p>
               <div className="rounded-2xl border border-primary/20 bg-primary/10 p-4">
                 <p className="text-sm text-primary mb-1">Positioning line</p>

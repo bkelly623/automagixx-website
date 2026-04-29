@@ -49,12 +49,10 @@ export default function Features() {
           >
             <span className="text-primary text-sm font-semibold uppercase tracking-wider">How Automagixx works</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4 mb-6">
-              A self-selling AI company, built to prove the <span className="gradient-text">magic is real</span>
+              A self-selling AI company, built around <span className="gradient-text">profitable first hires</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              Automagixx is not just selling agents. The company is being built around its own AI workforce: agents that
-              research markets, create content, prepare outreach, follow up, support prospects, and help deliver client
-              systems.
+              Automagixx is not just selling agents. The company is being built around its own AI workforce — but the client strategy stays disciplined: one profitable AI employee first, then expand into a workforce.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">

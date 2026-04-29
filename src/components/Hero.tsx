@@ -9,8 +9,8 @@ import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 import { TestDriveLink } from "@/components/TestDriveLink";
 
 const proofPoints = [
-  "AI employees, not generic bots",
-  "Built to sell, support, and follow up",
+  "One profitable employee first",
+  "Expand only after ROI is proven",
   "Human-approved where it matters",
 ];
 
@@ -65,8 +65,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.16 }}
               className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              Automagixx builds AI workers that capture leads, follow up, book appointments, create content, recover
-              revenue, and keep your business moving 24/7 — without adding payroll.
+              Automagixx helps you start with one managed AI employee — the role most likely to create positive ROI first — then expand only after it proves itself.
             </motion.p>
 
             <motion.div
@@ -155,7 +154,7 @@ export default function Hero() {
               <div className="mt-5 rounded-2xl bg-gradient-to-r from-primary/15 to-secondary/15 border border-white/10 p-4">
                 <div className="text-sm text-muted-foreground">Core spell</div>
                 <div className="font-display font-bold text-lg text-foreground mt-1">
-                  Sell the AI workforce by running the company with one.
+Start with one useful AI employee. Let ROI earn the expansion.
                 </div>
               </div>
             </div>

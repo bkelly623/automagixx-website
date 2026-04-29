@@ -66,8 +66,7 @@ export default function Services() {
             Start with the employee most likely to <span className="gradient-text">make you money</span>
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-            We do not sell random automations. We install managed AI employees tied to a business outcome: more leads
-            captured, faster follow-up, more booked calls, better content, and less repetitive work.
+            We do not try to sell you as much automation as possible. We help you pick one managed AI employee tied to a business outcome, prove it, then expand if the numbers justify it.
           </p>
         </motion.div>
 

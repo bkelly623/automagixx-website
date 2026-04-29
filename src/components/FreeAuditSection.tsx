@@ -37,10 +37,10 @@ export default function FreeAuditSection() {
               <span className="text-sm text-muted-foreground">First AI Employee Finder</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight mb-4">
-              Do not automate everything. Hire the <span className="gradient-text">first employee that pays</span>.
+              Do not automate everything. Hire <span className="gradient-text">one employee that pays</span> first.
             </h2>
             <p className="text-muted-foreground text-lg max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
-              The first job is not to build a giant system. It is to find the one AI employee most likely to create
+              The first job is not to sell you a giant system. It is to find the one AI employee most likely to create
               cashflow, prove ROI, and earn the right to expand.
             </p>
             <Button

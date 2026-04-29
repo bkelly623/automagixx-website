@@ -44,8 +44,8 @@ export default function MagicBrandSection() {
             </h2>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
               Automagixx uses a robot-wizard world to make AI employees memorable: spells are workflows, apprentices are
-              first hires, the Spellbook documents experiments, and every demo becomes a little magic trick with a
-              business outcome.
+              first hires, the Spellbook documents experiments, and every demo has to point back to profit, time saved,
+              or leads captured.
             </p>
           </motion.div>
 
