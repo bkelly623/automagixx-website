@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, Check, MessageCircle, WandSparkles } from "lucide-react";
 
 const wedges = [
@@ -39,6 +40,13 @@ export default function Testimonials() {
             The point is not to talk about automation. The point is to demonstrate it publicly: lead generation,
             content, follow-up, demos, and delivery systems built with AI employees.
           </p>
+          <Link
+            href="/spellbook"
+            className="mt-7 inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/15 transition-colors"
+          >
+            Open the Automagixx Spellbook
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
+          </Link>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">

@@ -21,7 +21,7 @@ const footerColumns: {
     title: "System",
     links: [
       { label: "First Employee Finder", href: "/#first-employee" },
-      { label: "Growth Lab", href: "/#growth-lab" },
+      { label: "Spellbook / Growth Lab", href: "/spellbook" },
       { label: "Live Demo", href: "/test-chatbot" },
       { label: "Book a Call", href: "/calendar" },
     ],
