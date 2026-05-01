@@ -21,7 +21,7 @@ const footerColumns: {
     title: "System",
     links: [
       { label: "First Employee Finder", href: "/#first-employee" },
-      { label: "Spellbook / Growth Lab", href: "/spellbook" },
+      { label: "Growth Lab", href: "/spellbook" },
       { label: "Live Demo", href: "/test-chatbot" },
       { label: "Book a Call", href: "/calendar" },
     ],
@@ -61,8 +61,8 @@ export default function Footer() {
                 <BrandMark size="md" />
               </Link>
               <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-                Managed AI employees for small businesses. Built around useful work, measurable ROI, and automation that
-                feels like magic without becoming a gimmick.
+                Managed AI employees for small businesses. Built around useful work, measurable ROI, and practical
+                automation that feels powerful without becoming a gimmick.
               </p>
             </motion.div>
           </div>

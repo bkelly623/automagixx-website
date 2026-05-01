@@ -5,7 +5,7 @@ import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 import BrandMark from "@/components/BrandMark";
 
 export const metadata: Metadata = {
-  title: "The Automagixx Spellbook | AI Workforce Growth Lab",
+  title: "Automagixx Growth Lab | AI Workforce Experiments",
   description:
     "A public growth lab documenting the AI employees, experiments, and operating systems Automagixx uses to build itself and serve clients.",
 };
@@ -20,14 +20,14 @@ const internalEmployees = [
   },
   {
     icon: Megaphone,
-    name: "Content Spellsmith",
+    name: "Content Strategist",
     status: "Building",
     job: "Turns strategy, demos, client problems, and proof into posts, scripts, ads, and campaign assets.",
     clientVersion: "Content Rep for businesses that need consistent visibility without hiring a full content team.",
   },
   {
     icon: ScrollText,
-    name: "Spellbook Scribe",
+    name: "Operations Scribe",
     status: "Active concept",
     job: "Documents what we build, what works, what fails, and which internal workflows become client products.",
     clientVersion: "Reporting Analyst / Ops Scribe for teams that need clean process docs and updates.",
@@ -67,7 +67,7 @@ const principles = [
   "One profitable AI employee before a giant platform.",
   "Human judgment where trust, money, or reputation is on the line.",
   "Every internal workflow should become a reusable client asset.",
-  "The magic is the demo: show the work, not just the claim.",
+  "The demo is the proof: show the work, not just the claim.",
 ];
 
 export default function SpellbookPage() {
@@ -95,10 +95,10 @@ export default function SpellbookPage() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 mb-6">
               <WandSparkles className="h-4 w-4 text-primary" aria-hidden />
-              <span className="text-sm text-muted-foreground">Public growth lab · AI workforce spellbook</span>
+              <span className="text-sm text-muted-foreground">Public growth lab · AI workforce experiments</span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight text-balance mb-6">
-              The <span className="gradient-text">Automagixx Spellbook</span>
+              The <span className="gradient-text">Automagixx Growth Lab</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-8">
               We are building Automagixx with the same AI employees we sell: scouts, scribes, content reps, demo builders,
@@ -128,14 +128,13 @@ export default function SpellbookPage() {
               <div className="flex items-center gap-4 mb-6">
                 <BrandMark size="md" showWordmark={false} />
                 <div>
-                  <p className="text-sm text-muted-foreground">Brand character direction</p>
-                  <h2 className="font-display text-2xl font-bold">The Robot Wizard</h2>
+                  <p className="text-sm text-muted-foreground">Brand direction</p>
+                  <h2 className="font-display text-2xl font-bold">Premium AI workforce</h2>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                The mascot is not just decoration. It is a distribution device: the guide who explains AI employees,
-                casts automation “spells,” shows before/after transformations, and keeps the story memorable without
-                losing the business case.
+                The brand should be memorable, but the buyer-facing promise stays practical: explain AI employees, show
+                before/after transformations, and make the business case obvious without drifting into gimmicks.
               </p>
               <div className="rounded-2xl border border-primary/20 bg-primary/10 p-4">
                 <p className="text-sm text-primary mb-1">Positioning line</p>
@@ -190,7 +189,7 @@ export default function SpellbookPage() {
           <div>
             <span className="text-primary text-sm font-semibold uppercase tracking-wider">Experiments</span>
             <h2 className="font-display text-3xl sm:text-5xl font-bold mt-4 mb-4">
-              Growth spells currently being tested
+              Growth systems currently being tested
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
               The scoreboard is simple: replies, demos requested, calls booked, clients closed, and reusable systems born.
@@ -220,10 +219,10 @@ export default function SpellbookPage() {
                 Operating principles
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4">
-                The rules behind the magic
+                The rules behind the system
               </h2>
               <p className="text-muted-foreground leading-relaxed text-lg">
-                Automagixx should feel magical to customers, but the operating system underneath has to be practical,
+                Automagixx should feel powerful to customers, but the operating system underneath has to be practical,
                 measurable, and safe enough for real businesses.
               </p>
             </div>
@@ -241,7 +240,7 @@ export default function SpellbookPage() {
         <section className="text-center max-w-3xl mx-auto pb-8">
           <Sparkles className="h-8 w-8 text-primary mx-auto mb-4" aria-hidden />
           <h2 className="font-display text-3xl sm:text-5xl font-bold mb-5">
-            Want the first spell cast for your business?
+            Want to find the first AI employee for your business?
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-8">
             Start with one useful AI employee. If it works, expand into a workforce.

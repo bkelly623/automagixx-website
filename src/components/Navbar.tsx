@@ -12,7 +12,7 @@ const navLinks = [
   { name: "First employee", href: "#first-employee" },
   { name: "AI employees", href: "#employees" },
   { name: "System", href: "#system" },
-  { name: "Spellbook", href: "/spellbook" },
+  { name: "Growth Lab", href: "/spellbook" },
   { name: "Contact", href: "#contact" },
 ];
 

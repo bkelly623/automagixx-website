@@ -69,7 +69,7 @@ export default function FreeAuditSection() {
                   <Sparkles className="w-6 h-6 text-primary-foreground" aria-hidden />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-xl text-foreground">Recommendation spell</h3>
+                  <h3 className="font-display font-bold text-xl text-foreground">Opportunity audit</h3>
                   <p className="text-sm text-muted-foreground">Revenue-first, not tool-first.</p>
                 </div>
               </div>

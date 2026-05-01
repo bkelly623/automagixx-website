@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 import BrandMark from "@/components/BrandMark";
 import SpellSigil from "@/components/SpellSigil";
 
-const spells = [
+const systems = [
   {
-    label: "Spell 01",
-    title: "The Scout",
+    label: "System 01",
+    title: "Market Scout",
     description: "Finds markets, prospects, pain signals, and angles before a human opens a spreadsheet.",
   },
   {
-    label: "Spell 02",
-    title: "The Scribe",
+    label: "System 02",
+    title: "Operations Scribe",
     description: "Turns messy work into posts, reports, playbooks, follow-ups, and reusable operating memory.",
   },
   {
-    label: "Spell 03",
-    title: "The Closer's Familiar",
+    label: "System 03",
+    title: "Revenue Assistant",
     description: "Prepares calls, follows up, answers questions, and keeps warm leads from going cold.",
   },
 ];
@@ -40,25 +40,25 @@ export default function MagicBrandSection() {
             <BrandMark size="lg" className="mb-7" />
             <span className="text-primary text-sm font-semibold uppercase tracking-wider">Brand engine</span>
             <h2 className="mt-4 mb-5 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-              The magic is not decoration. It is the <span className="gradient-text">distribution system</span>.
+              A memorable brand wrapped around a <span className="gradient-text">serious operating system</span>.
             </h2>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Automagixx uses a robot-wizard world to make AI employees memorable: spells are workflows, apprentices are
-              first hires, the Spellbook documents experiments, and every demo has to point back to profit, time saved,
-              or leads captured.
+              Automagixx should feel powerful and memorable without becoming theatrical. The brand promise is simple:
+              practical AI employees that create profit, save time, capture leads, and make small-business operations
+              feel dramatically easier.
             </p>
           </motion.div>
 
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-            {spells.map((spell, index) => (
+            {systems.map((system, index) => (
               <motion.div
-                key={spell.title}
+                key={system.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                <SpellSigil {...spell} />
+                <SpellSigil {...system} />
               </motion.div>
             ))}
           </div>

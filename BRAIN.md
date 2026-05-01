@@ -138,3 +138,31 @@ Implemented in **`src/components/HomePage.tsx`** (client):
 ---
 
 *Last brain refresh: aligned with post-showcase-merge `page.tsx`, `HomePage.tsx`, `BookingSection.tsx`, `cta.ts`, `tailwind.config.ts`, `globals.css`.*
+
+## Brand direction update — premium over theatrical
+
+Automagixx should keep the memorable name and subtle “it works like magic” feeling, but buyer-facing copy should avoid fantasy/theatrical language. The brand should feel powerful, premium, practical, and operationally credible.
+
+Current rule:
+
+> Memorable brand, ruthless business outcomes.
+
+Use terms like:
+- AI employees
+- operating system
+- growth lab
+- revenue recovery
+- lead rescue
+- workflow transformation
+- opportunity audit
+- proof, demos, ROI
+
+Avoid overusing terms like:
+- spell
+- wizard
+- casting
+- apprentice
+- familiar
+- fantasy-world language
+
+The `/spellbook` route may remain technically for now, but navigation/copy should present it as the Automagixx Growth Lab.

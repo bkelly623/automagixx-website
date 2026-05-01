@@ -152,7 +152,7 @@ export default function Hero() {
               </div>
 
               <div className="mt-5 rounded-2xl bg-gradient-to-r from-primary/15 to-secondary/15 border border-white/10 p-4">
-                <div className="text-sm text-muted-foreground">Core spell</div>
+                <div className="text-sm text-muted-foreground">Core principle</div>
                 <div className="font-display font-bold text-lg text-foreground mt-1">
 Start with one useful AI employee. Let ROI earn the expansion.
                 </div>

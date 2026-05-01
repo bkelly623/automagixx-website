@@ -44,7 +44,7 @@ export default function Testimonials() {
             href="/spellbook"
             className="mt-7 inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/15 transition-colors"
           >
-            Open the Automagixx Spellbook
+            Open the Automagixx Growth Lab
             <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
           </Link>
         </motion.div>
