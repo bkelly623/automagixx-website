@@ -80,7 +80,7 @@ export default function FirstAiEmployeePage() {
       body: JSON.stringify({
         ...data,
         source: "First AI Employee Finder",
-        notes: `Goal: ${data.goal || ""}\nBottleneck: ${data.bottleneck || ""}\nCurrent tools: ${data.currentTools || ""}\nWebsite: ${data.website || ""}\nNotes: ${data.notes || ""}`,
+        notes: `Name: ${data.contactName || ""}\nEmail: ${data.email || ""}\nPhone: ${data.phone || ""}\nGoal: ${data.goal || ""}\nBottleneck: ${data.bottleneck || ""}\nCurrent tools: ${data.currentTools || ""}\nWebsite: ${data.website || ""}\nNotes: ${data.notes || ""}`,
       }),
     }).catch(() => null);
     setLoading(false);
@@ -191,8 +191,18 @@ export default function FirstAiEmployeePage() {
                     <input name="currentTools" placeholder="GHL, HubSpot, Google Calendar, receptionist, VA, etc." className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Email or phone</label>
-                    <input name="contact" required placeholder="Where should we send the recommendation/follow-up?" className={inputClass} />
+                    <label className="block text-sm font-medium text-foreground mb-2">Your name</label>
+                    <input name="contactName" required placeholder="Who should we send this to?" className={inputClass} />
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">Email</label>
+                      <input name="email" type="email" required placeholder="you@company.com" className={inputClass} />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">Phone <span className="text-muted-foreground">(optional)</span></label>
+                      <input name="phone" type="tel" placeholder="Best number for follow-up" className={inputClass} />
+                    </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">Anything else?</label>
@@ -203,7 +213,7 @@ export default function FirstAiEmployeePage() {
                     disabled={loading}
                     className="inline-flex w-full items-center justify-center rounded-full bg-primary px-7 py-4 font-semibold text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-60"
                   >
-                    {loading ? "Casting recommendation..." : "Find my first AI employee"}
+                    {loading ? "Building recommendation..." : "Find my first AI employee"}
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
                   </button>
                 </form>

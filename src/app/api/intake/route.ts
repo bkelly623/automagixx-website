@@ -5,6 +5,9 @@ export async function POST(req: Request) {
     const body = (await req.json()) as Record<string, string>;
 
     const payload = new URLSearchParams();
+    payload.set("contactName", body.contactName ?? "");
+    payload.set("email", body.email ?? "");
+    payload.set("phone", body.phone ?? "");
     payload.set("businessName", body.businessName ?? "");
     payload.set("businessType", body.businessType ?? "");
     payload.set("businessTypeOther", body.businessTypeOther ?? "");
