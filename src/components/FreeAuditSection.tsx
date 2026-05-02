@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 
 const steps = [
-  "We identify the highest-value role an AI employee could fill first.",
-  "You get a simple recommendation: employee, workflow, offer, and pilot path.",
-  "If there is a fit, we build the first managed employee and improve it with usage data.",
+  "The Finder gives you a fast first-pass recommendation based on your business, bottleneck, and revenue goal.",
+  "If the recommendation looks promising, book a short mini-audit call so we can pressure-test the opportunity.",
+  "If there is real upside, the paid Opportunity Audit maps the exact employee, workflow, tools, ROI targets, and pilot plan.",
 ];
 
 export default function FreeAuditSection() {
@@ -37,11 +37,11 @@ export default function FreeAuditSection() {
               <span className="text-sm text-muted-foreground">First AI Employee Finder</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight mb-4">
-              Do not automate everything. Hire <span className="gradient-text">one employee that pays</span> first.
+              Do not automate everything. Find <span className="gradient-text">the first role that pays</span>.
             </h2>
             <p className="text-muted-foreground text-lg max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
-              The first job is not to sell you a giant system. It is to find the one AI employee most likely to create
-              cashflow, prove ROI, and earn the right to expand.
+              The first job is not to sell you a giant system. It is to identify the AI employee most likely to recover
+              revenue, save time, or book more business before you spend money on a larger build.
             </p>
             <Button
               size="lg"
@@ -69,8 +69,8 @@ export default function FreeAuditSection() {
                   <Sparkles className="w-6 h-6 text-primary-foreground" aria-hidden />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-xl text-foreground">Opportunity audit</h3>
-                  <p className="text-sm text-muted-foreground">Revenue-first, not tool-first.</p>
+                  <h3 className="font-display font-bold text-xl text-foreground">Finder → mini-audit → paid audit</h3>
+                  <p className="text-sm text-muted-foreground">Curiosity first. ROI proof before implementation.</p>
                 </div>
               </div>
 
@@ -87,8 +87,8 @@ export default function FreeAuditSection() {
               </div>
 
               <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/10 p-4 text-sm text-muted-foreground">
-                Warm prospect upgrade: if someone engages, we can spin up a lightweight website-to-AI demo for their
-                business before asking for a bigger commitment.
+                The free Finder creates the opening. The mini-audit confirms whether there is money on the table. The
+                paid audit becomes the implementation roadmap — not a vague consulting call.
               </div>
             </div>
           </motion.div>

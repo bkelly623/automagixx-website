@@ -9,15 +9,15 @@ import { FIRST_EMPLOYEE_PATH } from "@/app/components/cta";
 import { TestDriveLink } from "@/components/TestDriveLink";
 
 const proofPoints = [
-  "One profitable employee first",
-  "Expand only after ROI is proven",
-  "Human-approved where it matters",
+  "Start with the highest-ROI role",
+  "Free first recommendation",
+  "Paid audit only if there is real upside",
 ];
 
 const employeeCards = [
-  { title: "Lead Rescue Rep", text: "Follows up with missed, stale, and unconverted leads." },
-  { title: "Appointment Setter", text: "Qualifies prospects and books calls or estimates." },
-  { title: "Content Rep", text: "Turns your offers into posts, promos, and campaign assets." },
+  { title: "Lead Rescue Rep", text: "Follows up with missed, stale, and unconverted leads before they go cold." },
+  { title: "Appointment Setter", text: "Qualifies prospects, nudges replies, and books calls or estimates." },
+  { title: "Admin Ops Assistant", text: "Handles repetitive intake, reminders, updates, and internal handoffs." },
 ];
 
 export default function Hero() {
@@ -47,7 +47,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
             >
               <WandSparkles className="w-4 h-4 text-primary" aria-hidden />
-              <span className="text-sm text-muted-foreground">Managed AI employees for small businesses</span>
+              <span className="text-sm text-muted-foreground">ROI-first AI employees for small businesses</span>
             </motion.div>
 
             <motion.h1
@@ -56,7 +56,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.08 }}
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-tight mb-6 text-balance"
             >
-              Hire your first <span className="gradient-text">AI employee</span>
+              Find the first <span className="gradient-text">AI employee</span> your business should hire
             </motion.h1>
 
             <motion.p
@@ -65,7 +65,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.16 }}
               className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              Automagixx helps you start with one managed AI employee — the role most likely to create positive ROI first — then expand only after it proves itself.
+              Automagixx identifies and installs the AI employee most likely to recover revenue, save time, or book more business first — then expands only after the numbers justify it.
             </motion.p>
 
             <motion.div
@@ -154,7 +154,7 @@ export default function Hero() {
               <div className="mt-5 rounded-2xl bg-gradient-to-r from-primary/15 to-secondary/15 border border-white/10 p-4">
                 <div className="text-sm text-muted-foreground">Core principle</div>
                 <div className="font-display font-bold text-lg text-foreground mt-1">
-Start with one useful AI employee. Let ROI earn the expansion.
+Do not buy an AI stack. Start with one useful AI employee and let ROI earn the expansion.
                 </div>
               </div>
             </div>
